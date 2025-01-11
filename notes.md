@@ -1,19 +1,33 @@
 # CS 260 Notes
 
 ### Git Notes
-Helpful Command Line Prompts:
--> git commit -m "helpful message"
-Useful for notes and updating project
--> git log
-Useful for seeing progress
--> git checkout "id"
-Useful for visiting different versions
-NOTE: The Branch is defaulted to "Main"
--> git diff HEAD HEAD~1
-Useful for comparisons
-NOTE: '~#' is the distance from 'HEAD'
--> git config --global user."name/email" "___"
-Declares who is commiting to the code
+__Helpful Command Line Prompts:__   
+-> `git status`  
+Provides a list of modified files not yet committed  
+-> `git add`  
+Adds file(s) for staging and committing  
+-> `git commit -m "helpful message"`  
+Commits the file with descriptive message of the committed changes    
+-> `git log`  
+Useful for seeing progress and history  
+-> `git checkout "id"`  
+Useful for visiting different versions  
+NOTE: The Branch is defaulted to "Main"  
+-> `git diff HEAD HEAD~1`  
+Useful for comparisons  
+NOTE: `~#` is the distance from `HEAD`  
+-> `git config --global user."name/email" "___"`  
+Declares who is commiting to the code  
+
+### Markdown Notes  
+-> `#`, `##`,`###`  
+Headers  
+-> `*`/`_`, `**`/`__`,`~~`,`***`,`**`+`_`  
+Each alter text as *italics*, **bold**, ~~strikethrough~~, and more  
+-> `<sub>`/`</sub>`,`<sup>`/`</sup>`,`<ins>`/`</ins>`  
+Each alter text as <sub>subscripts</sub>, <sup>superscripts</sup>, and <ins>underlines</ins>  
+-> `[display text](link)`  
+Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)  
 
 [My startup](https://simon.cs260.click)
 
