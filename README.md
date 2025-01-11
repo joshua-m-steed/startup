@@ -4,8 +4,8 @@
 
 **Current Plans // Next Steps**  
 *Sat, Jan 11th | Morning*  
-- [ ] Complete elevator pitch  
-- [ ] Complete WebSocket and DB/Login descriptions  
+- [x] Complete elevator pitch  
+- [x] Complete WebSocket and DB/Login descriptions  
 - [ ] Draft design image
 
 *Sat, Jan 11th | Evening*  
@@ -61,7 +61,7 @@ I am going to use the required technologies in the following ways.
 - **CSS** - Description here
 - **React** - Description here
 - **Service** - Description here
-- **DB/Login** - Description here
+- **DB/Login** - Users will register and login before they can fill out their predicitons. User information and predictions will be stored in a database.
 - **WebSocket** - As each user inputs their predictions, their scores will be broadcasted to other users in the form of a scoreboard.
 
 ## 🚀 AWS deliverable
