@@ -32,7 +32,7 @@
 
 ### Elevator pitch
 
-I have enjoyed listening to the messages of General Conference, but I also love to guess where temples will be announced. This has become a game of predictions between family and friends. The goal of the game is to have the highest score by predicting who will speak and when, where temples are announced, tie colors, and a few other topics. To make it easier to play with friends in different places, this will allow anyone to login, select their predictions, and watch their results compete with others during the sessions. My hope is to make this program simple and enjoyable to allow for light-hearted fun!
+I have enjoyed listening to the messages of General Conference, but I also love to guess where temples will be announced. This has become a family friendly prediction competition! The goal of the game is to have the highest score by predicting who will speak and when, where temples are announced, tie colors, and a few other topics. To make it easier to play with friends in different places, this will allow anyone to login, select their predictions, and watch their results compete with others during the sessions. My hope is to make this program simple and enjoyable! A game that's light-hearted, fun, and invites others to tune into the messages of General Conference!
 
 ### Design
 
