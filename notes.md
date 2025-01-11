@@ -1,5 +1,20 @@
 # CS 260 Notes
 
+### Git Notes
+Helpful Command Line Prompts:
+-> git commit -m "helpful message"
+Useful for notes and updating project
+-> git log
+Useful for seeing progress
+-> git checkout "id"
+Useful for visiting different versions
+NOTE: The Branch is defaulted to "Main"
+-> git diff HEAD HEAD~1
+Useful for comparisons
+NOTE: '~#' is the distance from 'HEAD'
+-> git config --global user."name/email" "___"
+Declares who is commiting to the code
+
 [My startup](https://simon.cs260.click)
 
 ## Helpful links
