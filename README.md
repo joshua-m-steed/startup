@@ -32,7 +32,7 @@
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+I have enjoyed listening to the messages of General Conference, but I also love to guess where temples will be announced. This has become a game of predictions between family and friends. The goal of the game is to have the highest score by predicting who will speak and when, where temples are announced, tie colors, and a few other topics. To make it easier to play with friends in different places, this will allow anyone to login, select their predictions, and watch their results compete with others during the sessions. My hope is to make this program simple and enjoyable to allow for light-hearted fun!
 
 ### Design
 
