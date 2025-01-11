@@ -6,7 +6,8 @@
 *Sat, Jan 11th | Morning*  
 - [ ] Complete elevator pitch  
 - [ ] Complete WebSocket and DB/Login descriptions  
-- [ ] Draft design image  
+- [ ] Draft design image
+
 *Sat, Jan 11th | Evening*  
 - [ ] Complete key features
 - [ ] Complete Service and React descriptions
