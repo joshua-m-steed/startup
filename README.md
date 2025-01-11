@@ -62,7 +62,7 @@ I am going to use the required technologies in the following ways.
 - **React** - Description here
 - **Service** - Description here
 - **DB/Login** - Description here
-- **WebSocket** - Description here
+- **WebSocket** - As each user inputs their predictions, their scores will be broadcasted to other users in the form of a scoreboard.
 
 ## 🚀 AWS deliverable
 
