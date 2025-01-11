@@ -3,7 +3,7 @@
 ### Git Notes
 __Helpful Command Line Prompts:__   
 -> `git fetch`  
-Retrieves changes and updates from GitHub
+Retrieves changes and updates from GitHub  
 -> `git status`  
 Provides a list of modified files not yet committed  
 -> `git add`  
