@@ -10,7 +10,7 @@
 
 *Sat, Jan 11th | Evening*  
 - [x] Complete key features
-- [ ] Complete Service and React descriptions
+- [x] Complete Service and React descriptions
 
 
 > [!NOTE]
@@ -49,9 +49,12 @@ sequenceDiagram
 
 ### Key features
 
-- A register and login page for account creation and use.  
-- A page to select or input your predictions.  
-- A page with a list of users and their associated scores in scoreboard format.  
+- Page for registering or login 
+- Ability to select user answers for their prediction
+- Ability to alter predictions
+- Ability for user to lock prediction
+- Scoreboard of users and their scores
+- Admin can access and input the correct answers
 
 ### Technologies
 
