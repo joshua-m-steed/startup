@@ -9,7 +9,7 @@
 - [ ] Draft design image
 
 *Sat, Jan 11th | Evening*  
-- [ ] Complete key features
+- [x] Complete key features
 - [ ] Complete Service and React descriptions
 
 
@@ -49,9 +49,9 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- A register and login page for account creation and use.  
+- A page to select or input your predictions.  
+- A page with a list of users and their associated scores in scoreboard format.  
 
 ### Technologies
 
