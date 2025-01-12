@@ -59,10 +59,10 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - Uses HTML to provide a simple structure to the needed pages. A few HTML pages will be used for the login, predictions, and scoreboard pages.
 - **CSS** - Uses CCS to provide simple styles and color to the display.
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Users will register and login before they can fill out their predicitons. User information and predictions will be stored in a database.
-- **WebSocket** - As each user inputs their predictions, their scores will be broadcasted to other users in the form of a scoreboard.
+- **React** - A page containing components that are reactive to the user and their prediction input.
+- **Service** - The backend service provides prediction options and retrieves the user's selection.
+- **DB/Login** - Users register and login before they can fill out their predicitons. User information and predictions are stored in a database.
+- **WebSocket** - As each user inputs their predictions, their scores are broadcasted to other users in the form of a scoreboard.
 
 ## 🚀 AWS deliverable
 
