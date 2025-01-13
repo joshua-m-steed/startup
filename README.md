@@ -28,7 +28,7 @@
 - [x] A concise and compelling elevator pitch in your README.md
 - [x] Description of key features in your README.md
 - [x] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in your README.md.
+- [x] One or more rough sketches of your application. Images must be embedded in your README.md.
 
 ### Elevator pitch
 
@@ -38,13 +38,19 @@ I have enjoyed listening to the messages of General Conference, but I also love 
 
 ![FGC_Design](https://github.com/user-attachments/assets/b2f2a4aa-9973-47ff-9460-10e4732e3f69)
 
-Here are three drawings that depict the three main pages of the program. The left-most illustration is the **Login** page (1). The middle illustration is the **Prediction** page (2). The right-most illustration is the **Scoreboard** page (3).  
+Here are three drawings that depict the three main pages of the program. The left-most illustration is the **Login** page. The middle illustration is the **Prediction** page. The right-most illustration is the **Scoreboard** page.  
 
 **Login**  
 
+This page includes boxes to input a username and email. There is also a space for text/image displaying the title.  
+
 **Prediction**  
 
+This page contains a group of categories and interactive boxes or menus to select answers and set predictions. There are also a few buttons which allow for selecting different pages and locking a user's answers.  
+
 **Scoreboard**  
+
+This page updates as answers and scores are submitted. The page displays the user with their score in comparison with other participating users.  
 
 ```mermaid
 sequenceDiagram
