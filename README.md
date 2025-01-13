@@ -54,9 +54,13 @@ This page updates as answers and scores are submitted. The page displays the use
 
 ```mermaid
 sequenceDiagram
-    actor You
+    actor Joshua
+    actor Michael
     actor Website
-    You->>Website: Replace this with your design
+    Joshua->>Website: Joshua +3 point(s)
+    Website -->>Michael: Joshua +3 point(s)
+    Michael->>Website: Michael +1 point(s)
+    Website -->>Joshua: Michael +1 point(s)
 ```
 
 ### Key features
