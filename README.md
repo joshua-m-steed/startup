@@ -38,7 +38,13 @@ I have enjoyed listening to the messages of General Conference, but I also love 
 
 ![FGC_Design](https://github.com/user-attachments/assets/b2f2a4aa-9973-47ff-9460-10e4732e3f69)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Here are three drawings that depict the three main pages of the program. The left-most illustration is the **Login** page (1). The middle illustration is the **Prediction** page (2). The right-most illustration is the **Scoreboard** page (3).  
+
+**Login**  
+
+**Prediction**  
+
+**Scoreboard**  
 
 ```mermaid
 sequenceDiagram
