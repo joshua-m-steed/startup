@@ -2,17 +2,6 @@
 
 [My Notes](notes.md)
 
-**Current Plans // Next Steps**  
-*Sat, Jan 11th | Morning*  
-- [x] Complete elevator pitch  
-- [x] Complete WebSocket and DB/Login descriptions  
-- [ ] Draft design image
-
-*Sat, Jan 11th | Evening*  
-- [x] Complete key features
-- [x] Complete Service and React descriptions
-
-
 > [!NOTE]
 >  This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
 
@@ -77,10 +66,10 @@ sequenceDiagram
 I am going to use the required technologies in the following ways.
 
 - **HTML** - Uses HTML to provide a simple structure to the needed pages. A few HTML pages will be used for the login, predictions, and scoreboard pages.
-- **CSS** - Uses CCS to provide simple styles and color to the display.
+- **CSS** - Uses CSS to improve the visual design and apply color to the display.
 - **React** - A page containing components that are reactive to the user and their prediction input.
 - **Service** - The backend service provides prediction options and retrieves the user's selection.
-- **DB/Login** - Users register and login before they can fill out their predicitons. User information and predictions are stored in a database.
+- **DB/Login** - Users register and login before they can fill out their predicitons. User information and predictions are safely stored in a database.
 - **WebSocket** - As each user inputs their predictions, their scores are broadcasted to other users in the form of a scoreboard.
 
 ## 🚀 AWS deliverable
