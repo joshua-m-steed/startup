@@ -41,6 +41,7 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ## AWS Notes
 
+**Server IP** :: `54.156.31.145`
 
 ## HTML Notes
 
