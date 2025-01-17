@@ -47,8 +47,8 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 Connect :: `ssh -i [key] ubuntu@[server-ip]`  
 Find IP :: `dig [domain]`  
 Who Owns :: `whois [domain]`  
-Server Directory :: `ls -l`
-Disconnect :: `exit`
+Server Directory :: `ls -l`  
+Disconnect :: `exit`  
 
 ## HTML Notes
 
