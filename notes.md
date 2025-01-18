@@ -47,7 +47,28 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 `[subdomain].[secondary].[top]`  
 
-**Console Commands**
+**Console Commands**  
+-> `cd`  
+Change Directory. `cd ..` moves back a directory. `TAB` reveals potential directories  
+-> `mkdir` / `rmdir`  
+Make / Remove directory  
+-> `rm` / `mv` / `cp`  
+Remove, Move, and Copy files  
+-> `ls`  
+List files within a directory  
+-> `find`  
+Find file(s)  
+-> `cat`  
+Output contents of a file  
+-> `kill`  
+Kill the current running program  
+-> `sudo`  
+Execute a command as an admin  
+-> `ssh`  
+Create a secure shell on a remote device  
+
+
+**Server Commands**  
 Connect :: `ssh -i [key] ubuntu@[server-ip]`  
 Privatize Key :: `chmod  600 [key pair file]`  
 Find IP :: `dig [domain]`  
