@@ -45,6 +45,8 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 **Domain** :: `http//minijosh.click`  
 - `http//[subdomain|.minijosh.click` also works  
 
+`[subdomain].[secondary].[top]`  
+
 **Console Commands**
 Connect :: `ssh -i [key] ubuntu@[server-ip]`  
 Privatize Key :: `chmod  600 [key pair file]`  
@@ -54,8 +56,9 @@ Server Directory :: `ls -l`
 Disconnect :: `exit`  
 
 *Other Server Notes*  
-[Placeholder - Server Version]    
+Server Version - `t2.micro`    
 - If current package is slow/low memory, use `t3.nano`  
+- Access server [here](https://aws.amazon.com/)
 Elastic IP - Free while running server. Costs while server is deactivated.  
 Security Package - ssh, HTTP, HTTPS  
 Alerts - Zero-Budget  
