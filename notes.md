@@ -45,10 +45,15 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 **Console Commands**
 Connect :: `ssh -i [key] ubuntu@[server-ip]`  
+Privatize Key :: `chmod  600 [key pair file]`  
 Find IP :: `dig [domain]`  
 Who Owns :: `whois [domain]`  
 Server Directory :: `ls -l`  
 Disconnect :: `exit`  
+
+*Other Server Notes*  
+[Placeholder - Server Version]
+Elastic IP - Free while running server. Costs while server is deactivated.
 
 ## HTML Notes
 
