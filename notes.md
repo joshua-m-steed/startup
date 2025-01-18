@@ -41,7 +41,9 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ## AWS Notes
 
-**Server IP** :: `54.156.31.145`
+**Server IP** :: `54.156.31.145`  
+**Domain** :: `http//minijosh.click`  
+- `http//[subdomain|.minijosh.click` also works  
 
 **Console Commands**
 Connect :: `ssh -i [key] ubuntu@[server-ip]`  
@@ -52,8 +54,11 @@ Server Directory :: `ls -l`
 Disconnect :: `exit`  
 
 *Other Server Notes*  
-[Placeholder - Server Version]
-Elastic IP - Free while running server. Costs while server is deactivated.
+[Placeholder - Server Version]    
+- If current package is slow/low memory, use `t3.nano`  
+Elastic IP - Free while running server. Costs while server is deactivated.  
+Security Package - ssh, HTTP, HTTPS  
+Alerts - Zero-Budget  
 
 ## HTML Notes
 
