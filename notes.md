@@ -60,13 +60,22 @@ List files within a directory
 Find file(s)  
 -> `cat`  
 Output contents of a file  
--> `kill`  
+-> `kill` / `CTRL-C`
 Kill the current running program  
 -> `sudo`  
 Execute a command as an admin  
 -> `ssh`  
 Create a secure shell on a remote device  
-
+-> `scp`  
+Securely copy files to a remote computer  
+-> `history` / `CTRL-R`
+Show the history of recently used commands  
+-> `ping`  
+Check if a website is up and running  
+-> `dig`  
+Show the DNS information for the domain you searched  
+-> `man`  
+Look up the commands in the manual  
 
 **Server Commands**  
 Connect :: `ssh -i [key] ubuntu@[server-ip]`  
