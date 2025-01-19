@@ -42,7 +42,7 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 ## AWS Notes
 
 **Server IP** :: `54.156.31.145`  
-**Domain** :: `http//minijosh.click`  
+**Domain** :: `http//minijosh.click` / `https://minijosh.click/`
 - `http//[subdomain|.minijosh.click` also works  
 
 `[subdomain].[secondary].[top]`  
@@ -84,6 +84,11 @@ Find IP :: `dig [domain]`
 Who Owns :: `whois [domain]`  
 Server Directory :: `ls -l`  
 Disconnect :: `exit`  
+
+**Caddy Commands**  
+Caddy Configuration :: `vi Caddyfile`  
+Save Caddy File :: `:wq`  
+Super Caddy Restart :: `sudo service caddy restart`  
 
 *Other Server Notes*  
 Server Version - `t2.micro`    
