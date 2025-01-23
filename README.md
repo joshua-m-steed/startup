@@ -76,7 +76,8 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://minijosh.click).  
+I deployed my server with an elastic IP address linked to my custom domain name (`minijosh.click`). On this server, I also have a security group enabled as well as capabilites for subdomain access.  
 
 ## 🚀 HTML deliverable
 
