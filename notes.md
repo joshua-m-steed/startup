@@ -153,3 +153,15 @@ Example :: `<fieldset> ... </fieldset>`
 Example :: `<input type="" />`  
 `<select>` Selection Dropdown Menu `</select>`  
 Example :: `<select><option>1</option></select>`  
+`<optgroup>` Grouped selection dropdown `</optgroup>`  
+Example :: `<optgroup><option>1</option></optgroup>`  
+`<option>` Selected options `</option>`  
+Example :: `<option selected>option2</option>`  
+`<textarea>` Multiline text inputs `</textarea>`  
+`<label>` Individual input label `</label>`  
+Example :: `<label for="range">Range: </label>`  
+`<output>` Output of the input `</output>`  
+Example :: `<output for="range">0</output>`  
+`<meter>` Display the values with a known range `</meter>`  
+Example :: `<meter min="0" max="100" value="50"></meter>`  
+
