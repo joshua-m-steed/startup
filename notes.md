@@ -101,25 +101,44 @@ Alerts - Zero-Budget
 ## HTML Notes
 
 - HTML is text-like and works with `elements` and `tags`. `Tags` include the use of `<`,`>`, and `/`.  
-- Attributes are used to describe details and content within tags.
-Example :: `<p id="hello" class="greeting">HelloWorld</p>`
-- Hyperlinks use an anchor tag, `<a>`, with an `href` attribute. This embeds the link within text provided.
+- Attributes are used to describe details and content within tags.  
+Example :: `<p id="hello" class="greeting">HelloWorld</p>`  
+- Hyperlinks use an anchor tag, `<a>`, with an `href` attribute. This embeds the link within text provided.  
 Example :: `<a href="https://minijosh.click">Visit my site here</a>`  
-- Comments work like normal forms of code, but the syntax are as follows:
-`<!-- This isn't read -->`
+- Comments work like normal forms of code, but the syntax are as follows:  
+`<!-- This isn't read -->`  
 
 
-**HTML Tags**  
+**HTML Tags :: Divided into Groups**  
 `<html>` Opens the file and reads as HTML `</html>`  
-`<head>` Provides header information `</head>`  
+
+`<body>` The content body of the page `</body>`  
+`<header>` Header of the content body `</header>`  
+`<main>` Main of the content body `</main>`  
+`<footer>` Footer of the content body `</footer>`  
+
 `<title>` Changes the title of the tab `</title>`  
-`<body>` The main content of the page `</body>`  
-`<header>` Head of main content `</header>`  
-`<footer>` Foot of main content `</footer>`  
+`<head>` Provides header information `</head>`  
+`<div>` Block division of content `</div>`  
+`<nav>` Navigational inputs `</nav>`  
+`<span>` Inline span of content `</span>`  
+
 `<p>` Paragraph of text `</p>`  
+`<b>` Bring attention `</b>`  
+`<h#>` # is 1-9, provides a text heading `</h#>`  
+
 `<table>` Starts the creation of a table `</table>`  
 `<tr>` Table Row `</tr>`  
-`<th>` Header for the table `</th>`  
+`<th>` Header for the table `</th>` 
 `<td>` Data for the table `</td>`  
+
+`<ol>` / `<ul>` Ordered / Unordered list `</ol>` / `</ul>`  
 `<li>` Creates a list `</li>`  
+
+`<form>` Collection of user input `</form>`  
+`<input>` User input field `</input>`  
+
 `<a>` An anchor for a hyperlink `</a>`  
+`<img>` Image reference `</img>`  
+`<audio>` Audio content `</audio>`  
+`<video>` Video content `</video>`  
