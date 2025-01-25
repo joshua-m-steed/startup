@@ -135,10 +135,21 @@ Example :: `<a href="https://minijosh.click">Visit my site here</a>`
 `<ol>` / `<ul>` Ordered / Unordered list `</ol>` / `</ul>`  
 `<li>` Creates a list `</li>`  
 
-`<form>` Collection of user input `</form>`  
-`<input>` User input field `</input>`  
-
-`<a>` An anchor for a hyperlink `</a>`  
-`<img>` Image reference `</img>`  
+`<a>` An anchor for a hyperlink `</a>` 
+ - Uses `href=""` to access the hyperlink.  
+`<img>` Image reference `</img>`
+ - Uses `src=""` to access the image address.
+ - Uses `alt=""` to display alternate text when the image fails to load. Also describes the image.
+ - Use `width=""` or `height=""` to change the size of the image.  
 `<audio>` Audio content `</audio>`  
-`<video>` Video content `</video>`  
+`<video>` Video content `</video>`
+
+**HTML Inputs**  
+`<form>` Input container and submission `</form>`  
+Example :: `<form action"form.html" method="post">`  
+`<fieldset>` Labeled input grouping `</fieldset>`  
+Example :: `<fieldset> ... </fieldset>`  
+`<input>` Multiple types of user inputs `</input>`  
+Example :: `<input type="" />`  
+`<select>` Selection Dropdown Menu `</select>`  
+Example :: `<select><option>1</option></select>`  
