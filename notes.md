@@ -165,3 +165,28 @@ Example :: `<output for="range">0</output>`
 `<meter>` Display the values with a known range `</meter>`  
 Example :: `<meter min="0" max="100" value="50"></meter>`  
 
+**Input Types**  
+ - Text, single line textual value
+ - Password, obscured
+ - Email, address
+ - Tel, phone number
+ - Url, site address
+ - Number, numerical value
+ - Checkbox, inclusive selection
+ - Radio, exclusive selection
+ - Range, range limited number
+ - Date, year, month, day
+   - Datetime-local, day and time
+   - Month, year and month
+   - Week, week of the year
+ - Color
+ - File, local files
+ - Submit, a button to trigger the submission
+
+Example of implications :: `<label for="checkbox1">Check me</label> <input type="checkbox" name="varCheckbox" value="checkbox1" checked />`  
+
+*Common Attributes Among Input Types*  
+ - Name :: Name of the input, also used as the name when submitted
+ - Disabled :: Disables ability for the users to interact
+ - Value :: The initialized value
+ - Required :: Signifies that a vlalue is required to be valid  
