@@ -111,4 +111,15 @@ Example :: `<a href="https://minijosh.click">Visit my site here</a>`
 
 **HTML Tags**  
 `<html>` Opens the file and reads as HTML `</html>`  
-
+`<head>` Provides header information `</head>`  
+`<title>` Changes the title of the tab `</title>`  
+`<body>` The main content of the page `</body>`  
+`<header>` Head of main content `</header>`  
+`<footer>` Foot of main content `</footer>`  
+`<p>` Paragraph of text `</p>`  
+`<table>` Starts the creation of a table `</table>`  
+`<tr>` Table Row `</tr>`  
+`<th>` Header for the table `</th>`  
+`<td>` Data for the table `</td>`  
+`<li>` Creates a list `</li>`  
+`<a>` An anchor for a hyperlink `</a>`  
