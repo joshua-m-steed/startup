@@ -100,4 +100,15 @@ Alerts - Zero-Budget
 
 ## HTML Notes
 
-HTML is text-like and works with `elements` and `tags`. `Tags` include the use of `<`,`>`, and `/`.  
+- HTML is text-like and works with `elements` and `tags`. `Tags` include the use of `<`,`>`, and `/`.  
+- Attributes are used to describe details and content within tags.
+Example :: `<p id="hello" class="greeting">HelloWorld</p>`
+- Hyperlinks use an anchor tag, `<a>`, with an `href` attribute. This embeds the link within text provided.
+Example :: `<a href="https://minijosh.click">Visit my site here</a>`  
+- Comments work like normal forms of code, but the syntax are as follows:
+`<!-- This isn't read -->`
+
+
+**HTML Tags**  
+`<html>` Opens the file and reads as HTML `</html>`  
+
