@@ -196,3 +196,8 @@ Media tags take in URLs as attributes. The URL can be in link or relative format
  - Image `<img>` :: Needs `src` attribute.  
  - Audio `<audio>` :: Specify `src`, but include `controls` if I want the user to control the audio. `Autoplay` starts the music once it loads, and `loop` continues the audio file.
  - Video `<video>` :: Specify `src`, but can also include the `controls` and `autoplay` features. TIP -> `crossorigin="anonymous"` could be helpful when requesting files/videos from other domains.  
+
+*Internal Media Elements*  
+These are used to create within the HTML itself.  
+ - SVG / Scalable Vector Graphics `<svg>` :: A way to redner graphics within HTML. Is capable of drawing and visualizations, especially when paired with JavaScript and CSS. Uses attributes such as: `viewBox` and `stroke` with sub tags like `<circle>`.  
+ - Canvas `<canvas>` :: 2D drawing on the HTML page. Includes attributes such as: `id`, `width`, `height`, `style`, and more!  
