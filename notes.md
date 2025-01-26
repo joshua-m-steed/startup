@@ -190,3 +190,9 @@ Example of implications :: `<label for="checkbox1">Check me</label> <input type=
  - Disabled :: Disables ability for the users to interact
  - Value :: The initialized value
  - Required :: Signifies that a vlalue is required to be valid  
+
+*External Media Elements*  
+Media tags take in URLs as attributes. The URL can be in link or relative format.  
+ - Image `<img>` :: Needs `src` attribute.  
+ - Audio `<audio>` :: Specify `src`, but include `controls` if I want the user to control the audio. `Autoplay` starts the music once it loads, and `loop` continues the audio file.
+ - Video `<video>` :: Specify `src`, but can also include the `controls` and `autoplay` features. TIP -> `crossorigin="anonymous"` could be helpful when requesting files/videos from other domains.  
