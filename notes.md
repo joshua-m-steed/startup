@@ -2,6 +2,8 @@
 
 ### Git Notes
 __Helpful Command Line Prompts:__   
+-> `git clone [URL]`  
+Clones a repository from Github
 -> `git fetch`  
 Retrieves changes and updates from GitHub  
 -> `git status`  
@@ -46,6 +48,10 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 - `http//[subdomain|.minijosh.click` also works  
 
 `[subdomain].[secondary].[top]`  
+
+**Caddy**  
+-> `./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s simon`  
+Deploys files to production
 
 **Console Commands**  
 -> `cd`  
