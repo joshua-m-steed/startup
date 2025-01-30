@@ -83,15 +83,15 @@ I deployed my server with an elastic IP address linked to my custom domain name 
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I completed the HTML pages for a login/index page, a guess pages for inputs, and a score page!
+- [x] **Proper HTML element usage** - I used HTML elements in a way to be organized and clear in their purpose.
+- [x] **Links** - I included links to the different pages of my HTML documents and my GitHub
+- [x] **Text** - I included text for display, descriptions and placeholders
+- [x] **3rd party API placeholder** - I have placeholders for a random dog photo as a greeting profile image, and will verify that emails are accurate after attempting to login/creat an account
+- [x] **Images** - I use some images within my Guess page and on the index page
+- [x] **Login placeholder** - I included a login placeholder, including options for a username, email, and password
+- [x] **DB data placeholder** - My data placeholder is in the form of the inputs and scoreboard for storing and comparing inputs
+- [x] **WebSocket placeholder** - The scoreboard will update the scores as guesses are inserted and compared with answers
 
 ## 🚀 CSS deliverable
 
