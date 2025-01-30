@@ -22,8 +22,11 @@ Useful for comparisons
 NOTE: `~#` is the distance from `HEAD`  
 -> `git config --global user."name/email" "___"`  
 Declares who is commiting to the code  
--> `git reset --hard <previous_commit>`
-Useful for resetting to a commit as a form of undo. I.e. Undoing a merge
+-> `git reset --hard <previous_commit>`  
+Useful for resetting to a commit as a form of undo. I.e. Undoing a merge  
+->  `git merge <feature_branch>`  
+Merges two branches together  
+EXAMPLE: `git checkout main` -> `git merge html_branch`  
 
 ### Markdown Notes  
 -> `#`, `##`,`###`  
