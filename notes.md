@@ -212,3 +212,29 @@ Media tags take in URLs as attributes. The URL can be in link or relative format
 These are used to create within the HTML itself.  
  - SVG / Scalable Vector Graphics `<svg>` :: A way to redner graphics within HTML. Is capable of drawing and visualizations, especially when paired with JavaScript and CSS. Uses attributes such as: `viewBox` and `stroke` with sub tags like `<circle>`.  
  - Canvas `<canvas>` :: 2D drawing on the HTML page. Includes attributes such as: `id`, `width`, `height`, `style`, and more!  
+
+## CSS Notes  
+
+- Used to organize, style, and interact with HTML
+- Made up of rules and rulesets, example below:  
+
+ -> `p { color: green; }`    
+
+|Example Token| Represents     | Meaning                                                  |
+|-------------|----------------|----------------------------------------------------------|
+| `p`         | Selectors      | Selects the type of elements being affected              |
+| `{ "text" }`| Rule / Ruleset | The contents of the brackets hold the rules and changes  |
+| `color`     | Property       | This is the type of property that is being changed       |
+| `:`         | Declaration    | Actively declares what is/isn't being changed            |
+| `green`     | Value          | Sets the condition/value of the effected property        |    
+
+- For cascading styles, the lowest (closest) level will override higher (farther) rules. Best seen in `inspect`  
+
+**Box Model**  
+*From innermost to outermost:*  
+- Element's Content: Text and image elements are displayed here  
+- Padding: Inherits background colors  
+- Border: Holds properties such as color, line style, and thickness  
+- Margin: Represents whitespace  
+
+ It's noted that the width and height of an element is defined by the content box. This can be changed by the `box-sizing` property from the default value of `content-box` and `border-box`. Also includes the padding and the border.  
