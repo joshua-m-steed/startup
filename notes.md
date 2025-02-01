@@ -58,7 +58,7 @@ Provides a [hyperlink](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 -> `./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s simon`  
 Deploys files to production
 
-**Console Commands**  
+### Console Commands  
 -> `cd`  
 Change Directory. `cd ..` moves back a directory. `TAB` reveals potential directories  
 -> `mkdir` / `rmdir`  
@@ -120,7 +120,7 @@ Example :: `<a href="https://minijosh.click">Visit my site here</a>`
 `<!-- This isn't read -->`  
 
 
-**HTML Tags :: Divided into Groups**  
+### HTML Tags :: Divided into Groups  
 `<html>` Opens the file and reads as HTML `</html>`  
 
 `<body>` The content body of the page `</body>`  
@@ -155,7 +155,7 @@ Example :: `<a href="https://minijosh.click">Visit my site here</a>`
 `<audio>` Audio content `</audio>`  
 `<video>` Video content `</video>`
 
-**HTML Inputs**  
+## HTML Inputs  
 `<form>` Input container and submission `</form>`  
 Example :: `<form action"form.html" method="post">`  
 `<fieldset>` Labeled input grouping `</fieldset>`  
@@ -176,7 +176,7 @@ Example :: `<output for="range">0</output>`
 `<meter>` Display the values with a known range `</meter>`  
 Example :: `<meter min="0" max="100" value="50"></meter>`  
 
-**Input Types**  
+### Input Types  
  - Text, single line textual value
  - Password, obscured
  - Email, address
@@ -238,3 +238,29 @@ These are used to create within the HTML itself.
 - Margin: Represents whitespace  
 
  It's noted that the width and height of an element is defined by the content box. This can be changed by the `box-sizing` property from the default value of `content-box` and `border-box`. Also includes the padding and the border.  
+
+ ### Selectors  
+These use the names of the HTML elements to find what they alter. Examples include `body`, `h1`, `p`, and more. `*`, the wildcard element can be used to select everything in an HTML file.  
+
+**Combinators**  
+`body section` - Decendent - Any section that's decendent of a body  
+`section > p` - Child - Any p that's a direct child of section  
+`div ~ p` - General Sibling - Any p that has a div sibling  
+`div + p` - Adjacent Sibling - Any p that has an adjacent div sibling  
+
+**Class Selectors**  
+Based on classes within an element since they can have 0 or more.  
+`.[class]` or `[element].[class]`  
+
+**ID Selector**  
+This is similar to the Class Selectors, but the ID tags are meant to be unqiue within HTML.  
+`#[IDtag]`  
+
+**Attribute Selector**  
+Select an element based on attributes. They can be used for attributes such as `a[href]`.  
+`p[class='summary']`, `a[href="./fish.png"]`, and the wildcards `p[href*="https://"]` all work.  
+
+**Psuedo Selector**  
+These are selectors based on realtionships such as positional, mouse interactions, and attributes.  
+`[element]:[relationship]` | Example: `section:hover` means the rule applies when the mouse hovers over the box.  
+More specific Psuedo Selectors can be found [here](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)  
