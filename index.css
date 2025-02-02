@@ -79,27 +79,30 @@ form {
 }
 .input_container {
     align-items: center;
-    border: 1px solid #fff;
-    background-color: white;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
     padding: 5px 5px;
     font-size: 1rem;
     box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    margin: auto;
 }
 .input_container span {
     padding: .375rem .75rem;
     width: 50px;
     font-size: 1.2rem;
-    margin-right: 15px;
+    margin-right: 2px;
     border-right: 1px solid gray;
 }
 input {
     border: none;
+    border-radius: 3px;
+    height: 100%;
     outline: none;
     flex: 1;
     font-size: 1rem;
-
+    background-color: rgba(255, 255, 255, 0.41);
 }
 input::placeholder {
     color: rgb(0, 0, 0);
