@@ -1,0 +1,41 @@
+@import url(https://fonts.googleapis.com/css2?family=McLaren&display=swap);
+
+@font-face{
+    font-family: "McLaren", serif;
+    src: url(https://fonts.googleapis.com/css2?family=McLaren&display=swap); 
+}
+
+
+.mclaren-regular {
+    font-family: "McLaren", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+header {
+    display: flex;
+    flex: content;
+    flex-direction: column;
+    background: aqua;
+    color: lightcoral;
+    border-radius: 0vh;
+    text-align: center;
+    text-transform: capitalize;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+}
+
+header > title {
+    color:purple;
+    text-transform: capitalize;
+}
+
+body {
+    color: red;
+    background: cadetblue;
+  }
+  button {
+    color: green;
+  }
+  span {
+    color: blue;
+  }
