@@ -264,3 +264,33 @@ Select an element based on attributes. They can be used for attributes such as `
 These are selectors based on realtionships such as positional, mouse interactions, and attributes.  
 `[element]:[relationship]` | Example: `section:hover` means the rule applies when the mouse hovers over the box.  
 More specific Psuedo Selectors can be found [here](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)  
+
+**Declarations**  
+Specifies a property and a value to assign rules to.
+
+*Common Declarations*  
+:: `Property`, Value, Additional notes (example)
+- `background-color` - color - Fills background (red)
+- `border` - color width style - Sets border where any or all values may be (#fad solid medium  
+- `border-radius` - unit - Size of border radius (50%)  
+- `box-shadow` - x,y, offset radius color - Creates a shadow (2px 2px 2px gray)  
+- `columns` - number - Number of text columns (3)  
+- `column-rule` - colod width style - Sets the border between columns (solid thin black)  
+- `color` - color - Sets text color (rgb(128, 0, 0)  
+- `cursor` - type - Sets the cursor display when over element (grab)  
+- `display` - type - Defines how to display element with its children (none)  
+- `filter` - filter-function - Applies visual filter (grayscale(30%)  
+- `float` - direction - Places element left/right in flow (right)  
+- `flex` - - Used in responsive designs  
+- `font` - family size style - Defines text font using shorthand (Arial 1.2em bold)  
+- `grid` - - Grid layout. Responsive design  
+- `height` - unit - Sets the height of the box (.25em)  
+- `margin` - unit - Sets the margin spacing (5px 5px 0 0)
+- `max/min-[width/height]` - unit - Restricts the width/height to no more/less than the unit (10vh)
+- `opacity` - number - Sets how opaque the element is (.9)
+- `overflow` - [visible/hidden/scroll/auto] - Defines what happens when content doesn't fit the box
+- `position` - [static/relative/absolue/sticky] - Defines how the element is psositioned in the document
+- `padding` - unit - Sets spacing for padding box (1em 2em)
+- `left` - unit - Horizontal value of positioned element (10rem)
+- `text-align` - [start/end/center/justify] - Defines how text is aligned with element
+- 
