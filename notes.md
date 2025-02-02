@@ -293,4 +293,27 @@ Specifies a property and a value to assign rules to.
 - `padding` - unit - Sets spacing for padding box (1em 2em)
 - `left` - unit - Horizontal value of positioned element (10rem)
 - `text-align` - [start/end/center/justify] - Defines how text is aligned with element
-- 
+- `top` - unit - Vertical value of positioned element (50px)  
+- `transform` - transform-function - Applies transformaiton to element (rotate(0.5turn)
+- `width` - unit - Sets width of the box (25vmin)
+- `z-index` - number - Controls positioning of element on z axis (100)
+
+*Units*  
+`px`   : Num of pixels  
+`pt`   : Num of points (1/72 of an inch)  
+`in`   : Num of inches  
+`cm`   : Num of centimeters  
+`%`    : Percentage of the parent element  
+`em`   : Multiplier of width of the letter `m` in parent's font  
+`rem`  : Multiplier of width of the letter `m` in the root's font  
+`ex`   : Multiplier of the height of element's font  
+`vw`   : Percentage of the viewport's width  
+`vh`   : Percentage of the viewport's height  
+`vmin` : Percentage of the viewpart's smaller dimension  
+`vmax` : Percentage of the viewport's larger dimension  
+
+*Color*
+`Keyword` - Set of predefined colors (red, white, cornflowerblue, darkslateblue, etc)  
+`RGB hex` - Red, green, and blue hexadecimal number w/optional alpha opacity (#00FFAA22 or #0FA2)  
+`RGB function` - Red, green, and blue as a percentage or numb (0-255) w/optional alpha opacity (rgb(128, 255, 128, 0.5)  
+`HSL` - Hue, saturation, and light, w/optional opacity. Hue is position on the 365 degree wheel. Saturation is how gray the color is. Light is how bright the color is. (hsl(180, 30%, 90%, 0.5)  
