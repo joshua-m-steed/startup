@@ -4,4 +4,32 @@ body {
     font-family: 'McLaren', serif;
     font-weight: 400;
     font-style: normal;
+    
+    text-align: center;
+
+    background-color: #91a995;
+}
+
+header {
+    background-color: #177339;
+    padding: 0px 20px;
+    text-align: left;
+}
+header h1 {
+    font-size: larger;
+    color: rgb(22, 21, 21);
+}
+
+.navlinks {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+.navlinks li a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+footer {
+    text-align: left;
 }
