@@ -108,6 +108,21 @@ input::placeholder {
     color: rgb(0, 0, 0);
 }
 
+button {
+    display: inline;
+    border: 1px solid lightblue;
+    padding: 5px 5px;
+    border-radius: 5px;
+    color: black;
+}
+.sign {
+    background-color: lightblue;
+}
+button:hover {
+    background-color: blue;
+    color: white;
+}
+
 /* The FOOTER block of the HTML */
 footer {
     text-align: left;
