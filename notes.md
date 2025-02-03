@@ -326,3 +326,24 @@ These host/download the font type to be used with the font-family application.
 Uses `animation-name` property to name the keyframes, `animation-duration` also declares the time for the full animation.  
  -> `@keyframes [name] {}` starts/declares the animation. Within, use `from`, percentages, and `to` for keyframes and their conditions.  
 
+**Response and Display**  
+This is meant to help give the webpage formatting that is clear and responsive to different screen sizes.  
+| Display Value | What it does...                                    |  
+|---------------|----------------------------------------------------|
+| `none`        | Doesn't display element. Exists, but not rendered  |  
+| `block`       | Displays with widths that fills parent element     |  
+| `inline`      | Displays with widths only as big as content        |  
+| `flex`        | Displays element's children in flexible orientation|  
+| `grid`        | Displays element's children in grid orientation    |  
+
+*Float*  
+Elements left or right of its container element allows infline elements to wrap around.  
+Ex: `float: right;`  
+
+*Media*  
+Detects what direction the screen is orientated.  
+Ex: `@media (orientation: portrait) { [rule] }`  
+ - Can end up using as a way to rotate or even remove elements
+
+*Grid and Flexbox*  
+Automatically respond to screen sizes.  
