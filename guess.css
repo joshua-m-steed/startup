@@ -57,6 +57,15 @@ header h1 {
 /* The MAIN block of the HTML */
 main {
     flex: 1;
+    column-width: 100%;
+    width: 100%;
+}
+div h3.guess_title {
+    font-size: x-large;
+    padding: 10px 20px;
+}
+div {
+    box-sizing: content-box;
 }
 /* .qott {
     width: 150px;
