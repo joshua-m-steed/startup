@@ -1,11 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=McLaren&display=swap);
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
 /* The BODY block of the HTML */
 body {
     font-family: 'McLaren', serif !important;
@@ -55,10 +49,17 @@ header h1 {
 /* The MAIN block of the HTML */
 main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main h3 {
+    padding-top: 25px;
 }
 
 /* Form / Input box formatting */
-form {
+div {
     display: flex;
     flex-direction: column;
 
@@ -66,42 +67,51 @@ form {
     max-width: 300px;
     padding: 10px 20px;
     gap: 10px;
+    align-items: center;
 }
-.input_container {
+.user_score {
     font-size: 1rem;
-
+    
     margin: auto;
     overflow: hidden;
     padding: 5px 5px;
     align-items: center;
     
-    border: 1px solid rgb(255, 255, 255);
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
 }
-.input_container span {
+.user_score label {
     font-size: 1.2rem;
 
     margin-right: 2px;
     padding: .375rem .75rem;
-    width: 50px;
-    
-    border-right: 1px solid gray;
 }
 input {
     font-size: 1rem;
 
     flex: 1;
-
-    height: 100%;
-    border: none;
+    display: inline;
+    text-align: center;
     border-radius: 3px;
     background-color: rgba(255, 255, 255, 0.41);
     outline: none;
+    padding: 5px;
 }
 input::placeholder {
     color: rgb(0, 0, 0);
+}
+
+table.scoreboard {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+table.scoreboard td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+table.scoreboard th {
+    background-color: #177339;
 }
 
 /* The FOOTER block of the HTML */
