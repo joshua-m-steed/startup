@@ -119,11 +119,19 @@ select::placeholder {
     color: rgb(0, 0, 0);
 }
 
+.table_cloth {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
 table.who_speaks {
-    max-width: 125%;
+    max-width: 100%;
     border-collapse: collapse;
     text-align: center;
     border: 1px solid #ddd;
+    margin: 10px;
 }
 table.who_speaks td {
     border: 1px solid #ddd;
@@ -132,10 +140,7 @@ table.who_speaks td {
 table.who_speaks th {
     background-color: #177339;
 }
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
+
 
 button {
     color: black;
@@ -188,10 +193,22 @@ footer a:hover {
         font-size: xx-large;
         text-align: center;
     }
+    .table_cloth{
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+    }
     form h3 {
         font-size: medium;
     }
     footer {
         display: none;
+    }
+}
+@media (orientation: portrait) {
+    .table_cloth{
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
     }
 }
