@@ -49,25 +49,26 @@ header h1 {
 /* The MAIN block of the HTML */
 main {
     flex: 1;
-    column-width: 100%;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 div h3.guess_title {
     font-size: x-large;
     padding: 10px 20px;
+    text-align: center;
+    margin-top: 16px;
 }
 div {
     box-sizing: content-box;
 }
-/* .qott {
-    width: 150px;
-    height: 150px;
+.qott {
     border-radius: 50%;
-
     overflow: hidden;
     object-fit: cover;
-} */
-
+    padding: 10px 20px;
+}
 
 
 /* Form / Input box formatting */
@@ -80,28 +81,7 @@ form {
     padding: 10px 20px;
     gap: 10px;
     align-items: center;
-}
-.input_container {
-    font-size: 1rem;
-
-    margin: auto;
-    overflow: hidden;
-    padding: 5px 5px;
-    align-items: center;
-    
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
-}
-.input_container span {
-    font-size: 1.2rem;
-
-    margin-right: 2px;
-    padding: .375rem .75rem;
-    width: 50px;
-    
-    border-right: 1px solid gray;
+    justify-content: center;
 }
 input {
     font-size: 1rem;
@@ -116,6 +96,34 @@ input {
 }
 input::placeholder {
     color: rgb(0, 0, 0);
+}
+select {
+    font-size: 1rem;
+
+    flex: 1;
+
+    height: 100%;
+    border: none;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.41);
+    outline: none;
+}
+select::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+table.who_speaks {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+table.who_speaks td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+table.who_speaks th {
+    background-color: #177339;
 }
 
 /* The FOOTER block of the HTML */
@@ -146,6 +154,10 @@ footer a:hover {
 @media (max-height: 700px) {
     header {
         height: none;
+    }
+    main h3 {
+        font-size: xx-large;
+        text-align: center;
     }
     footer {
         display: none;
