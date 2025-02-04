@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="guess.css" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <title>Fantasy General Conference HTML</title>
     </head>
     <body>
@@ -10,7 +12,7 @@
             <h1>Fantasy General Conference</h1>
             <!-- Directory to other links -->
             <nav>
-                <menu>
+                <menu class="navlinks">
                    <li><a href="index.html">Home</a></li>
                    <li><a href="guess.html">Guess</a></li>
                    <li><a href="scores.html">Scores</a></li>
@@ -21,12 +23,14 @@
         </header>
 
         <main>
-                Welcome to your FGC prediction sheet, john_smith! 
+            <div>
+                <h3 class="guess_title">Welcome to your FGC prediction sheet, john_smith!</h3>
+            </div>
 
                 <hr />
 
             <div>
-                <img src="qott.jpg" alt="Quorum of the Twelve" height="300">
+                <img class="qott" src="qott.jpg" alt="Quorum of the Twelve" height="300">
             </div>
             <form>
                 <div>
@@ -37,36 +41,38 @@
                     <br />
 
                     <!-- Table for voting on Who Speaks in Sessions -->
-                    <table>
-                        <tr>
-                            <th>Sat Morning</th>
-                            <th>Sat Afternoon</th>
-                            <th>Sat Evening</th>
-                            <th>Sun Morning</th>
-                            <th>Sun Afternoon</th>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Ex. Nelson" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Ex. Oaks" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Ex. Eyring" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                    </table>
+                    <div class="table_cloth">
+                        <table class="who_speaks">
+                            <tr>
+                                <th>Sat Morning</th>
+                                <th>Sat Afternoon</th>
+                                <th>Sat Evening</th>
+                                <th>Sun Morning</th>
+                                <th>Sun Afternoon</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Ex. Nelson" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Ex. Oaks" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Ex. Eyring" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                                <td><input type="text" /></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <hr />
                 <h3>What color ties will they wear on Sunday Morning? (1pt each)</h3>
@@ -140,7 +146,7 @@
                 <hr />
 
                 <div>
-                    <img src="lv_temple.jpg" alt="Las Vegas Temple" height="300">
+                    <img class="lvtemple" src="lv_temple.jpg" alt="Las Vegas Temple" height="300">
                 </div>
 
                 <h3>Where a temple will be announced? (1pt for Country, 2pts for State/Region, 3pts for City)</h3>
@@ -168,7 +174,7 @@
 
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
-                    <button type="submit">Submit</button>
+                    <button class="submit" type="submit">Submit</button>
                     <button>Clear Guess</button>
                 </div>
 
