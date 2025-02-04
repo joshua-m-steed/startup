@@ -120,16 +120,17 @@ select::placeholder {
 }
 
 .table_cloth {
-    width: 100%;
-    overflow-x: auto;
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
+    overflow-x: auto;
+    width: 100%;
+    
 }
 table.who_speaks {
-    max-width: 100%;
     border-collapse: collapse;
     text-align: center;
+
+    max-width: 100%;
     border: 1px solid #ddd;
     margin: 10px;
 }
