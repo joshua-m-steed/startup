@@ -347,3 +347,7 @@ Ex: `@media (orientation: portrait) { [rule] }`
 
 *Grid and Flexbox*  
 Automatically respond to screen sizes.  
+`display: grid;`  
+ - `grid-template-columns: ;` - specifies layout
+ - `grid-auto-rows: ;` - fix the heights
+ - `grid-gap` - gaps in between the elements
