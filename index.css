@@ -96,7 +96,7 @@ form {
     background-color: rgb(255, 255, 255);
     box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
 
-    /* animation: fly-from-left 1s ease-out; */
+    animation: slide_in 1s ease-out;
 }
 .input_container span {
     font-size: 1.2rem;
@@ -175,6 +175,20 @@ footer a:hover {
         opacity: 75%;
     }
     to {
+        opacity: 100%;
+    }
+}
+
+@keyframes slide_in {
+    from {
+        transform: translateX(-300%);
+        opacity: 0;
+    }
+    75%{
+        transform: translateX(25%)
+    }
+    to {
+        transform: translateX(0%);
         opacity: 100%;
     }
 }
