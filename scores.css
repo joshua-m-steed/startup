@@ -8,28 +8,26 @@
 
 /* The BODY block of the HTML */
 body {
-    font-family: 'McLaren', serif;
+    font-family: 'McLaren', serif !important;
     font-weight: 400;
-    font-style: normal;
-    text-align: center;
 
     display: flex;
     flex-direction: column;
+    height: 100vh;
 
-    background-color: #91a995;
+    background-color: #91a995 !important;
+    min-width: 400px;
 }
 
 /* The HEADER block of the HTML */
 header {
-    text-align: left;
-    width: 100%;
+    flex: 0 80px;
     padding: 10px 20px;
     background-color: #177339;
 }
 header h1 {
-    color: rgb(22, 21, 21);
     font-size: larger;
-    text-shadow: 1px 1px 1px rgb(189, 189, 189)
+    text-shadow: 1px 1px 1px rgb(140, 140, 140)
 }
 
 /* Link details for Navlinks */
