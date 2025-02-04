@@ -1,38 +1,39 @@
 @import url(https://fonts.googleapis.com/css2?family=McLaren&display=swap);
 
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+  } */
 
 /* The BODY block of the HTML */
 body {
-    font-family: 'McLaren', serif;
+    font-family: 'McLaren', serif !important;
     font-weight: 400;
-    font-style: normal;
-    text-align: center;
+    /* font-style: normal;
+    text-align: center; */
 
     display: flex;
     flex-direction: column;
-    margin: 0;
+    /* margin: 0; */
     height: 100vh;
 
-    background-color: #91a995;
+    background-color: #91a995 !important;
+    min-width: 400px;
 }
 
 /* The HEADER block of the HTML */
 header {
     flex: 0 80px;
 
-    text-align: left;
+    /* text-align: left; */
     padding: 10px 20px;
     background-color: #177339;
 }
 header h1 {
-    color: rgb(22, 21, 21);
+    /* color: rgb(22, 21, 21); */
     font-size: larger;
-    text-shadow: 1px 1px 1px rgb(189, 189, 189)
+    text-shadow: 1px 1px 1px rgb(140, 140, 140)
 }
 
 /* Link details for Navlinks */
@@ -60,10 +61,15 @@ header h1 {
 /* The MAIN block of the HTML */
 main {
     flex: 1;
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 main h1{
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
+    margin-bottom: 25px;
+    margin-top: 15px;
 
     animation-name: fade-in;
     animation-duration: 3s;
@@ -75,21 +81,23 @@ main h1{
 
     object-fit: cover;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 /* Form / Input box formatting */
 form {
     display: flex;
     flex-direction: column;
-
+    
     margin: auto;
+    margin-top: 25px;
     max-width: 300px;
     padding: 10px 20px;
     gap: 10px;
 }
 .input_container {
     font-size: 1rem;
-
+    
     margin: auto;
     overflow: hidden;
     padding: 5px 5px;
@@ -141,7 +149,7 @@ button {
 }
 button:hover {
     color: white;
-    background-color: blue;
+    background-color: rgb(45, 144, 226);
 }
 
 /* The FOOTER block of the HTML */
@@ -183,21 +191,6 @@ footer a:hover {
     }
 }
 
-/* @keyframes fly-from-left {
-    0% {
-        transform: translateX(-500%);
-    }
-    85% {
-        transform: translate(50%);
-    }
-    90% {
-        transform: translate(25%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
-  } */
-
 @media (orientation: portrait) {
     main {
         flex-direction: column;
@@ -206,7 +199,7 @@ footer a:hover {
   
 @media (max-height: 700px) {
     header {
-        display: none;
+        height: none;
     }
     footer {
         display: none;
