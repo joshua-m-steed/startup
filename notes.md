@@ -351,3 +351,14 @@ Automatically respond to screen sizes.
  - `grid-template-columns: ;` - specifies layout
  - `grid-auto-rows: ;` - fix the heights
  - `grid-gap` - gaps in between the elements
+
+# JavaScript  
+*Still good form to use `;` and `{}`*  
+*Access `Console` in `f12`*  
+
+**Node.js**
+
+*Console Commands*
+`console.log()` - Main function / output syntax  
+`node` - opens JavaScript  
+`node -e ...` - uses JavaScript without opening compiler  
