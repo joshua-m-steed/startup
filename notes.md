@@ -362,3 +362,19 @@ Automatically respond to screen sizes.
 `console.log()` - Main function / output syntax  
 `node` - opens JavaScript  
 `node -e ...` - uses JavaScript without opening compiler  
+
+*Installing Packages*
+`npm init` - Initializing package installation  
+`npm install "package name"` - Install the package  
+
+*Debugging*  
+`f5` starts the debugging process using Node  
+`f10` goes to the next line  
+`f11` steps into functions  
+`SHIFT-f5` kills the debugger  
+`node --watch [file]` watches for changes and automatically refreshes the file  
+
+*Implementing JS*  
+1. -> Use the `<script>` element within HTML  
+2. -> Use the `<src>` element to reference a file
+3. -> Include as event attribute handler  
