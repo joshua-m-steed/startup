@@ -378,3 +378,25 @@ Automatically respond to screen sizes.
 1. -> Use the `<script>` element within HTML  
 2. -> Use the `<src>` element to reference a file
 3. -> Include as event attribute handler  
+
+`npx vite` -> Runs the files and pulls up a browser/window  
+`<script> + src=` -> Implements the jsx file  
+
+*Components*  
+Example Component:  
+JSX -> `<div> Component: <Demo /> </div>`  
+React Component -> `function Demo() { const who = 'world'; return <b>Hello {who}</b>; }`  
+Result HTML -> `<div>Component: <b>Hello world</b></div>`  
+
+When importing `./[css file]`, address `class` (CSS) as `className` (JS) in order to stylize elements.  
+
+*Properties* - React components can pass information through as element properties to be used when displayed.
+
+Ex: JSX -> `<div>Componenet: <Demo who="Walke" /><div>`  
+    React -> `function Demo(props) { return <b>Hello {props.who}</b>; }`  
+
+*State* - Components can hold internal states. The function returns a variable with current state. Uses `React.useState`  
+
+Ex: `const [clicked, updateClicked] = React.useState(false);`  
+
+*Render* - Controls how the components react to users and development. Uses `render` / `root.render`  
