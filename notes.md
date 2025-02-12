@@ -400,3 +400,9 @@ Ex: JSX -> `<div>Componenet: <Demo who="Walke" /><div>`
 Ex: `const [clicked, updateClicked] = React.useState(false);`  
 
 *Render* - Controls how the components react to users and development. Uses `render` / `root.render`  
+
+*Router* - Aids in navigation and when elements are used  
+`<Route path="" element={<name/>} />` - Nestled between `<Routes/>` and detects when elements can and whould be loaded.  
+`<Link>` or `</Link}` - Uses `to=""` for the URL instaed of href.  
+
+**Advanced Route Definitions**  
