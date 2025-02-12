@@ -271,15 +271,15 @@ Specifies a property and a value to assign rules to.
 *Common Declarations*  
 :: `Property`, Value, Additional notes (example)
 - `background-color` - color - Fills background (red)
-- `border` - color width style - Sets border where any or all values may be (#fad solid medium  
+- `border` - color width style - Sets border where any or all values may be (#fad solid medium)  
 - `border-radius` - unit - Size of border radius (50%)  
 - `box-shadow` - x,y, offset radius color - Creates a shadow (2px 2px 2px gray)  
 - `columns` - number - Number of text columns (3)  
 - `column-rule` - colod width style - Sets the border between columns (solid thin black)  
-- `color` - color - Sets text color (rgb(128, 0, 0)  
+- `color` - color - Sets text color (rgb(128, 0, 0))  
 - `cursor` - type - Sets the cursor display when over element (grab)  
 - `display` - type - Defines how to display element with its children (none)  
-- `filter` - filter-function - Applies visual filter (grayscale(30%)  
+- `filter` - filter-function - Applies visual filter (grayscale(30%))  
 - `float` - direction - Places element left/right in flow (right)  
 - `flex` - - Used in responsive designs  
 - `font` - family size style - Defines text font using shorthand (Arial 1.2em bold)  
@@ -315,8 +315,8 @@ Specifies a property and a value to assign rules to.
 *Color*
 `Keyword` - Set of predefined colors (red, white, cornflowerblue, darkslateblue, etc)  
 `RGB hex` - Red, green, and blue hexadecimal number w/optional alpha opacity (#00FFAA22 or #0FA2)  
-`RGB function` - Red, green, and blue as a percentage or numb (0-255) w/optional alpha opacity (rgb(128, 255, 128, 0.5)  
-`HSL` - Hue, saturation, and light, w/optional opacity. Hue is position on the 365 degree wheel. Saturation is how gray the color is. Light is how bright the color is. (hsl(180, 30%, 90%, 0.5)  
+`RGB function` - Red, green, and blue as a percentage or numb (0-255) w/optional alpha opacity (rgb(128, 255, 128, 0.5))  
+`HSL` - Hue, saturation, and light, w/optional opacity. Hue is position on the 365 degree wheel. Saturation is how gray the color is. Light is how bright the color is. (hsl(180, 30%, 90%, 0.5))  
 
 *Fonts*  
 `@font-face { font-family: src: url() }` or `@import url("font-link")`  
