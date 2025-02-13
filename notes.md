@@ -435,3 +435,29 @@ Should use `*` at the end of the nested routes or it won't match the child route
 The hook passes route components as keys and values of objects.  
 
 **Handling Navigation**  
+*Link Navigation*  
+Simplest form of navigation.  
+`<link to="/">Home</Link>` or `<Link to="/books">Books</Link>`  
+`/` - Absolute Route
+`../` - Relative link, goes up one level :: `/books/3` to `/books`  
+`text` - Adds to current link :: `to="edit"` -> `/books/3/edit`  
+
+`to` - A prop that is important in pointing to a link  
+`replace` - Bool. When set to True, it'll replace browser history with the new link  
+`reloadDocument` - Bool. When set to True, it'll act like an anchor tag and complete a full page refresh  
+`state` - Passes data along with the link that doesn't show up in URL  
+
+`NavLink` - Same as `Link` but it can show if the link is active
+ - `isActive` can be used as a parameter
+
+`Navigate` or `useNavigation` hook  
+`<Navigate to="/" />` or `const navigate = useNavigate()`  
+Can also use `navigate(#)` in which the number is direction into page history (+/-)  
+
+`?` - Mark of search parameters. Anything after this is a search parameter  
+`useSearchParams` - Gathers search parameters  
+
+`useLocation` - Parses values from location URL  
+`const location = useLocation()`  
+
+`BrowserRouter` - Contains and controls the routing action  
