@@ -406,3 +406,32 @@ Ex: `const [clicked, updateClicked] = React.useState(false);`
 `<Link>` or `</Link}` - Uses `to=""` for the URL instaed of href.  
 
 **Advanced Route Definitions**  
+*Dynamic Routing* - `:id` - When using a colon, it'll match any URL  
+Example -> `/books/:id` matches `/books/1`, `/books/name`, etc.  
+ - When using *Dynamic Routing*, the ID can be grabbed using `useParams`
+
+*Routing Priority*  
+The routing will attempt to match the ID with the best option.  
+`*` is used to catch everything. Great for 404 pages.  
+Example -> `... path="*" element={<NotFound />} ...`  
+
+*Nested Routes*  
+If an element is paired with a parent route, it'll render to all of the child Route.  
+ - In example, when matched, an `Outlet` component is a placeholder for the current page's content.
+If a parent route contains an element, but no path, it'll render similar routes. This is especially useful if they don't have a similar path.
+
+When using `OutletContext`, it can collect shared data.  
+
+*Multiple Routes*  
+One of two ways are common:  
+ - Separate Routes  
+Two sets of routes can define different segments of the site, but will render both if they match.
+Can use `<aside>` as a way to separate. `location` can also be used to hardcode the route.  
+- Nested Routes
+Moves all like routes together into one component.
+Should use `*` at the end of the nested routes or it won't match the child routes.
+
+`useRoutes` Hook  
+The hook passes route components as keys and values of objects.  
+
+**Handling Navigation**  
