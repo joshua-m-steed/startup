@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=McLaren&display=swap);
 
 /* The BODY block of the HTML */
-body {
+.app {
     font-family: 'McLaren', serif !important;
     font-weight: 400;
 
