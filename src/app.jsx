@@ -14,7 +14,7 @@ export default function App() {
                 <header>
                     <h1>Fantasy General Conference</h1>
                     <nav>
-                        <menu class="navlinks">
+                        <menu className="navlinks">
                         <li>
                             <NavLink to="/">
                                 Home

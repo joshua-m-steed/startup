@@ -10,7 +10,7 @@
     height: 100vh;
 
     background-color: #91a995 !important;
-    min-width: 400px;
+    min-width: 100vw;
 }
 
 /* The HEADER block of the HTML */
