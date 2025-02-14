@@ -16,19 +16,19 @@ export default function App() {
                     <nav>
                         <menu class="navlinks">
                         <li>
-                            <a href="index.html">
+                            <NavLink to="/">
                                 Home
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="guess.html">
+                            <NavLink to="guess">
                                 Guess
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="scores.html">
+                            <NavLink to="scores">
                                 Scores
-                            </a>
+                            </NavLink>
                         </li>
                         </menu>
                     </nav>
@@ -39,7 +39,7 @@ export default function App() {
                     <Routes>
                         <Route path='/' element={<Login />} exact />
                         <Route path='guess' element={<Guess />} />
-                        <Route path='scores' element={<Guess />} />
+                        <Route path='scores' element={<Scores />} />
                         <Route path='*' element={<NotFound />} />
                     </Routes>
                 </main>
