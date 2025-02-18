@@ -461,3 +461,16 @@ Can also use `navigate(#)` in which the number is direction into page history (+
 `const location = useLocation()`  
 
 `BrowserRouter` - Contains and controls the routing action  
+
+**JavaScript `console.`**  
+`log` - Can output, formatt, and stylize etc.  
+Examples: `console.log("hello");` / `console.log("hello %s", "world");` / `console.log("%c Demo", "font-size:1.5em; color:green;");`  
+
+`time` - Can be wrapped around other points of code in order to be timed.  
+Examples: `console.time('test_time'); n/ for (let i = 0; i < 1500; i++) {} n/ console.timeEnd('test_time');`  
+
+`count` - Interates based on how many times a program / function is called.  
+Examples: `console.count('a');`  
+
+**JavaScript types and construct**  
+Declaring Variables : When declaring variables, `const` is used to prevent the variable from being changed in the future. It'll throw an error if attempted. Use `let` to declare a changable variable.  
