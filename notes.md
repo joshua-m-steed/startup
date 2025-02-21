@@ -474,3 +474,25 @@ Examples: `console.count('a');`
 
 **JavaScript types and construct**  
 Declaring Variables : When declaring variables, `const` is used to prevent the variable from being changed in the future. It'll throw an error if attempted. Use `let` to declare a changable variable.  
+
+*Common operators* are the same as usual: `+, - , * , /` but `===` represent strict equality (recommended).  
+JavaScript also allows performs *type conversions* when using operators. Examples include converstions between ints, strings, bool, etc. Also works with the equality operator.  
+- `2 + '3'; OUTPUT: '23'`  
+- `2 * '3'; OUTPUT: 6`  
+- `true + null; OUTPUT: 1`  
+
+*Conditionals* follow the `if {}`, `else if {}`, and `else {}` patterns as well as the normal `&&, ||, and !` bool operators. The ternary `(?)` operator is also available. Example: `a === 1 ? console.log(1) : console.log('not 1');`  
+
+*Loops*  
+`for` - `for (let i = 0; i < 2; i++) { console.log(i); }`  
+`do while` - `do { console.log(i); i++; } while (i < 2);`  
+`while` - `while (i < 2) { console.log(i); i++; };`  
+`for in` iterates over an object's property names  
+- `const arr = ['a', 'b']; for (const name in arr) { console.log(name); }`  
+`for of` interates over an interable's property values  
+- `const arr = ['a', 'b']; for (const name in arr) { console.log(name); }`  
+`switch` was mentioned, but not elaborated. This is what I found:  
+Allows for the use of `default` and `cases`.  
+`switch (i) { case 0: console.log("i is 0"); case 1: etc... default: etc... }`  
+
+The loops also allow for `break` and `continue` which allows the program to leave the loop or advance.  
