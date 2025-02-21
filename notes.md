@@ -496,3 +496,34 @@ Allows for the use of `default` and `cases`.
 `switch (i) { case 0: console.log("i is 0"); case 1: etc... default: etc... }`  
 
 The loops also allow for `break` and `continue` which allows the program to leave the loop or advance.  
+
+*Strings*  
+The variables for strings can be defined by `'`, `"`, and `` ` ``. The quotes act the same. The backtick allows for "string literals" which need `${}` as a specifier. Example: "console.log(`string ${l + (1 + 1)} text`);"  
+
+Strings also have *functions* connected to the variable.  
+- `length` - Num of char in string
+- `indexOf()` - Start index of a substring - string.indexOf('string')
+- `split()` - Split the string into an array at the substring = string.split(':')
+- `startsWith()` - Returns true if string starts with substring
+- `endsWith()` - Returns true if string ends with substring
+- `toLowerCase()` - Converts all chars to lowercase
+
+*Functions*  
+They have a similar creation, call, passing, and returning of variables. One of the larger differences is the lack of type declarations.  
+`funciton hello(who) { return 'hello ' + who; }   console.log(hello('world));`  
+
+Functions can have zero+ parameters and return variables. Any function without a return value is usually to there to produce a side effect instead of creating a new variable. When using parameters, you can declare a variable like, `title = 'title'`, or leave as normal. If a passed variable doesn't match a parameter, the parameter becomes `undefined`.  
+
+*Anonymous functions* somewhat act like class objects, but not exactly. These are functions that are assigned to variables and can be called.  
+Example:  
+`function doMath(operation, a, b) { return operation(a,b); }`  
+`const add = funciton (a, b) { return a + b; };`  
+`console.log(doMath(add, 5, 3)); OUTPUT: 8`  
+Anonymous functions can also be written in the moment with abbreviated arrow syntax  
+`console.log(doMath((a, b) => a - b, 5 3)); OUTPUT: 2`  
+
+More examples of JavaScript functions can be found [here](https://github.com/webprogramming260/.github/blob/main/profile/javascript/functions/functions.md#creating-passing-and-returning-functions)  
+
+*Inner Functions* can help modularize code without exposing it all directly.  
+Example:  
+`function labeler(value) { function stringLabeler(value) {} function numberLabeler(value) {} // if (typeof value == 'string') { sLab(); } else if (typeof value == 'number') { nLab(); }`  
