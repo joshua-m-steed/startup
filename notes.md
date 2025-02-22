@@ -527,3 +527,37 @@ More examples of JavaScript functions can be found [here](https://github.com/web
 *Inner Functions* can help modularize code without exposing it all directly.  
 Example:  
 `function labeler(value) { function stringLabeler(value) {} function numberLabeler(value) {} // if (typeof value == 'string') { sLab(); } else if (typeof value == 'number') { nLab(); }`  
+
+*Arrow Function*  
+It provides more compact feel to functions by allowing parameters and a return value.  
+`() => 3;`  
+`a.sort(function (v1, v2) { return v1 - v2; });` or `a.sort((v1, v2) => v1 - v2);`  
+Return has special rules for return. Return is optional without `{}` if it contains a signle expression. If there are `{}`, it'll need return like a normal funciton.  
+*Closure*  
+I'll need to look into this a little bit more, but it involves the function and values with a pointer applied. To my understanding, the function can be saved and called by a variable multiple times and update accordingly. Example includes an increment function assigned to a closure function. `console.log(closure());` is called twice and the ouput becomes `1` and then `2`.  
+
+These arrow functions can also be used with React to make the code much simpler and fit into JSX files. Example: `<button onClick={() => setCount((prevCount) => prevCount + 1}>n++</button>`  
+
+To prevent it from being too clunky, think about different ways to save and implement variables and functions. Example:  
+`function countVarFact(var) { return () => setCount((prevCount) => var(prevCount));`  
+`const tenXVar = countVarFact((c) => c * 10);`  
+`<button onClick={tenXVar}>n*10</button>`  
+
+*Array Functions*  
+`push` - Add item to *end* of the array  
+`pop` - Remove item from *end* of array  
+`slice` - Return sub-array - `a.slice(1, -1)`  
+`sort` - Run function to sort array in place - `a.sort((a,b) => b-a)`  
+`values` - Creates iterator to use with for of loops - `for (i of a.values()) {}`  
+`find` - Finds first item that matches test - `a.find(i => i < 2`  
+`forEach` - Run function on each array item - `a.forEach(console.log)`  
+`reduce` - Run function to reduce array items to single item - `a.reduce((a,c) => a + c)`  
+`map` - Run function to map array to new array - `a.map(i => i+i)`  
+`filter` - Run function to remove items - `a.filter(i => i%2)`  
+`every` - Run function to test if *all* items match - `a.every(i => i < 3)`  
+`some` - Run function to test if *any* items match - `a.some(i => i < 1)`  
+
+Examples: `const a = [1, 2, 3];`  
+`console.log(a.map((i) => i + i)); OUTPUT: [2,4,6]`  
+`console.log(a.reduce((v1,v2) => v1 + v2)); OUTPUT: 6`  
+`console.log(a.sort((v1, v2) => v2 - v1));`  
