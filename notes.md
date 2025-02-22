@@ -561,3 +561,76 @@ Examples: `const a = [1, 2, 3];`
 `console.log(a.map((i) => i + i)); OUTPUT: [2,4,6]`  
 `console.log(a.reduce((v1,v2) => v1 + v2)); OUTPUT: 6`  
 `console.log(a.sort((v1, v2) => v2 - v1));`  
+
+*Obects and Classes*  
+Objects act similarly to dictionaries among other languages.  
+`const obj = new Object({ a: 3});`  
+Once declared, you can add and modify the object freely.  
+`obj['b'] = 'fish';` or `obj.c = [1, 2, 3];` or `obj.hello = function () {};`  
+When calling the object, it can use `[]` or `.` to call the variables. `console.log(obj);` will print out the name and the value.  
+The objects can also be declared in a literal sense with multiple keys and values separated by a comma.  
+
+*Object Functions*  
+You can also use functions to output specific aspects of objects:  
+- `Object.entries(obj)` - entries - Returns array of key + val pairs
+- `Object.keys(obj)` - keys - Returns array of keys
+- `Object.values(obj)` - values - Returns array of values
+
+*Constructor*  
+This is similar to when a Class is initializing it's values.  
+`function Person(name) { return { name: name, }; }`  
+`const p = new Person('Josh');` -> `console.log(p);` -> Outputs: `{name: 'Josh'}`  
+These constructors can also have multiple types of property values such as functions:  
+`log: funtion () { console.log('My name is ' + this.name); },`  
+`p.log();` -> Outputs: `My name is Josh`  
+
+The `this` pointer, if in the context of the Object, always points to the Object.  
+
+*Classes*  
+Classes can be used to define objects. Inteded to be reusable. The declarations for a class is similar to Objects but they have a set constructor and function declarations.
+```js
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    log() {
+        console.log('My name is ' + this.name);
+    }
+}`  
+const p = new Person('Josh');
+p.log();
+```
+ -> Output: `My name is Josh`  
+
+Properties and functions are usually private if prefix.  
+```js
+class Person {
+    #name;
+
+    constructor(name) {
+      this.#name = name;
+    }
+}
+const p = new Person('Josh');
+p.#name = 'Tried'
+```
+-> Output: `Private Field error`  
+
+*Inheritance*  
+Classes can inherit other properties from other classes using `extends`. Parameters needing to go the parent class are deliver via `super` functions. If there are any functions with the same name, the child's version take priority. Parent's version is accessed by `super`.  
+```js
+class Employee extends Person {
+    constructor(name, position) {
+        super(name);
+        this.position = position;
+    }
+
+    print() {
+        return super.print() + '. I am a ' + this.position;
+    }
+}
+const e = new Employee('Josh', 'student');
+console.log(e.print());
+```
+-> Output: `My name is Josh. I am a student`  
