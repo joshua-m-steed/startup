@@ -634,3 +634,84 @@ const e = new Employee('Josh', 'student');
 console.log(e.print());
 ```
 -> Output: `My name is Josh. I am a student`  
+
+*JavaScript Object Notation (JSON)*  
+Formating follows the same patterns as before. I.e. strungs, numbers, bools, arrays `[]`, object `{a:''}`, and null. These JSON files often contain obejects with keys as `strings` and the values are a valid JSON type. Delimiting these types include `{}` for objects, `[]` for arrays, `""` for strings.  
+JSON Doc Example:  
+```json
+{
+"class": {
+    "title": "web programming",
+    "description": "Amazing"
+  },
+  "enrollment": ["Marco", "Jana", "فَاطِمَة"],
+  "start": "2025-02-01",
+  "end": null
+}
+```
+It's possible to convert between the two using `JSON.parse` and `JSON.stringify`.  
+`JSON.stringify` -> `{"[key]":[value], ... }`  
+`JSON.parse` -> `{[key]: [value], ... }`  
+Example note: If JSON can't support a type, such as `undefined`, it'll be dropped upon conversion. 
+
+*Local Storage* - `localStorage`  
+This can be used to collect and store values across sessions and HTML pages. The `localStorage` has access to some functions to gather data to and from storage.  
+- `setItem(name, value)` - Sets a named item's value in Local Storage
+- `getItem(name)` - Gets a named item's value from Local Storage
+- `removeItem(name)` - Removes a named item's value from Local Storage
+- `clear()` - It basically wipes all of the items in Local Storage
+When attempting to store values, they should be of `string`, `number`, or `bool` types. If attempting an `array` or `object`, they must be `JSON.strigify()`-ied when inserting in LS, and then `JSON.parse()`-ed when extracting.
+Examples:
+`localStorage.setItem('user', user);` -> inputs "let user = 'Josh';" into Local Storage  
+`localStorage.setItem('object', JSON.stringify(myObject));` -> inputs objects/arrays into Local Storage. Needs `stringify`  
+
+`console.log(localStorage.getItem('user'));` -> retrieves 'Josh' from Local Storage  
+`console.log(JSON.parse(localStorage.getItem('object')));` -> retrieves objects/arrays from Local Storage. Needs `parse`  
+
+*Promises*  
+This helps to execture certain parts of code. Promise states can be categorized as `pending` (Running Async), `fulfilled` (Completed), and `rejected` (Failed to Complete). Asynchronous will run the promise and the code in parrallel time. Since a Promise can run, now it needs conditions to decide if the Promise has been fullfilled or rejected. When calling `resolve()`, it sets the Promise to `fulfilled`. When calling `reject()`, the Promise becomes `rejected`.  
+Example: 
+```js
+const coinToss = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (Math.random() > 0.5) {
+      resolve('success');
+    } else {
+      reject('error');
+    }
+  }, 10000);
+});
+```
+Promises can also use `then`, `catch`, and `finally`.   
+`then` is called when the Promise is fulfilled!  
+`catch` is called when the Promise is rejected!  
+`finally` is always called when Promise is completed!  
+
+*JavaScript Async and Await*  
+`await` is used to block until the promise until the promise becomes fulfilled or rejected. Similar to the `then/catch` idea, but it changes to `try/catch`  
+`try { const result = await coinToss(); console.log(""); } `  
+`catch(err) { console.error(""); } `  
+`finally { console.log("") } `  
+
+`async` is used ad the beginnings of functions to transform it into a Promise and immediately resolves the return function. If the function doesn't immeadiatly resolve, the output will show pending.  
+`await` wraps a call to the `async` function and blocks execution until the Promise is resolved.  
+Example:  
+```js
+const httpResponse = await fetch('https://simon.cs260.click/api/user/me');
+const jsonResponse = await httpResponse.json();
+console.log(jsonResponse);
+console.log('done');
+
+// OUTPUT: {email: 'bud@mail.com', authenticated: true}
+// OUTPUT: done
+```
+The awaits allows for the processes to be blocked until they are completed and in order.  
+
+*Deconstructing*  
+This is when you pull items out of obejcts or remove structures. Can be done with arrays and objects. For the examples, use `const a = [1,2,4,5];`  
+Destructing can happen by settings values from a structure into new variables. `const [b, c] = a;` -> `console.log(b, c);` -> Outputs: `1, 2`  
+These values can also be combined by doing the following. `const [b, c, ...others] = a;` -> `console.log(b, c, others);` -> Outputs: `1, 2, [4,5]`  
+Similar things can be done with objects. You can pull values, but you can also change their property name from their original.  
+Example object -> `const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };`  
+`const { a, c } = o;` -> Console.log(a, c); outputs: `1, ['fish', 'cats']`  
+`const { a: count, b: type } = o;` -> Console.log(count, type); outputs: `1, 'animals'`  
