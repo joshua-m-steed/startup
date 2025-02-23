@@ -715,3 +715,20 @@ Similar things can be done with objects. You can pull values, but you can also c
 Example object -> `const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };`  
 `const { a, c } = o;` -> Console.log(a, c); outputs: `1, ['fish', 'cats']`  
 `const { a: count, b: type } = o;` -> Console.log(count, type); outputs: `1, 'animals'`  
+
+*Debugging JavaScript Tips*  
+- Use console debugger. You can also use `console.log` where outputs would be to make sure vars and vals are on track
+- You can also go to the browser debugger and select `source` and place breakpoints. The code will pause upon refreshing
+
+*Reactivity*  
+Enables with three React pieces: props, state, and render...  
+For `state` values, a table is kept for all components where React will request the current state or recent changes. Changes will happen asyncronously. Uses `updateState` / `useState`  
+Example - A color attribute can send it's updated/selected color to another variable so they share the same data.
+
+With `React.useState` and `setInterval`, you can make changes to values and check it within time.  
+
+`useEffect` is helpful for running something each time the component runs. A hook will be grabbed each time unless there are specific dependencies. `[]` as a dependency means it's only called once. Hooks must be globally declared in order to be called!  
+
+You can also decide when a clean up happens. Use `cleanup()`  
+
+
