@@ -11,6 +11,23 @@ export function Scores() {
         }
     }, []);
 
+    const scoreRows = [];
+    if (score.length) {
+        for (const [i, score_data] of score.entries()) {
+            scoreRows.push(
+                <tr key={i}>
+                    <td>{i}</td>
+                </tr>
+            );
+        }
+    } else {
+        scoreRows.push(
+            <tr key='0'>
+                <td colSpan='4'>Wait to see the scores!</td>
+            </tr>
+        )
+    }
+
     return (
         <main>
             <h3>Scores</h3>
@@ -34,8 +51,8 @@ export function Scores() {
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id='score'>{scoreRows}
+                        {/* <tr>
                             <td>1</td>
                             <td>Matt</td>
                             <td>21</td>
@@ -64,7 +81,7 @@ export function Scores() {
                             <td>john_smith</td>
                             <td>0</td>
                             <td></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>
