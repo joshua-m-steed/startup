@@ -2,6 +2,15 @@ import React from "react";
 import './scores.css';
 
 export function Scores() {
+    const [score, setScore] = React.useState([]);
+
+    React.useEffect(() => {
+        const scoreText = localStorage.getItem('score');
+        if (scoreText) {
+            setScore(JSON.parse(scoreText));
+        }
+    }, []);
+
     return (
         <main>
             <h3>Scores</h3>
