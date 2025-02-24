@@ -3,20 +3,24 @@ import React from "react";
 export function Login(props) {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
     const [userName, setUserName] = React.useState(props.userName);
-    // const [userEmail, setUserEmail] = React.userState(props.userEmail);
+    const [userEmail, setUserEmail] = React.useState(props.userEmail);
     const [password, setPassword] = React.useState('');
 
     async function loginUser() {
         localStorage.setItem('userName', userName);
+        localStorage.setItem('userEmail', userEmail);
         localStorage.setItem('password', password);
         props.onLogin(userName);
+        props.onLogin(userEmail);
         props.onLogin(password);
     }
 
     async function createUser() {
         localStorage.setItem('userName', userName);
+        localStorage.setItem('userEmail', userEmail);
         localStorage.setItem('password', password);
         props.onLogin(userName);
+        props.onLogin(userEmail);
         props.onLogin(password);
     }
 
@@ -37,7 +41,7 @@ export function Login(props) {
             </div>
             <div className="input_container">
                 <span>📧</span>
-                <input id="user_email" type="email" placeholder="your@email.com" />
+                <input id="user_email" type="email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} placeholder="your@email.com" />
             </div>
             <div className="input_container">
                 <span>🔒</span>
