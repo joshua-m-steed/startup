@@ -15,17 +15,22 @@ export function Guess(props) {
     const [satEveningTwo, setSatEveningTwo] = React.useState('');
     const [satEveningThree, setSatEveningThree] = React.useState('');
 
+    const [sunMorningOne, setSunMorningOne] = React.useState('');
+    const [sunMorningTwo, setSunMorningTwo] = React.useState('');
+    const [sunMorningThree, setSunMorningThree] = React.useState('');
+
+    const [sunAfternoonOne, setSunAfternoonOne] = React.useState('');
+    const [sunAfternoonTwo, setSunAfternoonTwo] = React.useState('');
+    const [sunAfternoonThree, setSunAfternoonThree] = React.useState('');
+
     const userGuess = new Object({});
 
     async function saveGuess() {
-        
-
-        // const satMor = new Object([speakerOne]);
-        // userGuess.satMor = satMor;
-
         userGuess.satMor = tri_package(satMorningOne, satMorningTwo, satMorningThree);
         userGuess.satAft = tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree);
         userGuess.satEvn = tri_package(satEveningOne, satEveningTwo, satEveningThree);
+        userGuess.sunMor = tri_package(sunMorningOne, sunMorningTwo, sunMorningThree);
+        userGuess.sunAft = tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree);
 
         localStorage.setItem('userGuess', JSON.stringify(userGuess));
     }
@@ -106,9 +111,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
+                                <tr><td><input type="text" value={sunMorningOne} onChange={(e) => setSunMorningOne(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={sunMorningTwo} onChange={(e) => setSunMorningTwo(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={sunMorningThree} onChange={(e) => setSunMorningThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
@@ -118,9 +123,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
+                                <tr><td><input type="text" value={sunAfternoonOne} onChange={(e) => setSunAfternoonOne(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={sunAfternoonTwo} onChange={(e) => setSunAfternoonTwo(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={sunAfternoonThree} onChange={(e) => setSunAfternoonThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                     </div>
