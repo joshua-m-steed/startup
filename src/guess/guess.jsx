@@ -2,18 +2,30 @@ import React from "react";
 import './guess.css';
 
 export function Guess(props) {
-    const [speakerOne, setSpeakerOne] = React.useState('');
-    const [speakerTwo, setSpeakerTwo] = React.useState('');
-    const [speakerThree, setSpeakerThree] = React.useState('');
+    // NOTE :: Attempt to Compress this code, explore ::
+    const [satMorningOne, setSatMoringOne] = React.useState('');
+    const [satMorningTwo, setSatMorningTwo] = React.useState('');
+    const [satMorningThree, setSatMorningThree] = React.useState('');
+
+    const [satAfternoonOne, setSatAfternoonOne] = React.useState('');
+    const [satAfternoonTwo, setSatAfternoonTwo] = React.useState('');
+    const [satAfternoonThree, setSatAfternoonThree] = React.useState('');
+    
+    const [satEveningOne, setSatEveningOne] = React.useState('');
+    const [satEveningTwo, setSatEveningTwo] = React.useState('');
+    const [satEveningThree, setSatEveningThree] = React.useState('');
+
     const userGuess = new Object({});
 
-    async function satMorGuess() {
+    async function saveGuess() {
         
 
         // const satMor = new Object([speakerOne]);
         // userGuess.satMor = satMor;
 
-        userGuess.satMor = tri_package(speakerOne, speakerTwo, speakerThree);
+        userGuess.satMor = tri_package(satMorningOne, satMorningTwo, satMorningThree);
+        userGuess.satAft = tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree);
+        userGuess.satEvn = tri_package(satEveningOne, satEveningTwo, satEveningThree);
 
         localStorage.setItem('userGuess', JSON.stringify(userGuess));
     }
@@ -58,9 +70,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" value={speakerOne} onChange={(e) => setSpeakerOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
-                                <tr><td><input type="text" value={speakerTwo} onChange={(e) => setSpeakerTwo(e.target.value)}/></td></tr>
-                                <tr><td><input type="text" value={speakerThree} onChange={(e) => setSpeakerThree(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={satMorningOne} onChange={(e) => setSatMoringOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
+                                <tr><td><input type="text" value={satMorningTwo} onChange={(e) => setSatMorningTwo(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={satMorningThree} onChange={(e) => setSatMorningThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
@@ -70,9 +82,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" placeholder="Ex. Oaks" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
+                                <tr><td><input type="text" value={satAfternoonOne} onChange={(e) => setSatAfternoonOne(e.target.value)} placeholder="Ex. Oaks" /></td></tr>
+                                <tr><td><input type="text" value={satAfternoonTwo} onChange={(e) => setSatAfternoonTwo(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={satAfternoonThree} onChange={(e) => setSatAfternoonThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
@@ -82,9 +94,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" placeholder="Ex. Eyring" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
+                                <tr><td><input type="text" value={satEveningOne} onChange={(e) => setSatEveningOne(e.target.value)} placeholder="Ex. Eyring" /></td></tr>
+                                <tr><td><input type="text" value={satEveningTwo} onChange={(e) => setSatEveningTwo(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={satEveningThree} onChange={(e) => setSatEveningThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
@@ -210,7 +222,7 @@ export function Guess(props) {
 
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
-                    <button className="submit" type="submit" onClick={() => satMorGuess()}>Submit</button>
+                    <button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button>
                     <button>Clear Guess</button>
                 </div>
 
