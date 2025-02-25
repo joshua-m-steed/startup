@@ -23,6 +23,10 @@ export function Guess(props) {
     const [sunAfternoonTwo, setSunAfternoonTwo] = React.useState('');
     const [sunAfternoonThree, setSunAfternoonThree] = React.useState('');
 
+    const [tieNelson, setTieNelson] = React.useState('');
+    const [tieOak, setTieOak] = React.useState('');
+    const [tieEyring, setTieEyring] = React.useState('');
+
     const userGuess = new Object({});
 
     async function saveGuess() {
@@ -31,6 +35,9 @@ export function Guess(props) {
         userGuess.satEvn = tri_package(satEveningOne, satEveningTwo, satEveningThree);
         userGuess.sunMor = tri_package(sunMorningOne, sunMorningTwo, sunMorningThree);
         userGuess.sunAft = tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree);
+
+        // NOTE :: Attempt to change color from Hex Code to Text...
+        userGuess.tieCol = tri_package(tieNelson, tieOak, tieEyring);
 
         localStorage.setItem('userGuess', JSON.stringify(userGuess));
     }
@@ -139,7 +146,7 @@ export function Guess(props) {
 
                 <div>
                     <label htmlFor="pick_color_nelson">President Nelson's: </label>
-                    <select className="color_picker" id="pick_color_nelson">
+                    <select className="color_picker" id="pick_color_nelson" value={tieNelson} onChange={(e) => setTieNelson(e.target.value)}>
                         <option value="#FF0000">Red</option>
                         <option value="#FF8800">Orange</option>
                         <option value="#FFF000">Yellow</option>
@@ -152,7 +159,7 @@ export function Guess(props) {
                 </div>
                 <div>
                     <label htmlFor="pick_color_oak">President Oak's: </label>
-                    <select className="color_picker" id="pick_color_oak">
+                    <select className="color_picker" id="pick_color_oak" value={tieOak} onChange={(e) => setTieOak(e.target.value)}>
                         <option value="#FF0000">Red</option>
                         <option value="#FF8800">Orange</option>
                         <option value="#FFF000">Yellow</option>
@@ -165,7 +172,7 @@ export function Guess(props) {
                 </div>
                 <div>
                     <label htmlFor="pick_color_eyring">President Eyring's: </label>
-                    <select className="color_picker" id="pick_color_eyring">
+                    <select className="color_picker" id="pick_color_eyring" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
                         <option value="#FF0000">Red</option>
                         <option value="#FF8800">Orange</option>
                         <option value="#FFF000">Yellow</option>
