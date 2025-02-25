@@ -14,9 +14,17 @@ export function Scores() {
     const scoreRows = [];
     if (score.length) {
         for (const [i, score_data] of score.entries()) {
+            //if i + 1 = 1, setTrophy to first
+            //if i + 1 = 2, setTrophy to second
+            //if i + 1 = 3, setTrophy to third
+            //else keep trophy as hand clap
+
             scoreRows.push(
                 <tr key={i}>
-                    <td>{i}</td>
+                    <td>{i+1}</td>
+                    <td>{/*UserName*/}</td>
+                    <td>{/*UserScore*/}</td>
+                    <td>{/*Trophy*/}</td>
                 </tr>
             );
         }
