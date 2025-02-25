@@ -3,15 +3,23 @@ import './guess.css';
 
 export function Guess(props) {
     const [speakerOne, setSpeakerOne] = React.useState('');
+    const [speakerTwo, setSpeakerTwo] = React.useState('');
+    const [speakerThree, setSpeakerThree] = React.useState('');
+    const userGuess = new Object({});
 
     async function satMorGuess() {
-        const userGuess = new Object({});
+        
 
-        const satMor = new Object([speakerOne]);
+        // const satMor = new Object([speakerOne]);
+        // userGuess.satMor = satMor;
 
-        userGuess.satMor = satMor;
+        userGuess.satMor = tri_package(speakerOne, speakerTwo, speakerThree);
 
         localStorage.setItem('userGuess', JSON.stringify(userGuess));
+    }
+
+    function tri_package(var1='', var2='', var3='') {
+        return [var1, var2, var3];
     }
 
     // async function saveGuess() {
@@ -51,8 +59,8 @@ export function Guess(props) {
                             </thead>
                             <tbody>
                                 <tr><td><input type="text" value={speakerOne} onChange={(e) => setSpeakerOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
-                                <tr><td><input type="text" /></td></tr>
+                                <tr><td><input type="text" value={speakerTwo} onChange={(e) => setSpeakerTwo(e.target.value)}/></td></tr>
+                                <tr><td><input type="text" value={speakerThree} onChange={(e) => setSpeakerThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
