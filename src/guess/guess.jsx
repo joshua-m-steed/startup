@@ -1,7 +1,28 @@
 import React from "react";
 import './guess.css';
 
-export function Guess() {
+export function Guess(props) {
+    const [speakerOne, setSpeakerOne] = React.useState('');
+
+    async function satMorGuess() {
+        const userGuess = new Object({});
+
+        const satMor = new Object([speakerOne]);
+
+        userGuess.satMor = satMor;
+
+        localStorage.setItem('userGuess', JSON.stringify(userGuess));
+    }
+
+    // async function saveGuess() {
+    //     localStorage.setItem('userName', userName);
+    //     localStorage.setItem('userEmail', userEmail);
+    //     localStorage.setItem('password', password);
+    //     props.onLogin(userName);
+    //     props.onLogin(userEmail);
+    //     props.onLogin(password);
+    // }
+
     return (
         <main>
             <div>
@@ -29,7 +50,7 @@ export function Guess() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" placeholder="Ex. Nelson" /></td></tr>
+                                <tr><td><input type="text" value={speakerOne} onChange={(e) => setSpeakerOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
                                 <tr><td><input type="text" /></td></tr>
                                 <tr><td><input type="text" /></td></tr>
                             </tbody>
@@ -181,7 +202,7 @@ export function Guess() {
 
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
-                    <button className="submit" type="submit">Submit</button>
+                    <button className="submit" type="submit" onClick={() => satMorGuess()}>Submit</button>
                     <button>Clear Guess</button>
                 </div>
 

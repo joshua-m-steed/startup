@@ -45,7 +45,7 @@ export function Scores() {
                     <label htmlFor="user-score">Your score: </label>
                 </div>
                 <div>
-                    <input type="number" className="display-user-score" id="score" value="0" readonly />
+                    <input type="number" className="display-user-score" id="score" value="0" readOnly />
                 </div>
             </div>
 
