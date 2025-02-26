@@ -4,12 +4,30 @@ import './scores.css';
 export function Scores() {
     const [score, setScore] = React.useState([]);
 
+    const answerKey = new Object({
+        satMor: ["a", "a", "a"],
+        satAft: ["a", "a", "a"],
+        satEvn: ["a", "a", "a"],
+        sunMor: ["a", "a", "a"],
+        sunAft: ["a", "a", "a"],
+        tieCol: ["Red", "White", "Blue"],
+        hymnNum: ["4", "4", "4"],
+        templeLoc: [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
+    })
+
+    // function calcScore(userKey, answerKey)
+    // {
+    // }
+
     React.useEffect(() => {
         const scoreText = localStorage.getItem('score');
+        // const userGuess = JSON.parse(localStorage.getItem('userGuess'));
         if (scoreText) {
-            setScore(JSON.parse(scoreText));
+            setScore(calcScore(scoreText, answerKey)); //JSON.parse(scoreText)
         }
     }, []);
+
+    
 
     const scoreRows = [];
     if (score.length) {
