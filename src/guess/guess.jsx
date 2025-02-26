@@ -1,4 +1,5 @@
 import React from "react";
+// import { GuessSheet } from './guessSheet';
 import './guess.css';
 
 export function Guess(props) {
@@ -59,7 +60,7 @@ export function Guess(props) {
     return (
         <main>
             <div>
-                <h3 className="guess_title">Welcome to your FGC prediction sheet, john_smith!</h3>
+                <h3 className="guess_title">Welcome to your FGC prediction sheet, {localStorage.getItem('userName')}!</h3>
             </div>
 
                 <hr />
