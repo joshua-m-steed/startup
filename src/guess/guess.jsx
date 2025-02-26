@@ -35,23 +35,20 @@ export function Guess(props) {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
-    const userGuess = new Object({});
+    // const userGuess = new Object({});
 
     async function saveGuess() {
-        userGuess.satMor = tri_package(satMorningOne, satMorningTwo, satMorningThree);
-        userGuess.satAft = tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree);
-        userGuess.satEvn = tri_package(satEveningOne, satEveningTwo, satEveningThree);
-        userGuess.sunMor = tri_package(sunMorningOne, sunMorningTwo, sunMorningThree);
-        userGuess.sunAft = tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree);
-
-        // NOTE :: Attempt to change color from Hex Code to Text...
-        // NOTE SET A DUD COLOR SO RED CAN BE SELECTED!!!
-        userGuess.tieCol = tri_package(tieNelson, tieOak, tieEyring);
-
-        userGuess.hymnNum = tri_package(hymnOne, hymnTwo, hymnThree);
-
-        userGuess.templeLoc = tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', '));
-
+        const userGuess = {
+            satMor: tri_package(satMorningOne, satMorningTwo, satMorningThree),
+            satAft: tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree),
+            satEvn: tri_package(satEveningOne, satEveningTwo, satEveningThree),
+            sunMor: tri_package(sunMorningOne, sunMorningTwo, sunMorningThree),
+            sunAft: tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree),
+            tieCol: tri_package(tieNelson, tieOak, tieEyring),
+            hymnNum: tri_package(hymnOne, hymnTwo, hymnThree),
+            templeLoc: tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')),
+        };
+        
         localStorage.setItem('userGuess', JSON.stringify(userGuess));
     }
 
