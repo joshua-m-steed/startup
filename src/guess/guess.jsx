@@ -31,6 +31,10 @@ export function Guess(props) {
     const [hymnTwo, setHymnTwo] = React.useState('');
     const [hymnThree, setHymnThree] = React.useState('');
 
+    const [templeOne, setTempleOne] = React.useState('');
+    const [templeTwo, setTempleTwo] = React.useState('');
+    const [templeThree, setTempleThree] = React.useState('');
+
     const userGuess = new Object({});
 
     async function saveGuess() {
@@ -45,6 +49,8 @@ export function Guess(props) {
         userGuess.tieCol = tri_package(tieNelson, tieOak, tieEyring);
 
         userGuess.hymnNum = tri_package(hymnOne, hymnTwo, hymnThree);
+
+        userGuess.templeLoc = tri_package(templeOne, templeTwo, templeThree);
 
         localStorage.setItem('userGuess', JSON.stringify(userGuess));
     }
@@ -225,15 +231,15 @@ export function Guess(props) {
 
                 <div>
                     <label htmlFor="temple_one">#1</label>
-                    <input id="temple_one" type="text" placeholder="Ex. USA, PA, Susquehanna" />
+                    <input id="temple_one" type="text" value={templeOne} onChange={(e) => setTempleOne(e.target.value)} placeholder="Ex. USA, PA, Susquehanna" />
                 </div>
                 <div>
                     <label htmlFor="temple_two">#2</label>
-                    <input id="temple_two" type="text" placeholder="Ex. Cuba, Menis" />
+                    <input id="temple_two" type="text" value={templeTwo} onChange={(e) => setTempleTwo(e.target.value)} placeholder="Ex. Cuba, Menis" />
                 </div>
                 <div>
                     <label htmlFor="temple_three">#3</label>
-                    <input id="temple_three" type="text" />
+                    <input id="temple_three" type="text" value={templeThree} onChange={(e) => setTempleThree(e.target.value)} />
                 </div>
 
                 <hr />
