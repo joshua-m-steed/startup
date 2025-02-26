@@ -27,4 +27,12 @@ class GuessSheet {
     {
         localStorage.setItem(username, JSON.stringify(this));
     }
+
+    load(username)
+    {
+        const savedData = localStorage.getItem(JSON.parse(username));
+        const guessSheet = new GuessSheet();
+        Object.assign(guessSheet, savedData);
+        return guessSheet;
+    }
 }
