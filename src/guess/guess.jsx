@@ -50,7 +50,7 @@ export function Guess(props) {
 
         userGuess.hymnNum = tri_package(hymnOne, hymnTwo, hymnThree);
 
-        userGuess.templeLoc = tri_package(templeOne, templeTwo, templeThree);
+        userGuess.templeLoc = tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', '));
 
         localStorage.setItem('userGuess', JSON.stringify(userGuess));
     }
@@ -58,15 +58,6 @@ export function Guess(props) {
     function tri_package(var1='', var2='', var3='') {
         return [var1, var2, var3];
     }
-
-    // async function saveGuess() {
-    //     localStorage.setItem('userName', userName);
-    //     localStorage.setItem('userEmail', userEmail);
-    //     localStorage.setItem('password', password);
-    //     props.onLogin(userName);
-    //     props.onLogin(userEmail);
-    //     props.onLogin(password);
-    // }
 
     return (
         <main>
@@ -160,40 +151,43 @@ export function Guess(props) {
                 <div>
                     <label htmlFor="pick_color_nelson">President Nelson's: </label>
                     <select className="color_picker" id="pick_color_nelson" value={tieNelson} onChange={(e) => setTieNelson(e.target.value)}>
-                        <option value="#FF0000">Red</option>
-                        <option value="#FF8800">Orange</option>
-                        <option value="#FFF000">Yellow</option>
-                        <option value="#008000">Green</option>
-                        <option value="#0000FF">Blue</option>
-                        <option value="#800080">Purple</option>
-                        <option value="#000000">Black</option>
-                        <option value="#FFFFFF">White</option>
+                        <option value=''>[Select]</option>                        
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
                     </select>
                 </div>
                 <div>
                     <label htmlFor="pick_color_oak">President Oak's: </label>
                     <select className="color_picker" id="pick_color_oak" value={tieOak} onChange={(e) => setTieOak(e.target.value)}>
-                        <option value="#FF0000">Red</option>
-                        <option value="#FF8800">Orange</option>
-                        <option value="#FFF000">Yellow</option>
-                        <option value="#008000">Green</option>
-                        <option value="#0000FF">Blue</option>
-                        <option value="#800080">Purple</option>
-                        <option value="#000000">Black</option>
-                        <option value="#FFFFFF">White</option>
+                        <option value=''>[Select]</option> 
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
                     </select>
                 </div>
                 <div>
                     <label htmlFor="pick_color_eyring">President Eyring's: </label>
                     <select className="color_picker" id="pick_color_eyring" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
-                        <option value="#FF0000">Red</option>
-                        <option value="#FF8800">Orange</option>
-                        <option value="#FFF000">Yellow</option>
-                        <option value="#008000">Green</option>
-                        <option value="#0000FF">Blue</option>
-                        <option value="#800080">Purple</option>
-                        <option value="#000000">Black</option>
-                        <option value="#FFFFFF">White</option>
+                        <option value=''>[Select]</option> 
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
                     </select>
                 </div>
 
