@@ -27,6 +27,10 @@ export function Guess(props) {
     const [tieOak, setTieOak] = React.useState('');
     const [tieEyring, setTieEyring] = React.useState('');
 
+    const [hymnOne, setHymnOne] = React.useState('');
+    const [hymnTwo, setHymnTwo] = React.useState('');
+    const [hymnThree, setHymnThree] = React.useState('');
+
     const userGuess = new Object({});
 
     async function saveGuess() {
@@ -37,7 +41,10 @@ export function Guess(props) {
         userGuess.sunAft = tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree);
 
         // NOTE :: Attempt to change color from Hex Code to Text...
+        // NOTE SET A DUD COLOR SO RED CAN BE SELECTED!!!
         userGuess.tieCol = tri_package(tieNelson, tieOak, tieEyring);
+
+        userGuess.hymnNum = tri_package(hymnOne, hymnTwo, hymnThree);
 
         localStorage.setItem('userGuess', JSON.stringify(userGuess));
     }
@@ -194,15 +201,15 @@ export function Guess(props) {
 
                 <div>
                     <label htmlFor="hymn_one">#1</label>
-                    <input id="hymn_one" type="number" placeholder="Ex. 284" />
+                    <input id="hymn_one" type="number" value={hymnOne} onChange={(e) => setHymnOne(e.target.value)} placeholder="Ex. 284" />
                 </div>
                 <div>
                     <label htmlFor="hymn_two">#2</label>
-                    <input id="hymn_two" type="number" />
+                    <input id="hymn_two" type="number" value={hymnTwo} onChange={(e) => setHymnTwo(e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="hymn_three">#3</label>
-                    <input id="hymn_three" type="number" />
+                    <input id="hymn_three" type="number" value={hymnThree} onChange={(e) => setHymnThree(e.target.value)} />
                 </div>
                 <hr />
 
