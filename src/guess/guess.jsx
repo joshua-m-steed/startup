@@ -45,7 +45,7 @@ export function Guess(props) {
             satEvn: tri_package(satEveningOne, satEveningTwo, satEveningThree),
             sunMor: tri_package(sunMorningOne, sunMorningTwo, sunMorningThree),
             sunAft: tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree),
-            tieCol: tri_package(tieNelson, tieOak, tieEyring),
+            tieClr: tri_package(tieNelson, tieOak, tieEyring),
             hymnNum: tri_package(hymnOne, hymnTwo, hymnThree),
             templeLoc: tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')),
         };
