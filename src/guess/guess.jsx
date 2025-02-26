@@ -1,9 +1,11 @@
 import React from "react";
-// import { GuessSheet } from './guessSheet';
+import { GuessSheet } from './guessSheet';
 import './guess.css';
 
 export function Guess(props) {
     // NOTE :: Attempt to Compress this code, explore ::
+    const userGuess = new GuessSheet();
+
     const [satMorningOne, setSatMoringOne] = React.useState('');
     const [satMorningTwo, setSatMorningTwo] = React.useState('');
     const [satMorningThree, setSatMorningThree] = React.useState('');
@@ -36,21 +38,18 @@ export function Guess(props) {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
-    // const userGuess = new Object({});
-
-    async function saveGuess() {
-        const userGuess = {
-            satMor: tri_package(satMorningOne, satMorningTwo, satMorningThree),
-            satAft: tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree),
-            satEvn: tri_package(satEveningOne, satEveningTwo, satEveningThree),
-            sunMor: tri_package(sunMorningOne, sunMorningTwo, sunMorningThree),
-            sunAft: tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree),
-            tieClr: tri_package(tieNelson, tieOak, tieEyring),
-            hymnNum: tri_package(hymnOne, hymnTwo, hymnThree),
-            templeLoc: tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')),
-        };
+    async function saveGuess() 
+    {
+        userGuess.setGuess('satMor', tri_package(satMorningOne, satMorningTwo, satMorningThree));
+        userGuess.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
+        userGuess.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
+        userGuess.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
+        userGuess.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
+        userGuess.setGuess('tieClr', tri_package(tieNelson, tieOak, tieEyring));
+        userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
+        userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
-        localStorage.setItem('userGuess', JSON.stringify(userGuess));
+        userGuess.save(localStorage.getItem('userName'));
     }
 
     function tri_package(var1='', var2='', var3='') {

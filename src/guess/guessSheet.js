@@ -1,4 +1,4 @@
-class GuessSheet {
+export class GuessSheet {
     constructor()
     {
         this.satMor = [];
