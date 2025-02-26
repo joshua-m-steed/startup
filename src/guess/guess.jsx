@@ -239,7 +239,7 @@ export function Guess(props) {
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
                     <button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button>
-                    <button>Clear Guess</button>
+                    <button onClick={() => userGuess.clear(localStorage.getItem('userName'))}>Clear Guess</button>
                 </div>
 
                 <br />

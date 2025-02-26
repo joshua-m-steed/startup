@@ -35,4 +35,9 @@ export class GuessSheet {
         Object.assign(guessSheet, savedData);
         return guessSheet;
     }
+
+    clear(username)
+    {
+        localStorage.removeItem(username);
+    }
 }
