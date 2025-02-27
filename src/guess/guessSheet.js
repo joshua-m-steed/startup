@@ -30,7 +30,7 @@ export class GuessSheet {
 
     load(username)
     {
-        const savedData = localStorage.getItem(JSON.parse(username));
+        const savedData = JSON.parse(localStorage.getItem(username));
         const guessSheet = new GuessSheet();
         Object.assign(guessSheet, savedData);
         return guessSheet;

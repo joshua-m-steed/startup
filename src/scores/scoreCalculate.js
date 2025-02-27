@@ -15,7 +15,7 @@ export class ScoreCalculator {
                     {
                         let trimmed = sheet[category][i].trim();
                         let cleaned = trimmed.toLowerCase();
-                        this.sheet[category][i] = cleaned;
+                        sheet[category][i] = cleaned;
                     }
 
                     i++;
@@ -30,10 +30,11 @@ export class ScoreCalculator {
 
     score(guess, answer) 
     {
-        answer = this.#clean(answer);
-        guess = this.#clean(guess);
-
-        return guess;
+        let cleanAnswer = this.#clean(answer);
+        let cleanGuess = this.#clean(guess);
+        
+        let points = 22;
+        return points;
     }
 
     createTable() 

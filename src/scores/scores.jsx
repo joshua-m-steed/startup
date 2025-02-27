@@ -5,6 +5,7 @@ import './scores.css';
 
 export function Scores() {
     const [score, setScore] = React.useState([]);
+    const userKey = new GuessSheet().load(localStorage.getItem('userName'));
 
     const answerKey = new Object({
         satMor: ["a", "a", "a"],
@@ -18,6 +19,9 @@ export function Scores() {
     })
 
     React.useEffect(() => {
+        let points = new ScoreCalculator().score(userKey, answerKey);
+        localStorage.setItem('CurScore', points);
+
         const scoreText = localStorage.getItem('score');
         // const userGuess = JSON.parse(localStorage.getItem('userGuess'));
         if (scoreText) {
