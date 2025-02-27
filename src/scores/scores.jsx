@@ -1,4 +1,6 @@
 import React from "react";
+import { ScoreCalculator } from "./scoreCalculate";
+import { GuessSheet } from "../guess/guessSheet";
 import './scores.css';
 
 export function Scores() {
@@ -15,10 +17,6 @@ export function Scores() {
         templeLoc: [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
     })
 
-    // function calcScore(userKey, answerKey)
-    // {
-    // }
-
     React.useEffect(() => {
         const scoreText = localStorage.getItem('score');
         // const userGuess = JSON.parse(localStorage.getItem('userGuess'));
@@ -26,8 +24,6 @@ export function Scores() {
             setScore(calcScore(scoreText, answerKey)); //JSON.parse(scoreText)
         }
     }, []);
-
-    
 
     const scoreRows = [];
     if (score.length) {

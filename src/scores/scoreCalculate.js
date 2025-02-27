@@ -1,21 +1,39 @@
 export class ScoreCalculator {
-    constructor(guess, answer)
+    constructor()
     {
-        this.guess = guess;
-        this.answer = answer;
-
+        this.points;
     }
 
-    #clean() 
+    #clean(sheet) 
     {
+        for(let category in sheet)
+            {
+                let i = 0;
+                while(i < sheet[category].length)
+                {
+                    if(typeof sheet[category][i] === 'string')
+                    {
+                        let trimmed = sheet[category][i].trim();
+                        let cleaned = trimmed.toLowerCase();
+                        this.sheet[category][i] = cleaned;
+                    }
+
+                    i++;
+                }
+            }
+
+        return sheet;
         // Clean the Answers
         // - Lowercase
         // - No Whitespace 
     }
 
-    score() 
+    score(guess, answer) 
     {
-        // Compares Guess with Answer
+        answer = this.#clean(answer);
+        guess = this.#clean(guess);
+
+        return guess;
     }
 
     createTable() 
