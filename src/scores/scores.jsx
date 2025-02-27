@@ -13,7 +13,7 @@ export function Scores() {
         satEvn: ["a", "a", "a"],
         sunMor: ["a", "a", "a"],
         sunAft: ["a", "a", "a"],
-        tieCol: ["Red", "White", "Blue"],
+        tieClr: ["Red", "White", "Blue"],
         hymnNum: ["4", "4", "4"],
         templeLoc: [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
     })
