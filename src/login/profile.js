@@ -28,6 +28,14 @@ export class Profile {
         localStorage.setItem(this.name + ' Profile', JSON.stringify(file));
     }
 
+    refill(name)
+    {
+        let temp = JSON.parse(localStorage.getItem(name + ' Profile'));
+        this.name = temp.name;
+        this.email = temp.email;
+        this.pass = temp.pass;
+    }
+
     delete()
     {
         localStorage.removeItem(this.name + ' Profile');
