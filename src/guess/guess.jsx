@@ -6,6 +6,7 @@ import './guess.css';
 export function Guess(props) {
     // NOTE :: Attempt to Compress this code, explore ::
     const userGuess = new GuessSheet();
+    // const locked = false; // For a future Idea
 
     const user = new Profile();
     user.refill(localStorage.getItem('Username'));
@@ -87,7 +88,7 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" value={satMorningOne} onChange={(e) => setSatMoringOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
+                                <tr><td><input disabled={locked} type="text" value={satMorningOne} onChange={(e) => setSatMoringOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
                                 <tr><td><input type="text" value={satMorningTwo} onChange={(e) => setSatMorningTwo(e.target.value)}/></td></tr>
                                 <tr><td><input type="text" value={satMorningThree} onChange={(e) => setSatMorningThree(e.target.value)}/></td></tr>
                             </tbody>

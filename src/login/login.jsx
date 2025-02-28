@@ -9,6 +9,8 @@ export function Login(props) {
 
     const user = new Profile()
 
+    // Create Profiles to effectively use data throughout
+    // Varificiation in the future?
     async function loginUser() {
         user.create(userName, userEmail, password);
 
@@ -29,6 +31,7 @@ export function Login(props) {
         setImageUrl('https://random.dog/201915e6-89e5-4811-8648-7c433d771af5.jpg');
     }, []);
 
+    // NTS :: Currently an issue with buttons directing to guess.html?
     return (
         <main>
             <h1>Welcome to Fantasy General Conference</h1>

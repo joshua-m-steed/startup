@@ -15,6 +15,7 @@ export function Scores() {
    
     userProfile.refill(userName);
 
+    // TEMPORARY --> Note to self, create an Admin/Answer page
     answerKey.satMor = ["a", "a", "a"];
     answerKey.satAft = ["a", "a", "a"];
     answerKey.satEvn = ["a", "a", "a"];
