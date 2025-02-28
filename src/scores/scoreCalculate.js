@@ -1,9 +1,4 @@
 export class ScoreCalculator {
-    constructor()
-    {
-        this.points = 0;
-    }
-
     #clean(sheet) {
         for (let category in sheet) {
             let i = 0;
@@ -32,6 +27,7 @@ export class ScoreCalculator {
     score(guess, answer) {
         let cleanAnswer = this.#clean(answer);
         let cleanGuess = this.#clean(guess);
+        let points = 0;
 
         for(let category in cleanAnswer) {
             if (!Array.isArray(cleanAnswer[category]) || !Array.isArray(cleanGuess[category])) {
@@ -45,23 +41,25 @@ export class ScoreCalculator {
                     let j = 0;
                     while (j < cleanAnswer[category][i].length && j < cleanGuess[category][i].length) {
                         if(cleanAnswer[category][i][j] == cleanGuess[category][i][j]) {
-                            this.points++;
+                            points++;
                         }
                         j++;
                     }
                 } else {
                     if(cleanAnswer[category][i] === cleanGuess[category][i]) {
-                        this.points++;
+                        points++;
                     }
                 }
                 i++; 
             }
         }
-        return this.points;
+        console.warn(`Here's your current score: ${points}`);
+        return points;
     }
 
-    createTable() 
+    createTableRow(username, points) 
     {
-        // Sets up the table row / Array
+        const score_row = new Object({name: username, score: points, trophy: "👏"});
+        return score_row;
     }
 }

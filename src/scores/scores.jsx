@@ -5,28 +5,32 @@ import './scores.css';
 
 export function Scores() {
     const [score, setScore] = React.useState([]);
-    const userKey = new GuessSheet().load(localStorage.getItem('userName'));
+    const userName = localStorage.getItem('Username');
+    const userKey = JSON.parse(localStorage.getItem(userName + ' Guess'));
+    const userProfile = JSON.parse(localStorage.getItem(userName + ' Profile'));
 
-    const answerKey = new Object({
-        satMor: ["a", "a", "a"],
-        satAft: ["a", "a", "a"],
-        satEvn: ["a", "a", "a"],
-        sunMor: ["a", "a", "a"],
-        sunAft: ["a", "a", "a"],
-        tieClr: ["Red", "White", "Blue"],
-        hymnNum: ["4", "4", "4"],
-        templeLoc: [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
-    })
+    const answerKey = new GuessSheet();
+
+    answerKey.satMor = ["a", "a", "a"];
+    answerKey.satAft = ["a", "a", "a"];
+    answerKey.satEvn = ["a", "a", "a"];
+    answerKey.sunMor = ["a", "a", "a"];
+    answerKey.sunAft = ["a", "a", "a"];
+    answerKey.tieClr = ["Red", "White", "Blue"];
+    answerKey.hymnNum = ["4", "4", "4"];
+    answerKey.templeLoc = [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
+
+    localStorage.setItem('scores', JSON.stringify([]));
 
     React.useEffect(() => {
         let points = new ScoreCalculator().score(userKey, answerKey);
-        localStorage.setItem('CurScore', points);
+        userProfile.score = points;
 
-        const scoreText = localStorage.getItem('score');
+        const scoreText = JSON.parse(localStorage.getItem('scores'));
         // const userGuess = JSON.parse(localStorage.getItem('userGuess'));
-        if (scoreText) {
-            setScore(calcScore(scoreText, answerKey)); //JSON.parse(scoreText)
-        }
+        // if (scoreText) {
+        //     setScore(calcScore(scoreText, answerKey)); //JSON.parse(scoreText)
+        // }
     }, []);
 
     const scoreRows = [];
