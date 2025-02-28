@@ -10,11 +10,11 @@ export function Login(props) {
     const user = new Profile()
 
     async function loginUser() {
-            user.create(userName, userEmail, password);
+        user.create(userName, userEmail, password);
 
-            props.onLogin(userName);
-            props.onLogin(userEmail);
-            props.onLogin(password);        
+        props.onLogin(userName);
+        props.onLogin(userEmail);
+        props.onLogin(password);        
     }
 
     async function createUser() {

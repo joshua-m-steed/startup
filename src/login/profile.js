@@ -26,6 +26,7 @@ export class Profile {
         this.email = email;
         this.pass = pass;
         localStorage.setItem(this.name + ' Profile', JSON.stringify(file));
+        localStorage.setItem('Username', this.name);
     }
 
     refill(name)
@@ -39,6 +40,7 @@ export class Profile {
     delete()
     {
         localStorage.removeItem(this.name + ' Profile');
+        localStorage.removeItem(this.name);
     }
 
     updateScore(points)
