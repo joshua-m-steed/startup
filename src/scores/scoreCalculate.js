@@ -53,7 +53,6 @@ export class ScoreCalculator {
                 i++; 
             }
         }
-        console.warn(`Here's your current score: ${points}`);
         return points;
     }
 

@@ -32,13 +32,15 @@ export function Scores() {
         userProfile.updateScore(userScore);
 
         const scoreText = JSON.parse(localStorage.getItem('scores'));
-        // const userGuess = JSON.parse(localStorage.getItem('userGuess'));
-        // if (scoreText) {
-        //     setScore(calcScore(scoreText, answerKey)); //JSON.parse(scoreText)
-        // }
-    }, []);
+        const userTable = scoreCalc.createTableRow(userName, userProfile.score);
+        scoreText.push(userTable);
 
-    ;
+        // localStorage.setItem('scores', JSON.stringify(scoreText));
+
+        if (scoreText) {
+            setScore(scoreText);
+        }
+    }, []);
 
     const scoreRows = [];
     if (score.length) {
