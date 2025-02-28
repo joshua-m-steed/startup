@@ -33,29 +33,32 @@ export function Scores() {
 
         const scoreText = JSON.parse(localStorage.getItem('scores'));
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
+        console.warn(userTable);
         scoreText.push(userTable);
+        console.warn(scoreText);
 
-        // localStorage.setItem('scores', JSON.stringify(scoreText));
+        
 
         if (scoreText) {
             setScore(scoreText);
         }
+
+        
     }, []);
 
     const scoreRows = [];
     if (score.length) {
         for (const [i, score_data] of score.entries()) {
-            //if i + 1 = 1, setTrophy to first
-            //if i + 1 = 2, setTrophy to second
-            //if i + 1 = 3, setTrophy to third
-            //else keep trophy as hand clap
-
+            
+            let usr = score[0].name;
+            let scr = score[0].score;
+            console.warn(usr)
             scoreRows.push(
                 <tr key={i}>
                     <td>{i+1}</td>
-                    <td>{/*UserName*/}</td>
-                    <td>{/*UserScore*/}</td>
-                    <td>{/*Trophy*/}</td>
+                    <td>{usr}</td>
+                    <td>{scr}</td>
+                    <td>{"HELLO"}</td>
                 </tr>
             );
         }

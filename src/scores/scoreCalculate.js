@@ -58,7 +58,7 @@ export class ScoreCalculator {
 
     createTableRow(username, points) 
     {
-        const score_row = new Object({name: username, score: points, trophy: "👏"});
+        const score_row = {name: username, score: points, trophy: "👏"};
         return score_row;
     }
 }
