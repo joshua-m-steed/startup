@@ -1,10 +1,14 @@
 import React from "react";
 import { GuessSheet } from './guessSheet';
+import { Profile } from "../login/profile";
 import './guess.css';
 
 export function Guess(props) {
     // NOTE :: Attempt to Compress this code, explore ::
     const userGuess = new GuessSheet();
+
+    const user = new Profile();
+    user.refill(localStorage.getItem('Username'));
 
     const [satMorningOne, setSatMoringOne] = React.useState('');
     const [satMorningTwo, setSatMorningTwo] = React.useState('');
@@ -49,7 +53,7 @@ export function Guess(props) {
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
-        userGuess.save(localStorage.getItem('userName'));
+        userGuess.save(localStorage.getItem('Username'));
     }
 
     function tri_package(var1='', var2='', var3='') {
@@ -59,7 +63,7 @@ export function Guess(props) {
     return (
         <main>
             <div>
-                <h3 className="guess_title">Welcome to your FGC prediction sheet, {localStorage.getItem('userName')}!</h3>
+                <h3 className="guess_title">Welcome to your FGC prediction sheet, {localStorage.getItem('Username')}!</h3>
             </div>
 
                 <hr />
@@ -239,7 +243,7 @@ export function Guess(props) {
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
                     <button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button>
-                    <button onClick={() => userGuess.clear(localStorage.getItem('userName'))}>Clear Guess</button>
+                    <button onClick={() => userGuess.clear(localStorage.getItem('Username'))}>Clear Guess</button>
                 </div>
 
                 <br />

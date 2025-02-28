@@ -25,12 +25,12 @@ export class GuessSheet {
 
     save(username)
     {
-        localStorage.setItem(username, JSON.stringify(this));
+        localStorage.setItem(username + ' Guess', JSON.stringify(this));
     }
 
     load(username)
     {
-        const savedData = JSON.parse(localStorage.getItem(username));
+        const savedData = JSON.parse(localStorage.getItem(username + ' Guess'));
         const guessSheet = new GuessSheet();
         Object.assign(guessSheet, savedData);
         return guessSheet;
@@ -38,6 +38,6 @@ export class GuessSheet {
 
     clear(username)
     {
-        localStorage.removeItem(username);
+        localStorage.removeItem(username + ' Guess');
     }
 }

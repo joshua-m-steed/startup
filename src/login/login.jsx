@@ -14,7 +14,7 @@ export function Login(props) {
 
         props.onLogin(userName);
         props.onLogin(userEmail);
-        props.onLogin(password);        
+        props.onLogin(password);
     }
 
     async function createUser() {
