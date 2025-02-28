@@ -1,9 +1,9 @@
 export class Profile {
     constructor(username, email, pass)
     {
-        this.name = username;
-        this.email = email;
-        this.pass = pass;
+        this.name = '';
+        this.email = '';
+        this.pass = '';
         this.score = 0;
     }
 
@@ -19,9 +19,12 @@ export class Profile {
         }
     }
 
-    create()
+    create(name, email, pass, score = 0)
     {
-        let file = {name: this.name, email: this.email, pass: this.pass, score: this.score};
+        let file = {name: name, email: email, pass: pass, score: score};
+        this.name = name;
+        this.email = email;
+        this.pass = pass;
         localStorage.setItem(this.name + ' Profile', JSON.stringify(file));
     }
 

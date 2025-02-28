@@ -1,4 +1,5 @@
 import React from "react";
+import { Profile } from "./profile";
 
 export function Login(props) {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
@@ -6,19 +7,19 @@ export function Login(props) {
     const [userEmail, setUserEmail] = React.useState(props.userEmail);
     const [password, setPassword] = React.useState('');
 
+    const user = new Profile()
+
     async function loginUser() {
-        localStorage.setItem('userName', userName);
-        localStorage.setItem('userEmail', userEmail);
-        localStorage.setItem('password', password);
+        user.create(userName, userEmail, password);
+
         props.onLogin(userName);
         props.onLogin(userEmail);
         props.onLogin(password);
     }
 
     async function createUser() {
-        localStorage.setItem('userName', userName);
-        localStorage.setItem('userEmail', userEmail);
-        localStorage.setItem('password', password);
+        user.create(userName, userEmail, password);
+
         props.onLogin(userName);
         props.onLogin(userEmail);
         props.onLogin(password);
