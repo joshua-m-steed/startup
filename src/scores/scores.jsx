@@ -33,11 +33,8 @@ export function Scores() {
 
         const scoreText = JSON.parse(localStorage.getItem('scores'));
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
-        console.warn(userTable);
-        scoreText.push(userTable);
-        console.warn(scoreText);
 
-        
+        scoreText.push(userTable);
 
         if (scoreText) {
             setScore(scoreText);
@@ -48,17 +45,30 @@ export function Scores() {
 
     const scoreRows = [];
     if (score.length) {
-        for (const [i, score_data] of score.entries()) {
-            
+        for (const [i] of score.entries()) {
             let usr = score[0].name;
             let scr = score[0].score;
-            console.warn(usr)
+            let trp;
+
+            if(i + 1 == 1)
+            {
+                trp = "🥇";
+            } else if (i + 1 == 2) 
+            {
+                trp = "🥈";
+            } else if (i + 1 == 3)
+            {
+                trp = "🥉";
+            } else {
+                trp = "👏";
+            }
+
             scoreRows.push(
                 <tr key={i}>
                     <td>{i+1}</td>
                     <td>{usr}</td>
                     <td>{scr}</td>
-                    <td>{"HELLO"}</td>
+                    <td>{trp}</td>
                 </tr>
             );
         }
@@ -94,36 +104,6 @@ export function Scores() {
                         </tr>
                     </thead>
                     <tbody id='score'>{scoreRows}
-                        {/* <tr>
-                            <td>1</td>
-                            <td>Matt</td>
-                            <td>21</td>
-                            <td> 🥇 </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Kayla</td>
-                            <td>17</td>
-                            <td> 🥈 </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Tim</td>
-                            <td>9</td>
-                            <td> 🥉 </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Emma</td>
-                            <td>7</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>john_smith</td>
-                            <td>0</td>
-                            <td></td>
-                        </tr> */}
                     </tbody>
                 </table>
             </div>
