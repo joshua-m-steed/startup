@@ -116,8 +116,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - All of the functionality is present or mocked out. It is not currently the cleanest and has a few bugs, but I hope to work those out with time and more review of React P2.
+- [x] **Hooks** - Hooks are present to catch events, modify variables, and a few other functions.
 
 ## 🚀 Service deliverable
 
