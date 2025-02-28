@@ -35,6 +35,7 @@ export class Profile {
         this.name = temp.name;
         this.email = temp.email;
         this.pass = temp.pass;
+        this.score = temp.score;
     }
 
     delete()

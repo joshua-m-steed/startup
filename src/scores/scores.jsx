@@ -1,15 +1,19 @@
 import React from "react";
 import { ScoreCalculator } from "./scoreCalculate";
 import { GuessSheet } from "../guess/guessSheet";
+import { Profile } from "../login/profile";
 import './scores.css';
 
 export function Scores() {
     const [score, setScore] = React.useState([]);
+    const [points, setPoints] = React.useState([]);
     const userName = localStorage.getItem('Username');
     const userKey = JSON.parse(localStorage.getItem(userName + ' Guess'));
-    const userProfile = JSON.parse(localStorage.getItem(userName + ' Profile'));
-
+    const userProfile = new Profile();
+    const scoreCalc = new ScoreCalculator();
     const answerKey = new GuessSheet();
+   
+    userProfile.refill(userName);
 
     answerKey.satMor = ["a", "a", "a"];
     answerKey.satAft = ["a", "a", "a"];
@@ -23,8 +27,9 @@ export function Scores() {
     localStorage.setItem('scores', JSON.stringify([]));
 
     React.useEffect(() => {
-        let points = new ScoreCalculator().score(userKey, answerKey);
-        userProfile.score = points;
+        let userScore = scoreCalc.score(userKey, answerKey);
+        setPoints(scoreCalc.score(userKey, answerKey))
+        userProfile.updateScore(userScore);
 
         const scoreText = JSON.parse(localStorage.getItem('scores'));
         // const userGuess = JSON.parse(localStorage.getItem('userGuess'));
@@ -32,6 +37,8 @@ export function Scores() {
         //     setScore(calcScore(scoreText, answerKey)); //JSON.parse(scoreText)
         // }
     }, []);
+
+    ;
 
     const scoreRows = [];
     if (score.length) {
@@ -67,7 +74,7 @@ export function Scores() {
                     <label htmlFor="user-score">Your score: </label>
                 </div>
                 <div>
-                    <input type="number" className="display-user-score" id="score" value="0" readOnly />
+                    <input type="number" className="display-user-score" id="score" value={points} readOnly />
                 </div>
             </div>
 
