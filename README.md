@@ -119,6 +119,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **All functionality implemented or mocked out** - All of the functionality is present or mocked out. It is not currently the cleanest and has a few bugs, but I hope to work those out with time and more review of React P2.
 - [x] **Hooks** - Hooks are present to catch events, modify variables, and a few other functions.
 
+> I still have some parts to iron out in terms of cleanliness, bugs, and/or data flow, but it'll continue to be worked on to make it work smoother and more accurately to what I am imagining. P.S, the scores/answer key is currently hardcoded, so 'a' and '4' will get you the most points ;)
+
 ## 🚀 Service deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
