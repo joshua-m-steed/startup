@@ -121,6 +121,34 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 > I still have some parts to iron out in terms of cleanliness, bugs, and/or data flow, but it'll continue to be worked on to make it work smoother and more accurately to what I am imagining. P.S, the scores/answer key is currently hardcoded, so 'a' and '4' will get you the most points ;)
 
+```mermaid
+classDiagram
+  User --> Login
+  Login --> Auth
+  Auth --> If-Yes
+  Auth --> If-No
+  If-Yes --> Guess-Page
+  If-No --> Warn
+  Warn --> User
+  User --> Create
+  Create --> Store-Profile
+  Store-Profile --> Guess-Page
+
+  Guess --> Input-Guess
+  Input-Guess --> Submit
+  Submit --> Create-Guess
+  Create-Guess --> Local-Storage
+  Submit --> Lock-Boxes
+  Input-Guess --> Clear-Guess
+  Clear-Guess --> Remove-Input
+
+  Scores --> Compare
+  Compare --> Update-Profile
+  Update-Profile --> Table-Data
+  Table-Data --> Scoreboard
+  Update-Profile --> User-Score
+```
+
 ## 🚀 Service deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
