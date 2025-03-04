@@ -25,16 +25,20 @@ export function Scores() {
     answerKey.hymnNum = ["4", "4", "4"];
     answerKey.templeLoc = [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
 
-    // localStorage.setItem('scores', JSON.stringify([]));
+    localStorage.setItem('scores', JSON.stringify(score));
 
     React.useEffect(() => {
         let userScore = scoreCalc.score(userKey, answerKey);
-        setPoints(scoreCalc.score(userKey, answerKey))
+        setPoints(userScore);
+
+        // Update Profile in Local Storage
         userProfile.updateScore(userScore);
+        // Update Profile to access for userTable
+        userProfile.score = userScore;
 
         const scoreText = JSON.parse(localStorage.getItem('scores'));
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
-
+        console.warn(userTable);
         scoreText.push(userTable);
 
         if (scoreText) {
