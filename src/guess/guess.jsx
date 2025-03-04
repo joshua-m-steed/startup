@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 export function Guess(props) {
     // NOTE :: Attempt to Compress this code, explore ::
     const userGuess = new GuessSheet();
-    // const locked = false; // For a future Idea
+    // const [locked, setLocked] = React.useState(false); // For a future Idea
 
     const user = new Profile();
     user.refill(localStorage.getItem('Username'));
@@ -89,9 +89,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" value={satMorningOne} onChange={(e) => setSatMoringOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
-                                <tr><td><input type="text" value={satMorningTwo} onChange={(e) => setSatMorningTwo(e.target.value)}/></td></tr>
-                                <tr><td><input type="text" value={satMorningThree} onChange={(e) => setSatMorningThree(e.target.value)}/></td></tr>
+                                <tr><td><input id="satMorOne" type="text" value={satMorningOne} onChange={(e) => setSatMoringOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
+                                <tr><td><input id="satMorTwo" type="text" value={satMorningTwo} onChange={(e) => setSatMorningTwo(e.target.value)}/></td></tr>
+                                <tr><td><input id="satMorThree" type="text" value={satMorningThree} onChange={(e) => setSatMorningThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
@@ -101,9 +101,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" value={satAfternoonOne} onChange={(e) => setSatAfternoonOne(e.target.value)} placeholder="Ex. Oaks" /></td></tr>
-                                <tr><td><input type="text" value={satAfternoonTwo} onChange={(e) => setSatAfternoonTwo(e.target.value)}/></td></tr>
-                                <tr><td><input type="text" value={satAfternoonThree} onChange={(e) => setSatAfternoonThree(e.target.value)}/></td></tr>
+                                <tr><td><input id="satAftOne" type="text" value={satAfternoonOne} onChange={(e) => setSatAfternoonOne(e.target.value)} placeholder="Ex. Oaks" /></td></tr>
+                                <tr><td><input id="satAftTwo" type="text" value={satAfternoonTwo} onChange={(e) => setSatAfternoonTwo(e.target.value)}/></td></tr>
+                                <tr><td><input id="satAftThree" type="text" value={satAfternoonThree} onChange={(e) => setSatAfternoonThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
@@ -113,9 +113,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" value={satEveningOne} onChange={(e) => setSatEveningOne(e.target.value)} placeholder="Ex. Eyring" /></td></tr>
-                                <tr><td><input type="text" value={satEveningTwo} onChange={(e) => setSatEveningTwo(e.target.value)}/></td></tr>
-                                <tr><td><input type="text" value={satEveningThree} onChange={(e) => setSatEveningThree(e.target.value)}/></td></tr>
+                                <tr><td><input id="satEvnOne" type="text" value={satEveningOne} onChange={(e) => setSatEveningOne(e.target.value)} placeholder="Ex. Eyring" /></td></tr>
+                                <tr><td><input id="satEvnTwo" type="text" value={satEveningTwo} onChange={(e) => setSatEveningTwo(e.target.value)}/></td></tr>
+                                <tr><td><input id="satEvnThree" type="text" value={satEveningThree} onChange={(e) => setSatEveningThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
@@ -125,9 +125,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" value={sunMorningOne} onChange={(e) => setSunMorningOne(e.target.value)}/></td></tr>
-                                <tr><td><input type="text" value={sunMorningTwo} onChange={(e) => setSunMorningTwo(e.target.value)}/></td></tr>
-                                <tr><td><input type="text" value={sunMorningThree} onChange={(e) => setSunMorningThree(e.target.value)}/></td></tr>
+                                <tr><td><input id="sunMorOne" type="text" value={sunMorningOne} onChange={(e) => setSunMorningOne(e.target.value)}/></td></tr>
+                                <tr><td><input id="sunMorTwo" type="text" value={sunMorningTwo} onChange={(e) => setSunMorningTwo(e.target.value)}/></td></tr>
+                                <tr><td><input id="sunMorThree" type="text" value={sunMorningThree} onChange={(e) => setSunMorningThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                         <table className="who_speaks">
@@ -137,9 +137,9 @@ export function Guess(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input type="text" value={sunAfternoonOne} onChange={(e) => setSunAfternoonOne(e.target.value)}/></td></tr>
-                                <tr><td><input type="text" value={sunAfternoonTwo} onChange={(e) => setSunAfternoonTwo(e.target.value)}/></td></tr>
-                                <tr><td><input type="text" value={sunAfternoonThree} onChange={(e) => setSunAfternoonThree(e.target.value)}/></td></tr>
+                                <tr><td><input id="sunAftOne" type="text" value={sunAfternoonOne} onChange={(e) => setSunAfternoonOne(e.target.value)}/></td></tr>
+                                <tr><td><input id="sunAftTwo" type="text" value={sunAfternoonTwo} onChange={(e) => setSunAfternoonTwo(e.target.value)}/></td></tr>
+                                <tr><td><input id="sunAftThree" type="text" value={sunAfternoonThree} onChange={(e) => setSunAfternoonThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table>
                     </div>

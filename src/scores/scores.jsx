@@ -25,7 +25,7 @@ export function Scores() {
     answerKey.hymnNum = ["4", "4", "4"];
     answerKey.templeLoc = [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
 
-    localStorage.setItem('scores', JSON.stringify([]));
+    // localStorage.setItem('scores', JSON.stringify([]));
 
     React.useEffect(() => {
         let userScore = scoreCalc.score(userKey, answerKey);
@@ -47,8 +47,8 @@ export function Scores() {
     const scoreRows = [];
     if (score.length) {
         for (const [i] of score.entries()) {
-            let usr = score[0].name;
-            let scr = score[0].score;
+            let usr = score[i].name;
+            let scr = score[i].score;
             let trp;
 
             if(i + 1 == 1)
@@ -90,7 +90,7 @@ export function Scores() {
                     <label htmlFor="user-score">Your score: </label>
                 </div>
                 <div>
-                    <input type="number" className="display-user-score" id="score" value={points} readOnly />
+                    <input type="number" className="display-user-score" id="user-score" value={points} readOnly />
                 </div>
             </div>
 
