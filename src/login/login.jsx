@@ -1,5 +1,6 @@
 import React from "react";
 import { Profile } from "./profile";
+import { NavLink } from "react-router-dom";
 
 export function Login(props) {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
@@ -53,7 +54,7 @@ export function Login(props) {
             </div>
             <br />
             <div>
-                <button className="sign" type="submit" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button>
+                <NavLink to='guess'><button className="sign" type="submit" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button></NavLink>
                 <button className="create" type="submit" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
             </div>
             </form>

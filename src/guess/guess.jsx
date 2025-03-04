@@ -2,6 +2,7 @@ import React from "react";
 import { GuessSheet } from './guessSheet';
 import { Profile } from "../login/profile";
 import './guess.css';
+import { NavLink } from "react-router-dom";
 
 export function Guess(props) {
     // NOTE :: Attempt to Compress this code, explore ::
@@ -243,7 +244,7 @@ export function Guess(props) {
 
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
-                    <button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button>
+                    <NavLink to='../scores'><button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button></NavLink>
                     <button onClick={() => userGuess.clear(localStorage.getItem('Username'))}>Clear Guess</button>
                 </div>
 
