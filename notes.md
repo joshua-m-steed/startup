@@ -746,3 +746,20 @@ Web server is the physcial devicee while the web service is the application that
 A *Gateway* opens the way to other port numbers and services associated with the larger address/domain.  
 *Microservices* are smaller and more managable services that aid a larger system. Can often be copied and run mutliple times in order to support a larger function. Ex. system holding 1k users multiplied to support 10k users.  
 *Serverless* is evolved from the microservices. Through gateways, code and endpoints can be called to support the on demand needs.
+
+HTML, CSS, JavaScript -> Frontend and HTTPS process  
+`fetch` -> Requests from other services and APIs  
+Fetch, Data Storage -> Backend  
+
+*Uniform Resource Locator (URL)*  
+Web Resources can be just about **anything**. Examples include: images, JSON objects, video, counters, and more!  
+ == `<scheme>://<domain name>:<port>/<path>?<parameters>#<anchor>` ==  
+ `Scheme` - Protocall to ask for resource  
+ `Domain Name` - Name / Owner of the URL  
+ `Port` - Specifies Numed Network to access Domain  
+ `Path` - Direct to resource within the Domain  
+ `Parameters` - Represents key value pairs  
+ `Anchors` - Guides to sub-location  
+
+Other names include: `Uniform Resource Name (URN)` - Unique resource, not really location - and `Uniform Resource Identifier (URI)` - A general resource identifier.  
+
