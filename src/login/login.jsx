@@ -2,10 +2,10 @@ import React from "react";
 import { Profile } from "./profile";
 import { NavLink } from "react-router-dom";
 
-export function Login(props) {
+export function Login() {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
-    const [userName, setUserName] = React.useState(props.userName);
-    const [userEmail, setUserEmail] = React.useState(props.userEmail);
+    const [userName, setUserName] = React.useState(userName);
+    const [userEmail, setUserEmail] = React.useState(userEmail);
     const [password, setPassword] = React.useState('');
 
     const user = new Profile()
@@ -15,17 +15,17 @@ export function Login(props) {
     async function loginUser() {
         user.create(userName, userEmail, password);
 
-        props.onLogin(userName);
-        props.onLogin(userEmail);
-        props.onLogin(password);
+        setUserName(userName);
+        setUserEmail(userEmail);
+        setPassword(password);
     }
 
     async function createUser() {
         user.create(userName, userEmail, password);
 
-        props.onLogin(userName);
-        props.onLogin(userEmail);
-        props.onLogin(password);
+        setUserName(userName);
+        setUserEmail(userEmail);
+        setPassword(password);
     }
 
     React.useEffect(() => {
