@@ -732,3 +732,17 @@ With `React.useState` and `setInterval`, you can make changes to values and chec
 You can also decide when a clean up happens. Use `cleanup()`  
 
 
+
+# Service  
+Understanding the web of the Internet. Not everything is hardwired together. They communicate via IPs or/and domains. Use `dig` to find domain IPs. `traceroute` allows you to see all the hoops through various devices and IPs.  
+
+There are also layers and purposes to connections such as Applications -> HTTPS, Transport -> TCP, Internet -> IP, and Link -> Hardwired.  
+
+**WEB SERVERS**  
+It's possible to make the applicaiton a web service. Through importing packages, it'll help load your content. It's also possible to make endpoints that will go through additional code and pathways!  
+
+*Web Service Gateways*  
+Web server is the physcial devicee while the web service is the application that provides functionality.  
+A *Gateway* opens the way to other port numbers and services associated with the larger address/domain.  
+*Microservices* are smaller and more managable services that aid a larger system. Can often be copied and run mutliple times in order to support a larger function. Ex. system holding 1k users multiplied to support 10k users.  
+*Serverless* is evolved from the microservices. Through gateways, code and endpoints can be called to support the on demand needs.
