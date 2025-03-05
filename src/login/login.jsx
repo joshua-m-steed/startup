@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 
 export function Login() {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
-    const [userName, setUserName] = React.useState(userName);
-    const [userEmail, setUserEmail] = React.useState(userEmail);
+    const [userName, setUserName] = React.useState('');
+    const [userEmail, setUserEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
     const user = new Profile()
