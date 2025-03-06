@@ -44,8 +44,6 @@ export function Scores() {
         {
             if(scoreText[i].name == userTable.name)
             {
-                console.warn(scoreText[i]);
-                console.warn(userTable);
                 scoreText[i] = userTable;
                 inTable = true;
 
