@@ -5,8 +5,8 @@ import { Profile } from "../login/profile";
 import './scores.css';
 
 export function Scores() {
-    const [score, setScore] = React.useState([]);
-    const [points, setPoints] = React.useState([]);
+    const [score, setScore] = React.useState(() => { return JSON.parse(localStorage.getItem('scores')) || [] });
+    const [points, setPoints] = React.useState(0);
     const userName = localStorage.getItem('Username');
     const userKey = JSON.parse(localStorage.getItem(userName + ' Guess'));
     const userProfile = new Profile();
@@ -28,7 +28,7 @@ export function Scores() {
     localStorage.setItem('scores', JSON.stringify(score));
 
     React.useEffect(() => {
-        let userScore = scoreCalc.score(userKey, answerKey);
+        const userScore = scoreCalc.score(userKey, answerKey);
         setPoints(userScore);
 
         // Update Profile in Local Storage
@@ -38,14 +38,32 @@ export function Scores() {
 
         const scoreText = JSON.parse(localStorage.getItem('scores'));
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
-        console.warn(userTable);
-        scoreText.push(userTable);
+
+        let inTable = false;
+        for(let i = 0; i < scoreText.length; i++)
+        {
+            if(scoreText[i].name == userTable.name)
+            {
+                console.warn(scoreText[i]);
+                console.warn(userTable);
+                scoreText[i] = userTable;
+                inTable = true;
+
+                continue;
+            }
+        }
+        
+        if(inTable == false)
+        {
+            scoreText.push(userTable);
+        }
 
         if (scoreText) {
             setScore(scoreText);
         }
 
-        
+        localStorage.setItem('scores', JSON.stringify(scoreText));
+
     }, []);
 
     const scoreRows = [];
