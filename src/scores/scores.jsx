@@ -58,6 +58,8 @@ export function Scores() {
             scoreText.push(userTable);
         }
 
+        scoreText.sort((a, b) => b.score - a.score);
+
         if (scoreText) {
             setScore(scoreText);
         }
