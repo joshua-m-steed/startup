@@ -778,3 +778,39 @@ IP addresses and Port Numbers are needed when connecting to the Internet. Port n
 - `443` > (HTTPS) HTTP secure / Secure web requests
 
 Caddy will read these protocols and redirects to the needed locations. **DON'T** overlap port numbers so that each can communicate differetly with Caddy and file locations. For example, `simon` is on port 3000 and `startup` is on port 4000. High range ports don't matter as long as they don't overlap.  
+
+*HTTP*  
+The method for communicating when on the web.  
+Use `curl` to see some of this exchange of requests and responses.  
+
+Reponses
+```http
+GET /hypertext/WWW/Helping.html HTTP/1.1
+Host: info.cern.ch
+Accept: text/html
+```
+General Syntax for an HTTP response is below.
+```yaml
+<verb> <url path, parameters, anchor> <version>
+[<header key: value>]*
+[
+
+  <body>
+]
+```
+The Verb, Path, Parameters, Anchor, and Version are all included in the requests. The remaining lines are optional and paired off as key value pairs. The body is also optional and is removed from the headers by two /n's.  
+General Syntax for an HTTP reques. The one main difference between is the first line variables.  
+```yaml
+<version> <status code> <status string>
+[<header key: value>]*
+[
+
+  <body>
+]
+```
+*Verbs*  
+`GET` - Get the requested resource. This can represent a request to get a single resource or a resource representing a list of resources.  
+`POST` - Create a new resource. The body of the request contains the resource. The response should include a unique ID of the newly created resource.  
+`PUT` - Update a resource.  
+`DELETE` - Delete a resource.  
+`OPTIONS` - Get metadata on the source.  
