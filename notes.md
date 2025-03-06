@@ -763,3 +763,18 @@ Web Resources can be just about **anything**. Examples include: images, JSON obj
 
 Other names include: `Uniform Resource Name (URN)` - Unique resource, not really location - and `Uniform Resource Identifier (URI)` - A general resource identifier.  
 
+*Ports*  
+IP addresses and Port Numbers are needed when connecting to the Internet. Port numbers help support a device to access different **Protocols**. These protocols can sometimes be public and exposed or internally used. **IANA** defines standard port numbers.  
+- Common Port Numbers -
+- `20`  > (FTP) File Transfer Protocol / Data transfer
+- `22`  > (SSH) Secure Shell / Connecting remote devices
+- `25`  > (SMTP) Simple Mail Tranfer Protocol / Send mail
+- `53`  > (DNS) Domain Name System / Looking up IP addresses
+- `80`  > (HTTP) Hypertext Transfer Protocol / Web Requests
+- `110` > (POP3) Post Office Protocol / Retrieve mail
+- `123` > (NTP) Network Time Protocol / Manage time
+- `161` > (SNMP) Simple Network Management Protocol / Manage Network Devices like routers or printers
+- `194` > (IRC) Internet Relay Chat / For chatting
+- `443` > (HTTPS) HTTP secure / Secure web requests
+
+Caddy will read these protocols and redirects to the needed locations. **DON'T** overlap port numbers so that each can communicate differetly with Caddy and file locations. For example, `simon` is on port 3000 and `startup` is on port 4000. High range ports don't matter as long as they don't overlap.  
