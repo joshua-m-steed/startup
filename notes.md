@@ -848,3 +848,87 @@ HTTP/2 200
 Cookie: myAppCookie=tasty
 ```
 Allows the server to remember things like the language preference of the user, or the user's authentication credentials. Also used to track and share.  
+
+*JavaScript Modules*  
+Modules allow for the partitioning and sharing of code. Since modules create a file-based scopre for the code they represent, it must be exported from one file and imported to another file.  
+To import, use the format: `const X = require('y');`  
+As example, importing the `Express library` installed using NPM and exported from the local file `./database.js`.  
+```
+const express = require('express');
+const DB = require('./database.js');
+```
+Exporting something from own code uses `module.exports` global variable:
+```
+functional alertDis(msg) {
+    alert(msg);
+}
+
+module.exports = {
+    alertDisplay,
+};
+```
+
+*ES Modules*  
+ES Modules wiht Node.js needs specification
+```js
+{
+  "name": "service",
+  "version": "1.0.0",
+  "description": "This demonstrates a service for a web application.",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+```
+Importing with ES modules has the format `import X from 'y';` such as `import express from 'express';  express().listen(3000);`  
+Use `export` for importing from your own code.
+```
+export function alertDisplay(msg) {
+    console.log(msg);
+}
+
+import { alertDisplay } from './alert.js';
+alertDisplay('called from main.js');
+```
+
+*In the browser*  
+Key thing to understand is they can only be called from other modules. ES module can be specified by including type `module`. 
+```html
+<script type="module">
+  import { alertDisplay } from './alert.js';
+  alertDisplay('module loaded');
+</script>
+```
+An event handler or explicity adding a function to global widow. In example, the module will be called upon botton or key is pressed.  
+```html
+<html>
+  <body>
+    <script type="module">
+      import { alertDisplay } from './alert.js';
+      window.btnClick = alertDisplay;
+
+      document.body.addEventListener('keypress', function (event) {
+        alertDisplay('Key pressed');
+      });
+    </script>
+    <button onclick="btnClick('button clicked')">Press me</button>
+  </body>
+</html>
+```
+
+*Fetch*  
+The preferred way to make HTTP requests. Fetch takes a URL and returns a promise. `then` function takes a callback that is async called when URL is grabbed. If returned is a type of json, `json` can be used on the response to convert to JavaScript. Example:  
+```
+fetch('https://quote.cs260.click')
+  .then((response) => response.json())
+  .then((jsonResponse) => {
+    console.log(jsonResponse);
+  });
+// RESPONSE
+{
+    author: 'Kyle Simpson',
+    quote: "There's nothing more permanent than a temporary hack."
+}
+```
+[Practice CodePen](https://codepen.io/Joshua-S25/pen/dPyRWdL)
