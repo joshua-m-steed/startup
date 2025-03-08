@@ -1,19 +1,29 @@
 import React from "react";
 import { Profile } from "./profile";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export function Login() {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
     const [userName, setUserName] = React.useState('');
     const [userEmail, setUserEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [users, setUsers] = React.useState(() => { return JSON.parse(localStorage.getItem('users')) || [] })
 
     const user = new Profile()
+    localStorage.setItem('users', JSON.stringify(users));
+
+    const navigate = useNavigate();
+
+    //Funciton for updating the users library
+    const addUser = (userFile) => {
+        setUsers(prevUsers => [...prevUsers, userFile]);
+    };
 
     // Create Profiles to effectively use data throughout
     // Varificiation in the future?
     async function loginUser() {
-        user.create(userName, userEmail, password);
+        // Create userFile
+        user.create(userName, userEmail, password, users);
 
         setUserName(userName);
         setUserEmail(userEmail);
@@ -21,11 +31,18 @@ export function Login() {
     }
 
     async function createUser() {
-        user.create(userName, userEmail, password);
+        let userFile = user.create(userName, userEmail, password, users);
 
-        setUserName(userName);
-        setUserEmail(userEmail);
-        setPassword(password);
+        if(user.auth == true)
+        {
+            setUserName(userName);
+            setUserEmail(userEmail);
+            setPassword(password);
+            
+            addUser(userFile);
+            localStorage.setItem('users', JSON.stringify(users));
+            navigate("guess");
+        }
     }
 
     React.useEffect(() => {
@@ -54,8 +71,8 @@ export function Login() {
             </div>
             <br />
             <div>
-                <NavLink to='guess'><button className="sign" type="submit" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button></NavLink>
-                <button className="create" type="submit" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
+                <NavLink to='guess'><button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button></NavLink>
+                <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
             </div>
             </form>
         </main>

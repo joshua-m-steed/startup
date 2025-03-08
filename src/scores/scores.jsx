@@ -5,7 +5,7 @@ import { Profile } from "../login/profile";
 import './scores.css';
 
 export function Scores() {
-    const [score, setScore] = React.useState(() => { return JSON.parse(localStorage.getItem('scores')) || [] });
+    const [scores, setScores] = React.useState(() => { return JSON.parse(localStorage.getItem('scores')) || [] });
     const [points, setPoints] = React.useState(0);
     const userName = localStorage.getItem('Username');
     const userKey = JSON.parse(localStorage.getItem(userName + ' Guess'));
@@ -25,7 +25,7 @@ export function Scores() {
     answerKey.hymnNum = ["4", "4", "4"];
     answerKey.templeLoc = [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
 
-    localStorage.setItem('scores', JSON.stringify(score));
+    localStorage.setItem('scores', JSON.stringify(scores));
 
     React.useEffect(() => {
         const userScore = scoreCalc.score(userKey, answerKey);
@@ -59,7 +59,7 @@ export function Scores() {
         scoreText.sort((a, b) => b.score - a.score);
 
         if (scoreText) {
-            setScore(scoreText);
+            setScores(scoreText);
         }
 
         localStorage.setItem('scores', JSON.stringify(scoreText));
@@ -67,10 +67,10 @@ export function Scores() {
     }, []);
 
     const scoreRows = [];
-    if (score.length) {
-        for (const [i] of score.entries()) {
-            let usr = score[i].name;
-            let scr = score[i].score;
+    if (scores.length) {
+        for (const [i] of scores.entries()) {
+            let usr = scores[i].name;
+            let scr = scores[i].score;
             let trp;
 
             if(i + 1 == 1)

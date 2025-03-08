@@ -5,28 +5,45 @@ export class Profile {
         this.email = '';
         this.pass = '';
         this.score = 0;
+        this.auth = false;
     }
 
-    verify(testUsername, testEmail, testPass)
+    verify(userLibrary)
     {
-        if(this.name == testUsername && this.email == testEmail && this.pass == testPass)
+
+        // Needs to have logic behind it
+        if(userLibrary)
         {
             return true;
         }
-        else 
-        {
-            return false;
-        }
+
+        console.warn(userLibrary);
     }
 
-    create(name, email, pass, score = 0)
+    create(name, email, pass, userLibrary, score = 0)
     {
-        let file = {name: name, email: email, pass: pass, score: score};
+        // Set Profile Class and variables / Object
+        
         this.name = name;
         this.email = email;
         this.pass = pass;
-        localStorage.setItem(this.name + ' Profile', JSON.stringify(file));
-        localStorage.setItem('Username', this.name);
+
+        // VERIFY -> Compare local storage "Players" If present, return error message, if false, navigate
+        let isUnique = this.verify(userLibrary);
+
+        if(isUnique == true)
+        {
+            this.auth = true;
+            let file = {name: name, email: email, pass: pass, score: score, auth: this.auth};
+            localStorage.setItem(this.name + ' Profile', JSON.stringify(file));
+            localStorage.setItem('Username', this.name);
+            return file;
+        }
+        else
+        {
+            console.warn(`Sorry, you're username, ${name}, is already taken`);
+            return false;
+        }
     }
 
     refill(name)
