@@ -10,14 +10,18 @@ export class Profile {
 
     verify(userLibrary)
     {
-
         // Needs to have logic behind it
-        if(userLibrary)
+        for(let i = 0; i < userLibrary.length; i++)
         {
-            return true;
+            if(this.name == userLibrary[i].name)
+            {
+                console.warn(userLibrary);
+                return false;
+            }
         }
 
-        console.warn(userLibrary);
+        return true;
+        
     }
 
     create(name, email, pass, userLibrary, score = 0)
@@ -53,6 +57,15 @@ export class Profile {
         this.email = temp.email;
         this.pass = temp.pass;
         this.score = temp.score;
+    }
+
+    reset()
+    {
+        this.name = '';
+        this.email = '';
+        this.pass = '';
+        this.score = 0;
+        this.auth = false
     }
 
     delete()

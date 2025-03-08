@@ -43,13 +43,17 @@ export function Login() {
             localStorage.setItem('users', JSON.stringify(users));
             navigate("guess");
         }
+        else
+        {
+            user.reset();
+            console.warn("HELLO THERE");
+        }
     }
 
     React.useEffect(() => {
         setImageUrl('https://random.dog/201915e6-89e5-4811-8648-7c433d771af5.jpg');
     }, []);
 
-    // NTS :: Currently an issue with buttons directing to guess.html?
     return (
         <main>
             <h1>Welcome to Fantasy General Conference</h1>
