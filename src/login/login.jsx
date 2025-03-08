@@ -22,12 +22,16 @@ export function Login() {
     // Create Profiles to effectively use data throughout
     // Varificiation in the future?
     async function loginUser() {
-        // Create userFile
-        user.create(userName, userEmail, password, users);
+        user.login(userName, userEmail, password, users);
 
-        setUserName(userName);
-        setUserEmail(userEmail);
-        setPassword(password);
+        if(user.auth == true)
+        {
+            setUserName(userName);
+            setUserEmail(userEmail);
+            setPassword(password);
+
+            navigate("guess");
+        }
     }
 
     async function createUser() {
@@ -46,7 +50,6 @@ export function Login() {
         else
         {
             user.reset();
-            console.warn("HELLO THERE");
         }
     }
 
@@ -75,7 +78,7 @@ export function Login() {
             </div>
             <br />
             <div>
-                <NavLink to='guess'><button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button></NavLink>
+                <button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button>
                 <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
             </div>
             </form>

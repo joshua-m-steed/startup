@@ -15,7 +15,6 @@ export class Profile {
         {
             if(this.name == userLibrary[i].name)
             {
-                console.warn(userLibrary);
                 return false;
             }
         }
@@ -27,7 +26,6 @@ export class Profile {
     create(name, email, pass, userLibrary, score = 0)
     {
         // Set Profile Class and variables / Object
-        
         this.name = name;
         this.email = email;
         this.pass = pass;
@@ -35,6 +33,7 @@ export class Profile {
         // VERIFY -> Compare local storage "Players" If present, return error message, if false, navigate
         let isUnique = this.verify(userLibrary);
 
+        // TRUE -> The userLibrary couldn't find a username match with proposed name
         if(isUnique == true)
         {
             this.auth = true;
@@ -47,6 +46,32 @@ export class Profile {
         {
             console.warn(`Sorry, you're username, ${name}, is already taken`);
             return false;
+        }
+    }
+
+    login(name, email, pass, userLibrary, score = 0)
+    {
+        // Set Profile Class and variables / Object
+        this.name = name;
+        this.email = email;
+        this.pass = pass;
+ 
+        // VERIFY -> Compare local storage "Players" If present, return error message, if false, navigate
+        let isUnique = this.verify(userLibrary);
+
+        // FALSE -> The userLibrary has your username, you can continue
+        if(isUnique == false)
+        {
+            this.auth = true;
+            let file = {name: name, email: email, pass: pass, score: score, auth: this.auth};
+            localStorage.setItem(this.name + ' Profile', JSON.stringify(file));
+            localStorage.setItem('Username', this.name);
+            return;
+        }
+        else
+        {
+            console.warn(`Sorry, you're username, ${name}, doesn't exist`);
+            return ;
         }
     }
 
