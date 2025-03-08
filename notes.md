@@ -932,3 +932,63 @@ fetch('https://quote.cs260.click')
 }
 ```
 [Practice CodePen](https://codepen.io/Joshua-S25/pen/dPyRWdL)
+
+*Node Web Service*  
+Use `F5` in VSCode in order to run backed and server frontend to the browser. 
+
+*Express*  
+Provides support for routing requests to service endpoints, manipulating HTTP with JSON body, generate HTTP responses, and uses middleware to add functionality.  
+`npm install express`  
+-> Defining Routes  
+`const express = require('express');` + `const app = express()` -> `app.listen(8080);`  
+HTTP endpoints are implemented through Express using HTTP paths. A route function that handles an HTTP GET request, use `get`. The `get` funciton has two parameters, the URL path and call back function. Path is used to match.  
+```js
+app.get('/store/provo', (req, res, next) => {
+  res.send({ name: 'provo' });
+});
+```
+The response function:  
+`req`  - Request Object  
+`res`  - Response Object  
+`next` - Routing function when another function should generate a reponse  
+The example above compares the routing function patterns in the order they're added to Express app object. Two matches will output the first one will called and given the next matching function in the `next` parameter.  
+
+Other HTTP verbs like POST and DELETE can be appended to `app`.  
+```js
+// Wildcard - matches /store/x and /star/y
+app.put('/st*/:storeName', (req, res) => res.send({ update: req.params.storeName }));
+
+// Pure regular expression
+app.delete(/\/store\/(.+)/, (req, res) => res.send({ delete: req.params[0] }));
+```
+
+*Using Middleware*  
+The standard pattern has two pieces: Mediator and middleware. Middleware represents componentized pieces of functionality. The mediator loads the middleware components and determines order of operation. The mediator gets a request, passes it around the middleware components. This pattern makes Express the mediator and middleware functions is middleware components.  
+
+Some functions are available as middleware by default while others need NPM install or to be created wth Express. Routing is a middleware but only runs if it matches, but normal middleware functions are called with every HTTP request unless a middleware function precedes and wasn't called.  
+`Path Example: HTTP Req -> req | midware | next -> req | midware | res -> HTTP res`  
+`Syntax Example: function middlewareName(req, res, name)`  
+
+Order and remembering to use `next()` when needed is important. When using middleware, you can make your own, use builtin, or thrid party middleware. An example of third party middle ware looks like this:  
+`npm install cookie-parser`  
+```js
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+
+app.post('/cookie/:name/:value', (req, res, next) => {
+  res.cookie(req.params.name, req.params.value);
+  res.send({ cookie: `${req.params.name}:${req.params.value}` });
+});
+
+app.get('/cookie', (req, res, next) => {
+  res.send({ cookie: req.cookies });
+});
+```
+*Error Handling Middleware*  
+Similar idea to normal middleware formatting, but involving a fourth parameter, `err`:  
+```js
+function errorMiddlewareName(err, req, res, next)
+```
+*Debugging an Express Web Service*  
+When using `F5` set breakpoints to pause and observe the variables. Also use `F11` or the `Step in` button to explore the functions after breakpoint!  
