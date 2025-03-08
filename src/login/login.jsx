@@ -8,11 +8,16 @@ export function Login() {
     const [userEmail, setUserEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [users, setUsers] = React.useState(() => { return JSON.parse(localStorage.getItem('users')) || [] })
+    
 
     const user = new Profile()
     localStorage.setItem('users', JSON.stringify(users));
 
-    const navigate = useNavigate();
+    const [loggedIn, setLoggedIn] = React.useState(() => { 
+        let temp = JSON.parse(localStorage.getItem(userName + ' Profile')) || [];
+        return temp.auth || user.auth;});
+
+    // const navigate = useNavigate();
 
     //Funciton for updating the users library
     const addUser = (userFile) => {
@@ -30,7 +35,9 @@ export function Login() {
             setUserEmail(userEmail);
             setPassword(password);
 
-            navigate("guess");
+            setLoggedIn(user.auth);
+
+            // navigate("guess");
         }
     }
 
@@ -45,12 +52,21 @@ export function Login() {
             
             addUser(userFile);
             localStorage.setItem('users', JSON.stringify(users));
-            navigate("guess");
+
+            setLoggedIn(user.auth);
+
+            // navigate("guess");
         }
         else
         {
             user.reset();
         }
+    }
+
+    async function logoutUser() {
+        user.reset();
+        localStorage.removeItem("Username");
+        setLoggedIn(user.auth);
     }
 
     React.useEffect(() => {
@@ -77,10 +93,17 @@ export function Login() {
                 <input id="user_pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" />
             </div>
             <br />
-            <div>
-                <button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button>
-                <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
-            </div>
+                {loggedIn == false ? (
+                    <div>
+                        <button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button>
+                        <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
+                    </div>
+                ) : (
+                    <div>
+                        <NavLink to='guess'><button className="play" type="button" disabled={loggedIn != true}>Play</button></NavLink>
+                        <button className="logout" type="button" onClick={() => logoutUser()}>Logout</button>
+                    </div>
+                )}
             </form>
         </main>
     );
