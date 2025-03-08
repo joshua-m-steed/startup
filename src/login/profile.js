@@ -15,11 +15,11 @@ export class Profile {
         {
             if(this.name == userLibrary[i].name)
             {
-                return false;
+                return [false, i];
             }
         }
 
-        return true;
+        return [true, null];
         
     }
 
@@ -31,7 +31,7 @@ export class Profile {
         this.pass = pass;
 
         // VERIFY -> Compare local storage "Players" If present, return error message, if false, navigate
-        let isUnique = this.verify(userLibrary);
+        let [isUnique, _] = this.verify(userLibrary);
 
         // TRUE -> The userLibrary couldn't find a username match with proposed name
         if(isUnique == true)
@@ -57,7 +57,12 @@ export class Profile {
         this.pass = pass;
  
         // VERIFY -> Compare local storage "Players" If present, return error message, if false, navigate
-        let isUnique = this.verify(userLibrary);
+        let [isUnique, matchNum] = this.verify(userLibrary);
+
+        if(this.email != userLibrary[matchNum].email || this.pass != userLibrary[matchNum].pass)
+        {
+            isUnique = true;
+        }
 
         // FALSE -> The userLibrary has your username, you can continue
         if(isUnique == false)
@@ -70,7 +75,7 @@ export class Profile {
         }
         else
         {
-            console.warn(`Sorry, you're username, ${name}, doesn't exist`);
+            console.warn(`Sorry, you're account, ${name}, doesn't exist`);
             return ;
         }
     }
