@@ -59,7 +59,7 @@ export class Profile {
         // VERIFY -> Compare local storage "Players" If present, return error message, if false, navigate
         let [isUnique, matchNum] = this.verify(userLibrary);
 
-        if(this.email != userLibrary[matchNum].email || this.pass != userLibrary[matchNum].pass)
+        if(matchNum == null || this.email != userLibrary[matchNum].email || this.pass != userLibrary[matchNum].pass)
         {
             isUnique = true;
         }
