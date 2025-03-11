@@ -21,6 +21,11 @@ app.use(function ( err, req, res, next) {
     res.status(500).send({ type: err.name, message: err.message });
 });
 
+// Catch to default if lost
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
+
 // Router
 var apiRouter = express.Router();
 app.use('/api', apiRouter);
