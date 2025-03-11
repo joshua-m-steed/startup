@@ -47,7 +47,9 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 async function findUser(field, value) {
     console.log("--- Searching...");
-    return;
+    if(!value) { return null };
+
+    return users.find((u) => u[field] === value);
 }
 
 async function createUser(name, email, password) {
