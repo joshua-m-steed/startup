@@ -33,7 +33,7 @@ app.use('/api', apiRouter);
 // Creates new user
 apiRouter.post('/auth/create', async (req, res) => {
     if (await findUser('name', req.body.name)) {
-        console.log("Couldn't create user, already exists");
+        console.log("/// Couldn't create user, already exists");
         res.status(409).send({ msg: 'User already exists' });
     } else {
         const user = await createUser(req.body.name, req.body.email, req.body.password);
@@ -42,25 +42,33 @@ apiRouter.post('/auth/create', async (req, res) => {
         res.send({ name: user.name}); //WHY ARE WE SENDING THIS AGAIN?
     }
 
-    console.log("Moving to INDEX JSX...");
+    console.log("<-> Moving to INDEX JSX...");
 })
 
 async function findUser(field, value) {
-    console.log("Searching...");
+    console.log("--- Searching...");
     return;
 }
 
 async function createUser(name, email, password) {
-    console.log("Data collected: Creating...");
+    console.log("--- Data collected: Creating...");
+    passwordHashed = await bcrypt.hash(password, 10);
+
+    console.log(`---  I got some hashbrowns for you! It looks like ${passwordHashed}`);
 
     const user = {
         name: name,
         email: email,
-        password: password,
+        password: passwordHashed,
         token: uuid.v4()
     }
 
+    users.push(user);
+
+    console.log(`$$$ Add to Cart: Here's your inventory -> ${JSON.stringify(users)}`);
+
     return user;
+
 }
 
 // Catch to default if lost
