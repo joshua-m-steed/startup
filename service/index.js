@@ -30,6 +30,24 @@ app.use(function ( err, req, res, next) {
 var apiRouter = express.Router();
 app.use('/api', apiRouter);
 
+// Login current user
+apiRouter.post('/auth/login', async (req, res) => {
+    const user = await findUser('name', req.body.name)
+    if (user)
+    {
+        if(await bcrypt.compare(req.body.password, user.password)) 
+        {
+            console.log('OOO FOUND YOU');
+            user.token = uuid.v4();
+            // setCookie();
+            res.send({ name: user.name});
+            console.log("<-> Moving to INDEX JSX...");
+            return;
+        }
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
+})
+
 // Creates new user
 apiRouter.post('/auth/create', async (req, res) => {
     if (await findUser('name', req.body.name)) {
