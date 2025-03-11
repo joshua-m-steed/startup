@@ -25,15 +25,14 @@ export function Login() {
     };
 
     // Create Profiles to effectively use data throughout
-    // Varificiation in the future?
     async function loginUser() {
         user.login(userName, userEmail, password, users);
 
         if(user.auth == true)
         {
-            setUserName(userName);
-            setUserEmail(userEmail);
-            setPassword(password);
+            // setUserName(userName);
+            // setUserEmail(userEmail);
+            // setPassword(password);
 
             setLoggedIn(user.auth);
 
@@ -42,16 +41,14 @@ export function Login() {
     }
 
     async function createUser() {
-        let userFile = user.create(userName, userEmail, password, users);
+        userLoginOrCreate(`/api/auth/create`);
+        console.log("Success!");
+        // let userFile = user.create(userName, userEmail, password, users);
 
         if(user.auth == true)
-        {
-            setUserName(userName);
-            setUserEmail(userEmail);
-            setPassword(password);
-            
-            addUser(userFile);
-            localStorage.setItem('users', JSON.stringify(users));
+        {       
+            // addUser(userFile);
+            // localStorage.setItem('users', JSON.stringify(users));
 
             setLoggedIn(user.auth);
 
@@ -67,6 +64,22 @@ export function Login() {
         user.reset();
         localStorage.removeItem("Username");
         setLoggedIn(user.auth);
+    }
+
+    async function userLoginOrCreate(endpoint) {
+        console.log("Entering the feilds and awaiting response...");
+        const response = await fetch(endpoint, {
+            method: 'post',
+            body: JSON.stringify({ name: userName, email: userEmail, password: password}),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+              },
+        });
+        if (response?.status === 200) {
+            localStorage.setItem('Username', userName);
+
+
+        }
     }
 
     React.useEffect(() => {

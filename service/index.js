@@ -9,6 +9,10 @@ const authCookieName = 'token';
 
 const port = process.argv > 2 ? process.argv[2] : 4000;
 
+// Score and User libraries
+let users = [];
+let scores = [];
+
 // Declaring parsing and hosting static content
 app.use(express.json());
 
@@ -21,14 +25,48 @@ app.use(function ( err, req, res, next) {
     res.status(500).send({ type: err.name, message: err.message });
 });
 
-// Catch to default if lost
-app.use((_req, res) => {
-    res.sendFile('index.html', { root: 'public' });
-});
 
 // Router
 var apiRouter = express.Router();
 app.use('/api', apiRouter);
+
+// Creates new user
+apiRouter.post('/auth/create', async (req, res) => {
+    if (await findUser('name', req.body.name)) {
+        console.log("Couldn't create user, already exists");
+        res.status(409).send({ msg: 'User already exists' });
+    } else {
+        const user = await createUser(req.body.name, req.body.email, req.body.password);
+
+        // setCookie(res, user.token);
+        res.send({ name: user.name}); //WHY ARE WE SENDING THIS AGAIN?
+    }
+
+    console.log("Moving to INDEX JSX...");
+})
+
+async function findUser(field, value) {
+    console.log("Searching...");
+    return;
+}
+
+async function createUser(name, email, password) {
+    console.log("Data collected: Creating...");
+
+    const user = {
+        name: name,
+        email: email,
+        password: password,
+        token: uuid.v4()
+    }
+
+    return user;
+}
+
+// Catch to default if lost
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
 
 // Ears are open O.O
 app.listen(port, () => {
