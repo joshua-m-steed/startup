@@ -39,12 +39,13 @@ apiRouter.post('/auth/login', async (req, res) => {
         {
             console.log('OOO FOUND YOU');
             user.token = uuid.v4();
-            // setCookie();
+            setCookie(res, user.token);
             res.send({ name: user.name});
             console.log("<-> Moving to INDEX JSX...");
             return;
         }
     }
+    console.log("/// Couldn't log you in lol");
     res.status(401).send({ msg: 'Unauthorized' });
 })
 
@@ -54,10 +55,11 @@ apiRouter.post('/auth/create', async (req, res) => {
         console.log("/// Couldn't create user, already exists");
         res.status(409).send({ msg: 'User already exists' });
     } else {
+        console.log("OOO We did it! You have an account now!")
         const user = await createUser(req.body.name, req.body.email, req.body.password);
 
-        // setCookie(res, user.token);
-        res.send({ name: user.name}); //WHY ARE WE SENDING THIS AGAIN?
+        setCookie(res, user.token);
+        res.send({ name: user.name});
     }
 
     console.log("<-> Moving to INDEX JSX...");
@@ -89,6 +91,16 @@ async function createUser(name, email, password) {
 
     return user;
 
+}
+
+function setCookie(response, authToken)
+{
+    response.cookie(authCookieName, authToken,
+    {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'strict',
+    });
 }
 
 // Catch to default if lost

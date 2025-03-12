@@ -44,7 +44,7 @@ export function Login() {
 
     async function createUser() {
         userLoginOrCreate(`/api/auth/create`);
-        console.log("Success!");
+        console.log("You've returned");
         // let userFile = user.create(userName, userEmail, password, users);
 
         if(user.auth == true)
