@@ -122,6 +122,7 @@ export function Login() {
             <div>
                 <img className="profile" src={imageUrl} alt="User_Profile_Image" width="10%" height="auto" />
             </div>
+            {loggedIn == false ? (
             <form id="user_info" method="get" action="guess.html">
             <div className="input_container">
                <span>👨‍💻</span> 
@@ -136,18 +137,18 @@ export function Login() {
                 <input id="user_pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" />
             </div>
             <br />
-                {loggedIn == false ? (
                     <div>
                         <button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button>
                         <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
                     </div>
+            </form>
                 ) : (
                     <div>
+                        <h1>{userName}</h1>
                         <NavLink to='guess'><button className="play" type="button" disabled={loggedIn != true}>Play</button></NavLink>
                         <button className="logout" type="button" onClick={() => logoutUser()}>Logout</button>
                     </div>
                 )}
-            </form>
         </main>
     );
 }
