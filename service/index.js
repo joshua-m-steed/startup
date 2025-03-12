@@ -84,6 +84,28 @@ apiRouter.delete('/auth/logout', async (req, res) => {
     res.status(204).end();
 });
 
+const isAuth = async (req, res, next) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    if(user)
+    {
+        next();
+    }
+    else
+    {
+        res.status(401).send({ msg: "Sorry, you're not authorized!"});
+    }
+}
+
+apiRouter.post(`/scores`, isAuth, (req, res) => {
+    console.log(`--- MADE IT TO SCORES PREV ---> ${JSON.stringify(scores)}`);
+    console.log(" ");
+    console.log(`DATA This is the body: ${JSON.stringify(req.body)}`);
+    console.log(" ");
+    scores = updateScores(req.body);
+    console.log(`--- POST SCORES UPDATE ---> ${JSON.stringify(scores)}`);
+    res.send(scores);
+})
+
 async function findUser(field, value) {
     console.log("--- Searching...");
     if(!value) { return null };
@@ -121,6 +143,35 @@ function setCookie(response, authToken)
         sameSite: 'strict',
     });
 }
+
+function updateScores(newScore) {
+    let inTable = false;
+
+    for (let i = 0; i < scores.length; i++) 
+    {
+        if (scores[i].name === newScore.name) 
+        {
+            scores[i] = newScore;
+            inTable = true;
+            continue;
+        }
+    }
+
+    if (!inTable) 
+    {
+        scores.push(newScore);
+    }
+
+    scores.sort((a, b) => b.score - a.score);
+
+    if (scores.length > 10) 
+    {
+        scores.length = 10;
+    }
+
+    return scores;
+}
+
 
 // Catch to default if lost
 app.use((_req, res) => {

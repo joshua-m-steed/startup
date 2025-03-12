@@ -13,7 +13,7 @@ export function Scores() {
     const scoreCalc = new ScoreCalculator();
     const answerKey = new GuessSheet();
    
-    userProfile.refill(userName);
+    // userProfile.refill(userName);
 
     // TEMPORARY --> Note to self, create an Admin/Answer page
     answerKey.satMor = ["a", "a", "a"];
@@ -32,39 +32,53 @@ export function Scores() {
         setPoints(userScore);
 
         // Update Profile in Local Storage
-        userProfile.updateScore(userScore);
+        // userProfile.updateScore(userScore);
         // Update Profile to access for userTable
         userProfile.score = userScore;
 
         const scoreText = JSON.parse(localStorage.getItem('scores'));
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
 
-        let inTable = false;
-        for(let i = 0; i < scoreText.length; i++)
-        {
-            if(scoreText[i].name == userTable.name)
-            {
-                scoreText[i] = userTable;
-                inTable = true;
+        // let inTable = false;
+        // for(let i = 0; i < scoreText.length; i++)
+        // {
+        //     if(scoreText[i].name == userTable.name)
+        //     {
+        //         scoreText[i] = userTable;
+        //         inTable = true;
 
-                continue;
-            }
-        }
+        //         continue;
+        //     }
+        // }
         
-        if(inTable == false)
-        {
-            scoreText.push(userTable);
-        }
+        // if(inTable == false)
+        // {
+        //     scoreText.push(userTable);
+        // }
 
-        scoreText.sort((a, b) => b.score - a.score);
+        // scoreText.sort((a, b) => b.score - a.score);
 
-        if (scoreText) {
-            setScores(scoreText);
-        }
+        // if (scoreText) {
+        //     setScores(scoreText);
+        // }
 
-        localStorage.setItem('scores', JSON.stringify(scoreText));
+        // localStorage.setItem('scores', JSON.stringify(scoreText));
+        console.log(`OOO Collected the score text: ${JSON.stringify(scoreText)}`);
+        saveScore(userTable);
 
     }, []);
+
+    async function saveScore(scoreText)
+    {
+        console.log("--- Within the Save Function --- Scores/L73");
+        console.log(`DATA -> ${JSON.stringify(scoreText)}`);
+        await fetch(`/api/scores`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(scoreText),
+        });
+        console.log("XXX Exiting the Save Function XXX Scores/L79");
+    }
 
     const scoreRows = [];
     if (scores.length) {
