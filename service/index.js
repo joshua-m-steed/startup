@@ -61,6 +61,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.post('/auth/create', async (req, res) => {
     if (await findUser('name', req.body.name)) {
         console.log("/// Couldn't create user, already exists");
+        console.log(`/// Here's your list of users -> ${JSON.stringify(users)}`);
         res.status(409).send({ msg: 'User already exists' });
     } else {
         console.log("OOO We did it! You have an account now!")
@@ -105,6 +106,11 @@ apiRouter.post(`/scores`, isAuth, (req, res) => {
     console.log(`--- POST SCORES UPDATE ---> ${JSON.stringify(scores)}`);
     res.send(scores);
 })
+
+apiRouter.get(`/scores`, isAuth, (_req, res) => {
+    console.log("--- I am grabbing scores again! ---");
+    res.send(scores);
+});
 
 async function findUser(field, value) {
     console.log("--- Searching...");

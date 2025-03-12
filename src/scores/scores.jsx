@@ -65,7 +65,11 @@ export function Scores() {
         // localStorage.setItem('scores', JSON.stringify(scoreText));
         console.log(`OOO Collected the score text: ${JSON.stringify(scoreText)}`);
         saveScore(userTable);
-
+        fetch(`/api/scores`)
+            .then((response) => response.json())
+            .then((scores) => {
+                setScores(scores);
+            });
     }, []);
 
     async function saveScore(scoreText)
