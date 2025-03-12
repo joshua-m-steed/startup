@@ -9,8 +9,8 @@ export function Guess(props) {
     const userGuess = new GuessSheet();
     // const [locked, setLocked] = React.useState(false); // For a future Idea
 
-    const user = new Profile();
-    user.refill(localStorage.getItem('Username'));
+    // const user = new Profile();
+    // user.refill(localStorage.getItem('Username'));
 
     const [satMorningOne, setSatMoringOne] = React.useState('');
     const [satMorningTwo, setSatMorningTwo] = React.useState('');

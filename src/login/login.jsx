@@ -30,16 +30,17 @@ export function Login() {
         console.log("You've made it back");
         user.login(userName, userEmail, password, users);
 
-        if(user.auth == true)
-        {
-            // setUserName(userName);
-            // setUserEmail(userEmail);
-            // setPassword(password);
+        // if(user.auth == true)
+        // {
+        //     // setUserName(userName);
+        //     // setUserEmail(userEmail);
+        //     // setPassword(password);
 
-            setLoggedIn(user.auth);
+        //     setLoggedIn(user.auth);
 
-            // navigate("guess");
-        }
+        //     // navigate("guess");
+        // }
+        console.log("Did you make it here?");
     }
 
     async function createUser() {
@@ -47,19 +48,20 @@ export function Login() {
         console.log("You've returned");
         // let userFile = user.create(userName, userEmail, password, users);
 
-        if(user.auth == true)
-        {       
-            // addUser(userFile);
-            // localStorage.setItem('users', JSON.stringify(users));
+        // if(user.auth == true)
+        // {       
+        //     // addUser(userFile);
+        //     // localStorage.setItem('users', JSON.stringify(users));
 
-            setLoggedIn(user.auth);
+        //     setLoggedIn(user.auth);
 
-            // navigate("guess");
-        }
-        else
-        {
-            user.reset();
-        }
+        //     // navigate("guess");
+        // }
+        // else
+        // {
+        //     user.reset();
+        // }
+        console.log("Did you make it here?");
     }
 
     async function logoutUser() {
@@ -79,8 +81,13 @@ export function Login() {
         });
         if (response?.status === 200) {
             localStorage.setItem('Username', userName);
-
-
+            console.log("YOU ARE AUTHENTICATED");
+            setLoggedIn(true);
+        }
+        else
+        {
+            console.log("SORRY: NOT AUTH");
+            setLoggedIn(false);
         }
     }
 
@@ -88,10 +95,16 @@ export function Login() {
         fetch(`https://random.dog/woof.json`)
             .then((response) => response.json())
             .then((data) => {
-                const apiUrl = data.url;
-                // console.log(data);
-                // console.log(data.url);
-                setImageUrl(apiUrl);
+                if(data.url.endsWith(".mp4"))
+                {
+                    console.log("Ha! A video! Skipping -> :", data.url);
+                    setImageUrl("https://random.dog/ed6c2ace-d58e-41d5-bc89-96846b110f92.jpg");
+                }
+                else
+                {
+                    console.log(data.url);
+                    setImageUrl(data.url);
+                }
             })
             .catch((error) => console.error("Error fetching dog image:", error));
     }, []);
