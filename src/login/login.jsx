@@ -85,7 +85,15 @@ export function Login() {
     }
 
     React.useEffect(() => {
-        setImageUrl('https://random.dog/201915e6-89e5-4811-8648-7c433d771af5.jpg');
+        fetch(`https://random.dog/woof.json`)
+            .then((response) => response.json())
+            .then((data) => {
+                const apiUrl = data.url;
+                // console.log(data);
+                // console.log(data.url);
+                setImageUrl(apiUrl);
+            })
+            .catch((error) => console.error("Error fetching dog image:", error));
     }, []);
 
     return (
