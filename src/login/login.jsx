@@ -65,9 +65,16 @@ export function Login() {
     }
 
     async function logoutUser() {
-        user.reset();
-        localStorage.removeItem("Username");
-        setLoggedIn(user.auth);
+        fetch(`/api/auth/logout`, {
+            method: 'delete',
+        })
+            .catch(() => {
+                console.error("Couldn't log you out. Sorry!");
+            })
+            .finally(() => {
+                localStorage.removeItem("Username");
+                setLoggedIn(false);
+            })
     }
 
     async function userLoginOrCreate(endpoint) {

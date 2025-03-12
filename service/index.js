@@ -13,6 +13,14 @@ const port = process.argv > 2 ? process.argv[2] : 4000;
 let users = [];
 let scores = [];
 
+// TEMP NODE KEYS
+// <-> Swampping to Frontend
+// /// Error handling
+// --- Benchmark location
+// OOO Success with something
+// XXX Concluding
+
+
 // Declaring parsing and hosting static content
 app.use(express.json());
 
@@ -47,7 +55,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     }
     console.log("/// Couldn't log you in lol");
     res.status(401).send({ msg: 'Unauthorized' });
-})
+});
 
 // Creates new user
 apiRouter.post('/auth/create', async (req, res) => {
@@ -63,7 +71,18 @@ apiRouter.post('/auth/create', async (req, res) => {
     }
 
     console.log("<-> Moving to INDEX JSX...");
-})
+});
+
+apiRouter.delete('/auth/logout', async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    if(user)
+    {
+        console.log("XXX Bye Bye... See you next time");
+        delete user.token;
+    }
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+});
 
 async function findUser(field, value) {
     console.log("--- Searching...");
