@@ -80,14 +80,14 @@ export class Profile {
         }
     }
 
-    refill(name)
-    {
-        let temp = JSON.parse(localStorage.getItem(name + ' Profile'));
-        this.name = temp.name;
-        this.email = temp.email;
-        this.pass = temp.pass;
-        this.score = temp.score;
-    }
+    // refill(name)
+    // {
+    //     let temp = JSON.parse(localStorage.getItem(name + ' Profile'));
+    //     this.name = temp.name;
+    //     this.email = temp.email;
+    //     this.pass = temp.pass;
+    //     this.score = temp.score;
+    // }
 
     reset()
     {

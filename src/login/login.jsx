@@ -13,64 +13,73 @@ export function Login() {
     const user = new Profile()
     localStorage.setItem('users', JSON.stringify(users));
 
-    const [loggedIn, setLoggedIn] = React.useState(() => { 
-        let temp = JSON.parse(localStorage.getItem(userName + ' Profile')) || [];
-        return temp.auth || user.auth;});
-
-    // const navigate = useNavigate();
-
-    //Funciton for updating the users library
-    const addUser = (userFile) => {
-        setUsers(prevUsers => [...prevUsers, userFile]);
-    };
+    const [loggedIn, setLoggedIn] = React.useState(false);
 
     // Create Profiles to effectively use data throughout
-    // Varificiation in the future?
     async function loginUser() {
-        user.login(userName, userEmail, password, users);
+        userLoginOrCreate(`/api/auth/login`);
+        console.log("You've made it back");
 
-        if(user.auth == true)
-        {
-            setUserName(userName);
-            setUserEmail(userEmail);
-            setPassword(password);
-
-            setLoggedIn(user.auth);
-
-            // navigate("guess");
-        }
+        console.log("Did you make it here?");
     }
 
     async function createUser() {
-        let userFile = user.create(userName, userEmail, password, users);
+        userLoginOrCreate(`/api/auth/create`);
+        console.log("You've returned");
 
-        if(user.auth == true)
-        {
-            setUserName(userName);
-            setUserEmail(userEmail);
-            setPassword(password);
-            
-            addUser(userFile);
-            localStorage.setItem('users', JSON.stringify(users));
-
-            setLoggedIn(user.auth);
-
-            // navigate("guess");
-        }
-        else
-        {
-            user.reset();
-        }
+        console.log("Did you make it here?");
     }
 
     async function logoutUser() {
-        user.reset();
-        localStorage.removeItem("Username");
-        setLoggedIn(user.auth);
+        fetch(`/api/auth/logout`, {
+            method: 'delete',
+        })
+            .catch(() => {
+                console.error("Couldn't log you out. Sorry!");
+            })
+            .finally(() => {
+                localStorage.removeItem("Username");
+                setLoggedIn(false);
+            })
+    }
+
+    async function userLoginOrCreate(endpoint) {
+        console.log("Entering the feilds and awaiting response...");
+        const response = await fetch(endpoint, {
+            method: 'post',
+            body: JSON.stringify({ name: userName, email: userEmail, password: password}),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+              },
+        });
+        if (response?.status === 200) {
+            localStorage.setItem('Username', userName);
+            console.log("YOU ARE AUTHENTICATED");
+            setLoggedIn(true);
+        }
+        else
+        {
+            console.log("SORRY: NOT AUTH");
+            setLoggedIn(false);
+        }
     }
 
     React.useEffect(() => {
-        setImageUrl('https://random.dog/201915e6-89e5-4811-8648-7c433d771af5.jpg');
+        fetch(`https://random.dog/woof.json`)
+            .then((response) => response.json())
+            .then((data) => {
+                if(data.url.endsWith(".mp4"))
+                {
+                    console.log("Ha! A video! Skipping -> :", data.url);
+                    setImageUrl("https://random.dog/ed6c2ace-d58e-41d5-bc89-96846b110f92.jpg");
+                }
+                else
+                {
+                    console.log(data.url);
+                    setImageUrl(data.url);
+                }
+            })
+            .catch((error) => console.error("Error fetching dog image:", error));
     }, []);
 
     return (
@@ -79,6 +88,7 @@ export function Login() {
             <div>
                 <img className="profile" src={imageUrl} alt="User_Profile_Image" width="10%" height="auto" />
             </div>
+            {loggedIn == false ? (
             <form id="user_info" method="get" action="guess.html">
             <div className="input_container">
                <span>👨‍💻</span> 
@@ -93,18 +103,18 @@ export function Login() {
                 <input id="user_pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" />
             </div>
             <br />
-                {loggedIn == false ? (
                     <div>
                         <button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button>
                         <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
                     </div>
+            </form>
                 ) : (
                     <div>
+                        <h1>{userName}</h1>
                         <NavLink to='guess'><button className="play" type="button" disabled={loggedIn != true}>Play</button></NavLink>
                         <button className="logout" type="button" onClick={() => logoutUser()}>Logout</button>
                     </div>
                 )}
-            </form>
         </main>
     );
 }
