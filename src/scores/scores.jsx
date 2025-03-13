@@ -9,10 +9,10 @@ export function Scores() {
     const [points, setPoints] = React.useState(0);
     const userName = localStorage.getItem('Username');
     const userKey = JSON.parse(localStorage.getItem(userName + ' Guess'));
+    const answerKey = new GuessSheet();
     const userProfile = new Profile();
     const scoreCalc = new ScoreCalculator();
-    const answerKey = new GuessSheet();
-   
+    
     // userProfile.refill(userName);
 
     // TEMPORARY --> Note to self, create an Admin/Answer page
@@ -29,38 +29,13 @@ export function Scores() {
 
     React.useEffect(() => {
         const userScore = scoreCalc.score(userKey, answerKey);
+        console.log(`The score is ${userScore}`);
         setPoints(userScore);
 
-        // Update Profile in Local Storage
-        // userProfile.updateScore(userScore);
-        // Update Profile to access for userTable
         userProfile.score = userScore;
 
         const scoreText = JSON.parse(localStorage.getItem('scores'));
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
-
-        // let inTable = false;
-        // for(let i = 0; i < scoreText.length; i++)
-        // {
-        //     if(scoreText[i].name == userTable.name)
-        //     {
-        //         scoreText[i] = userTable;
-        //         inTable = true;
-
-        //         continue;
-        //     }
-        // }
-        
-        // if(inTable == false)
-        // {
-        //     scoreText.push(userTable);
-        // }
-
-        // scoreText.sort((a, b) => b.score - a.score);
-
-        // if (scoreText) {
-        //     setScores(scoreText);
-        // }
 
         // localStorage.setItem('scores', JSON.stringify(scoreText));
         console.log(`OOO Collected the score text: ${JSON.stringify(scoreText)}`);

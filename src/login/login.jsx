@@ -14,53 +14,19 @@ export function Login() {
     localStorage.setItem('users', JSON.stringify(users));
 
     const [loggedIn, setLoggedIn] = React.useState(false);
-        // let temp = JSON.parse(localStorage.getItem(userName + ' Profile')) || [];
-        // return temp.auth || user.auth;});
-
-    // const navigate = useNavigate();
-
-    //Funciton for updating the users library
-    // const addUser = (userFile) => {
-    //     setUsers(prevUsers => [...prevUsers, userFile]);
-    // };
 
     // Create Profiles to effectively use data throughout
     async function loginUser() {
         userLoginOrCreate(`/api/auth/login`);
         console.log("You've made it back");
-        // user.login(userName, userEmail, password, users);
 
-        // if(user.auth == true)
-        // {
-        //     // setUserName(userName);
-        //     // setUserEmail(userEmail);
-        //     // setPassword(password);
-
-        //     setLoggedIn(user.auth);
-
-        //     // navigate("guess");
-        // }
         console.log("Did you make it here?");
     }
 
     async function createUser() {
         userLoginOrCreate(`/api/auth/create`);
         console.log("You've returned");
-        // let userFile = user.create(userName, userEmail, password, users);
 
-        // if(user.auth == true)
-        // {       
-        //     // addUser(userFile);
-        //     // localStorage.setItem('users', JSON.stringify(users));
-
-        //     setLoggedIn(user.auth);
-
-        //     // navigate("guess");
-        // }
-        // else
-        // {
-        //     user.reset();
-        // }
         console.log("Did you make it here?");
     }
 

@@ -12,8 +12,8 @@ const port = process.argv > 2 ? process.argv[2] : 4000;
 // Score and User libraries
 let users = [];
 let scores = [];
-let userGuess = {};
-let answerGuess = {};
+// let userGuess = {};
+// let answerGuess = {};
 let userScore = 0;
 
 // TEMP NODE KEYS

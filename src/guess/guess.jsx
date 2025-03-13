@@ -9,9 +9,6 @@ export function Guess(props) {
     const userGuess = new GuessSheet();
     // const [locked, setLocked] = React.useState(false); // For a future Idea
 
-    // const user = new Profile();
-    // user.refill(localStorage.getItem('Username'));
-
     const [satMorningOne, setSatMoringOne] = React.useState('');
     const [satMorningTwo, setSatMorningTwo] = React.useState('');
     const [satMorningThree, setSatMorningThree] = React.useState('');
@@ -56,13 +53,7 @@ export function Guess(props) {
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
         console.log(`HERE'S YOUR GUESS!! -> ${JSON.stringify(userGuess)}`);
-
-        fetch(`/api/guess`, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(userGuess),
-        });
-        // userGuess.save(localStorage.getItem('Username'));
+        userGuess.save(localStorage.getItem('Username'));
     }
 
     function tri_package(var1='', var2='', var3='') {
