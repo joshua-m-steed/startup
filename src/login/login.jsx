@@ -13,16 +13,16 @@ export function Login() {
     const user = new Profile()
     localStorage.setItem('users', JSON.stringify(users));
 
-    const [loggedIn, setLoggedIn] = React.useState(() => { 
-        let temp = JSON.parse(localStorage.getItem(userName + ' Profile')) || [];
-        return temp.auth || user.auth;});
+    const [loggedIn, setLoggedIn] = React.useState(false);
+        // let temp = JSON.parse(localStorage.getItem(userName + ' Profile')) || [];
+        // return temp.auth || user.auth;});
 
     // const navigate = useNavigate();
 
     //Funciton for updating the users library
-    const addUser = (userFile) => {
-        setUsers(prevUsers => [...prevUsers, userFile]);
-    };
+    // const addUser = (userFile) => {
+    //     setUsers(prevUsers => [...prevUsers, userFile]);
+    // };
 
     // Create Profiles to effectively use data throughout
     async function loginUser() {

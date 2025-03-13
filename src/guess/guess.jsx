@@ -55,7 +55,14 @@ export function Guess(props) {
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
-        userGuess.save(localStorage.getItem('Username'));
+        console.log(`HERE'S YOUR GUESS!! -> ${JSON.stringify(userGuess)}`);
+
+        fetch(`/api/guess`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(userGuess),
+        });
+        // userGuess.save(localStorage.getItem('Username'));
     }
 
     function tri_package(var1='', var2='', var3='') {

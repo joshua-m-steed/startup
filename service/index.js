@@ -12,6 +12,8 @@ const port = process.argv > 2 ? process.argv[2] : 4000;
 // Score and User libraries
 let users = [];
 let scores = [];
+let userGuess = {};
+let answerGuess = {};
 let userScore = 0;
 
 // TEMP NODE KEYS
@@ -113,6 +115,19 @@ apiRouter.get(`/scores`, isAuth, (_req, res) => {
     console.log("--- I am grabbing scores again! ---");
     console.log(`Here's what I'm sending... ${JSON.stringify([scores, userScore])}`);
     res.send([scores, userScore]);
+});
+
+apiRouter.post(`/guess`, isAuth, (req, res) => {
+    console.log("Headers:", req.headers);
+    console.log("Body:", req.body);
+
+    console.log(`--- NOW IN GUESS POST ---> ${JSON.stringify(userGuess)}`);
+    console.log(" ");
+    console.log(`DATA This is the body: ${JSON.stringify(req.body)}`);
+    console.log(" ");
+    userGuess = req.body;
+    console.log(`--- POST SCORES UPDATE ---> ${JSON.stringify(userGuess)}`);
+    res.send(userGuess);
 });
 
 async function findUser(field, value) {
