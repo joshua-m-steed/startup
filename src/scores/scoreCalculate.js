@@ -30,9 +30,13 @@ export class ScoreCalculator {
         let points = 0;
 
         for(let category in cleanAnswer) {
-            if (!Array.isArray(cleanAnswer[category]) || !Array.isArray(cleanGuess[category])) {
-                    console.error(`Category ${category} is not an array or doesn't exist.`);
-                    continue;
+            if (cleanAnswer == null || cleanGuess == null) {
+                console.error("Either cleanAnswer or cleanGuess is null or undefined.");
+                continue;
+            }
+            else if (!Array.isArray(cleanAnswer[category]) || !Array.isArray(cleanGuess[category])) {
+                console.error(`Category ${category} is not an array or doesn't exist.`);
+                continue;
             }
 
             let i = 0;

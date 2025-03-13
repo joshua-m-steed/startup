@@ -24,16 +24,20 @@ export default function App() {
                                 Home
                             </NavLink>
                         </li>
+                        {authState === true && (
                         <li>
                             <NavLink to="guess">
                                 Guess
                             </NavLink>
                         </li>
+                        )}
+                        {authState === true && (
                         <li>
                             <NavLink to="scores">
                                 Scores
                             </NavLink>
                         </li>
+                        )}
                         </menu>
                     </nav>
                     <hr />
