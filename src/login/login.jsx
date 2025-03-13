@@ -13,43 +13,41 @@ export function Login({ savedName, authState, onAuthStateChange }) {
     const user = new Profile()
     localStorage.setItem('users', JSON.stringify(users));
 
-    // const [authState, onAuthChange] = React.useState(false);
-
     // Create Profiles to effectively use data throughout
     async function loginUser() {
         const success = await userLoginOrCreate(`/api/auth/login`);
         if (success) {
-            console.log(`PREV ${authState}`);
+            // console.log(`PREV ${authState}`);
             onAuthStateChange(userName, true);
-            console.log(`CHANGE ${authState}`);
+            // console.log(`CHANGE ${authState}`);
         }
         else
         {
             console.log("Account creation failed");
-            console.log(`Their state is ${authState}`);
+            // console.log(`Their state is ${authState}`);
         }
         
-        console.log("You've made it back");
-        console.log(`Their state is ${authState}`);
+        // console.log("You've made it back");
+        // console.log(`Their state is ${authState}`);
     }
 
     async function createUser() {
         const success = await userLoginOrCreate(`/api/auth/create`);
-        console.log("You've returned");
+        // console.log("You've returned");
         if (success)
         {
-            console.log(`PREV 2 ${authState}`);
+            // console.log(`PREV 2 ${authState}`);
             onAuthStateChange(userName, true);
-            console.log(`CHANGE 2 ${authState}`);
+            // console.log(`CHANGE 2 ${authState}`);
         }
         else
         {
             console.log("Account created failed");
-            console.log(`Their state is ${authState}`);
+            // console.log(`Their state is ${authState}`);
         }
 
-        console.log("Did you make it here?");
-        console.log(`Their state is ${authState}`);
+        // console.log("Did you make it here?");
+        // console.log(`Their state is ${authState}`);
     }
 
     async function logoutUser() {

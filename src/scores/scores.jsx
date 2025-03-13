@@ -29,7 +29,7 @@ export function Scores() {
 
     React.useEffect(() => {
         const userScore = scoreCalc.score(userKey, answerKey);
-        console.log(`The score is ${userScore}`);
+        // console.log(`The score is ${userScore}`);
         setPoints(userScore);
 
         userProfile.score = userScore;
@@ -37,14 +37,14 @@ export function Scores() {
         const scoreText = JSON.parse(localStorage.getItem('scores'));
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
 
-        // localStorage.setItem('scores', JSON.stringify(scoreText));
-        console.log(`OOO Collected the score text: ${JSON.stringify(scoreText)}`);
+        localStorage.setItem('scores', JSON.stringify(scoreText));
+        // console.log(`OOO Collected the score text: ${JSON.stringify(scoreText)}`);
         saveScore(userTable);
         fetch(`/api/scores`)
             .then((response) => response.json())
             .then(([scoresArray, selfPoints]) => {
-                console.log(`OBJECT -> ${JSON.stringify(scoresArray)}`);
-                console.log(`POINTS -> ${JSON.stringify(selfPoints)}`);
+                // console.log(`OBJECT -> ${JSON.stringify(scoresArray)}`);
+                // console.log(`POINTS -> ${JSON.stringify(selfPoints)}`);
                 setScores(scoresArray);
                 setPoints(selfPoints);
             });
@@ -52,14 +52,14 @@ export function Scores() {
 
     async function saveScore(scoreText)
     {
-        console.log("--- Within the Save Function --- Scores/L73");
-        console.log(`DATA -> ${JSON.stringify(scoreText)}`);
+        // console.log("--- Within the Save Function --- Scores/L73");
+        // console.log(`DATA -> ${JSON.stringify(scoreText)}`);
         await fetch(`/api/scores`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(scoreText),
         });
-        console.log("XXX Exiting the Save Function XXX Scores/L79");
+        // console.log("XXX Exiting the Save Function XXX Scores/L79");
     }
 
     const scoreRows = [];

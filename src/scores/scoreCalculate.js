@@ -31,7 +31,7 @@ export class ScoreCalculator {
 
         for(let category in cleanAnswer) {
             if (cleanAnswer == null || cleanGuess == null) {
-                console.error("Either cleanAnswer or cleanGuess is null or undefined.");
+                // console.error("Either cleanAnswer or cleanGuess is null or undefined.");
                 continue;
             }
             else if (!Array.isArray(cleanAnswer[category]) || !Array.isArray(cleanGuess[category])) {
