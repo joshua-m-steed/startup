@@ -28,11 +28,7 @@ export function Scores() {
     localStorage.setItem('scores', JSON.stringify(scores));
 
     React.useEffect(() => {
-        let userScore = 0;
-        if(userKey != {})
-        {
-            userScore = scoreCalc.score(userKey, answerKey);
-        }
+        const userScore = scoreCalc.score(userKey, answerKey);
         console.log(`The score is ${userScore}`);
         setPoints(userScore);
 

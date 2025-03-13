@@ -25,11 +25,6 @@ export class ScoreCalculator {
     }
 
     score(guess, answer) {
-        if(guess = {})
-        {
-            console.log("ERROR WATCH IT");
-        }
-
         let cleanAnswer = this.#clean(answer);
         let cleanGuess = this.#clean(guess);
         let points = 0;
