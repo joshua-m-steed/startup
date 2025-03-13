@@ -67,8 +67,11 @@ export function Scores() {
         saveScore(userTable);
         fetch(`/api/scores`)
             .then((response) => response.json())
-            .then((scores) => {
-                setScores(scores);
+            .then(([scoresArray, selfPoints]) => {
+                console.log(`OBJECT -> ${JSON.stringify(scoresArray)}`);
+                console.log(`POINTS -> ${JSON.stringify(selfPoints)}`);
+                setScores(scoresArray);
+                setPoints(selfPoints);
             });
     }, []);
 

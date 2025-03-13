@@ -28,7 +28,7 @@ export function Login() {
     async function loginUser() {
         userLoginOrCreate(`/api/auth/login`);
         console.log("You've made it back");
-        user.login(userName, userEmail, password, users);
+        // user.login(userName, userEmail, password, users);
 
         // if(user.auth == true)
         // {

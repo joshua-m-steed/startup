@@ -12,6 +12,7 @@ const port = process.argv > 2 ? process.argv[2] : 4000;
 // Score and User libraries
 let users = [];
 let scores = [];
+let userScore = 0;
 
 // TEMP NODE KEYS
 // <-> Swampping to Frontend
@@ -43,7 +44,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     const user = await findUser('name', req.body.name)
     if (user)
     {
-        if(await bcrypt.compare(req.body.password, user.password)) 
+        if(await bcrypt.compare(req.body.password, user.password) && req.body.email == user.email) 
         {
             console.log('OOO FOUND YOU');
             user.token = uuid.v4();
@@ -103,13 +104,15 @@ apiRouter.post(`/scores`, isAuth, (req, res) => {
     console.log(`DATA This is the body: ${JSON.stringify(req.body)}`);
     console.log(" ");
     scores = updateScores(req.body);
+    userScore = req.body.score;
     console.log(`--- POST SCORES UPDATE ---> ${JSON.stringify(scores)}`);
     res.send(scores);
 })
 
 apiRouter.get(`/scores`, isAuth, (_req, res) => {
     console.log("--- I am grabbing scores again! ---");
-    res.send(scores);
+    console.log(`Here's what I'm sending... ${JSON.stringify([scores, userScore])}`);
+    res.send([scores, userScore]);
 });
 
 async function findUser(field, value) {
