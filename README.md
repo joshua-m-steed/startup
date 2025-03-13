@@ -153,11 +153,11 @@ classDiagram
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **Node.js/Express HTTP service** - Express is set up to run the service file and sets base cases.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Express and other packages are installed. They're set up to run the service file and sets base cases.
+- [x] **Static middleware for frontend** - Middleware is implemented for the static files.
 - [x] **Calls to third party endpoints** - I included a third party endpoint to call a dog api for photos and gifs. This is located on `login.jsx`.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Backend service endpoints** - Multiple endpoints are set up to post and send data via front/backend.
+- [x] **Frontend calls service endpoints** - The frontend calls data through endpoints and then changes and displays variables provided by the endpoint calls.
 
 ## 🚀 DB/Login deliverable
 
