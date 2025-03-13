@@ -8,6 +8,10 @@ import { Guess } from './guess/guess';
 import { Scores } from './scores/scores';
 
 export default function App() {
+    const [savedName, setSavedName] = React.useState(localStorage.getItem('Username') || '');
+    const currAuthState = savedName ? true : false;
+    const [authState, setAuthState] = React.useState(currAuthState);
+
     return (
         <BrowserRouter>
             <div className='app'>
@@ -37,7 +41,15 @@ export default function App() {
 
                 <main>
                     <Routes>
-                        <Route path='/' element={<Login />} exact />
+                        <Route path='/' element={
+                            <Login 
+                                savedName={savedName}
+                                authState={authState} 
+                                onAuthStateChange={(savedName, authState) => {
+                                    setSavedName(savedName);
+                                    setAuthState(authState);
+                                }}
+                            />} exact />
                         <Route path='guess' element={<Guess />} />
                         <Route path='scores' element={<Scores />} />
                         <Route path='*' element={<NotFound />} />

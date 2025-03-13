@@ -2,9 +2,9 @@ import React from "react";
 import { Profile } from "./profile";
 import { NavLink, useNavigate } from "react-router-dom";
 
-export function Login() {
+export function Login({ savedName, authState, onAuthStateChange }) {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
-    const [userName, setUserName] = React.useState('');
+    const [userName, setUserName] = React.useState( savedName || '');
     const [userEmail, setUserEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [users, setUsers] = React.useState(() => { return JSON.parse(localStorage.getItem('users')) || [] })
@@ -13,21 +13,43 @@ export function Login() {
     const user = new Profile()
     localStorage.setItem('users', JSON.stringify(users));
 
-    const [loggedIn, setLoggedIn] = React.useState(false);
+    // const [authState, onAuthChange] = React.useState(false);
 
     // Create Profiles to effectively use data throughout
     async function loginUser() {
-        userLoginOrCreate(`/api/auth/login`);
+        const success = await userLoginOrCreate(`/api/auth/login`);
+        if (success) {
+            console.log(`PREV ${authState}`);
+            onAuthStateChange(userName, true);
+            console.log(`CHANGE ${authState}`);
+        }
+        else
+        {
+            console.log("Account creation failed");
+            console.log(`Their state is ${authState}`);
+        }
+        
         console.log("You've made it back");
-
-        console.log("Did you make it here?");
+        console.log(`Their state is ${authState}`);
     }
 
     async function createUser() {
-        userLoginOrCreate(`/api/auth/create`);
+        const success = await userLoginOrCreate(`/api/auth/create`);
         console.log("You've returned");
+        if (success)
+        {
+            console.log(`PREV 2 ${authState}`);
+            onAuthStateChange(userName, true);
+            console.log(`CHANGE 2 ${authState}`);
+        }
+        else
+        {
+            console.log("Account created failed");
+            console.log(`Their state is ${authState}`);
+        }
 
         console.log("Did you make it here?");
+        console.log(`Their state is ${authState}`);
     }
 
     async function logoutUser() {
@@ -39,7 +61,8 @@ export function Login() {
             })
             .finally(() => {
                 localStorage.removeItem("Username");
-                setLoggedIn(false);
+                onAuthStateChange(userName, false);
+                // setLoggedIn(false);
             })
     }
 
@@ -55,12 +78,12 @@ export function Login() {
         if (response?.status === 200) {
             localStorage.setItem('Username', userName);
             console.log("YOU ARE AUTHENTICATED");
-            setLoggedIn(true);
+            return true;
         }
         else
         {
             console.log("SORRY: NOT AUTH");
-            setLoggedIn(false);
+            // setLoggedIn(false);
         }
     }
 
@@ -88,7 +111,7 @@ export function Login() {
             <div>
                 <img className="profile" src={imageUrl} alt="User_Profile_Image" width="10%" height="auto" />
             </div>
-            {loggedIn == false ? (
+            {authState == false ? (
             <form id="user_info" method="get" action="guess.html">
             <div className="input_container">
                <span>👨‍💻</span> 
@@ -111,7 +134,7 @@ export function Login() {
                 ) : (
                     <div>
                         <h1>{userName}</h1>
-                        <NavLink to='guess'><button className="play" type="button" disabled={loggedIn != true}>Play</button></NavLink>
+                        <NavLink to='guess'><button className="play" type="button" disabled={authState != true}>Play</button></NavLink>
                         <button className="logout" type="button" onClick={() => logoutUser()}>Logout</button>
                     </div>
                 )}
