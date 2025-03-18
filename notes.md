@@ -992,3 +992,40 @@ function errorMiddlewareName(err, req, res, next)
 ```
 *Debugging an Express Web Service*  
 When using `F5` set breakpoints to pause and observe the variables. Also use `F11` or the `Step in` button to explore the functions after breakpoint!  
+
+*Endpoints*  
+Uses `GET`, `POST`, `DELETE`, etc for calling endpoints and their items. 
+```js
+app.post('/api/auth', async (req, res) => {
+  res.send({ email: '' });
+});
+
+app.put('/api/auth', async (req, res) => {
+  res.send({ email: '' });
+});
+
+app.delete('/api/auth', async (req, res) => {
+  res.send({});
+});
+
+app.get('/api/user', async (req, res) => {
+  res.send({ email: '' });
+});
+```
+This is the how endpoints are set while you can call `fetch('endpoint')` and use `.catch` and `.then` in order to process the data.  
+
+*Hashed*  
+Use `bcrypt` in order to hash passwords in order to prevent access to sensitive information. Use tokens/cookies to act as a key.  
+``` js
+const bcrypt = require('bcryptjs');
+
+const users = [];
+
+async function createUser(email, password) {
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    email: email,
+    password: passwordHash,
+  };
+```
