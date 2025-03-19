@@ -1029,3 +1029,61 @@ async function createUser(email, password) {
     password: passwordHash,
   };
 ```
+
+# Database  
+*Uploading Files*  
+Files can be uploaded using HTML `input` elements and type `file` with the `Multer` NPM packages on the backend.  
+
+Frontend Code  
+The frontend code and event handler for the selected file only accepts file types `.png, .jpeg, .jpg`. There can also be another `div` to display the image.  
+`<input type="file" id="fileInput" name="file" accept=".png, .jpeg, .jpg" onchange="uploadFile(this)" />`  
+
+The JavaScript takes care of uploading the file to server and returns it using the filename.  
+```js
+async function uploadFile(fileInput) {
+  const file = fileInput.files[0];
+  if (file) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await fetch('/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      document.querySelector('#upload').src = `/${data.file}`;
+    } else {
+      alert(data.message);
+    }
+  }
+}
+```
+*Backend Code*  
+`npm install express multer`  
+Multer handles the files requrest, enforces limits  
+```js
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: 'public/',
+    filename: (req, file, cb) => {
+      const filetype = file.originalname.split('.').pop();
+      const id = Math.round(Math.random() * 1e9);
+      const filename = `${id}.${filetype}`;
+      cb(null, filename);
+    },
+  }),
+  limits: { fileSize: 64000 },
+});
+```
+Sets up the file using multer and prepares limitaitons.  
+
+*Where to store*  
+Placing files on a server may not be best in the long run because:
+1 - You only have so much space. If the space is used up, the server will fail and need to be rebuilt  
+2 - Servers often are replaced and new versions are released which may cause some data lose  
+3 - Storage is often not backed up on servers, so data can be lost then
+4 - If there are multiple application servers, can't assume you're requesting from the correct server  
+
+Use a dedicated storage service with guarenteed durability. 
