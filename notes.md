@@ -1080,10 +1080,37 @@ const upload = multer({
 Sets up the file using multer and prepares limitaitons.  
 
 *Where to store*  
-Placing files on a server may not be best in the long run because:
+Placing files on a server may not be best in the long run because:  
 1 - You only have so much space. If the space is used up, the server will fail and need to be rebuilt  
 2 - Servers often are replaced and new versions are released which may cause some data lose  
-3 - Storage is often not backed up on servers, so data can be lost then
+3 - Storage is often not backed up on servers, so data can be lost then  
 4 - If there are multiple application servers, can't assume you're requesting from the correct server  
 
-Use a dedicated storage service with guarenteed durability. 
+Use a dedicated storage service with guarenteed durability.  
+
+*MongoDB Atlas*  
+The sytax and uses of Mongo follow after JavaScript synstax and object usage. The tags don't need to be strict which means you can have unique tags or missing common tags.  
+
+```js
+[
+  {
+    _id: 'NUMS',
+    name: 'Loft',
+    last_revoiew: {
+      $date: `20XX-XX-Other-Data`,
+    },
+    price: 3000,
+ }
+]
+```
+
+If you are looking to find or "query" some items from your DB, it would look like this:  
+```js
+// find all homes
+db.house.find();
+// find houses with two + bedrooms
+db.house.find({ beds: { $gte: 2} });
+// find house with text 'modern' or 'beach' in summary
+db.house.find({ summary: /(modern|beach)/i });
+```
+
