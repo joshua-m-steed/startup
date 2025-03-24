@@ -19,10 +19,12 @@ const userCollection = db.collection('user');
 })();
 
 function getUser(name) {
+    console.log("I've now getting USer")
     return userCollection.findOne({ name: name });
 }
 
 function getUserByToken(token) {
+    console.log("Yep, Collecting...? prob null");
     return userCollection.findOne({ token: token });
 }
 
@@ -30,8 +32,15 @@ async function addUser(user) {
     await userCollection.insertOne(user);
 }
 
+async function updateUser(user) {
+    console.log("I'm here now");
+    await userCollection.updateOne({ name: user.name }, { $set: user });
+}
+
+
 module.exports = {
     getUser,
     getUserByToken,
     addUser,
+    updateUser,
 };

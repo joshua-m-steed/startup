@@ -50,6 +50,7 @@ apiRouter.post('/auth/login', async (req, res) => {
         {
             console.log('OOO FOUND YOU');
             user.token = uuid.v4();
+            await DB.updateUser(user);
             setCookie(res, user.token);
             res.send({ name: user.name});
             console.log("<-> Moving to INDEX JSX...");
@@ -79,10 +80,15 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
+    // console.log("Am I here yet?");
+    console.log(JSON.stringify(user));
     if(user)
     {
-        console.log("XXX Bye Bye... See you next time");
+        // console.log("XXX Bye Bye... See you next time");
+        // console.log(`${user.token} + Pre`);
         delete user.token;
+        // console.log(`${user.token} + Post`);
+        DB.updateUser(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -125,7 +131,7 @@ apiRouter.post(`/guess`, isAuth, (req, res) => {
 
 async function findUser(field, value) {
     console.log("--- Searching...");
-    if(!value) { return null };
+    if (!value) return null;
 
     if (field === 'token') {
         console.log("Got there");

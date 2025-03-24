@@ -58,6 +58,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
                 console.error("Couldn't log you out. Sorry!");
             })
             .finally(() => {
+                console.log("You did it! <3");
                 localStorage.removeItem("Username");
                 onAuthStateChange(userName, false);
                 // setLoggedIn(false);
