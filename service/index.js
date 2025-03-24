@@ -2,7 +2,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const uuid = require('uuid');
 const bcrypt = require('bcryptjs');
-
+const DB = require('./database.js');
 const app = express();
 
 const authCookieName = 'token';
@@ -134,7 +134,9 @@ async function findUser(field, value) {
     console.log("--- Searching...");
     if(!value) { return null };
 
-    return users.find((u) => u[field] === value);
+    //Verify token
+
+    return DB.getUser(value);
 }
 
 async function createUser(name, email, password) {
@@ -148,11 +150,12 @@ async function createUser(name, email, password) {
         email: email,
         password: passwordHashed,
         token: uuid.v4()
-    }
+    };
+    await DB.addUser(user);
+    // users.push(user);
 
-    users.push(user);
 
-    console.log(`$$$ Add to Cart: Here's your inventory -> ${JSON.stringify(users)}`);
+    // console.log(`$$$ Add to Cart: Here's your inventory -> ${JSON.stringify(users)}`);
 
     return user;
 

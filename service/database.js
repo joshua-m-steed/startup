@@ -5,6 +5,8 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('FGC');
 
+const userCollection = db.collection('user');
+
 (async function testConnection() {
     try {
         await db.command({ ping: 1});
@@ -15,3 +17,16 @@ const db = client.db('FGC');
         process.exit(1);
     }
 })();
+
+function getUser(name) {
+    return userCollection.findOne({ name: name });
+}
+
+async function addUser(user) {
+    await userCollection.insertOne(user);
+}
+
+module.exports = {
+    getUser,
+    addUser,
+};
