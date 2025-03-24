@@ -22,11 +22,16 @@ function getUser(name) {
     return userCollection.findOne({ name: name });
 }
 
+function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
+}
+
 async function addUser(user) {
     await userCollection.insertOne(user);
 }
 
 module.exports = {
     getUser,
+    getUserByToken,
     addUser,
 };

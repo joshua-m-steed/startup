@@ -102,31 +102,24 @@ const isAuth = async (req, res, next) => {
 
 apiRouter.post(`/scores`, isAuth, (req, res) => {
     console.log(`--- MADE IT TO SCORES PREV ---> ${JSON.stringify(scores)}`);
-    console.log(" ");
-    console.log(`DATA This is the body: ${JSON.stringify(req.body)}`);
-    console.log(" ");
+
+
     scores = updateScores(req.body);
     userScore = req.body.score;
-    console.log(`--- POST SCORES UPDATE ---> ${JSON.stringify(scores)}`);
+
     res.send(scores);
 })
 
 apiRouter.get(`/scores`, isAuth, (_req, res) => {
     console.log("--- I am grabbing scores again! ---");
-    console.log(`Here's what I'm sending... ${JSON.stringify([scores, userScore])}`);
+
     res.send([scores, userScore]);
 });
 
 apiRouter.post(`/guess`, isAuth, (req, res) => {
-    console.log("Headers:", req.headers);
-    console.log("Body:", req.body);
-
-    console.log(`--- NOW IN GUESS POST ---> ${JSON.stringify(userGuess)}`);
-    console.log(" ");
-    console.log(`DATA This is the body: ${JSON.stringify(req.body)}`);
-    console.log(" ");
+    // console.log("Headers:", req.headers);
+    // console.log("Body:", req.body);
     userGuess = req.body;
-    console.log(`--- POST SCORES UPDATE ---> ${JSON.stringify(userGuess)}`);
     res.send(userGuess);
 });
 
@@ -134,7 +127,10 @@ async function findUser(field, value) {
     console.log("--- Searching...");
     if(!value) { return null };
 
-    //Verify token
+    if (field === 'token') {
+        console.log("Got there");
+        return DB.getUserByToken(value);
+    }
 
     return DB.getUser(value);
 }
