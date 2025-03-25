@@ -50,22 +50,19 @@ apiRouter.post('/auth/login', async (req, res) => {
             await DB.updateUser(user);
             setCookie(res, user.token);
             res.send({ name: user.name});
-            console.log("<-> Moving to INDEX JSX...");
             return;
         }
     }
-    console.log("/// Couldn't log you in lol");
+
     res.status(401).send({ msg: 'Unauthorized' });
 });
 
 // Creates new user
 apiRouter.post('/auth/create', async (req, res) => {
     if (await findUser('name', req.body.name)) {
-        console.log("/// Couldn't create user, already exists");
 
         res.status(409).send({ msg: 'User already exists' });
     } else {
-        console.log("OOO We did it! You have an account now!")
         const user = await createUser(req.body.name, req.body.email, req.body.password);
 
         setCookie(res, user.token);
@@ -77,14 +74,9 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
-    // console.log("Am I here yet?");
-    console.log(JSON.stringify(user));
     if(user)
     {
-        // console.log("XXX Bye Bye... See you next time");
-        // console.log(`${user.token} + Pre`);
         delete user.token;
-        // console.log(`${user.token} + Post`);
         DB.updateUser(user);
     }
     res.clearCookie(authCookieName);
@@ -112,24 +104,19 @@ apiRouter.post(`/scores`, isAuth, async (req, res) => {
 })
 
 apiRouter.get(`/scores`, isAuth, async (_req, res) => {
-    console.log("--- I am grabbing scores again! ---");
     const scores = await DB.getTopScores();
     res.send([scores, userScore]);
 });
 
 apiRouter.post(`/guess`, isAuth, (req, res) => {
-    // console.log("Headers:", req.headers);
-    // console.log("Body:", req.body);
     userGuess = req.body;
     res.send(userGuess);
 });
 
 async function findUser(field, value) {
-    console.log("--- Searching...");
     if (!value) return null;
 
     if (field === 'token') {
-        console.log("Got there");
         return DB.getUserByToken(value);
     }
 
@@ -137,10 +124,7 @@ async function findUser(field, value) {
 }
 
 async function createUser(name, email, password) {
-    console.log("--- Data collected: Creating...");
     passwordHashed = await bcrypt.hash(password, 10);
-
-    console.log(`---  I got some hashbrowns for you! It looks like ${passwordHashed}`);
 
     const user = {
         name: name,
