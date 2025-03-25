@@ -10,8 +10,6 @@ const authCookieName = 'token';
 const port = process.argv > 2 ? process.argv[2] : 4000;
 
 // Score and User libraries
-let users = [];
-let scores = [];
 // let userGuess = {};
 // let answerGuess = {};
 let userScore = 0;
@@ -48,7 +46,6 @@ apiRouter.post('/auth/login', async (req, res) => {
     {
         if(await bcrypt.compare(req.body.password, user.password) && req.body.email == user.email) 
         {
-            console.log('OOO FOUND YOU');
             user.token = uuid.v4();
             await DB.updateUser(user);
             setCookie(res, user.token);
@@ -65,7 +62,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.post('/auth/create', async (req, res) => {
     if (await findUser('name', req.body.name)) {
         console.log("/// Couldn't create user, already exists");
-        console.log(`/// Here's your list of users -> ${JSON.stringify(users)}`);
+
         res.status(409).send({ msg: 'User already exists' });
     } else {
         console.log("OOO We did it! You have an account now!")
@@ -106,19 +103,17 @@ const isAuth = async (req, res, next) => {
     }
 }
 
-apiRouter.post(`/scores`, isAuth, (req, res) => {
-    console.log(`--- MADE IT TO SCORES PREV ---> ${JSON.stringify(scores)}`);
+apiRouter.post(`/scores`, isAuth, async (req, res) => {
 
-
-    scores = updateScores(req.body);
+    const scores = updateScores(req.body);
     userScore = req.body.score;
 
     res.send(scores);
 })
 
-apiRouter.get(`/scores`, isAuth, (_req, res) => {
+apiRouter.get(`/scores`, isAuth, async (_req, res) => {
     console.log("--- I am grabbing scores again! ---");
-
+    const scores = await DB.getTopScores();
     res.send([scores, userScore]);
 });
 
@@ -154,13 +149,8 @@ async function createUser(name, email, password) {
         token: uuid.v4()
     };
     await DB.addUser(user);
-    // users.push(user);
-
-
-    // console.log(`$$$ Add to Cart: Here's your inventory -> ${JSON.stringify(users)}`);
 
     return user;
-
 }
 
 function setCookie(response, authToken)
@@ -173,32 +163,34 @@ function setCookie(response, authToken)
     });
 }
 
-function updateScores(newScore) {
-    let inTable = false;
+async function updateScores(newScore) {
+    await DB.addScore(newScore);
+    return DB.getTopScores();
+    // let inTable = false;
 
-    for (let i = 0; i < scores.length; i++) 
-    {
-        if (scores[i].name === newScore.name) 
-        {
-            scores[i] = newScore;
-            inTable = true;
-            continue;
-        }
-    }
+    // for (let i = 0; i < scores.length; i++) 
+    // {
+    //     if (scores[i].name === newScore.name) 
+    //     {
+    //         scores[i] = newScore;
+    //         inTable = true;
+    //         continue;
+    //     }
+    // }
 
-    if (!inTable) 
-    {
-        scores.push(newScore);
-    }
+    // // if (!inTable) 
+    // // {
+    // //     scores.push(newScore);
+    // // }
 
-    scores.sort((a, b) => b.score - a.score);
+    // scores.sort((a, b) => b.score - a.score);
 
-    if (scores.length > 10) 
-    {
-        scores.length = 10;
-    }
-
-    return scores;
+    // if (scores.length > 10) 
+    // {
+    //     scores.length = 10;
+    // }
+    // await DB.addScore(newScore);
+    // return newScore;
 }
 
 

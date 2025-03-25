@@ -6,6 +6,7 @@ const client = new MongoClient(url);
 const db = client.db('FGC');
 
 const userCollection = db.collection('user');
+const scoreCollection = db.collection('score');
 
 (async function testConnection() {
     try {
@@ -37,10 +38,26 @@ async function updateUser(user) {
     await userCollection.updateOne({ name: user.name }, { $set: user });
 }
 
+async function addScore(score) {
+    return scoreCollection.insertOne(score);
+}
+
+function getTopScores() {
+    const query = { score: { $lt: 100 } };
+    const options = {
+        sort: { score: -1 },
+        limit: 10,
+    };
+    const point = scoreCollection.find(query, options);
+    return point.toArray();
+}
+
 
 module.exports = {
     getUser,
     getUserByToken,
     addUser,
     updateUser,
+    addScore,
+    getTopScores,
 };
