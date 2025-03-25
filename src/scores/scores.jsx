@@ -5,7 +5,7 @@ import { Profile } from "../login/profile";
 import './scores.css';
 
 export function Scores() {
-    const [scores, setScores] = React.useState(() => { return JSON.parse(localStorage.getItem('scores')) || [] });
+    const [scores, setScores] = React.useState([]);
     const [points, setPoints] = React.useState(0);
     const userName = localStorage.getItem('Username');
     const userKey = JSON.parse(localStorage.getItem(userName + ' Guess'));

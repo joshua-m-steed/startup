@@ -68,8 +68,6 @@ apiRouter.post('/auth/create', async (req, res) => {
         setCookie(res, user.token);
         res.send({ name: user.name});
     }
-
-    console.log("<-> Moving to INDEX JSX...");
 });
 
 apiRouter.delete('/auth/logout', async (req, res) => {
@@ -77,7 +75,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
     if(user)
     {
         delete user.token;
-        DB.updateUser(user);
+        await DB.updateUser(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -148,33 +146,45 @@ function setCookie(response, authToken)
 }
 
 async function updateScores(newScore) {
-    await DB.addScore(newScore);
-    return DB.getTopScores();
+    console.log("NewScore Var: ");
+    console.log(JSON.stringify(newScore));
+
+    const TEST = await DB.getTopScores();
+    let inTable = false;
+
+    for(let i = 0; i < TEST.length; i++)
+    {
+        console.log(`${TEST[i].name} ==? ${newScore.name}`);
+        if(TEST[i].name === newScore.name)
+        {
+            inTable = true;
+            continue;
+        }
+    }
+
+    if(inTable)
+    {
+        await DB.updateScore(newScore);
+    }
+    else
+    {
+        await DB.addScore(newScore);
+    }
+
+    return await DB.getTopScores();
     // let inTable = false;
 
-    // for (let i = 0; i < scores.length; i++) 
-    // {
-    //     if (scores[i].name === newScore.name) 
-    //     {
-    //         scores[i] = newScore;
-    //         inTable = true;
-    //         continue;
-    //     }
-    // }
+    // ####### GENERAL PSUEDO CODE #######
+    // Calls UpdateScores
+    // If 'NewScore' has username in DB
+    //  -> UpdateSCore
+    // If 'NewScore' username isn't found in DB
+    //  -> AddScore
+    // Return DB.getTopScores();
 
-    // // if (!inTable) 
-    // // {
-    // //     scores.push(newScore);
-    // // }
 
-    // scores.sort((a, b) => b.score - a.score);
-
-    // if (scores.length > 10) 
-    // {
-    //     scores.length = 10;
-    // }
-    // await DB.addScore(newScore);
-    // return newScore;
+    // ADJUST TEST variable from original. 
+    // ALSO, make "full inventory score" to compare against everything!
 }
 
 

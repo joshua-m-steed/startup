@@ -39,7 +39,13 @@ async function updateUser(user) {
 }
 
 async function addScore(score) {
-    return scoreCollection.insertOne(score);
+    console.log("--> Add Score");
+    await scoreCollection.insertOne(score);
+}
+
+async function updateScore(score) {
+    console.log("--> Update Score");
+    await scoreCollection.updateOne({ name: score.name}, { $set: score });
 }
 
 function getTopScores() {
@@ -59,5 +65,6 @@ module.exports = {
     addUser,
     updateUser,
     addScore,
+    updateScore,
     getTopScores,
 };
