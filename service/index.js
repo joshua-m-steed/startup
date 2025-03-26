@@ -70,6 +70,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     }
 });
 
+// Deletes / Logout User
 apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     if(user)
@@ -81,6 +82,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
     res.status(204).end();
 });
 
+// Checks if user has token
 const isAuth = async (req, res, next) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     if(user)
@@ -93,22 +95,18 @@ const isAuth = async (req, res, next) => {
     }
 }
 
+// Updates scores
 apiRouter.post(`/scores`, isAuth, async (req, res) => {
 
     let scores = await updateScores(req.body);
-    console.log(" ");
-    console.log(`This is out of 2, ${JSON.stringify(req.body.score)}`)
     userScore = req.body.score;
-    console.log("8) Sending Scores Back");
-    console.log(" ");
-    console.log(JSON.stringify(scores));
+
     res.send(scores);
 })
 
+// Fetches scores
 apiRouter.get(`/scores`, isAuth, async (_req, res) => {
     const scores = await DB.getTopScores();
-    console.log(`9) Scores: ${JSON.stringify(scores)}`);
-    console.log(`10) User Scores: ${JSON.stringify(userScore)}`);
 
     res.send([scores, userScore]);
 });
@@ -157,9 +155,6 @@ async function updateScores(newScore) {
     const TEST = await DB.getTopScores();
     let inTable = false;
 
-    console.log("---1---");
-    console.log(JSON.stringify(TEST));
-    console.log("---1---");
     for(let i = 0; i < TEST.length; i++)
     {
         console.log(`${TEST[i].name} ==? ${newScore.name}`);
@@ -169,10 +164,6 @@ async function updateScores(newScore) {
             continue;
         }
     }
-    console.log(" ");
-    console.log("5) Identify if Scores match or don't");
-
-    console.log("6) Update and Add Scores");
 
     if(inTable)
     {
@@ -183,21 +174,7 @@ async function updateScores(newScore) {
         await DB.addScore(newScore);
     }
 
-    console.log("---2---");
-    console.log(JSON.stringify( await DB.getTopScores() ));
-    console.log("---2---");
-
     return await DB.getTopScores();
-    // let inTable = false;
-
-    // ####### GENERAL PSUEDO CODE #######
-    // Calls UpdateScores
-    // If 'NewScore' has username in DB
-    //  -> UpdateSCore
-    // If 'NewScore' username isn't found in DB
-    //  -> AddScore
-    // Return DB.getTopScores();
-
 
     // ADJUST TEST variable from original. 
     // ALSO, make "full inventory score" to compare against everything!

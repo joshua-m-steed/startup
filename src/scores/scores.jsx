@@ -67,63 +67,6 @@ export function Scores() {
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
 
         handleScoreUpdate(userTable);
-
-        // localStorage.setItem('scores', JSON.stringify(scoreText)); // Marked to be removed
-        // const handleScoreUpdate = async () => {
-        //     await saveScore(userTable);
-
-        //     fetch(`/api/scores`)
-        //     .then((response) => response.json())
-        //     .then(([scoresArray, selfPoints]) => {
-
-        //         console.log(" ");
-        //         console.log(" === ");
-        //         console.log(" ");
-
-        //         console.log("Array");
-        //         console.log(JSON.stringify(scoresArray));
-        //         setScores(scoresArray);
-
-        //         console.log(" ");
-        //         console.log(" === ");
-        //         console.log(" ");
-
-        //         console.log("Points");
-        //         console.log(selfPoints);
-        //         setPoints(selfPoints);
-
-        //         console.log(" ");
-        //         console.log(" === ");
-        //         console.log(" ");
-        //     });
-        // }
-        // console.log("0) START: Start my Score Journey");
-        // saveScore(userTable); // [potential clean up]
-        // // console.log("0.1) USER_TABLE: Set User Score // New Table");
-        // fetch(`/api/scores`)
-        //     .then((response) => response.json())
-        //     .then(([scoresArray, selfPoints]) => {
-
-        //         console.log(" ");
-        //         console.log(" === ");
-        //         console.log(" ");
-
-        //         console.log("Array");
-        //         console.log(JSON.stringify(scoresArray));
-        //         setScores(scoresArray);
-
-        //         console.log(" ");
-        //         console.log(" === ");
-        //         console.log(" ");
-
-        //         console.log("Points");
-        //         console.log(selfPoints);
-        //         setPoints(selfPoints);
-
-        //         console.log(" ");
-        //         console.log(" === ");
-        //         console.log(" ");
-        //     });
     }, []);
 
 
@@ -135,7 +78,6 @@ export function Scores() {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(scoreText),
         });
-        // console.log("XXX Exiting the Save Function XXX Scores/L79");
     }
 
     const scoreRows = [];

@@ -20,12 +20,10 @@ const scoreCollection = db.collection('score');
 })();
 
 function getUser(name) {
-    console.log("I've now getting USer")
     return userCollection.findOne({ name: name });
 }
 
 function getUserByToken(token) {
-    console.log("Yep, Collecting...? prob null");
     return userCollection.findOne({ token: token });
 }
 
@@ -34,24 +32,18 @@ async function addUser(user) {
 }
 
 async function updateUser(user) {
-    console.log("I'm here now");
     await userCollection.updateOne({ name: user.name }, { $set: user });
 }
 
 async function addScore(score) {
-    console.log("6.5) Add Scores");
     await scoreCollection.insertOne(score);
 }
 
 async function updateScore(score) {
-    console.log("6.5) Update Scores");
-    console.log(`Pre -> ${JSON.stringify(score)}`);
     await scoreCollection.updateOne({ name: score.name}, { $set: score });
-    console.log(`POST -> ${JSON.stringify(score)}`);
 }
 
 function getTopScores() {
-    console.log("4.5 + 7.5) Topping Scores");
     const query = { score: { $lt: 100 } };
     const options = {
         sort: { score: -1 },

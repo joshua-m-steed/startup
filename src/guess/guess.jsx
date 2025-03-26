@@ -54,7 +54,6 @@ export function Guess() {
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
-        console.log(`HERE'S YOUR GUESS!! -> ${JSON.stringify(userGuess)}`);
         userGuess.save(localStorage.getItem('Username'));
     }
 
