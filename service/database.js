@@ -39,16 +39,19 @@ async function updateUser(user) {
 }
 
 async function addScore(score) {
-    console.log("--> Add Score");
+    console.log("6.5) Add Scores");
     await scoreCollection.insertOne(score);
 }
 
 async function updateScore(score) {
-    console.log("--> Update Score");
+    console.log("6.5) Update Scores");
+    console.log(`Pre -> ${JSON.stringify(score)}`);
     await scoreCollection.updateOne({ name: score.name}, { $set: score });
+    console.log(`POST -> ${JSON.stringify(score)}`);
 }
 
 function getTopScores() {
+    console.log("4.5 + 7.5) Topping Scores");
     const query = { score: { $lt: 100 } };
     const options = {
         sort: { score: -1 },

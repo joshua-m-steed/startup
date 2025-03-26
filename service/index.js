@@ -95,14 +95,21 @@ const isAuth = async (req, res, next) => {
 
 apiRouter.post(`/scores`, isAuth, async (req, res) => {
 
-    const scores = updateScores(req.body);
+    let scores = await updateScores(req.body);
+    console.log(" ");
+    console.log(`This is out of 2, ${JSON.stringify(req.body.score)}`)
     userScore = req.body.score;
-
+    console.log("8) Sending Scores Back");
+    console.log(" ");
+    console.log(JSON.stringify(scores));
     res.send(scores);
 })
 
 apiRouter.get(`/scores`, isAuth, async (_req, res) => {
     const scores = await DB.getTopScores();
+    console.log(`9) Scores: ${JSON.stringify(scores)}`);
+    console.log(`10) User Scores: ${JSON.stringify(userScore)}`);
+
     res.send([scores, userScore]);
 });
 
@@ -146,12 +153,13 @@ function setCookie(response, authToken)
 }
 
 async function updateScores(newScore) {
-    console.log("NewScore Var: ");
-    console.log(JSON.stringify(newScore));
 
     const TEST = await DB.getTopScores();
     let inTable = false;
 
+    console.log("---1---");
+    console.log(JSON.stringify(TEST));
+    console.log("---1---");
     for(let i = 0; i < TEST.length; i++)
     {
         console.log(`${TEST[i].name} ==? ${newScore.name}`);
@@ -161,6 +169,10 @@ async function updateScores(newScore) {
             continue;
         }
     }
+    console.log(" ");
+    console.log("5) Identify if Scores match or don't");
+
+    console.log("6) Update and Add Scores");
 
     if(inTable)
     {
@@ -170,6 +182,10 @@ async function updateScores(newScore) {
     {
         await DB.addScore(newScore);
     }
+
+    console.log("---2---");
+    console.log(JSON.stringify( await DB.getTopScores() ));
+    console.log("---2---");
 
     return await DB.getTopScores();
     // let inTable = false;

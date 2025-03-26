@@ -25,7 +25,36 @@ export function Scores() {
     answerKey.hymnNum = ["4", "4", "4"];
     answerKey.templeLoc = [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
 
-    localStorage.setItem('scores', JSON.stringify(scores));
+    // localStorage.setItem('scores', JSON.stringify(scores));
+    const handleScoreUpdate = async (table) => {
+        await saveScore(table);
+
+        fetch(`/api/scores`)
+        .then((response) => response.json())
+        .then(([scoresArray, selfPoints]) => {
+
+            console.log(" ");
+            console.log(" === ");
+            console.log(" ");
+
+            console.log("Array");
+            console.log(JSON.stringify(scoresArray));
+            setScores(scoresArray);
+
+            console.log(" ");
+            console.log(" === ");
+            console.log(" ");
+
+            console.log("Points");
+            console.log(selfPoints);
+            setPoints(selfPoints);
+
+            console.log(" ");
+            console.log(" === ");
+            console.log(" ");
+        });
+    }
+
 
     React.useEffect(() => {
         const userScore = scoreCalc.score(userKey, answerKey);
@@ -34,26 +63,73 @@ export function Scores() {
 
         userProfile.score = userScore;
 
-        const scoreText = JSON.parse(localStorage.getItem('scores'));
+        // const scoreText = JSON.parse(localStorage.getItem('scores')); // Marked to be removed
         const userTable = scoreCalc.createTableRow(userName, userProfile.score);
 
-        localStorage.setItem('scores', JSON.stringify(scoreText));
-        // console.log(`OOO Collected the score text: ${JSON.stringify(scoreText)}`);
-        saveScore(userTable);
-        fetch(`/api/scores`)
-            .then((response) => response.json())
-            .then(([scoresArray, selfPoints]) => {
-                // console.log(`OBJECT -> ${JSON.stringify(scoresArray)}`);
-                // console.log(`POINTS -> ${JSON.stringify(selfPoints)}`);
-                setScores(scoresArray);
-                setPoints(selfPoints);
-            });
+        handleScoreUpdate(userTable);
+
+        // localStorage.setItem('scores', JSON.stringify(scoreText)); // Marked to be removed
+        // const handleScoreUpdate = async () => {
+        //     await saveScore(userTable);
+
+        //     fetch(`/api/scores`)
+        //     .then((response) => response.json())
+        //     .then(([scoresArray, selfPoints]) => {
+
+        //         console.log(" ");
+        //         console.log(" === ");
+        //         console.log(" ");
+
+        //         console.log("Array");
+        //         console.log(JSON.stringify(scoresArray));
+        //         setScores(scoresArray);
+
+        //         console.log(" ");
+        //         console.log(" === ");
+        //         console.log(" ");
+
+        //         console.log("Points");
+        //         console.log(selfPoints);
+        //         setPoints(selfPoints);
+
+        //         console.log(" ");
+        //         console.log(" === ");
+        //         console.log(" ");
+        //     });
+        // }
+        // console.log("0) START: Start my Score Journey");
+        // saveScore(userTable); // [potential clean up]
+        // // console.log("0.1) USER_TABLE: Set User Score // New Table");
+        // fetch(`/api/scores`)
+        //     .then((response) => response.json())
+        //     .then(([scoresArray, selfPoints]) => {
+
+        //         console.log(" ");
+        //         console.log(" === ");
+        //         console.log(" ");
+
+        //         console.log("Array");
+        //         console.log(JSON.stringify(scoresArray));
+        //         setScores(scoresArray);
+
+        //         console.log(" ");
+        //         console.log(" === ");
+        //         console.log(" ");
+
+        //         console.log("Points");
+        //         console.log(selfPoints);
+        //         setPoints(selfPoints);
+
+        //         console.log(" ");
+        //         console.log(" === ");
+        //         console.log(" ");
+        //     });
     }, []);
+
 
     async function saveScore(scoreText)
     {
-        // console.log("--- Within the Save Function --- Scores/L73");
-        // console.log(`DATA -> ${JSON.stringify(scoreText)}`);
+        console.log("0.1) PRE-FETCH: Posting...");
         await fetch(`/api/scores`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
