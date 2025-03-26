@@ -1114,3 +1114,6 @@ db.house.find({ beds: { $gte: 2} });
 db.house.find({ summary: /(modern|beach)/i });
 ```
 
+Other helpful notes:  
+- Using $set lets you override the data once you find a match  
+- `await` is **VERY** helpful when you need to wait for data. Use `async` funcitons and move from there  
