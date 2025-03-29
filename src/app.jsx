@@ -6,6 +6,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Guess } from './guess/guess';
 import { Scores } from './scores/scores';
+import { Answer } from './answer/answer';
 
 export default function App() {
     const [savedName, setSavedName] = React.useState(localStorage.getItem('Username') || '');
@@ -56,6 +57,7 @@ export default function App() {
                             />} exact />
                         <Route path='guess' element={<Guess />} />
                         <Route path='scores' element={<Scores />} />
+                        <Route path='answer' element={<Answer />} />
                         <Route path='*' element={<NotFound />} />
                     </Routes>
                 </main>

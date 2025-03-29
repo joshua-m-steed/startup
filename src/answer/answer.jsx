@@ -1,11 +1,11 @@
 import React from "react";
-import { GuessSheet } from './guessSheet';
+import { GuessSheet } from "../guess/guessSheet";
 import { ScoreCalculator } from "../scores/scoreCalculate";
 import { Profile } from "../login/profile";
-import './guess.css';
+import './answer.css';
 import { NavLink } from "react-router-dom";
 
-export function Guess() {
+export function Answer() {
     // NOTE :: Attempt to Compress this code, explore ::
     const userGuess = new GuessSheet();
     const answerKey = new GuessSheet(); // Call and compare the sheets upon submission?
@@ -45,16 +45,16 @@ export function Guess() {
 
     async function saveGuess() 
     {
-        userGuess.setGuess('satMor', tri_package(satMorningOne, satMorningTwo, satMorningThree));
-        userGuess.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
-        userGuess.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
-        userGuess.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
-        userGuess.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
-        userGuess.setGuess('tieClr', tri_package(tieNelson, tieOak, tieEyring));
-        userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
-        userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
+        answerKey.setGuess('satMor', tri_package(satMorningOne, satMorningTwo, satMorningThree));
+        answerKey.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
+        answerKey.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
+        answerKey.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
+        answerKey.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
+        answerKey.setGuess('tieClr', tri_package(tieNelson, tieOak, tieEyring));
+        answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
+        answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
-        userGuess.save(localStorage.getItem('Username'));
+        answerKey.save(localStorage.getItem('Username'));
     }
 
     function tri_package(var1='', var2='', var3='') {
@@ -64,7 +64,7 @@ export function Guess() {
     return (
         <main>
             <div>
-                <h3 className="guess_title">Welcome to your FGC prediction sheet, {localStorage.getItem('Username')}!</h3>
+                <h3 className="guess_title">Welcome to Answer Key, {localStorage.getItem('Username')}!</h3>
             </div>
 
                 <hr />
@@ -74,7 +74,7 @@ export function Guess() {
             </div>
             <form>
                 <div>
-                    <h3>Who will speak to us? (1pt each)</h3>
+                    <h3>Speakers</h3>
                     Enter in a last name from the Quorum of the Twelve and First Presidency: 
 
                     <br />
@@ -144,7 +144,7 @@ export function Guess() {
                     </div>
                 </div>
                 <hr />
-                <h3>What color ties will they wear on Sunday Morning? (1pt each)</h3>
+                <h3>Tie color</h3>
                 Please select from the drop down menus next to their names: 
 
                 <br />
@@ -195,7 +195,7 @@ export function Guess() {
 
                 <hr />
 
-                <h3>What hymns will be sung? (1pt each)</h3>
+                <h3>Hymns</h3>
                 Please input the hymn number: 
 
                 <br />
@@ -219,7 +219,7 @@ export function Guess() {
                     <img className="lvtemple" src="lv_temple.jpg" alt="Las Vegas Temple" height="300" />
                 </div>
 
-                <h3>Where a temple will be announced? (1pt for Country, 2pts for State/Region, 3pts for City)</h3>
+                <h3>Temples</h3>
                 Please input the location as follows: Country, State/Region, City
 
                 <br />
@@ -241,16 +241,16 @@ export function Guess() {
                 <hr />
                 <br />
 
-                Submit your guesses and enjoy the messages of Conference!
+                Fill out the Answer Sheet as you watch General Conference!
                 <div>
                     <NavLink to='../scores'><button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button></NavLink>
-                    <button onClick={() => userGuess.clear(localStorage.getItem('Username'))}>Clear Guess</button>
+                    <button onClick={() => answerKey.clear(localStorage.getItem('Username'))}>Clear Guess</button>
                 </div>
 
                 <br />
 
                 <div>
-                    <NavLink to='../answer'><button className="answer" type="button">Answer Key</button></NavLink>
+                    <NavLink to='../guess'><button className="answer" type="button">Return to Guess</button></NavLink>
                 </div>
 
                 <br />
