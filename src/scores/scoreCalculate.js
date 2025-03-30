@@ -29,32 +29,72 @@ export class ScoreCalculator {
         let cleanGuess = this.#clean(guess);
         let points = 0;
 
-        for(let category in cleanAnswer) {
+
+        // Needs to be specific to the position
+
+        // for(let category in cleanAnswer) {
+        //     if (cleanAnswer == null || cleanGuess == null) {
+        //         // console.error("Either cleanAnswer or cleanGuess is null or undefined.");
+        //         continue;
+        //     }
+        //     else if (!Array.isArray(cleanAnswer[category]) || !Array.isArray(cleanGuess[category])) {
+        //         console.error(`Category ${category} is not an array or doesn't exist.`);
+        //         continue;
+        //     }
+
+        //     let i = 0;
+        //     while(i < cleanAnswer[category].length && i < cleanGuess[category].length) {
+        //         if(category === 'templeLoc') {
+        //             let j = 0;
+        //             while (j < cleanAnswer[category][i].length && j < cleanGuess[category][i].length) {
+        //                 if(cleanAnswer[category][i][j] == cleanGuess[category][i][j]) {
+        //                     points++;
+        //                 }
+        //                 j++;
+        //             }
+        //         } else {
+        //             if(cleanAnswer[category][i] === cleanGuess[category][i]) {
+        //                 points++;
+        //             }
+        //         }
+        //         i++; 
+        //     }
+        // }
+
+        // === This is a where one guess matters in any order
+
+        for (let category in cleanAnswer) {
             if (cleanAnswer == null || cleanGuess == null) {
-                // console.error("Either cleanAnswer or cleanGuess is null or undefined.");
                 continue;
-            }
-            else if (!Array.isArray(cleanAnswer[category]) || !Array.isArray(cleanGuess[category])) {
+            } else if (!Array.isArray(cleanAnswer[category]) || !Array.isArray(cleanGuess[category])) {
                 console.error(`Category ${category} is not an array or doesn't exist.`);
                 continue;
             }
 
-            let i = 0;
-            while(i < cleanAnswer[category].length && i < cleanGuess[category].length) {
-                if(category === 'templeLoc') {
-                    let j = 0;
-                    while (j < cleanAnswer[category][i].length && j < cleanGuess[category][i].length) {
-                        if(cleanAnswer[category][i][j] == cleanGuess[category][i][j]) {
+            if (category === 'templeLoc') {
+                for (let i = 0; i < cleanAnswer[category].length; i++) {
+                    if (!Array.isArray(cleanAnswer[category][i]) || !Array.isArray(cleanGuess[category][i])) {
+                        continue;
+                    }
+
+                    let answerSet = new Set(cleanAnswer[category][i]);
+                    let guessSet = new Set(cleanGuess[category][i]);
+
+                    for (let value of guessSet) {
+                        if (answerSet.has(value)) {
                             points++;
                         }
-                        j++;
                     }
-                } else {
-                    if(cleanAnswer[category][i] === cleanGuess[category][i]) {
+                }
+            } else {
+                let answerSet = new Set(cleanAnswer[category]);
+                let guessSet = new Set(cleanGuess[category]);
+
+                for (let value of guessSet) {
+                    if (answerSet.has(value)) {
                         points++;
                     }
                 }
-                i++; 
             }
         }
         return points;
