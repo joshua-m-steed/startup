@@ -43,7 +43,7 @@ export function Answer() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
-    async function saveGuess() 
+    async function saveAnswerKey() 
     {
         answerKey.setGuess('satMor', tri_package(satMorningOne, satMorningTwo, satMorningThree));
         answerKey.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
@@ -54,7 +54,7 @@ export function Answer() {
         answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
-        answerKey.save(localStorage.getItem('Username'));
+        answerKey._save();
     }
 
     function tri_package(var1='', var2='', var3='') {
@@ -243,8 +243,8 @@ export function Answer() {
 
                 Fill out the Answer Sheet as you watch General Conference!
                 <div>
-                    <NavLink to='../scores'><button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button></NavLink>
-                    <button onClick={() => answerKey.clear(localStorage.getItem('Username'))}>Clear Guess</button>
+                    <button className="submit" type="submit" onClick={() => saveAnswerKey()}>Update</button>
+                    <button onClick={() => answerKey.clear(localStorage.getItem('AnswerKey'))}>Clear Guess</button>
                 </div>
 
                 <br />

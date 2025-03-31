@@ -28,6 +28,11 @@ export class GuessSheet {
         localStorage.setItem(username + ' Guess', JSON.stringify(this));
     }
 
+    _save() // Placeholder function
+    {
+        localStorage.setItem('AnswerKey', JSON.stringify(this));
+    }
+
     load(username)
     {
         const savedData = JSON.parse(localStorage.getItem(username + ' Guess'));
