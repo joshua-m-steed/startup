@@ -61,6 +61,15 @@ export function Answer() {
         return [var1, var2, var3];
     }
 
+    // React.useEffect(() => {
+    //     fetch()
+    //         .then((response) => response.json())
+    //         .then((data) => {
+
+    //         })
+    //         .catch((error) => console.error("Error fetching Answer Key: ", error));
+    // }, []);
+
     return (
         <main>
             <div>

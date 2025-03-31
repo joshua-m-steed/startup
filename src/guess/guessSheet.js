@@ -1,6 +1,7 @@
 export class GuessSheet {
     constructor()
     {
+        this.name = "";
         this.satMor = [];
         this.satAft = [];
         this.satEvn = [];

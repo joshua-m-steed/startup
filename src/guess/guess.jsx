@@ -45,6 +45,7 @@ export function Guess() {
 
     async function saveGuess() 
     {
+        userGuess.name = localStorage.getItem('Username');
         userGuess.setGuess('satMor', tri_package(satMorningOne, satMorningTwo, satMorningThree));
         userGuess.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
         userGuess.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
@@ -55,6 +56,14 @@ export function Guess() {
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
         userGuess.save(localStorage.getItem('Username'));
+
+        console.log("Going to post Guess...");
+        await fetch(`/api/guess`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(userGuess),
+        });
+        console.log("Guess Posted");
     }
 
     function tri_package(var1='', var2='', var3='') {

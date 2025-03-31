@@ -32,26 +32,8 @@ export function Scores() {
         fetch(`/api/scores`)
         .then((response) => response.json())
         .then(([scoresArray, selfPoints]) => {
-
-            console.log(" ");
-            console.log(" === ");
-            console.log(" ");
-
-            console.log("Array");
-            console.log(JSON.stringify(scoresArray));
             setScores(scoresArray);
-
-            console.log(" ");
-            console.log(" === ");
-            console.log(" ");
-
-            console.log("Points");
-            console.log(selfPoints);
             setPoints(selfPoints);
-
-            console.log(" ");
-            console.log(" === ");
-            console.log(" ");
         });
     }
 
@@ -72,7 +54,6 @@ export function Scores() {
 
     async function saveScore(scoreText)
     {
-        console.log("0.1) PRE-FETCH: Posting...");
         await fetch(`/api/scores`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },

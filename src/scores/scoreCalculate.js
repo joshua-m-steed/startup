@@ -2,6 +2,10 @@ export class ScoreCalculator {
     #clean(sheet) {
         for (let category in sheet) {
             let i = 0;
+            if(category == 'name')
+            {
+                continue;
+            }
             while (i < sheet[category].length) {
                 if (typeof sheet[category][i] === 'string') {
                     let trimmed = sheet[category][i].trim();

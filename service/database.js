@@ -6,6 +6,7 @@ const client = new MongoClient(url);
 const db = client.db('FGC');
 
 const userCollection = db.collection('user');
+const guessCollection = db.collection('guesses');
 const scoreCollection = db.collection('score');
 
 (async function testConnection() {
@@ -35,6 +36,18 @@ async function updateUser(user) {
     await userCollection.updateOne({ name: user.name }, { $set: user });
 }
 
+async function saveGuess(guess) {
+    console.log("Inside the actual DB setting");
+    if(await guessCollection.findOne({ name: guess.name }))
+    {
+        await guessCollection.updateOne({ name: guess.name }, {$set: guess });
+    }
+    else
+    {
+        await guessCollection.insertOne(guess);
+    }   
+}
+
 async function addScore(score) {
     await scoreCollection.insertOne(score);
 }
@@ -59,6 +72,7 @@ module.exports = {
     getUserByToken,
     addUser,
     updateUser,
+    saveGuess,
     addScore,
     updateScore,
     getTopScores,

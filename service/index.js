@@ -111,9 +111,14 @@ apiRouter.get(`/scores`, isAuth, async (_req, res) => {
     res.send([scores, userScore]);
 });
 
-apiRouter.post(`/guess`, isAuth, (req, res) => {
-    userGuess = req.body;
+apiRouter.post(`/guess`, isAuth, async (req, res) => {
+    const userGuess = await DB.saveGuess(req.body);
+
     res.send(userGuess);
+});
+
+apiRouter.post(`/answer`, isAuth, (req, res) => {
+    answerKey = req.body;
 });
 
 async function findUser(field, value) {
@@ -157,7 +162,6 @@ async function updateScores(newScore) {
 
     for(let i = 0; i < TEST.length; i++)
     {
-        console.log(`${TEST[i].name} ==? ${newScore.name}`);
         if(TEST[i].name === newScore.name)
         {
             inTable = true;
