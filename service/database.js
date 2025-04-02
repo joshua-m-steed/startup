@@ -37,7 +37,6 @@ async function updateUser(user) {
 }
 
 async function saveGuess(guess) {
-    console.log("Inside the actual DB setting");
     if(await guessCollection.findOne({ name: guess.name }))
     {
         await guessCollection.updateOne({ name: guess.name }, {$set: guess });
@@ -46,6 +45,10 @@ async function saveGuess(guess) {
     {
         await guessCollection.insertOne(guess);
     }   
+}
+
+async function getGuess(name) {
+    return guessCollection.findOne({ name: name });
 }
 
 async function addScore(score) {
@@ -73,6 +76,7 @@ module.exports = {
     addUser,
     updateUser,
     saveGuess,
+    getGuess,
     addScore,
     updateScore,
     getTopScores,

@@ -43,6 +43,26 @@ export function Guess() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
+    async function fetchUserGuess()
+    {
+        console.log("inside");
+        const username = localStorage.getItem("Username");
+        console.log(username);
+        let fetchCall = '/api/guess/' + username;
+
+        fetch(fetchCall)
+        .then((response) => response.json())
+        .then((userGuess) => {
+            console.log("TESTING THE OBJECT");
+            console.log(JSON.stringify(userGuess));
+        });
+    }
+
+
+    React.useEffect(() => {
+        fetchUserGuess();
+    }, []);
+
     async function saveGuess() 
     {
         userGuess.name = localStorage.getItem('Username');
