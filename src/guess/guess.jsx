@@ -113,6 +113,22 @@ export function Guess() {
         setTempleThree(guess.templeLoc[2]);
     }
 
+    function clearGuess(username)
+    {
+        console.log("Start here");
+        let fetchCall = `/api/guess/` + username;
+        fetch(fetchCall, {
+            method: 'delete',
+        })
+            .catch(() => {
+                console.error("Couldn't delete your guess. Sorry!");
+            })
+            .finally(() => {
+                console.log("Your guess has been deleted!");
+                localStorage.removeItem(username + " Guess");
+            })    
+    }
+
 
     React.useEffect(() => {
         fetchUserGuess();
@@ -129,6 +145,8 @@ export function Guess() {
         userGuess.setGuess('tieClr', tri_package(tieNelson, tieOak, tieEyring));
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
+
+        userGuess.save(localStorage.getItem('Username')); // TEMPORARY REPLACEMENT
 
         console.log("Going to post Guess...");
         await fetch(`/api/guess`, {
@@ -325,7 +343,7 @@ export function Guess() {
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
                     <NavLink to='../scores'><button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button></NavLink>
-                    <button onClick={() => userGuess.clear(localStorage.getItem('Username'))}>Clear Guess</button>
+                    <button onClick={() => clearGuess(localStorage.getItem('Username'))}>Clear Guess</button>
                 </div>
 
                 <br />

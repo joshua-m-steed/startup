@@ -119,9 +119,15 @@ apiRouter.post(`/guess`, isAuth, async (req, res) => {
 
 apiRouter.get(`/guess/:username`, isAuth, async (req, res) => {
     const userGuess = await DB.getGuess(req.params.username);
-    
+
     res.send(userGuess);
 });
+
+apiRouter.delete(`/guess/:username`, isAuth, async (req, res) => {
+    DB.deleteGuess(req.params.username);
+    
+    res.status(204).end();
+})
 
 apiRouter.post(`/answer`, isAuth, (req, res) => {
     answerKey = req.body;

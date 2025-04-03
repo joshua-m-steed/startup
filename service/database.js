@@ -51,6 +51,10 @@ async function getGuess(name) {
     return guessCollection.findOne({ name: name });
 }
 
+async function deleteGuess(name) {
+    await guessCollection.deleteOne({ name: name });
+}
+
 async function addScore(score) {
     await scoreCollection.insertOne(score);
 }
@@ -77,6 +81,7 @@ module.exports = {
     updateUser,
     saveGuess,
     getGuess,
+    deleteGuess,
     addScore,
     updateScore,
     getTopScores,
