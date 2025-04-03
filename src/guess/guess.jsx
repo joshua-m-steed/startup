@@ -46,15 +46,11 @@ export function Guess() {
     async function fetchUserGuess()
     {
         const username = localStorage.getItem("Username");
-        console.log(username);
         let fetchCall = '/api/guess/' + username;
 
         fetch(fetchCall)
         .then((response) => response.json())
         .then((userGuess) => {
-            console.log("TESTING THE OBJECT");
-            console.log(JSON.stringify(userGuess));
-
             placeCurrentGuess(userGuess);
         });
 
@@ -69,6 +65,52 @@ export function Guess() {
         setSatAfternoonOne(guess.satAft[0]);
         setSatAfternoonTwo(guess.satAft[1]);
         setSatAfternoonThree(guess.satAft[2]);
+
+        setSatEveningOne(guess.satEvn[0]);
+        setSatEveningTwo(guess.satEvn[1]);
+        setSatEveningThree(guess.satEvn[2]);
+
+        setSunMorningOne(guess.sunMor[0]);
+        setSunMorningTwo(guess.sunMor[1]);
+        setSunMorningThree(guess.sunMor[2]);
+
+        setSunAfternoonOne(guess.sunAft[0]);
+        setSunAfternoonTwo(guess.sunAft[1]);
+        setSunAfternoonThree(guess.sunAft[2]);
+
+        setTieNelson(guess.tieClr[0]);
+        setTieOak(guess.tieClr[1]);
+        setTieEyring(guess.tieClr[2]);
+
+        setHymnOne(guess.hymnNum[0]);
+        setHymnTwo(guess.hymnNum[1]);
+        setHymnThree(guess.hymnNum[2]);
+        
+        let i = 0;
+        while(i < guess.templeLoc.length)
+        {
+            let fullTempleString = "";
+            if(guess.templeLoc[i].length == 3)
+            {
+                fullTempleString = guess.templeLoc[i][0] + ", " + guess.templeLoc[i][1] + ", " + guess.templeLoc[i][2];
+            }
+            else if (guess.templeLoc[i].length == 2)
+            {
+                fullTempleString = guess.templeLoc[i][0] + ", " + guess.templeLoc[i][1];
+            }
+            else if (guess.templeLoc[i].length == 1)
+            {
+                fullTempleString = guess.templeLoc[i][0];
+            }
+
+            console.log(fullTempleString);
+            guess.templeLoc[i] = fullTempleString;
+            i++;
+        }
+        
+        setTempleOne(guess.templeLoc[0]);
+        setTempleTwo(guess.templeLoc[1]);
+        setTempleThree(guess.templeLoc[2]);
     }
 
 
