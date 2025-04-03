@@ -118,12 +118,9 @@ apiRouter.post(`/guess`, isAuth, async (req, res) => {
 });
 
 apiRouter.get(`/guess/:username`, isAuth, async (req, res) => {
-    console.log("INSIDE");
-
-    
     const userGuess = await DB.getGuess(req.params.username);
-    console.log(JSON.stringify(userGuess));
-    // res.send(userGuess);
+    
+    res.send(userGuess);
 });
 
 apiRouter.post(`/answer`, isAuth, (req, res) => {

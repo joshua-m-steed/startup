@@ -11,7 +11,7 @@ export function Guess() {
     const answerKey = new GuessSheet(); // Call and compare the sheets upon submission?
     // const [locked, setLocked] = React.useState(false); // For a future Idea
 
-    const [satMorningOne, setSatMoringOne] = React.useState('');
+    const [satMorningOne, setSatMorningOne] = React.useState('');
     const [satMorningTwo, setSatMorningTwo] = React.useState('');
     const [satMorningThree, setSatMorningThree] = React.useState('');
 
@@ -45,7 +45,6 @@ export function Guess() {
 
     async function fetchUserGuess()
     {
-        console.log("inside");
         const username = localStorage.getItem("Username");
         console.log(username);
         let fetchCall = '/api/guess/' + username;
@@ -55,7 +54,21 @@ export function Guess() {
         .then((userGuess) => {
             console.log("TESTING THE OBJECT");
             console.log(JSON.stringify(userGuess));
+
+            placeCurrentGuess(userGuess);
         });
+
+    }
+
+    async function placeCurrentGuess(guess)
+    {
+        setSatMorningOne(guess.satMor[0]);
+        setSatMorningTwo(guess.satMor[1]);
+        setSatMorningThree(guess.satMor[2]);
+
+        setSatAfternoonOne(guess.satAft[0]);
+        setSatAfternoonTwo(guess.satAft[1]);
+        setSatAfternoonThree(guess.satAft[2]);
     }
 
 
@@ -117,7 +130,7 @@ export function Guess() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input id="satMorOne" type="text" value={satMorningOne} onChange={(e) => setSatMoringOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
+                                <tr><td><input id="satMorOne" type="text" value={satMorningOne} onChange={(e) => setSatMorningOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
                                 <tr><td><input id="satMorTwo" type="text" value={satMorningTwo} onChange={(e) => setSatMorningTwo(e.target.value)}/></td></tr>
                                 <tr><td><input id="satMorThree" type="text" value={satMorningThree} onChange={(e) => setSatMorningThree(e.target.value)}/></td></tr>
                             </tbody>
