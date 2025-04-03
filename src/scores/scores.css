@@ -83,6 +83,11 @@ table.scoreboard th {
     background-color: #177339;
 }
 
+div a {
+    color: black;
+    text-decoration: underline;
+}
+
 @media (max-height: 600px) {
     header {
         height: none;

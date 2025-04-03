@@ -125,6 +125,9 @@ export function Scores() {
                     </tbody>
                 </table>
             </div>
+            <div>
+                Any <a id="advice" href="https://forms.gle/ucD17eJC8YFJNbQN9">advice</a>?
+            </div>
         </main>
     );
 }
