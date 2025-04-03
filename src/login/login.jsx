@@ -11,7 +11,6 @@ export function Login({ savedName, authState, onAuthStateChange }) {
     
 
     const user = new Profile()
-    localStorage.setItem('users', JSON.stringify(users));
 
     // Create Profiles to effectively use data throughout
     async function loginUser() {

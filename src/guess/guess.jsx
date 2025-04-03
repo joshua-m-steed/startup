@@ -129,8 +129,6 @@ export function Guess() {
         userGuess.setGuess('tieClr', tri_package(tieNelson, tieOak, tieEyring));
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
-        
-        userGuess.save(localStorage.getItem('Username'));
 
         console.log("Going to post Guess...");
         await fetch(`/api/guess`, {
@@ -138,7 +136,6 @@ export function Guess() {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(userGuess),
         });
-        console.log("Guess Posted");
     }
 
     function tri_package(var1='', var2='', var3='') {
