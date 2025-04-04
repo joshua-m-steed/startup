@@ -11,7 +11,7 @@ export function Answer() {
     const answerKey = new GuessSheet(); // Call and compare the sheets upon submission?
     // const [locked, setLocked] = React.useState(false); // For a future Idea
 
-    const [satMorningOne, setSatMoringOne] = React.useState('');
+    const [satMorningOne, setSatMorningOne] = React.useState('');
     const [satMorningTwo, setSatMorningTwo] = React.useState('');
     const [satMorningThree, setSatMorningThree] = React.useState('');
 
@@ -43,8 +43,76 @@ export function Answer() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
+    async function fetchAnswerKey()
+    {
+        fetch(`api/answer`)
+        .then((response) => response.json())
+        .then((answerKey) => {
+            placeCurrent(answerKey);
+        });
+
+    }
+
+    async function placeCurrent(answer)
+    {
+        setSatMorningOne(answer.satMor[0]);
+        setSatMorningTwo(answer.satMor[1]);
+        setSatMorningThree(answer.satMor[2]);
+
+        setSatAfternoonOne(answer.satAft[0]);
+        setSatAfternoonTwo(answer.satAft[1]);
+        setSatAfternoonThree(answer.satAft[2]);
+
+        setSatEveningOne(answer.satEvn[0]);
+        setSatEveningTwo(answer.satEvn[1]);
+        setSatEveningThree(answer.satEvn[2]);
+
+        setSunMorningOne(answer.sunMor[0]);
+        setSunMorningTwo(answer.sunMor[1]);
+        setSunMorningThree(answer.sunMor[2]);
+
+        setSunAfternoonOne(answer.sunAft[0]);
+        setSunAfternoonTwo(answer.sunAft[1]);
+        setSunAfternoonThree(answer.sunAft[2]);
+
+        setTieNelson(answer.tieClr[0]);
+        setTieOak(answer.tieClr[1]);
+        setTieEyring(answer.tieClr[2]);
+
+        setHymnOne(answer.hymnNum[0]);
+        setHymnTwo(answer.hymnNum[1]);
+        setHymnThree(answer.hymnNum[2]);
+        
+        let i = 0;
+        while(i < answer.templeLoc.length)
+        {
+            let fullTempleString = "";
+            if(answer.templeLoc[i].length == 3)
+            {
+                fullTempleString = answer.templeLoc[i][0] + ", " + answer.templeLoc[i][1] + ", " + answer.templeLoc[i][2];
+            }
+            else if (answer.templeLoc[i].length == 2)
+            {
+                fullTempleString = answer.templeLoc[i][0] + ", " + answer.templeLoc[i][1];
+            }
+            else if (answer.templeLoc[i].length == 1)
+            {
+                fullTempleString = answer.templeLoc[i][0];
+            }
+
+            console.log(fullTempleString);
+            answer.templeLoc[i] = fullTempleString;
+            i++;
+        }
+        
+        setTempleOne(answer.templeLoc[0]);
+        setTempleTwo(answer.templeLoc[1]);
+        setTempleThree(answer.templeLoc[2]);
+    }
+
     async function saveAnswerKey() 
     {
+        answerKey.name = "ANSWER";
         answerKey.setGuess('satMor', tri_package(satMorningOne, satMorningTwo, satMorningThree));
         answerKey.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
         answerKey.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
@@ -54,21 +122,36 @@ export function Answer() {
         answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
-        answerKey._save();
+        console.log("Answers posted: ");
+        await fetch(`/api/answer`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(answerKey),
+        });
+        console.log("posted!");
+        console.log(JSON.stringify(answerKey));
     }
 
     function tri_package(var1='', var2='', var3='') {
         return [var1, var2, var3];
     }
 
-    // React.useEffect(() => {
-    //     fetch()
-    //         .then((response) => response.json())
-    //         .then((data) => {
+    function clearAnswer()
+    {
+        fetch(`/api/answer`, {
+            method: 'delete',
+        })
+            .catch(() => {
+                console.error("Couldn't delete the answer key. Sorry!");
+            })
+            .finally(() => {
+                console.log("Your guess has been deleted!");
+            })    
+    }
 
-    //         })
-    //         .catch((error) => console.error("Error fetching Answer Key: ", error));
-    // }, []);
+    React.useEffect(() => {
+        fetchAnswerKey();
+    }, []);
 
     return (
         <main>
@@ -252,8 +335,8 @@ export function Answer() {
 
                 Fill out the Answer Sheet as you watch General Conference!
                 <div>
-                    <button className="submit" type="submit" onClick={() => saveAnswerKey()}>Update</button>
-                    <button onClick={() => answerKey.clear(localStorage.getItem('AnswerKey'))}>Clear Guess</button>
+                    <button className="submit" type="button" onClick={() => saveAnswerKey()}>Update</button>
+                    <button onClick={() => clearAnswer()}>Clear Guess</button>
                 </div>
 
                 <br />

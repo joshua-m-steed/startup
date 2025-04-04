@@ -8,6 +8,7 @@ const db = client.db('FGC');
 const userCollection = db.collection('user');
 const guessCollection = db.collection('guesses');
 const scoreCollection = db.collection('score');
+const answerCollection = db.collection('answer');
 
 (async function testConnection() {
     try {
@@ -55,6 +56,25 @@ async function deleteGuess(name) {
     await guessCollection.deleteOne({ name: name });
 }
 
+async function saveAnswer(answer) {
+    if(await answerCollection.findOne({ name: answer.name }))
+        {
+            await answerCollection.updateOne({ name: answer.name }, {$set: answer });
+        }
+        else
+        {
+            await answerCollection.insertOne(answer);
+        }   
+}
+
+async function getAnswer() {
+    return answerCollection.findOne({ name: "ANSWER" });
+}
+
+async function deleteAnswer() {
+    await answerCollection.deleteOne({ name: "ANSWER"});
+}
+
 async function addScore(score) {
     await scoreCollection.insertOne(score);
 }
@@ -82,6 +102,9 @@ module.exports = {
     saveGuess,
     getGuess,
     deleteGuess,
+    saveAnswer,
+    getAnswer,
+    deleteAnswer,
     addScore,
     updateScore,
     getTopScores,

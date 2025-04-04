@@ -129,9 +129,23 @@ apiRouter.delete(`/guess/:username`, isAuth, async (req, res) => {
     res.status(204).end();
 })
 
-apiRouter.post(`/answer`, isAuth, (req, res) => {
-    answerKey = req.body;
+apiRouter.post(`/answer`, isAuth, async (req, res) => {
+    const answerKey = await DB.saveAnswer(req.body);
+
+    res.send(answerKey);
 });
+
+apiRouter.get(`/answer`, isAuth, async (_req, res) => {
+    const answerKey = await DB.getAnswer();
+
+    res.send(answerKey);
+});
+
+apiRouter.delete(`/answer`, isAuth, async (_req, res) => {
+    DB.deleteAnswer();
+    
+    res.status(204).end();
+})
 
 async function findUser(field, value) {
     if (!value) return null;
