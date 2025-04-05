@@ -90,7 +90,24 @@ export class ScoreCalculator {
                         }
                     }
                 }
-            } else {
+            } else if (category == 'tieClr') {
+                for (let i = 0; i < 3; i++)
+                {
+                    const answerVal = cleanAnswer[category][i];
+                    const guessVal = cleanGuess[category][i];
+
+                    if(guessVal === "")
+                    {
+                        continue;
+                    }
+
+                    if(guessVal === answerVal)
+                    {
+                        points++;
+                    }
+                }
+            } 
+            else {
                 let answerSet = new Set(cleanAnswer[category]);
                 let guessSet = new Set(cleanGuess[category]);
 
