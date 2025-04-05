@@ -16,13 +16,13 @@ export function Scores() {
     // userProfile.refill(userName);
 
     // TEMPORARY --> Note to self, create an Admin/Answer page
-    answerKey.satMor = ["", "", ""];
+    answerKey.satMor = ["Holland", "Rasband", "Cook", "Eyring"];
     answerKey.satAft = ["", "", ""];
     answerKey.satEvn = ["", "", ""];
     answerKey.sunMor = ["", "", ""];
     answerKey.sunAft = ["", "", ""];
     answerKey.tieClr = ["", "", ""];
-    answerKey.hymnNum = ["", "", ""];
+    answerKey.hymnNum = ["58", "71", "34", "2", "87", "30x"];
     answerKey.templeLoc = [ [""], [""], [""] ]
 
     // localStorage.setItem('scores', JSON.stringify(scores));
