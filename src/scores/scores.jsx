@@ -17,12 +17,12 @@ export function Scores() {
 
     // TEMPORARY --> Note to self, create an Admin/Answer page
     answerKey.satMor = ["Holland", "Rasband", "Cook", "Eyring"];
-    answerKey.satAft = ["", "", ""];
+    answerKey.satAft = ["Andersen", "Renlund", "Utchdorf"];
     answerKey.satEvn = ["", "", ""];
     answerKey.sunMor = ["", "", ""];
     answerKey.sunAft = ["", "", ""];
     answerKey.tieClr = ["", "", ""];
-    answerKey.hymnNum = ["58", "71", "34", "2", "87", "30x"];
+    answerKey.hymnNum = ["58", "71", "34", "2", "87", "30", "70", "1031", "364", "1015", "254"];
     answerKey.templeLoc = [ [""], [""], [""] ]
 
     // localStorage.setItem('scores', JSON.stringify(scores));
