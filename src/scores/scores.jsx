@@ -16,20 +16,20 @@ export function Scores() {
     // userProfile.refill(userName);
 
     // TEMPORARY --> Note to self, create an Admin/Answer page
-    answerKey.satMor = ["a", "b", "c"];
-    answerKey.satAft = ["a", "a", "a"];
-    answerKey.satEvn = ["a", "a", "a"];
-    answerKey.sunMor = ["a", "a", "a"];
-    answerKey.sunAft = ["a", "a", "a"];
-    answerKey.tieClr = ["Red", "White", "Blue"];
-    answerKey.hymnNum = ["4", "4", "4"];
-    answerKey.templeLoc = [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
+    // answerKey.satMor = ["a", "b", "c"];
+    // answerKey.satAft = ["a", "a", "a"];
+    // answerKey.satEvn = ["a", "a", "a"];
+    // answerKey.sunMor = ["a", "a", "a"];
+    // answerKey.sunAft = ["a", "a", "a"];
+    // answerKey.tieClr = ["Red", "White", "Blue"];
+    // answerKey.hymnNum = ["4", "4", "4"];
+    // answerKey.templeLoc = [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
 
     // localStorage.setItem('scores', JSON.stringify(scores));
-    const handleScoreUpdate = async (table) => {
-        await saveScore(table);
+    const handleScoreUpdate = async () => {
+        // await saveScore(table);
 
-        fetch(`/api/scores`)
+        await fetch(`/api/scores`)
         .then((response) => response.json())
         .then(([scoresArray, selfPoints]) => {
             setScores(scoresArray);
@@ -39,16 +39,16 @@ export function Scores() {
 
 
     React.useEffect(() => {
-        const userScore = scoreCalc.score(userKey, answerKey);
+        // const userScore = scoreCalc.score(userKey, answerKey);
         // console.log(`The score is ${userScore}`);
-        setPoints(userScore);
+        // setPoints(userScore);
 
-        userProfile.score = userScore;
+        // userProfile.score = userScore;
 
         // const scoreText = JSON.parse(localStorage.getItem('scores')); // Marked to be removed
-        const userTable = scoreCalc.createTableRow(userName, userProfile.score);
+        // const userTable = scoreCalc.createTableRow(userName, userProfile.score);
 
-        handleScoreUpdate(userTable);
+        handleScoreUpdate();
     }, []);
 
 

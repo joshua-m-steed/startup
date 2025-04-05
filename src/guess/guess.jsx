@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 export function Guess() {
     // NOTE :: Attempt to Compress this code, explore ::
     const userGuess = new GuessSheet();
-    const answerKey = new GuessSheet(); // Call and compare the sheets upon submission?
+    const scoreCalc = new ScoreCalculator();
     // const [locked, setLocked] = React.useState(false); // For a future Idea
 
     const [satMorningOne, setSatMorningOne] = React.useState('');
@@ -129,6 +129,14 @@ export function Guess() {
             })    
     }
 
+    async function saveScore(scoreText)
+        {
+            await fetch(`/api/scores`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(scoreText),
+            });
+        }
 
     React.useEffect(() => {
         fetchUserGuess();
@@ -154,6 +162,31 @@ export function Guess() {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(userGuess),
         });
+
+        // fetch Answer
+        fetch(`/api/answer`)
+        .then((response) => response.json())
+        .then((answerKey) => {
+            const userScore = scoreCalc.score(userGuess, answerKey);
+            const userTable = scoreCalc.createTableRow(userGuess.name, userScore);
+        });
+
+        await saveScore(userTable);
+
+        // const handleScoreUpdate = async (table) => {
+        //     await saveScore(table);
+    
+        //     fetch(`/api/scores`)
+        //     .then((response) => response.json())
+        //     .then(([scoresArray, selfPoints]) => {
+        //         setScores(scoresArray);
+        //         setPoints(selfPoints);
+        //     });
+        // }
+            
+
+        // Calc score
+        // 
     }
 
     function tri_package(var1='', var2='', var3='') {

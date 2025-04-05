@@ -2,7 +2,7 @@ export class ScoreCalculator {
     #clean(sheet) {
         for (let category in sheet) {
             let i = 0;
-            if(category == 'name')
+            if(category == 'name' || category == '_id')
             {
                 continue;
             }
@@ -29,8 +29,11 @@ export class ScoreCalculator {
     }
 
     score(guess, answer) {
+        console.log("PRE");
         let cleanAnswer = this.#clean(answer);
+        console.log("POST");
         let cleanGuess = this.#clean(guess);
+        console.log("DOUBLE POST");
         let points = 0;
 
 
@@ -86,8 +89,16 @@ export class ScoreCalculator {
 
                     for (let value of guessSet) {
                         if (answerSet.has(value)) {
+                            console.log("TEMPLE");
                             points++;
                         }
+                    }
+                }
+            } else if (category == 'tieClr') {
+                for(let i = 0; i < 3; i++) {
+                    if(cleanAnswer[category][i] === cleanGuess[category][i]) {
+                        console.log("TIES")
+                        points++;
                     }
                 }
             } else {
@@ -95,12 +106,17 @@ export class ScoreCalculator {
                 let guessSet = new Set(cleanGuess[category]);
 
                 for (let value of guessSet) {
-                    if (answerSet.has(value)) {
+                    if(value == "")
+                    {
+                        continue;
+                    } else if (answerSet.has(value)) {
+                        console.log(`MATCH: ${value} + ${JSON.stringify(answerSet)}`);
                         points++;
                     }
                 }
             }
         }
+        console.log(points);
         return points;
     }
 
