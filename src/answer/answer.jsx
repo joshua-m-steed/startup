@@ -336,7 +336,7 @@ export function Answer() {
                 Fill out the Answer Sheet as you watch General Conference!
                 <div>
                     <button className="submit" type="button" onClick={() => saveAnswerKey()}>Update</button>
-                    <button onClick={() => clearAnswer()}>Clear Guess</button>
+                    <button onClick={() => clearAnswer()}>Clear Answer</button>
                 </div>
 
                 <br />
