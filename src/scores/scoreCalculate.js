@@ -85,6 +85,10 @@ export class ScoreCalculator {
                     let guessSet = new Set(cleanGuess[category][i]);
 
                     for (let value of guessSet) {
+                        if(value === "")
+                        {
+                            continue;
+                        }
                         if (answerSet.has(value)) {
                             points++;
                         }
@@ -112,6 +116,10 @@ export class ScoreCalculator {
                 let guessSet = new Set(cleanGuess[category]);
 
                 for (let value of guessSet) {
+                    if(value === "")
+                    {
+                        continue;
+                    }
                     if (answerSet.has(value)) {
                         points++;
                     }
