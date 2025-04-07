@@ -154,24 +154,29 @@ export function Guess() {
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
 
-        userGuess.save(localStorage.getItem('Username')); // TEMPORARY REPLACEMENT
+        // userGuess.save(localStorage.getItem('Username')); // TEMPORARY REPLACEMENT
 
         console.log("Going to post Guess...");
+        console.log(JSON.stringify(userGuess));
         await fetch(`/api/guess`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(userGuess),
         });
+        console.log("Got passed the post");
 
         // fetch Answer
-        fetch(`/api/answer`)
+        const userData = await fetch(`/api/answer`)
         .then((response) => response.json())
         .then((answerKey) => {
             const userScore = scoreCalc.score(userGuess, answerKey);
             const userTable = scoreCalc.createTableRow(userGuess.name, userScore);
+            return [userScore, userTable];
         });
-
-        await saveScore(userTable);
+        console.log(JSON.stringify(userData));
+        console.log("Avoce should be the data");
+        
+        await saveScore(userData[1]);
 
         // const handleScoreUpdate = async (table) => {
         //     await saveScore(table);
