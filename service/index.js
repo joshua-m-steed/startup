@@ -4,14 +4,12 @@ const uuid = require('uuid');
 const bcrypt = require('bcryptjs');
 const DB = require('./database.js');
 const app = express();
+const { proxyBox } = require('./proxyBox.js');
 
 const authCookieName = 'token';
 
 const port = process.argv > 2 ? process.argv[2] : 4000;
 
-// Score and User libraries
-// let userGuess = {};
-// let answerGuess = {};
 let userScore = 0;
 
 // TEMP NODE KEYS
@@ -143,7 +141,7 @@ apiRouter.get(`/answer`, isAuth, async (_req, res) => {
 
 apiRouter.delete(`/answer`, isAuth, async (_req, res) => {
     DB.deleteAnswer();
-    
+
     res.status(204).end();
 })
 
@@ -217,6 +215,8 @@ app.use((_req, res) => {
 });
 
 // Ears are open O.O
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+
+proxyBox(httpService);
