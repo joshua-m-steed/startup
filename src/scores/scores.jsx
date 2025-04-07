@@ -20,10 +20,10 @@ export function Scores() {
     answerKey.satAft = ["Andersen", "Renlund", "Uchtdorf"];
     answerKey.satEvn = ["Stevenson", "Christofferson", ""];
     answerKey.sunMor = ["Gong", "Bednar", "Oaks"];
-    answerKey.sunAft = ["", "", ""];
+    answerKey.sunAft = ["Kearon", "Soares", "Nelson"];
     answerKey.tieClr = ["", "Red", "Red"];
-    answerKey.hymnNum = ["58", "71", "34", "2", "87", "30", "70", "1031", "364", "1015", "254", "1201", "14", "1206", "66", "83", "72", "1027", "243", "141", "1003"];
-    answerKey.templeLoc = [ [""], [""], [""] ]
+    answerKey.hymnNum = ["58", "71", "34", "2", "87", "30", "70", "1031", "364", "1015", "254", "1201", "14", "1206", "66", "83", "72", "1027", "243", "141", "1003", "147", "1030", "67", "76", "6"];
+    answerKey.templeLoc = [ ["USA", "UT", "Spanish Fork"], ["Mexico", "Reynosa"], ["Peru", "Chorrillos"], ["Uruguay", "Rivera"], ["Brazil", "Campo Grande"], ["Portugal", "Porto"], ["Nigeria", "Uyo"], ["Philippines", "San Jose del Monte"], ["New Caledonia", "Nouméa"], ["Australia", "Liverpool"], ["USA", "ID", "Caldwell"], ["USA", "AZ", "Flagstaff"], ["USA", "SD", "Rapid City"], ["USA", "SC", "Greenville"], ["USA", "VA", "Norfolk"] ]
 
     // localStorage.setItem('scores', JSON.stringify(scores));
     const handleScoreUpdate = async (table) => {
