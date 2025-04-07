@@ -6,9 +6,23 @@ export function Notes({ webSocket }) {
 
     return (
         <main>
+            <Name updateName={setName} />
             <button></button>
         </main>
     );
+}
+
+    function Name({ updateName }) {
+        return (
+            <main>
+                <div className="name">
+                    <fieldset id='name-controls'>
+                        <legend>Choose Name</legend>
+                        <input onChange={(e) => updateName(e.target.value)} id='my-name' type='text' />
+                    </fieldset>
+                </div>
+            </main>
+        );
 }
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
