@@ -1117,3 +1117,21 @@ db.house.find({ summary: /(modern|beach)/i });
 Other helpful notes:  
 - Using $set lets you override the data once you find a match  
 - `await` is **VERY** helpful when you need to wait for data. Use `async` funcitons and move from there  
+
+# WebSocket  
+It's a method to let the server exchange asynchronous information. Users connect to the server and the server shares the data.  
+
+These declare the protocol depending on if it's a good or unsecured http.
+```
+const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+const socket = new Websocket(`${protocol}://${window.location.host}`);
+```
+```
+socket.onmessage = (event) => {
+   console.log('received: ', event.data);
+};
+```
+The WS call uses the connection to see if it needs to upgrade the header and calls the on connection call back. Using the `send` function, it can be shared. 
+
+*Debugging*  
+`F12` or `F5` or `VSCode Debugger` are great ways to test the websocket code.  
