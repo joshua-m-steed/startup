@@ -1,9 +1,8 @@
-main {
-    display: block;
-  }
-
 body {
     height: fit-content;
+  }
+  main.chat-box {
+    display: block;
   }
   #chat-text {
     padding: 1em 0;

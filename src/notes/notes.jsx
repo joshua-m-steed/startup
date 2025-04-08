@@ -6,7 +6,7 @@ export function Notes({ webSocket }) {
     const [name, setName] = React.useState('');
 
     return (
-        <main className="chat-box">
+        <main id="chat-box" className="chat-box">  
             <Name updateName={setName} />
             <Message name={name} webSocket={webSocket} />
             <button></button>
@@ -50,17 +50,14 @@ function Message({ name, webSocket}) {
         <div>
             <fieldset id='chat-controls'>
                 <legend>Message</legend>
-                <input disabled={disabled} onKeyDown={(e) => doneMessage(e)} value={message} />
+                <input disabled={disabled} onKeyDown={(e) => doneMessage(e)} value={message} onChange={(e) => setMessage(e.target.value)}/>
                 <button disabled={disabled || !message} onClick={sendMsg}>Send</button>
             </fieldset>
         </div>
     );
 }
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<Chat webSocket={new ChatClient()} />);
-
-class ChatClient {
+export class ChatClient {
     observers = [];
     connected = false;
 
@@ -68,10 +65,25 @@ class ChatClient {
         //Setting HTTP protocol
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        
+        this.socket.onopen = (event) => {
+            this.notifyObservers('system', 'websocket', 'connected');
+            this.connected = true;
+        };
+
+        this.socket.onclose = (event) => {
+            this.notifyObservers('system', 'websocket', 'disconnected');
+            this.connected = false;
+        };
+        // this.socket.addEventListener('open', () => {
+        //     this.connected = true;
+        // ;
     }
 
+    // Message to Websocket
     sendMessage(name, msg) {
-
+        this.notifyObservers('sent', 'me', msg);
+        this.socket.send(JSON.stringify({ name, msg }));
     }
 
     addObserver(observer) {
@@ -79,6 +91,6 @@ class ChatClient {
     }
 
     notifyObservers(event, from, msg) {
-
+        this.observers.forEach((h) => h({ event, from, msg }));
     }
 }
