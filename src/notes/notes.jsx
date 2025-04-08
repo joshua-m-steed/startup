@@ -9,7 +9,6 @@ export function Notes({ webSocket }) {
             <Name updateName={setName} />
             <Message name={name} webSocket={webSocket} />
             <Records webSocket={webSocket} />
-            <button></button>
         </main>
     );
 }
