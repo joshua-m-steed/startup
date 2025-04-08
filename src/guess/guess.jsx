@@ -3,7 +3,7 @@ import { GuessSheet } from './guessSheet';
 import { ScoreCalculator } from "../scores/scoreCalculate";
 import { Profile } from "../login/profile";
 import './guess.css';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export function Guess() {
     // NOTE :: Attempt to Compress this code, explore ::
@@ -42,6 +42,20 @@ export function Guess() {
     const [templeOne, setTempleOne] = React.useState('');
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
+
+    function tri_package(var1='', var2='', var3='') {
+        return [var1, var2, var3];
+    }
+
+    const nav = useNavigate();
+
+    const saveGuessHelp = async () => {
+        await saveGuess();
+
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        nav('../scores');
+    }
 
     async function fetchUserGuess()
     {
@@ -131,6 +145,7 @@ export function Guess() {
 
     async function saveScore(scoreText)
         {
+            console.log(JSON.stringify(scoreText));
             await fetch(`/api/scores`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
@@ -158,7 +173,7 @@ export function Guess() {
 
         console.log("Going to post Guess...");
         console.log(JSON.stringify(userGuess));
-        await fetch(`/api/guess`, {
+        fetch(`/api/guess`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(userGuess),
@@ -192,10 +207,6 @@ export function Guess() {
 
         // Calc score
         // 
-    }
-
-    function tri_package(var1='', var2='', var3='') {
-        return [var1, var2, var3];
     }
 
     return (
@@ -380,7 +391,7 @@ export function Guess() {
 
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
-                    <NavLink to='../scores'><button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button></NavLink>
+                    <button className="submit" type="button" onClick={() => saveGuessHelp()}>Submit</button>
                     <button onClick={() => clearGuess(localStorage.getItem('Username'))}>Clear Guess</button>
                 </div>
 

@@ -92,7 +92,6 @@ export class ScoreCalculator {
 
                     for (let value of guessSet) {
                         if (answerSet.has(value)) {
-                            console.log("TEMPLE");
                             points++;
                         }
                     }
@@ -100,7 +99,6 @@ export class ScoreCalculator {
             } else if (category == 'tieClr') {
                 for(let i = 0; i < 3; i++) {
                     if(cleanAnswer[category][i] === cleanGuess[category][i]) {
-                        console.log("TIES")
                         points++;
                     }
                 }
@@ -113,7 +111,6 @@ export class ScoreCalculator {
                     {
                         continue;
                     } else if (answerSet.has(value)) {
-                        console.log(`MATCH: ${value} + ${JSON.stringify(answerSet)}`);
                         points++;
                     }
                 }
