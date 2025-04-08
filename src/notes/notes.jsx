@@ -9,6 +9,7 @@ export function Notes({ webSocket }) {
         <main id="chat-box" className="chat-box">  
             <Name updateName={setName} />
             <Message name={name} webSocket={webSocket} />
+            <Records webSocket={webSocket} />
             <button></button>
         </main>
     );
@@ -56,6 +57,27 @@ function Message({ name, webSocket}) {
         </div>
     );
 }
+
+    function Records({ webSocket }) {
+        const [msgs, setMsgs] = React.useState([]);
+        React.useEffect(() => {
+            webSocket.addObserver((msg) => {
+                setMsgs((prevMessages) => [...prevMessages, msg])
+            });
+        }, [webSocket]);
+
+        const msgElmnts = msgs.map((msg, index) => (
+            <div key={index}>
+                <span className={msg.event}>{msg.from}</span> {msg.msg}
+            </div>
+        ));
+
+        return (
+            <main>
+                <div id='chat-text'>{msgElmnts}</div>
+            </main>
+        );
+    }
 
 export class ChatClient {
     observers = [];

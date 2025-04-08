@@ -8,11 +8,11 @@ body {
     padding: 1em 0;
   }
   .received {
-    color: rgb(153, 87, 148);
+    color: rgb(46, 28, 161);
     margin-left: 0.5em;
   }
   .sent {
-    color: rgb(87, 153, 117);
+    color: rgb(153, 87, 153);
   }
   .system {
     color: rgb(225, 103, 10);
