@@ -93,6 +93,12 @@ export class ChatClient {
             this.connected = true;
         };
 
+        this.socket.onmessage = async (event) => {
+            const text = await event.data.text();
+            const msg = JSON.parse(text);
+            this.notifyObservers('received', msg.name, msg.msg);
+        };
+
         this.socket.onclose = (event) => {
             this.notifyObservers('system', 'websocket', 'disconnected');
             this.connected = false;
