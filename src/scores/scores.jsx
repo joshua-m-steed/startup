@@ -25,11 +25,10 @@ export function Scores() {
     answerKey.hymnNum = ["58", "71", "34", "2", "87", "30", "70", "1031", "364", "1015", "254", "1201", "14", "1206", "66", "83", "72", "1027", "243", "141", "1003", "147", "1030", "67", "76", "6"];
     answerKey.templeLoc = [ ["USA", "UT", "Spanish Fork"], ["Mexico", "Reynosa"], ["Peru", "Chorrillos"], ["Uruguay", "Rivera"], ["Brazil", "Campo Grande"], ["Portugal", "Porto"], ["Nigeria", "Uyo"], ["Philippines", "San Jose del Monte"], ["New Caledonia", "Nouméa"], ["Australia", "Liverpool"], ["USA", "ID", "Caldwell"], ["USA", "AZ", "Flagstaff"], ["USA", "SD", "Rapid City"], ["USA", "SC", "Greenville"], ["USA", "VA", "Norfolk"] ]
 
-    // localStorage.setItem('scores', JSON.stringify(scores));
-    const handleScoreUpdate = async (table) => {
-        await saveScore(table);
+    const handleScoreUpdate = async () => {
+        // await saveScore(table);
 
-        fetch(`/api/scores`)
+        await fetch(`/api/scores`)
         .then((response) => response.json())
         .then(([scoresArray, selfPoints]) => {
             setScores(scoresArray);
@@ -39,16 +38,16 @@ export function Scores() {
 
 
     React.useEffect(() => {
-        const userScore = scoreCalc.score(userKey, answerKey);
+        // const userScore = scoreCalc.score(userKey, answerKey);
         // console.log(`The score is ${userScore}`);
-        setPoints(userScore);
+        // setPoints(userScore);
 
-        userProfile.score = userScore;
+        // userProfile.score = userScore;
 
         // const scoreText = JSON.parse(localStorage.getItem('scores')); // Marked to be removed
-        const userTable = scoreCalc.createTableRow(userName, userProfile.score);
+        // const userTable = scoreCalc.createTableRow(userName, userProfile.score);
 
-        handleScoreUpdate(userTable);
+        handleScoreUpdate();
     }, []);
 
 

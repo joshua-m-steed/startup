@@ -3,12 +3,12 @@ import { GuessSheet } from './guessSheet';
 import { ScoreCalculator } from "../scores/scoreCalculate";
 import { Profile } from "../login/profile";
 import './guess.css';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export function Guess() {
     // NOTE :: Attempt to Compress this code, explore ::
     const userGuess = new GuessSheet();
-    const answerKey = new GuessSheet(); // Call and compare the sheets upon submission?
+    const scoreCalc = new ScoreCalculator();
     // const [locked, setLocked] = React.useState(false); // For a future Idea
 
     const [satMorningOne, setSatMorningOne] = React.useState('');
@@ -43,6 +43,20 @@ export function Guess() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
+    const nav = useNavigate();
+
+    function tri_package(var1='', var2='', var3='') {
+        return [var1, var2, var3];
+    }
+
+    const saveGuessHelp = async () => {
+        await saveGuess();
+
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        nav('../scores');
+    }
+
     async function fetchUserGuess()
     {
         const username = localStorage.getItem("Username");
@@ -53,7 +67,6 @@ export function Guess() {
         .then((userGuess) => {
             placeCurrentGuess(userGuess);
         });
-
     }
 
     async function placeCurrentGuess(guess)
@@ -115,7 +128,6 @@ export function Guess() {
 
     function clearGuess(username)
     {
-        console.log("Start here");
         let fetchCall = `/api/guess/` + username;
         fetch(fetchCall, {
             method: 'delete',
@@ -125,10 +137,18 @@ export function Guess() {
             })
             .finally(() => {
                 console.log("Your guess has been deleted!");
-                localStorage.removeItem(username + " Guess");
             })    
     }
 
+    async function saveScore(scoreText)
+        {
+            console.log(JSON.stringify(scoreText));
+            await fetch(`/api/scores`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(scoreText),
+            });
+        }
 
     React.useEffect(() => {
         fetchUserGuess();
@@ -146,18 +166,24 @@ export function Guess() {
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
 
-        userGuess.save(localStorage.getItem('Username')); // TEMPORARY REPLACEMENT
-
         console.log("Going to post Guess...");
-        await fetch(`/api/guess`, {
+        console.log(JSON.stringify(userGuess));
+        fetch(`/api/guess`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(userGuess),
         });
-    }
 
-    function tri_package(var1='', var2='', var3='') {
-        return [var1, var2, var3];
+        // fetch Answer
+        const userData = await fetch(`/api/answer`)
+        .then((response) => response.json())
+        .then((answerKey) => {
+            const userScore = scoreCalc.score(userGuess, answerKey);
+            const userTable = scoreCalc.createTableRow(userGuess.name, userScore);
+            return [userScore, userTable];
+        });
+        
+        await saveScore(userData[1]);
     }
 
     return (
@@ -342,7 +368,7 @@ export function Guess() {
 
                 Submit your guesses and enjoy the messages of Conference!
                 <div>
-                    <NavLink to='../scores'><button className="submit" type="submit" onClick={() => saveGuess()}>Submit</button></NavLink>
+                    <button className="submit" type="button" onClick={() => saveGuessHelp()}>Submit</button>
                     <button onClick={() => clearGuess(localStorage.getItem('Username'))}>Clear Guess</button>
                 </div>
 
