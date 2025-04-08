@@ -3,19 +3,6 @@ const { WebSocketServer } = require('ws');
 function proxyBox(httpServer) {
     const wss = new WebSocketServer({ server: httpServer});
 
-    // wss.on('connection', (ws) => {
-    //     ws.on('message', (data) => {
-    //       const msg = String.fromCharCode(...data);
-    //       console.log('received: %s', msg);
-      
-    //       ws.send(`I heard you say "${msg}"`);
-    //     });
-      
-    //     ws.send('Hello webSocket');
-    //   });
-
-    // }
-
     wss.on('connection', (ws) => {
         ws.isAlive = true;
 
@@ -34,7 +21,7 @@ function proxyBox(httpServer) {
 
     setInterval(() => {
         wss.clients.forEach(function each(client) {
-            console.log("I'm awake!");
+            // console.log("I'm awake!");
             if(client.isAlive === false)
             {
                 return client.terminate();

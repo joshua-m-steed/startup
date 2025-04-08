@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom/client';
 import './notes.css';
 
 export function Notes({ webSocket }) {
@@ -103,9 +102,6 @@ export class ChatClient {
             this.notifyObservers('system', 'websocket', 'disconnected');
             this.connected = false;
         };
-        // this.socket.addEventListener('open', () => {
-        //     this.connected = true;
-        // ;
     }
 
     // Message to Websocket
