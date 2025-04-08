@@ -43,11 +43,11 @@ export function Guess() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
+    const nav = useNavigate();
+
     function tri_package(var1='', var2='', var3='') {
         return [var1, var2, var3];
     }
-
-    const nav = useNavigate();
 
     const saveGuessHelp = async () => {
         await saveGuess();
@@ -67,7 +67,6 @@ export function Guess() {
         .then((userGuess) => {
             placeCurrentGuess(userGuess);
         });
-
     }
 
     async function placeCurrentGuess(guess)
@@ -129,7 +128,6 @@ export function Guess() {
 
     function clearGuess(username)
     {
-        console.log("Start here");
         let fetchCall = `/api/guess/` + username;
         fetch(fetchCall, {
             method: 'delete',
@@ -139,7 +137,6 @@ export function Guess() {
             })
             .finally(() => {
                 console.log("Your guess has been deleted!");
-                localStorage.removeItem(username + " Guess");
             })    
     }
 
@@ -169,8 +166,6 @@ export function Guess() {
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
 
-        // userGuess.save(localStorage.getItem('Username')); // TEMPORARY REPLACEMENT
-
         console.log("Going to post Guess...");
         console.log(JSON.stringify(userGuess));
         fetch(`/api/guess`, {
@@ -178,7 +173,6 @@ export function Guess() {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(userGuess),
         });
-        console.log("Got passed the post");
 
         // fetch Answer
         const userData = await fetch(`/api/answer`)
@@ -188,25 +182,8 @@ export function Guess() {
             const userTable = scoreCalc.createTableRow(userGuess.name, userScore);
             return [userScore, userTable];
         });
-        console.log(JSON.stringify(userData));
-        console.log("Avoce should be the data");
         
         await saveScore(userData[1]);
-
-        // const handleScoreUpdate = async (table) => {
-        //     await saveScore(table);
-    
-        //     fetch(`/api/scores`)
-        //     .then((response) => response.json())
-        //     .then(([scoresArray, selfPoints]) => {
-        //         setScores(scoresArray);
-        //         setPoints(selfPoints);
-        //     });
-        // }
-            
-
-        // Calc score
-        // 
     }
 
     return (

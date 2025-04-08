@@ -25,7 +25,6 @@ export function Scores() {
     // answerKey.hymnNum = ["4", "4", "4"];
     // answerKey.templeLoc = [ ["USA", "PA", "Susquehanna"], ["Cuba", "Menis"], ["Quatamala", "Quatamala City"] ]
 
-    // localStorage.setItem('scores', JSON.stringify(scores));
     const handleScoreUpdate = async () => {
         // await saveScore(table);
 
