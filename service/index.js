@@ -4,23 +4,13 @@ const uuid = require('uuid');
 const bcrypt = require('bcryptjs');
 const DB = require('./database.js');
 const app = express();
+const { proxyBox } = require('./proxyBox.js');
 
 const authCookieName = 'token';
 
 const port = process.argv > 2 ? process.argv[2] : 4000;
 
-// Score and User libraries
-// let userGuess = {};
-// let answerGuess = {};
 let userScore = 0;
-
-// TEMP NODE KEYS
-// <-> Swampping to Frontend
-// /// Error handling
-// --- Benchmark location
-// OOO Success with something
-// XXX Concluding
-
 
 // Declaring parsing and hosting static content
 app.use(express.json());
@@ -111,39 +101,45 @@ apiRouter.get(`/scores`, isAuth, async (_req, res) => {
     res.send([scores, userScore]);
 });
 
+// Saves guess in DB
 apiRouter.post(`/guess`, isAuth, async (req, res) => {
     const userGuess = await DB.saveGuess(req.body);
 
     res.send(userGuess);
 });
 
+// Fetches guess from DB
 apiRouter.get(`/guess/:username`, isAuth, async (req, res) => {
     const userGuess = await DB.getGuess(req.params.username);
 
     res.send(userGuess);
 });
 
+// Deletes the guess from DB
 apiRouter.delete(`/guess/:username`, isAuth, async (req, res) => {
     DB.deleteGuess(req.params.username);
     
     res.status(204).end();
 })
 
+// Saves Answer key in DB
 apiRouter.post(`/answer`, isAuth, async (req, res) => {
     const answerKey = await DB.saveAnswer(req.body);
 
     res.send(answerKey);
 });
 
+// Grabs Answer from DB
 apiRouter.get(`/answer`, isAuth, async (_req, res) => {
     const answerKey = await DB.getAnswer();
 
     res.send(answerKey);
 });
 
+// Deletes the Answer from DB
 apiRouter.delete(`/answer`, isAuth, async (_req, res) => {
     DB.deleteAnswer();
-    
+
     res.status(204).end();
 })
 
@@ -205,9 +201,6 @@ async function updateScores(newScore) {
     }
 
     return await DB.getTopScores();
-
-    // ADJUST TEST variable from original. 
-    // ALSO, make "full inventory score" to compare against everything!
 }
 
 
@@ -217,6 +210,8 @@ app.use((_req, res) => {
 });
 
 // Ears are open O.O
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+
+proxyBox(httpService);
