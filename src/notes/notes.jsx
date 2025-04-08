@@ -59,3 +59,26 @@ function Message({ name, webSocket}) {
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(<Chat webSocket={new ChatClient()} />);
+
+class ChatClient {
+    observers = [];
+    connected = false;
+
+    constructor() {
+        //Setting HTTP protocol
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    }
+
+    sendMessage(name, msg) {
+
+    }
+
+    addObserver(observer) {
+        this.observers.push(observer);
+    }
+
+    notifyObservers(event, from, msg) {
+
+    }
+}
