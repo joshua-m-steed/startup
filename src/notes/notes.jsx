@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
+import './notes.css';
 
 export function Notes({ webSocket }) {
     const [name, setName] = React.useState('');
 
     return (
-        <main>
+        <main className="chat-box">
             <Name updateName={setName} />
+            <Message name={name} webSocket={webSocket} />
             <button></button>
         </main>
     );
@@ -15,14 +17,14 @@ export function Notes({ webSocket }) {
 // Holds box and variables for Name
 function Name({ updateName }) {
     return (
-        <main>
+        <div>
             <div className="name">
                 <fieldset id='name-controls'>
                     <legend>Choose Name</legend>
                     <input onChange={(e) => updateName(e.target.value)} id='my-name' type='text' />
                 </fieldset>
             </div>
-        </main>
+        </div>
     );
 }
 
@@ -45,13 +47,13 @@ function Message({ name, webSocket}) {
 
     const disabled = name === '' || !webSocket.connected;
     return (
-        <main>
+        <div>
             <fieldset id='chat-controls'>
                 <legend>Message</legend>
                 <input disabled={disabled} onKeyDown={(e) => doneMessage(e)} value={message} />
                 <button disabled={disabled || !message} onClick={sendMsg}>Send</button>
             </fieldset>
-        </main>
+        </div>
     );
 }
 
