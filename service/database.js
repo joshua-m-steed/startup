@@ -84,6 +84,17 @@ async function updateScore(score) {
     await scoreCollection.updateOne({ name: score.name}, { $set: score });
 }
 
+async function getUserScores(name) {
+    userData = await scoreCollection.findOne({ name: name });
+
+    if(userData == null) {
+        return 0;
+    } else {
+        return userData.score;
+    }
+    
+}
+
 function getTopScores() {
     const query = { score: { $lt: 100 } };
     const options = {
@@ -108,5 +119,6 @@ module.exports = {
     deleteAnswer,
     addScore,
     updateScore,
+    getUserScores,
     getTopScores,
 };

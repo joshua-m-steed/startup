@@ -95,16 +95,20 @@ apiRouter.post(`/scores`, isAuth, async (req, res) => {
 })
 
 // Fetches scores
-apiRouter.get(`/scores`, isAuth, async (_req, res) => {
+apiRouter.get(`/scores/:username`, isAuth, async (req, res) => {
     const scores = await DB.getTopScores();
-
+    userScore = await DB.getUserScores(req.params.username);
+    if(userScore === undefined)
+    {
+        userScore = 0;
+    }
+    
     res.send([scores, userScore]);
 });
 
 // Saves guess in DB
 apiRouter.post(`/guess`, isAuth, async (req, res) => {
     const userGuess = await DB.saveGuess(req.body);
-
     res.send(userGuess);
 });
 

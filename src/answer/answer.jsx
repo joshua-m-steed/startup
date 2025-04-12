@@ -180,7 +180,7 @@ export function Answer() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td><input id="satMorOne" type="text" value={satMorningOne} onChange={(e) => setSatMoringOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
+                                <tr><td><input id="satMorOne" type="text" value={satMorningOne} onChange={(e) => setSatMorningOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
                                 <tr><td><input id="satMorTwo" type="text" value={satMorningTwo} onChange={(e) => setSatMorningTwo(e.target.value)}/></td></tr>
                                 <tr><td><input id="satMorThree" type="text" value={satMorningThree} onChange={(e) => setSatMorningThree(e.target.value)}/></td></tr>
                             </tbody>

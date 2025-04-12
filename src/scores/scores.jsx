@@ -8,10 +8,6 @@ export function Scores() {
     const [scores, setScores] = React.useState([]);
     const [points, setPoints] = React.useState(0);
     const userName = localStorage.getItem('Username');
-    const userKey = JSON.parse(localStorage.getItem(userName + ' Guess'));
-    const answerKey = new GuessSheet();
-    const userProfile = new Profile();
-    const scoreCalc = new ScoreCalculator();
     
     // userProfile.refill(userName);
 
@@ -27,8 +23,8 @@ export function Scores() {
 
     const handleScoreUpdate = async () => {
         // await saveScore(table);
-
-        await fetch(`/api/scores`)
+        let fetchCall = `/api/scores/` + userName;
+        await fetch(fetchCall)
         .then((response) => response.json())
         .then(([scoresArray, selfPoints]) => {
             setScores(scoresArray);
@@ -38,15 +34,6 @@ export function Scores() {
 
 
     React.useEffect(() => {
-        // const userScore = scoreCalc.score(userKey, answerKey);
-        // console.log(`The score is ${userScore}`);
-        // setPoints(userScore);
-
-        // userProfile.score = userScore;
-
-        // const scoreText = JSON.parse(localStorage.getItem('scores')); // Marked to be removed
-        // const userTable = scoreCalc.createTableRow(userName, userProfile.score);
-
         handleScoreUpdate();
     }, []);
 
