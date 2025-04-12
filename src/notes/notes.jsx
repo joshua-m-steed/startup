@@ -105,7 +105,14 @@ export class ChatClient {
 
     // Message to Websocket
     sendMessage(name, msg) {
+        const actual_user = localStorage.getItem('Username')
+        if(name != actual_user)
+        {
+            name = name + ` (${actual_user})`;
+        }
+
         this.notifyObservers('sent', 'me', msg);
+        console.log(JSON.stringify({ name, msg }));
         this.socket.send(JSON.stringify({ name, msg }));
     }
 
