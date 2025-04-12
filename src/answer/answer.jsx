@@ -122,14 +122,11 @@ export function Answer() {
         answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
-        console.log("Answers posted: ");
         await fetch(`/api/answer`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(answerKey),
         });
-        console.log("posted!");
-        console.log(JSON.stringify(answerKey));
     }
 
     function tri_package(var1='', var2='', var3='') {
@@ -145,7 +142,7 @@ export function Answer() {
                 console.error("Couldn't delete the answer key. Sorry!");
             })
             .finally(() => {
-                console.log("Your guess has been deleted!");
+                console.log("The answer key has been deleted!");
             })    
     }
 

@@ -112,7 +112,6 @@ export class ChatClient {
         }
 
         this.notifyObservers('sent', 'me', msg);
-        console.log(JSON.stringify({ name, msg }));
         this.socket.send(JSON.stringify({ name, msg }));
     }
 

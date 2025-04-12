@@ -29,14 +29,8 @@ export class ScoreCalculator {
     }
 
     score(guess, answer) {
-        console.log("PRE");
         let cleanAnswer = this.#clean(answer);
-        console.log("POST");
         let cleanGuess = this.#clean(guess);
-        console.log("DOUBLE POST");
-
-        console.log(JSON.stringify(answer));
-        console.log(JSON.stringify(guess));
         let points = 0;
 
 
