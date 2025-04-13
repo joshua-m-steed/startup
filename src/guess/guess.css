@@ -98,11 +98,12 @@ table.who_speaks {
     text-align: center;
 
     max-width: 100%;
-    border: 1px solid #ddd;
+    border: 3px solid #177339 !important;
     margin: 10px;
+    box-shadow: 3px 3px 3px black !important;
 }
 table.who_speaks td {
-    border: 1px solid #ddd;
+    border: 1px dashed #177339 !important;
     padding: 10px;
 }
 table.who_speaks th {
