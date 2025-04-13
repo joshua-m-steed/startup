@@ -40,8 +40,11 @@ function Message({ name, webSocket}) {
 
     // Sends message to ws and resets variable
     function sendMsg() {
-        webSocket.sendMessage(name, message);
-        setMessage('');
+        if(message != "")
+        {
+            webSocket.sendMessage(name, message);
+            setMessage('');
+        }
     }
 
     const disabled = name === '' || !webSocket.connected;
