@@ -104,7 +104,7 @@ export function Scores() {
                             <th>Placement</th>
                             <th>Username</th>
                             <th>Points</th>
-                            <th></th>
+                            <th>🏆</th>
                         </tr>
                     </thead>
                     <tbody id='score'>{scoreRows}

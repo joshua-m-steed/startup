@@ -73,14 +73,17 @@ table.scoreboard {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 3px solid #177339;
+    box-shadow: 3px 3px 3px black;
 }
 table.scoreboard td {
-    border: 1px solid #ddd;
+    border: 1px dashed #177339;
     padding: 10px;
 }
 table.scoreboard th {
     background-color: #177339;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 div #advice {
