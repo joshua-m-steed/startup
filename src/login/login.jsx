@@ -1,52 +1,34 @@
 import React from "react";
-import { Profile } from "./profile";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export function Login({ savedName, authState, onAuthStateChange }) {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
     const [userName, setUserName] = React.useState( savedName || '');
     const [userEmail, setUserEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const [users, setUsers] = React.useState(() => { return JSON.parse(localStorage.getItem('users')) || [] })
     
-
-    const user = new Profile()
-
     // Create Profiles to effectively use data throughout
     async function loginUser() {
         const success = await userLoginOrCreate(`/api/auth/login`);
         if (success) {
-            // console.log(`PREV ${authState}`);
             onAuthStateChange(userName, true);
-            // console.log(`CHANGE ${authState}`);
         }
         else
         {
             console.log("Account creation failed");
-            // console.log(`Their state is ${authState}`);
         }
-        
-        // console.log("You've made it back");
-        // console.log(`Their state is ${authState}`);
     }
 
     async function createUser() {
         const success = await userLoginOrCreate(`/api/auth/create`);
-        // console.log("You've returned");
         if (success)
         {
-            // console.log(`PREV 2 ${authState}`);
             onAuthStateChange(userName, true);
-            // console.log(`CHANGE 2 ${authState}`);
         }
         else
         {
             console.log("Account created failed");
-            // console.log(`Their state is ${authState}`);
         }
-
-        // console.log("Did you make it here?");
-        // console.log(`Their state is ${authState}`);
     }
 
     async function logoutUser() {
@@ -57,10 +39,8 @@ export function Login({ savedName, authState, onAuthStateChange }) {
                 console.error("Couldn't log you out. Sorry!");
             })
             .finally(() => {
-                console.log("You did it! <3");
                 localStorage.removeItem("Username");
                 onAuthStateChange(userName, false);
-                // setLoggedIn(false);
             })
     }
 
@@ -75,13 +55,11 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         });
         if (response?.status === 200) {
             localStorage.setItem('Username', userName);
-            console.log("YOU ARE AUTHENTICATED");
             return true;
         }
         else
         {
-            console.log("SORRY: NOT AUTH");
-            // setLoggedIn(false);
+            console.log("Sorry: You aren't Authenticated");
         }
     }
 
@@ -91,12 +69,11 @@ export function Login({ savedName, authState, onAuthStateChange }) {
             .then((data) => {
                 if(data.url.endsWith(".mp4"))
                 {
-                    console.log("Ha! A video! Skipping -> :", data.url);
                     setImageUrl("https://random.dog/ed6c2ace-d58e-41d5-bc89-96846b110f92.jpg");
                 }
                 else
                 {
-                    console.log(data.url);
+                    console.log(`You're profile image is ${data.url}`);
                     setImageUrl(data.url);
                 }
             })
