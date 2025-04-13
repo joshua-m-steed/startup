@@ -53,6 +53,11 @@ async function getGuess(name) {
     return guessCollection.findOne({ name: name });
 }
 
+async function getGuessAll() {
+    console.log("Why hello there!");
+    return guessCollection.find().toArray();
+}
+
 async function deleteGuess(name) {
     await guessCollection.deleteOne({ name: name });
 }
@@ -113,6 +118,7 @@ module.exports = {
     updateUser,
     saveGuess,
     getGuess,
+    getGuessAll,
     deleteGuess,
     saveAnswer,
     getAnswer,

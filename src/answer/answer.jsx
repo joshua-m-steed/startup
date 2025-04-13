@@ -50,7 +50,6 @@ export function Answer() {
         .then((answerKey) => {
             placeCurrent(answerKey);
         });
-
     }
 
     async function placeCurrent(answer)
@@ -110,6 +109,15 @@ export function Answer() {
         setTempleThree(answer.templeLoc[2]);
     }
 
+    async function updateAndCompareGuesses()
+    {
+        console.log("Now we're here");
+        await fetch(`/api/answer/guessAll`)
+        .then((response) => response.json())
+        .then((guessAll) => { console.log(JSON.stringify(guessAll))
+        });
+    }
+
     async function saveAnswerKey() 
     {
         answerKey.name = "ANSWER";
@@ -127,6 +135,8 @@ export function Answer() {
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(answerKey),
         });
+
+        updateAndCompareGuesses();
     }
 
     function tri_package(var1='', var2='', var3='') {

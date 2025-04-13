@@ -140,6 +140,12 @@ apiRouter.get(`/answer`, isAuth, async (_req, res) => {
     res.send(answerKey);
 });
 
+apiRouter.get(`/answer/guessAll`, isAuth, async (_req, res) => {
+    const allGuesses = await DB.getGuessAll();
+
+    res.send(allGuesses);
+})
+
 // Deletes the Answer from DB
 apiRouter.delete(`/answer`, isAuth, async (_req, res) => {
     DB.deleteAnswer();
