@@ -76,7 +76,7 @@ export default function App() {
                         <span>Joshua Steed</span>
                     <br />
                         <a href="https://github.com/Joshua-S25/startup">
-                        FGC Github (v.0.9)
+                        FGC Github (v.1)
                     </a>
                 </footer>
             </div>
