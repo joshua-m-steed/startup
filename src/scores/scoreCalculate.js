@@ -71,6 +71,10 @@ export class ScoreCalculator {
             if (cleanAnswer == null || cleanGuess == null) {
                 continue;
             } else if (!Array.isArray(cleanAnswer[category]) || !Array.isArray(cleanGuess[category])) {
+                if(category == "name" || category == "_id") // Known moments of incompatibility
+                {
+                    continue;
+                }
                 console.error(`Category ${category} is not an array or doesn't exist.`);
                 continue;
             }

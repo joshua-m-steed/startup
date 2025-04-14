@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 export function Answer() {
     // NOTE :: Attempt to Compress this code, explore ::
-    const userGuess = new GuessSheet();
+    const scoreCalc = new ScoreCalculator();
     const answerKey = new GuessSheet(); // Call and compare the sheets upon submission?
     // const [locked, setLocked] = React.useState(false); // For a future Idea
 
@@ -109,9 +109,19 @@ export function Answer() {
         setTempleThree(answer.templeLoc[2]);
     }
 
-    async function calculateAndUpdate(answer, guess)
+    async function calculateAndUpdate(guess, answer)
     {
-        console.log(JSON.stringify(guess) + JSON.stringify(answer));
+        const userScore = scoreCalc.score(guess, answer);
+        const userTable = scoreCalc.createTableRow(guess.name, userScore);
+
+        console.log(userTable);
+
+        console.log(JSON.stringify(userTable));
+        await fetch(`/api/scores`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(userTable),
+        });
     }
 
     async function updateAndCompareGuesses(answer)
@@ -128,7 +138,7 @@ export function Answer() {
         {
             // console.log(`Guess ${i} \n\n` +  JSON.stringify(guessesCollected[i]));
 
-            await calculateAndUpdate(answer, guessesCollected[i]);
+            await calculateAndUpdate(guessesCollected[i], answer);
         }
     }
 
