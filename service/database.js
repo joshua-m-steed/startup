@@ -38,7 +38,6 @@ async function updateUser(user) {
 }
 
 async function saveGuess(guess) {
-    console.log("I'm inside the save guess!");
     if(await guessCollection.findOne({ name: guess.name }))
     {
         await guessCollection.updateOne({ name: guess.name }, {$set: guess });
@@ -54,7 +53,6 @@ async function getGuess(name) {
 }
 
 async function getGuessAll() {
-    console.log("Why hello there!");
     return guessCollection.find().toArray();
 }
 

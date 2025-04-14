@@ -1,7 +1,4 @@
 import React from "react";
-import { ScoreCalculator } from "./scoreCalculate";
-import { GuessSheet } from "../guess/guessSheet";
-import { Profile } from "../login/profile";
 import './scores.css';
 
 export function Scores() {
@@ -22,7 +19,6 @@ export function Scores() {
     // answerKey.templeLoc = [ ["USA", "UT", "Spanish Fork"], ["Mexico", "Reynosa"], ["Peru", "Chorrillos"], ["Uruguay", "Rivera"], ["Brazil", "Campo Grande"], ["Portugal", "Porto"], ["Nigeria", "Uyo"], ["Philippines", "San Jose del Monte"], ["New Caledonia", "Nouméa"], ["Australia", "Liverpool"], ["USA", "ID", "Caldwell"], ["USA", "AZ", "Flagstaff"], ["USA", "SD", "Rapid City"], ["USA", "SC", "Greenville"], ["USA", "VA", "Norfolk"] ]
 
     const handleScoreUpdate = async () => {
-        // await saveScore(table);
         let fetchCall = `/api/scores/` + userName;
         await fetch(fetchCall)
         .then((response) => response.json())
@@ -36,16 +32,6 @@ export function Scores() {
     React.useEffect(() => {
         handleScoreUpdate();
     }, []);
-
-
-    async function saveScore(scoreText)
-    {
-        await fetch(`/api/scores`, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(scoreText),
-        });
-    }
 
     const scoreRows = [];
     if (scores.length) {

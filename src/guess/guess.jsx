@@ -1,9 +1,9 @@
 import React from "react";
 import { GuessSheet } from './guessSheet';
 import { ScoreCalculator } from "../scores/scoreCalculate";
-import { Profile } from "../login/profile";
-import './guess.css';
 import { NavLink, useNavigate } from "react-router-dom";
+
+import './guess.css';
 
 export function Guess() {
     // NOTE :: Attempt to Compress this code, explore ::

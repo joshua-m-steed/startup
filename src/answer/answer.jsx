@@ -1,14 +1,14 @@
 import React from "react";
 import { GuessSheet } from "../guess/guessSheet";
 import { ScoreCalculator } from "../scores/scoreCalculate";
-import { Profile } from "../login/profile";
-import './answer.css';
 import { NavLink } from "react-router-dom";
+
+import './answer.css';
 
 export function Answer() {
     // NOTE :: Attempt to Compress this code, explore ::
     const scoreCalc = new ScoreCalculator();
-    const answerKey = new GuessSheet(); // Call and compare the sheets upon submission?
+    const answerKey = new GuessSheet();
     // const [locked, setLocked] = React.useState(false); // For a future Idea
     const [updateText, setUpdateText] = React.useState("Update");
 
