@@ -10,6 +10,7 @@ export function Answer() {
     const scoreCalc = new ScoreCalculator();
     const answerKey = new GuessSheet(); // Call and compare the sheets upon submission?
     // const [locked, setLocked] = React.useState(false); // For a future Idea
+    const [updateText, setUpdateText] = React.useState("Update");
 
     const [satMorningOne, setSatMorningOne] = React.useState('');
     const [satMorningTwo, setSatMorningTwo] = React.useState('');
@@ -126,20 +127,20 @@ export function Answer() {
 
     async function updateAndCompareGuesses(answer)
     {
-        console.log("Now we're here");
+        setUpdateText("Updating...");
+
         const guessesCollected = await fetch(`/api/answer/guessAll`)
         .then((response) => response.json())
         .then((guessAll) => { 
-            // console.log(JSON.stringify(guessAll));
             return guessAll;
         });
 
         for(let i = 0; i < guessesCollected.length; i++)
         {
-            // console.log(`Guess ${i} \n\n` +  JSON.stringify(guessesCollected[i]));
-
             await calculateAndUpdate(guessesCollected[i], answer);
         }
+
+        setUpdateText("Update");
     }
 
     async function saveAnswerKey() 
@@ -366,7 +367,7 @@ export function Answer() {
 
                 Fill out the Answer Sheet as you watch General Conference!
                 <div>
-                    <button className="submit" type="button" onClick={() => saveAnswerKey()}>Update</button>
+                    <button className="submit" type="button" onClick={() => saveAnswerKey()}>{updateText}</button>
                     <button onClick={() => clearAnswer()}>Clear Answer</button>
                 </div>
 
