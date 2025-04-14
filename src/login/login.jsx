@@ -6,6 +6,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
     const [userName, setUserName] = React.useState( savedName || '');
     const [userEmail, setUserEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [displayErrorMessage, setDisplayErrorMessage] = React.useState('');
     
     // Create Profiles to effectively use data throughout
     async function loginUser() {
@@ -16,6 +17,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         else
         {
             console.log("Account creation failed");
+            setDisplayErrorMessage("Login failed: Incorrect name, email, or password");
         }
     }
 
@@ -28,6 +30,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         else
         {
             console.log("Account created failed");
+            setDisplayErrorMessage(`Creation failed: "${userName}" is already in use`)
         }
     }
 
@@ -104,6 +107,9 @@ export function Login({ savedName, authState, onAuthStateChange }) {
                     <div>
                         <button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button>
                         <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
+                    </div>
+                    <div>
+                        {displayErrorMessage}
                     </div>
             </form>
                 ) : (
