@@ -109,13 +109,27 @@ export function Answer() {
         setTempleThree(answer.templeLoc[2]);
     }
 
-    async function updateAndCompareGuesses()
+    async function calculateAndUpdate(answer, guess)
+    {
+        console.log(JSON.stringify(guess) + JSON.stringify(answer));
+    }
+
+    async function updateAndCompareGuesses(answer)
     {
         console.log("Now we're here");
-        await fetch(`/api/answer/guessAll`)
+        const guessesCollected = await fetch(`/api/answer/guessAll`)
         .then((response) => response.json())
-        .then((guessAll) => { console.log(JSON.stringify(guessAll))
+        .then((guessAll) => { 
+            // console.log(JSON.stringify(guessAll));
+            return guessAll;
         });
+
+        for(let i = 0; i < guessesCollected.length; i++)
+        {
+            // console.log(`Guess ${i} \n\n` +  JSON.stringify(guessesCollected[i]));
+
+            await calculateAndUpdate(answer, guessesCollected[i]);
+        }
     }
 
     async function saveAnswerKey() 
@@ -136,7 +150,7 @@ export function Answer() {
             body: JSON.stringify(answerKey),
         });
 
-        updateAndCompareGuesses();
+        updateAndCompareGuesses(answerKey);
     }
 
     function tri_package(var1='', var2='', var3='') {
