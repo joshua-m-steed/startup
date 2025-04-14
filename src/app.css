@@ -195,6 +195,13 @@ footer a:hover {
 }
 
 @media (orientation: portrait) {
+    .navlinks {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+        padding-left: 15px;
+    }
+    
     main {
         flex-direction: column;
     }
@@ -207,6 +214,8 @@ footer a:hover {
     header {
         height: none;
     }
+    
+
     main h1 {
         font-size: xx-large;
         text-align: center;
