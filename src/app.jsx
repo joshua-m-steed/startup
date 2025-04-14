@@ -7,6 +7,7 @@ import { Login } from './login/login';
 import { Guess } from './guess/guess';
 import { Scores } from './scores/scores';
 import { Answer } from './answer/answer';
+import { About } from './about/about';
 import { Notes, ChatClient } from './notes/notes';
 
 export default function App() {
@@ -47,6 +48,11 @@ export default function App() {
                             </NavLink>
                         </li>
                         )}
+                        <li>
+                            <NavLink to="about">
+                                About
+                            </NavLink>
+                        </li>
                         </menu>
                     </nav>
                     <hr />
@@ -67,6 +73,7 @@ export default function App() {
                         <Route path='scores' element={<Scores />} />
                         <Route path='answer' element={<Answer />} />
                         <Route path='notes' element={<Notes webSocket={new ChatClient()}/>} />
+                        <Route path='about' element={<About />} />
                         <Route path='*' element={<NotFound />} />
                     </Routes>
                 </main>
