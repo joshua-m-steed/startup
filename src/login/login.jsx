@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export function Login({ savedName, authState, onAuthStateChange }) {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
@@ -7,6 +7,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
     const [userEmail, setUserEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [displayErrorMessage, setDisplayErrorMessage] = React.useState('');
+    const navigate = useNavigate();
     
     // Create Profiles to effectively use data throughout
     async function loginUser() {
@@ -21,6 +22,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         }
     }
 
+    // 
     async function createUser() {
         const success = await userLoginOrCreate(`/api/auth/create`);
         if (success)
@@ -67,6 +69,35 @@ export function Login({ savedName, authState, onAuthStateChange }) {
     }
 
     React.useEffect(() => {
+        const handleKeyDown = (e) => {
+            if(e.key === ("Enter" || "ENTER"))
+            {
+                if(authState)
+                {
+                    navigate("/guess");
+                }
+                else if(userName && password && userEmail)
+                {
+                    loginUser();
+                }
+            }
+            else if(e.key === ("Escape" || "ESCAPE"))
+            {
+                if(authState)
+                {
+                    logoutUser();
+                }
+            }
+        }
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    })
+
+    React.useEffect(() => {
         fetch(`https://random.dog/woof.json`)
             .then((response) => response.json())
             .then((data) => {
@@ -105,8 +136,8 @@ export function Login({ savedName, authState, onAuthStateChange }) {
             </div>
             <br />
                     <div>
-                        <button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !password}>Sign In</button>
-                        <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !password}>Create</button>
+                        <button className="sign" type="button" onClick={() => loginUser()} disabled={!userName || !userEmail || !password}>Sign In</button>
+                        <button className="create" type="button" onClick={() => createUser()} disabled={!userName || !userEmail || !password}>Create</button>
                     </div>
                     <div>
                         {displayErrorMessage}
