@@ -9,7 +9,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
     const [displayErrorMessage, setDisplayErrorMessage] = React.useState('');
     const navigate = useNavigate();
     
-    // Create Profiles to effectively use data throughout
+    // Calls fetch function to verify if they can login
     async function loginUser() {
         const success = await userLoginOrCreate(`/api/auth/login`);
         if (success) {
@@ -22,7 +22,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         }
     }
 
-    // 
+    // Calls a fetch from database in order to see if no matching users exists
     async function createUser() {
         const success = await userLoginOrCreate(`/api/auth/create`);
         if (success)
@@ -36,6 +36,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         }
     }
 
+    // Fetches data via call and removes username and token
     async function logoutUser() {
         fetch(`/api/auth/logout`, {
             method: 'delete',
@@ -49,6 +50,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
             })
     }
 
+    // Handles api calls from other functions
     async function userLoginOrCreate(endpoint) {
         console.log("Entering the feilds and awaiting response...");
         const response = await fetch(endpoint, {
@@ -68,6 +70,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         }
     }
 
+    // Keystroke listener
     React.useEffect(() => {
         const handleKeyDown = (e) => {
             if(e.key === ("Enter" || "ENTER"))
@@ -97,6 +100,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         };
     })
 
+    // One time api dog image call
     React.useEffect(() => {
         fetch(`https://random.dog/woof.json`)
             .then((response) => response.json())
