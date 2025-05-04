@@ -85,7 +85,7 @@ export function Scores() {
 
             <div className="scoreboard-div">
                 <table className="scoreboard">
-                    <thead>
+                    <thead className="scorehead">
                         <tr>
                             <th>Placement</th>
                             <th>Username</th>
@@ -93,11 +93,11 @@ export function Scores() {
                             <th>🏆</th>
                         </tr>
                     </thead>
-                    <tbody id='score'>{scoreRows}
+                    <tbody className="scorerows" id='score'>{scoreRows}
                     </tbody>
                 </table>
             </div>
-            <div>
+            <div className="advice-text">
                 Any <a id="advice" href="https://forms.gle/ucD17eJC8YFJNbQN9">advice</a>?
             </div>
         </main>

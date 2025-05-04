@@ -120,7 +120,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
 
     return (
         <main>
-            <h1>Welcome to Fantasy General Conference</h1>
+            <h1 className="welcome">Welcome to Fantasy General Conference</h1>
             <div>
                 <img className="profile" src={imageUrl} alt="User_Profile_Image" width="10%" height="auto" />
             </div>
