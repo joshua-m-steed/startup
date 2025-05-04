@@ -269,14 +269,14 @@ export function Answer() {
                 </div>
                 <hr />
                 <h3>Tie color</h3>
-                Please select from the drop down menus next to their names: 
+                Please select from the drop down menus next to their assignment: 
 
                 <br />
                 <br />
 
                 <div>
-                    <label htmlFor="pick_color_nelson">Prophet: </label>
-                    <select className="color_picker" id="pick_color_nelson" value={tieNelson} onChange={(e) => setTieNelson(e.target.value)}>
+                    <label htmlFor="pick_color_prophet">Prophet: </label>
+                    <select className="color_picker" id="pick_color_prophet" value={tieNelson} onChange={(e) => setTieNelson(e.target.value)}>
                         <option value=''>[Select]</option>                        
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
@@ -289,8 +289,8 @@ export function Answer() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="pick_color_oak">1st Counselor: </label>
-                    <select className="color_picker" id="pick_color_oak" value={tieOak} onChange={(e) => setTieOak(e.target.value)}>
+                    <label htmlFor="pick_color_1stCounselor">1st Counselor: </label>
+                    <select className="color_picker" id="pick_color_1stCounselor" value={tieOak} onChange={(e) => setTieOak(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
@@ -303,8 +303,8 @@ export function Answer() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="pick_color_eyring">2nd Counselor: </label>
-                    <select className="color_picker" id="pick_color_eyring" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
+                    <label htmlFor="pick_color_2ndCounselor">2nd Counselor: </label>
+                    <select className="color_picker" id="pick_color_2ndCounselor" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
