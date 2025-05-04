@@ -31,9 +31,9 @@ export function Guess() {
     const [sunAfternoonTwo, setSunAfternoonTwo] = React.useState('');
     const [sunAfternoonThree, setSunAfternoonThree] = React.useState('');
 
-    const [tieNelson, setTieNelson] = React.useState('');
-    const [tieOak, setTieOak] = React.useState('');
-    const [tieEyring, setTieEyring] = React.useState('');
+    const [tieProphet, setTieProphet] = React.useState('');
+    const [tie1stCoun, setTie1stCoun] = React.useState('');
+    const [tie2ndCoun, setTie2ndCoun] = React.useState('');
 
     const [dressSat, setDressSat] = React.useState('');
     const [dressSun, setDressSun] = React.useState('');
@@ -94,9 +94,9 @@ export function Guess() {
         setSunAfternoonTwo(guess.sunAft[1]);
         setSunAfternoonThree(guess.sunAft[2]);
 
-        setTieNelson(guess.tieClr[0]);
-        setTieOak(guess.tieClr[1]);
-        setTieEyring(guess.tieClr[2]);
+        setTieProphet(guess.tieClr[0]);
+        setTie1stCoun(guess.tieClr[1]);
+        setTie2ndCoun(guess.tieClr[2]);
 
         setDressSat(guess.dressClr[0]);
         setDressSun(guess.dressClr[1]);
@@ -168,7 +168,7 @@ export function Guess() {
         userGuess.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
         userGuess.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
         userGuess.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
-        userGuess.setGuess('tieClr', tri_package(tieNelson, tieOak, tieEyring));
+        userGuess.setGuess('tieClr', tri_package(tieProphet, tie1stCoun, tie2ndCoun));
         userGuess.setGuess('dressClr', [dressSat, dressSun]);
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
@@ -285,7 +285,7 @@ export function Guess() {
 
                 <div>
                     <label htmlFor="pick_color_prophet">Prophet: </label>
-                    <select className="color_picker" id="pick_color_prophet" value={tieNelson} onChange={(e) => setTieNelson(e.target.value)}>
+                    <select className="color_picker" id="pick_color_prophet" value={tieProphet} onChange={(e) => setTieProphet(e.target.value)}>
                         <option value=''>[Select]</option>                        
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
@@ -299,7 +299,7 @@ export function Guess() {
                 </div>
                 <div>
                     <label htmlFor="pick_color_1stCounselor">1st Counselor: </label>
-                    <select className="color_picker" id="pick_color_1stCounselor" value={tieOak} onChange={(e) => setTieOak(e.target.value)}>
+                    <select className="color_picker" id="pick_color_1stCounselor" value={tie1stCoun} onChange={(e) => setTie1stCoun(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
@@ -313,7 +313,7 @@ export function Guess() {
                 </div>
                 <div>
                     <label htmlFor="pick_color_2ndCounselor">2nd Counselor: </label>
-                    <select className="color_picker" id="pick_color_2ndCounselor" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
+                    <select className="color_picker" id="pick_color_2ndCounselor" value={tie2ndCoun} onChange={(e) => setTie2ndCoun(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>

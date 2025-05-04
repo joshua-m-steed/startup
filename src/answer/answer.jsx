@@ -32,9 +32,9 @@ export function Answer() {
     const [sunAfternoonTwo, setSunAfternoonTwo] = React.useState('');
     const [sunAfternoonThree, setSunAfternoonThree] = React.useState('');
 
-    const [tieNelson, setTieNelson] = React.useState('');
-    const [tieOak, setTieOak] = React.useState('');
-    const [tieEyring, setTieEyring] = React.useState('');
+    const [tieProphet, setTieProphet] = React.useState('');
+    const [tie1stCoun, setTie1stCoun] = React.useState('');
+    const [tie2ndCoun, setTie2ndCoun] = React.useState('');
 
     const [hymnOne, setHymnOne] = React.useState('');
     const [hymnTwo, setHymnTwo] = React.useState('');
@@ -75,9 +75,9 @@ export function Answer() {
         setSunAfternoonTwo(answer.sunAft[1]);
         setSunAfternoonThree(answer.sunAft[2]);
 
-        setTieNelson(answer.tieClr[0]);
-        setTieOak(answer.tieClr[1]);
-        setTieEyring(answer.tieClr[2]);
+        setTieProphet(answer.tieClr[0]);
+        setTie1stCoun(answer.tieClr[1]);
+        setTie2ndCoun(answer.tieClr[2]);
 
         setHymnOne(answer.hymnNum[0]);
         setHymnTwo(answer.hymnNum[1]);
@@ -151,7 +151,7 @@ export function Answer() {
         answerKey.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
         answerKey.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
         answerKey.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
-        answerKey.setGuess('tieClr', tri_package(tieNelson, tieOak, tieEyring));
+        answerKey.setGuess('tieClr', tri_package(tieProphet, tie1stCoun, tie2ndCoun));
         answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
@@ -276,7 +276,7 @@ export function Answer() {
 
                 <div>
                     <label htmlFor="pick_color_prophet">Prophet: </label>
-                    <select className="color_picker" id="pick_color_prophet" value={tieNelson} onChange={(e) => setTieNelson(e.target.value)}>
+                    <select className="color_picker" id="pick_color_prophet" value={tieProphet} onChange={(e) => setTieProphet(e.target.value)}>
                         <option value=''>[Select]</option>                        
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
@@ -290,7 +290,7 @@ export function Answer() {
                 </div>
                 <div>
                     <label htmlFor="pick_color_1stCounselor">1st Counselor: </label>
-                    <select className="color_picker" id="pick_color_1stCounselor" value={tieOak} onChange={(e) => setTieOak(e.target.value)}>
+                    <select className="color_picker" id="pick_color_1stCounselor" value={tie1stCoun} onChange={(e) => setTie1stCoun(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
@@ -304,7 +304,7 @@ export function Answer() {
                 </div>
                 <div>
                     <label htmlFor="pick_color_2ndCounselor">2nd Counselor: </label>
-                    <select className="color_picker" id="pick_color_2ndCounselor" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
+                    <select className="color_picker" id="pick_color_2ndCounselor" value={tie2ndCoun} onChange={(e) => setTie2ndCoun(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
