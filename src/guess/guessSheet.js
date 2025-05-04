@@ -8,6 +8,7 @@ export class GuessSheet {
         this.sunMor = [];
         this.sunAft = [];
         this.tieClr = [];
+        this.dressClr = [];
         this.hymnNum = [];
         this.templeLoc =[];
     }

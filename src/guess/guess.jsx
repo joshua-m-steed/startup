@@ -35,6 +35,9 @@ export function Guess() {
     const [tieOak, setTieOak] = React.useState('');
     const [tieEyring, setTieEyring] = React.useState('');
 
+    const [dressSat, setDressSat] = React.useState('');
+    const [dressSun, setDressSun] = React.useState('');
+
     const [hymnOne, setHymnOne] = React.useState('');
     const [hymnTwo, setHymnTwo] = React.useState('');
     const [hymnThree, setHymnThree] = React.useState('');
@@ -94,6 +97,9 @@ export function Guess() {
         setTieNelson(guess.tieClr[0]);
         setTieOak(guess.tieClr[1]);
         setTieEyring(guess.tieClr[2]);
+
+        setDressSat(guess.dressClr[0]);
+        setDressSun(guess.dressClr[1]);
 
         setHymnOne(guess.hymnNum[0]);
         setHymnTwo(guess.hymnNum[1]);
@@ -163,6 +169,7 @@ export function Guess() {
         userGuess.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
         userGuess.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
         userGuess.setGuess('tieClr', tri_package(tieNelson, tieOak, tieEyring));
+        userGuess.setGuess('dressClr', [dressSat, dressSun]);
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
 
@@ -268,6 +275,7 @@ export function Guess() {
                         </table>
                     </div>
                 </div>
+
                 <hr />
                 <h3>What color ties will they wear on Sunday Morning? (1pt each)</h3>
                 Please select from the drop down menus next to their names: 
@@ -306,6 +314,42 @@ export function Guess() {
                 <div>
                     <label htmlFor="pick_color_eyring">2nd Counselor: </label>
                     <select className="color_picker" id="pick_color_eyring" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
+                        <option value=''>[Select]</option> 
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                    </select>
+                </div>
+
+                <hr />
+                <h3>What color dress will they wear on both mornings? (1pt each)</h3>
+                Please select from the drop down menus next to the session: 
+
+                <br />
+                <br />
+
+                <div>
+                    <label htmlFor="pick_color_dressSat">Saturday Morning Dress: </label>
+                    <select className="color_picker" id="pick_color_dressSat" value={dressSat} onChange={(e) => setDressSat(e.target.value)}>
+                        <option value=''>[Select]</option>                        
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="pick_color_dressSun">Sunday Morning Dress: </label>
+                    <select className="color_picker" id="pick_color_dressSun" value={dressSun} onChange={(e) => setDressSun(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
