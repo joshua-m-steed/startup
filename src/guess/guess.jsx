@@ -337,28 +337,26 @@ export function Guess() {
                     <label htmlFor="pick_color_dressSat">Saturday Morning Dress: </label>
                     <select className="color_picker" id="pick_color_dressSat" value={dressSat} onChange={(e) => setDressSat(e.target.value)}>
                         <option value=''>[Select]</option>                        
-                        <option value="Red">Red</option>
-                        <option value="Orange">Orange</option>
-                        <option value="Yellow">Yellow</option>
-                        <option value="Green">Green</option>
-                        <option value="Blue">Blue</option>
+                        <option value="Raspberry">Raspberry</option>
+                        <option value="Fuchsia">Fuchsia</option>
+                        <option value="Turquoise">Turquoise</option>
+                        <option value="Royal Blue">Royal Blue</option>
                         <option value="Purple">Purple</option>
                         <option value="Black">Black</option>
-                        <option value="White">White</option>
+                        <option value="Cream">Cream</option>
                     </select>
                 </div>
                 <div>
                     <label htmlFor="pick_color_dressSun">Sunday Morning Dress: </label>
                     <select className="color_picker" id="pick_color_dressSun" value={dressSun} onChange={(e) => setDressSun(e.target.value)}>
-                        <option value=''>[Select]</option> 
-                        <option value="Red">Red</option>
-                        <option value="Orange">Orange</option>
-                        <option value="Yellow">Yellow</option>
-                        <option value="Green">Green</option>
-                        <option value="Blue">Blue</option>
+                        <option value=''>[Select]</option>                        
+                        <option value="Raspberry">Raspberry</option>
+                        <option value="Fuchsia">Fuchsia</option>
+                        <option value="Turquoise">Turquoise</option>
+                        <option value="Royal Blue">Royal Blue</option>
                         <option value="Purple">Purple</option>
                         <option value="Black">Black</option>
-                        <option value="White">White</option>
+                        <option value="Cream">Cream</option>
                     </select>
                 </div>
 
