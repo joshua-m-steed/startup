@@ -82,8 +82,8 @@ export function Answer() {
         setTie1stCoun(answer.tieClr[1]);
         setTie2ndCoun(answer.tieClr[2]);
 
-        setDressSat(guess.dressClr[0]);
-        setDressSun(guess.dressClr[1]);
+        setDressSat(answer.dressClr[0]);
+        setDressSun(answer.dressClr[1]);
 
         setHymnOne(answer.hymnNum[0]);
         setHymnTwo(answer.hymnNum[1]);

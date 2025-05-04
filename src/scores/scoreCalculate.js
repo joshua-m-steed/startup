@@ -114,6 +114,22 @@ export class ScoreCalculator {
                         points++;
                     }
                 }
+            } else if (category == 'dressClr') {
+                for (let i = 0; i < 2; i++)
+                {
+                    const answerVal = cleanAnswer[category][i];
+                    const guessVal = cleanGuess[category][i];
+
+                    if(guessVal === "")
+                    {
+                        continue;
+                    }
+
+                    if(guessVal === answerVal)
+                    {
+                        points++;
+                    }
+                }
             } 
             else {
                 let answerSet = new Set(cleanAnswer[category]);
