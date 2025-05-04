@@ -36,6 +36,9 @@ export function Answer() {
     const [tie1stCoun, setTie1stCoun] = React.useState('');
     const [tie2ndCoun, setTie2ndCoun] = React.useState('');
 
+    const [dressSat, setDressSat] = React.useState('');
+    const [dressSun, setDressSun] = React.useState('');
+
     const [hymnOne, setHymnOne] = React.useState('');
     const [hymnTwo, setHymnTwo] = React.useState('');
     const [hymnThree, setHymnThree] = React.useState('');
@@ -78,6 +81,9 @@ export function Answer() {
         setTieProphet(answer.tieClr[0]);
         setTie1stCoun(answer.tieClr[1]);
         setTie2ndCoun(answer.tieClr[2]);
+
+        setDressSat(guess.dressClr[0]);
+        setDressSun(guess.dressClr[1]);
 
         setHymnOne(answer.hymnNum[0]);
         setHymnTwo(answer.hymnNum[1]);
@@ -152,6 +158,7 @@ export function Answer() {
         answerKey.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
         answerKey.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
         answerKey.setGuess('tieClr', tri_package(tieProphet, tie1stCoun, tie2ndCoun));
+        answerKey.setGuess('dressClr', [dressSat, dressSun]);
         answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
@@ -305,6 +312,42 @@ export function Answer() {
                 <div>
                     <label htmlFor="pick_color_2ndCounselor">2nd Counselor: </label>
                     <select className="color_picker" id="pick_color_2ndCounselor" value={tie2ndCoun} onChange={(e) => setTie2ndCoun(e.target.value)}>
+                        <option value=''>[Select]</option> 
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                    </select>
+                </div>
+
+                <hr />
+                <h3>Dress Color</h3>
+                Please select from the drop down menus next to the session: 
+
+                <br />
+                <br />
+
+                <div>
+                    <label htmlFor="pick_color_dressSat">Saturday Morning Dress: </label>
+                    <select className="color_picker" id="pick_color_dressSat" value={dressSat} onChange={(e) => setDressSat(e.target.value)}>
+                        <option value=''>[Select]</option>                        
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="pick_color_dressSun">Sunday Morning Dress: </label>
+                    <select className="color_picker" id="pick_color_dressSun" value={dressSun} onChange={(e) => setDressSun(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
