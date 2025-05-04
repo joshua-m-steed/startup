@@ -188,7 +188,7 @@ export function Answer() {
     return (
         <main>
             <div>
-                <h3 className="guess_title">Welcome to Answer Key, {localStorage.getItem('Username')}!</h3>
+                <h3 className="guess_title">Welcome to the Answer Key, {localStorage.getItem('Username')}!</h3>
             </div>
 
                 <hr />
@@ -275,7 +275,7 @@ export function Answer() {
                 <br />
 
                 <div>
-                    <label htmlFor="pick_color_nelson">President Nelson's: </label>
+                    <label htmlFor="pick_color_nelson">Prophet: </label>
                     <select className="color_picker" id="pick_color_nelson" value={tieNelson} onChange={(e) => setTieNelson(e.target.value)}>
                         <option value=''>[Select]</option>                        
                         <option value="Red">Red</option>
@@ -289,7 +289,7 @@ export function Answer() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="pick_color_oak">President Oak's: </label>
+                    <label htmlFor="pick_color_oak">1st Counselor: </label>
                     <select className="color_picker" id="pick_color_oak" value={tieOak} onChange={(e) => setTieOak(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
@@ -303,7 +303,7 @@ export function Answer() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="pick_color_eyring">President Eyring's: </label>
+                    <label htmlFor="pick_color_eyring">2nd Counselor: </label>
                     <select className="color_picker" id="pick_color_eyring" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>

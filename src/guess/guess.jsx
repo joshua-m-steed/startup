@@ -276,7 +276,7 @@ export function Guess() {
                 <br />
 
                 <div>
-                    <label htmlFor="pick_color_nelson">President Nelson's: </label>
+                    <label htmlFor="pick_color_nelson">Prophet: </label>
                     <select className="color_picker" id="pick_color_nelson" value={tieNelson} onChange={(e) => setTieNelson(e.target.value)}>
                         <option value=''>[Select]</option>                        
                         <option value="Red">Red</option>
@@ -290,7 +290,7 @@ export function Guess() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="pick_color_oak">President Oak's: </label>
+                    <label htmlFor="pick_color_oak">1st Counselor: </label>
                     <select className="color_picker" id="pick_color_oak" value={tieOak} onChange={(e) => setTieOak(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
@@ -304,7 +304,7 @@ export function Guess() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="pick_color_eyring">President Eyring's: </label>
+                    <label htmlFor="pick_color_eyring">2nd Counselor: </label>
                     <select className="color_picker" id="pick_color_eyring" value={tieEyring} onChange={(e) => setTieEyring(e.target.value)}>
                         <option value=''>[Select]</option> 
                         <option value="Red">Red</option>
@@ -344,7 +344,7 @@ export function Guess() {
                     <img className="lvtemple" src="lv_temple.jpg" alt="Las Vegas Temple" height="300" />
                 </div>
 
-                <h3>Where a temple will be announced? (1pt for Country, 2pts for State/Region, 3pts for City)</h3>
+                <h3>Where a temple will be announced? (1pt for each)</h3>
                 Please input the location as follows: Country, State/Region, City
 
                 <br />
