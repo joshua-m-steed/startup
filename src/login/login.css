@@ -1,3 +1,53 @@
+h1.welcome {
+    background-color: blue;
+}
+
+div img.profile {
+    background-color: yellow;
+    border-color: yellow;
+}
+
 form.user_box {
     background-color: red;
+}
+
+div.input_container {
+    background-color: orange;
+}
+
+input.user_name {
+    background-color: aquamarine;
+}
+
+input.user_email {
+    background-color: rgb(136, 255, 127);
+}
+
+input.user_pass {
+    background-color: rgb(49, 196, 51);
+}
+
+button.sign {
+    background-color: yellow;
+}
+
+button.create {
+    background-color: yellowgreen;
+}
+
+/* CSS for the Halfway page after login/creation */
+div.name_buttons_box {
+    background-color: orangered;
+}
+
+div h1.name {
+    color: rgb(55, 50, 190);
+}
+
+button.play {
+    background-color: blue;
+}
+
+button.logout {
+    background-color: blueviolet;
 }
