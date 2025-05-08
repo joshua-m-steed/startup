@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
+import './login.css';
+
 export function Login({ savedName, authState, onAuthStateChange }) {
     const [imageUrl, setImageUrl] = React.useState(`data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=`);
     const [userName, setUserName] = React.useState( savedName || '');
@@ -125,7 +127,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
                 <img className="profile" src={imageUrl} alt="User_Profile_Image" width="10%" height="auto" />
             </div>
             {authState == false ? (
-            <form id="user_info" method="get" action="guess.html">
+            <form className="user_box" id="user_info" method="get" action="guess.html">
             <div className="input_container">
                <span>👨‍💻</span> 
                <input id="user_name" type="user" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="username" />
