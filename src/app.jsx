@@ -18,7 +18,10 @@ export default function App() {
         <BrowserRouter>
             <div className='app'>
                 <header>
-                    <h1>Fantasy General Conference</h1>
+                    <div className='header_box'>
+                        <img className='FGC_ico' src="../public/fgc.ico" />
+                        <h1 className='FGC'> Fantasy General Conference</h1>
+                    </div>
                     <nav>
                         <menu className="navlinks">
                         <li>
