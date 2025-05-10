@@ -35,7 +35,7 @@ header div h1.FGC {
     transform: translateX(-0.5%);
 }
 
-img.FGC_ico {
+a.FGC_ico img {
     display: inline-block;
     width: clamp(30px, 5vw, 60px);
     height: auto;
