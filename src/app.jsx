@@ -53,7 +53,6 @@ export default function App() {
                         )}
                         </menu>
                     </nav>
-                    <hr />
                 </header>
 
                 <main>
@@ -76,7 +75,7 @@ export default function App() {
                 </main>
 
                 <footer>
-                    <hr className='break'/>
+                    <hr className='footer_break'/>
                         <span className='dev'>Joshua Steed</span>
                     <br />
                         <a href="https://github.com/Joshua-S25/startup">
