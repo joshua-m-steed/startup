@@ -34,14 +34,8 @@ header div h1.FGC {
     text-shadow: 1px 1px 1px rgb(8, 7, 7);
     color: rgb(213, 210, 207);
 
-    position:relative;
-
     margin: auto;
     transform: translateX(-0.5%);
-    text-wrap: nowrap;
-    max-width: 90%;
-    text-rendering: inherit;
-    text-align: center;
     text-size-adjust: 75%;
 }
 
