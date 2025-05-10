@@ -24,7 +24,7 @@ export default function App() {
                         {/* <img className='FGC_ico' src="../public/fgc.ico" />  PLACE WITHIN h1 IF WANTING CENTER*/}
                     </div>
                     <nav>
-                        <menu className="navlinks">
+                        <menu className='navlinks'>
                         <li>
                             <NavLink to="/">
                                 Home
