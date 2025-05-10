@@ -19,9 +19,8 @@ export default function App() {
             <div className='app'>
                 <header>
                     <div className='header_box'>
-                        <a className='FGC_ico' href="https://startup.minijosh.click"><img src='../public/fgc.ico' /></a>
+                        <a className='FGC_ico' href="https://startup.minijosh.click"><img src='../fgc.ico' /></a>
                         <h1 className='FGC'> Fantasy General Conference</h1>
-                        {/* <img className='FGC_ico' src="../public/fgc.ico" />  PLACE WITHIN h1 IF WANTING CENTER*/}
                     </div>
                     <nav>
                         <menu className='navlinks'>
