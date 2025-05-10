@@ -30,7 +30,8 @@ header div.header_box {
 }
 
 header div h1.FGC {
-    font-size: flex;
+    /* font-size: flex; */
+    font-size: clamp(1.2rem, 2.5vw, 4rem);
     text-shadow: 1px 1px 1px rgb(8, 7, 7);
     color: rgb(213, 210, 207);
 
@@ -40,9 +41,9 @@ header div h1.FGC {
 }
 
 img.FGC_ico {
-    width: 10%;
+    width: clamp(30px, 5vw, 60px);
     height: auto;
-    display: inline;
+    display: inline-block;
 }
 
 /* Link details for Navlinks */
