@@ -72,12 +72,13 @@ export default function App() {
                 </main>
 
                 <footer>
-                    <hr />
-                        <span>Joshua Steed</span>
+                    <hr className='break'/>
+                        <span className='dev'>Joshua Steed</span>
                     <br />
                         <a href="https://github.com/Joshua-S25/startup">
-                        FGC Github (v.1)
+                        FGC Github
                     </a>
+                    <span className='version'>v.1.0</span>
                 </footer>
             </div>
         </BrowserRouter>
