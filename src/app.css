@@ -26,22 +26,28 @@ header {
 
 header div.header_box {
     display: flex;
-    background-color: lightblue;
+    border-bottom-style: dashed;
 }
 
 header div h1.FGC {
-    font-size: larger;
-    text-shadow: 1px 1px 1px rgb(140, 140, 140);
-    background-color: beige;
+    font-size: flex;
+    text-shadow: 1px 1px 1px rgb(8, 7, 7);
+    color: rgb(213, 210, 207);
+
+    position:relative;
 
     margin: auto;
-    display: inline;
+    transform: translateX(-0.5%);
+    text-wrap: nowrap;
+    max-width: 90%;
+    text-rendering: inherit;
+    text-align: center;
+    text-size-adjust: 75%;
 }
 
 img.FGC_ico {
     width: 10%;
     height: auto;
-    margin-right: 5px;
     display: inline;
 }
 

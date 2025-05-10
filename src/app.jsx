@@ -21,6 +21,7 @@ export default function App() {
                     <div className='header_box'>
                         <img className='FGC_ico' src="../public/fgc.ico" />
                         <h1 className='FGC'> Fantasy General Conference</h1>
+                        {/* <img className='FGC_ico' src="../public/fgc.ico" />  PLACE WITHIN h1 IF WANTING CENTER*/}
                     </div>
                     <nav>
                         <menu className="navlinks">
