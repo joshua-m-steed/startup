@@ -14,9 +14,6 @@
 }
 
 
-
-
-
 /* The HEADER block of the HTML */
 header {
     flex: 0 80px;
@@ -26,59 +23,50 @@ header {
 
 header div.header_box {
     display: flex;
-    /* border-bottom-style: dashed; */
 }
 
 header div h1.FGC {
     font-size: clamp(1.2rem, 2.5vw, 4rem);
+    text-size-adjust: 75%;
     text-shadow: 1px 1px 1px rgb(8, 7, 7);
     color: rgb(213, 210, 207);
 
     margin: auto;
     transform: translateX(-0.5%);
-    text-size-adjust: 75%;
 }
 
 img.FGC_ico {
+    display: inline-block;
     width: clamp(30px, 5vw, 60px);
     height: auto;
-    display: inline-block;
 }
-
-
-
 
 
 /* Link details for Navlinks */
 menu.navlinks {
     display: flex;
     list-style: none;
+    align-items: center;
+    justify-content: center;
+
     gap: 3%;
     margin-top: 2px;
     margin-bottom: 2px;
-
-    align-items: center;
-    justify-content: center;
 }
 .navlinks li a {
-    color: whitesmoke;
     font-size: 16px;
     text-decoration: none;
-
+    color: whitesmoke;
+    
     display: inline-block;
-
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 .navlinks li a:hover{
-    color: black;
     text-decoration: underline;
+    color: black;
 
     transform: scale(1.3);
 }
-
-
-
-
 
 
 /* The MAIN block of the HTML */
