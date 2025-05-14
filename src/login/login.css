@@ -8,31 +8,50 @@ div img.profile {
 }
 
 form.user_box {
-    background-color: red;
+    /* background-color: #177339; */
+    background-color: #91a995;
+    border: 5px solid #177339;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 5%;
 }
 
 div.input_container {
-    background-color: orange;
+    /* background-color: #177339; */
+    background-color: #91a995;
+    border: 3px solid #177339;
+    box-shadow: 3px 3px 3px black;
 }
 
-input.user_name {
-    background-color: aquamarine;
-}
+/* table.scoreboard {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 3px solid #177339;
+    box-shadow: 3px 3px 3px black;
+} */
 
-input.user_email {
-    background-color: rgb(136, 255, 127);
-}
+/* input.user_name {
+    /* background-color: aquamarine; */
+/* } */
 
-input.user_pass {
-    background-color: rgb(49, 196, 51);
-}
+/* input.user_email { */
+    /* background-color: #91a995; */
+/* } */
+
+/* input.user_pass { */
+    /* background-color: rgb(49, 91a995, 51); */
+/* } */ 
 
 button.sign {
-    background-color: yellow;
+    background-color: #91a995;
+    border: 3px solid #177339;
+    box-shadow: 3px 3px 3px black;
 }
 
 button.create {
-    background-color: yellowgreen;
+    background-color: #91a995;
+    border: 3px solid #177339;
+    box-shadow: 3px 3px 3px black;
 }
 
 /* CSS for the Halfway page after login/creation */
