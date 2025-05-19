@@ -2,12 +2,6 @@ h1.welcome {
     background-color: blue;
 }
 
-div img.profile {
-    background-color: yellow;
-    border-color: yellow;
-}
-
-
 form.user_box {
     background-color: #91a995;
     border: 5px solid #177339;
@@ -24,26 +18,6 @@ div.input_container {
     border: 3px solid #177339;
     box-shadow: 3px 3px 3px black;
 }
-
-/* table.scoreboard {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    border: 3px solid #177339;
-    box-shadow: 3px 3px 3px black;
-} */
-
-/* input.user_name {
-    /* background-color: aquamarine; */
-/* } */
-
-/* input.user_email { */
-    /* background-color: #91a995; */
-/* } */
-
-/* input.user_pass { */
-    /* background-color: rgb(49, 91a995, 51); */
-/* } */ 
 
 button.sign {
     background-color: #91a995;
