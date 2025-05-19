@@ -9,6 +9,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
     const [userEmail, setUserEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [displayErrorMessage, setDisplayErrorMessage] = React.useState('');
+    const [displayWelcomeMessage, setWelcomeMessage] = React.useState('Hello there!');
     const navigate = useNavigate();
     
     // Calls fetch function to verify if they can login
@@ -16,6 +17,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         const success = await userLoginOrCreate(`/api/auth/login`);
         if (success) {
             onAuthStateChange(userName, true);
+            setWelcomeMessage("Welcome!");
         }
         else
         {
@@ -30,11 +32,12 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         if (success)
         {
             onAuthStateChange(userName, true);
+            setWelcomeMessage("Welcome!");
         }
         else
         {
             console.log("Account created failed");
-            setDisplayErrorMessage(`Creation failed: "${userName}" is already in use`)
+            setDisplayErrorMessage(`Creation failed: "${userName}" is already in use`);
         }
     }
 
@@ -49,6 +52,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
             .finally(() => {
                 localStorage.removeItem("Username");
                 onAuthStateChange(userName, false);
+                setWelcomeMessage("Hello there!");
             })
     }
 
@@ -122,10 +126,10 @@ export function Login({ savedName, authState, onAuthStateChange }) {
 
     return (
         <main>
-            <h1 className="welcome">Welcome!</h1>
-            <div>
+            <h1 className="welcome">{displayWelcomeMessage}</h1>
+            {/* <div>
                 <img className="profile" src={imageUrl} alt="User_Profile_Image" width="10%" height="auto" />
-            </div>
+            </div> */}
             {authState == false ? (
             <form className="user_box" id="user_info" method="get" action="guess.html">
             <div className="input_container">
