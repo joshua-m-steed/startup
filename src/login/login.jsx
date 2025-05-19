@@ -133,15 +133,15 @@ export function Login({ savedName, authState, onAuthStateChange }) {
             {authState == false ? (
             <form className="user_box" id="user_info" method="get" action="guess.html">
             <div className="input_container">
-               <span>👨‍💻</span> 
+               <span className="input_ico">👨‍💻</span> 
                <input className="user_name" id="user_name" type="user" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="username" />
             </div>
             <div className="input_container">
-                <span>📧</span>
+                <span className="input_ico">📧</span>
                 <input className="user_email" id="user_email" type="email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} placeholder="your@email.com" />
             </div>
             <div className="input_container">
-                <span>🔒</span>
+                <span className="input_ico">🔒</span>
                 <input className="user_pass" id="user_pass" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" />
             </div>
             <br />
@@ -156,7 +156,7 @@ export function Login({ savedName, authState, onAuthStateChange }) {
                 ) : (
                     <div className="name_buttons_box">
                         <h1 className="name">{userName}</h1>
-                        <NavLink to='guess'><button className="play" type="button" disabled={authState != true}>Play</button></NavLink>
+                        <NavLink to='guess'><button className="play" type="button" disabled={authState != true}> Play </button></NavLink>
                         <button className="logout" type="button" onClick={() => logoutUser()}>Logout</button>
                     </div>
                 )}
