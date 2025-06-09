@@ -125,12 +125,14 @@ table.hymns th {
     padding-left: 5px;
     padding-right: 5px;
 }
-table div.hymns_button_div {
+table caption.hymns_button_div {
     display: flex;
 }
-div button.hymns_button {
+caption button.hymns_button {
     width: 100%;
     margin: 3%;
+    margin-top: 1%;
+    margin-bottom: 1%;
     font-size: large;
 }
 

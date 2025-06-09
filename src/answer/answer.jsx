@@ -376,19 +376,21 @@ export function Answer() {
                     <thead className="hymnhead">
                         <tr>
                             {/* <th></th> */}
-                            <th>Hymn Number</th>
+                            <th>Hymn Number(s)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             {/* <td>#1</td> */}
-                            <td><input id="hymn_two" type="number" value={hymnTwo} onChange={(e) => setHymnTwo(e.target.value)} /></td>
+                            <td><input type="number"/></td>
                         </tr>
+                        {hymnRows}
+                        
                     </tbody>
-                    <div className="hymns_button_div">
-                        <button className="hymns_button"> + </button>
-                        <button className="hymns_button"> - </button>
-                    </div> 
+                    <caption className="hymns_button_div">
+                        <button type="button" className="hymns_button" onClick={() => hymnRows.push(<tr id='hello'><td><input type="number"/></td></tr>)}> + </button>
+                        <button type="button" className="hymns_button"> - </button>
+                    </caption> 
                 </table>
                 </div>
 
