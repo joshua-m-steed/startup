@@ -91,7 +91,6 @@ select::placeholder {
     align-items: center;
     overflow-x: auto;
     width: 100%;
-    
 }
 table.who_speaks {
     border-collapse: collapse;
@@ -108,6 +107,55 @@ table.who_speaks td {
 table.who_speaks th {
     background-color: #177339;
 }
+
+
+table.hymns {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 3px solid #177339;
+    box-shadow: 3px 3px 3px black;
+}
+table.hymns td {
+    border: 1px dashed #177339;
+    padding: 10px;
+}
+table.hymns th {
+    background-color: #177339;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+table div.hymns_button_div {
+    display: flex;
+}
+div button.hymns_button {
+    width: 100%;
+    margin: 3%;
+    font-size: large;
+}
+
+/* .hymn_table_cloth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto;
+    width: 100%;
+}
+table.hymn_answer_key {
+    border-collapse: collapse;
+    text-align: center;
+
+    max-width: 100%;
+    border: 1px solid #ddd;
+    margin: 10px;
+}
+table.hymn_answer_key td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+table.hymn_answer_key th {
+    background-color: #177339;
+} */
 
 
 button {

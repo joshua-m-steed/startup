@@ -97,6 +97,7 @@ apiRouter.post(`/scores`, isAuth, async (req, res) => {
 // Fetches scores
 apiRouter.get(`/scores/:username`, isAuth, async (req, res) => {
     const scores = await DB.getTopScores();
+    console.log(JSON.stringify(scores));
     userScore = await DB.getUserScores(req.params.username);
     if(userScore === undefined)
     {

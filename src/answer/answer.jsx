@@ -47,6 +47,11 @@ export function Answer() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
+    const hymnRows = [];
+    // Blank input box with buttons to begin
+    // // Add and retract boxes via buttons
+    // // Fill in previous data 
+
     async function fetchAnswerKey()
     {
         fetch(`api/answer`)
@@ -366,6 +371,44 @@ export function Answer() {
                 <br />
                 <br />
 
+                <div className="hymns-div">
+                <table className="hymns">
+                    <thead className="hymnhead">
+                        <tr>
+                            {/* <th></th> */}
+                            <th>Hymn Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {/* <td>#1</td> */}
+                            <td><input id="hymn_two" type="number" value={hymnTwo} onChange={(e) => setHymnTwo(e.target.value)} /></td>
+                        </tr>
+                    </tbody>
+                    <div className="hymns_button_div">
+                        <button className="hymns_button"> + </button>
+                        <button className="hymns_button"> - </button>
+                    </div> 
+                </table>
+                </div>
+
+                {/* TABLE CLOTH CSS IDEAS */}
+                {/* <div className="hymn_table_cloth">
+                    <table className="hymn_answer_key">
+                        <thead>
+                                <tr>
+                                    <th>Hymns</th>                         
+                                </tr>
+                            </thead>
+                        <tbody>
+                            <tr><td><input id="sunMorOne" type="text" value={sunMorningOne} onChange={(e) => setSunMorningOne(e.target.value)}/></td></tr>
+                            <tr><td><input id="sunMorTwo" type="text" value={sunMorningTwo} onChange={(e) => setSunMorningTwo(e.target.value)}/></td></tr>
+                            <tr><td><input id="sunMorThree" type="text" value={sunMorningThree} onChange={(e) => setSunMorningThree(e.target.value)}/></td></tr>
+                        </tbody>
+                    </table>
+                </div> */}
+
+                {/* ORIGINAL LISTS FOR ANSWERS */}
                 <div>
                     <label htmlFor="hymn_one">#1</label>
                     <input id="hymn_one" type="number" value={hymnOne} onChange={(e) => setHymnOne(e.target.value)} placeholder="Ex. 284" />
