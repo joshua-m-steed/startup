@@ -209,6 +209,20 @@ export function Answer() {
         });
     }
 
+    function delHymnRows()
+    {
+        setHymnRowsCount(prevCount => 
+        {
+            const newCount = prevCount;
+            setHymnRows((prevRows) => {
+                const newRows = [...prevRows];
+                newRows.pop();
+                return newRows;
+            });
+            return newCount - 1;
+        });
+    }
+
     React.useEffect(() => {
         fetchAnswerKey();
     }, []);
@@ -396,16 +410,15 @@ export function Answer() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr key='Hymn 1'>
-                            {/* <td>#1</td> */}
+                        {/* <tr key='Hymn 1'>
                             <td><input type="number"/></td>
-                        </tr>
+                        </tr> */}
                         {hymnRows}
                         
                     </tbody>
                     <caption className="hymns_button_div">
                         <button type="button" className="hymns_button" onClick={() => addHymnRows()}> + </button>
-                        <button type="button" className="hymns_button"> - </button>
+                        <button type="button" className="hymns_button" onClick={() => delHymnRows()}> - </button>
                     </caption> 
                 </table>
                 </div>
