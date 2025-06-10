@@ -196,6 +196,8 @@ export function Answer() {
             })    
     }
 
+    // NOTE TO SELF :: Row Count Variable isn't needed. Just use Array.length()
+
     function addHymnRows()
     {
         setHymnRowsCount(prevCount => 
@@ -216,7 +218,12 @@ export function Answer() {
             const newCount = prevCount;
             setHymnRows((prevRows) => {
                 const newRows = [...prevRows];
-                newRows.pop();
+                console.log(newRows.length);
+                if(newRows.length != 1)
+                {
+                    newRows.pop();
+                }
+                
                 return newRows;
             });
             return newCount - 1;
