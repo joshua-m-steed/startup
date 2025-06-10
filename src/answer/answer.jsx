@@ -47,7 +47,10 @@ export function Answer() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
-    const hymnRows = [];
+    const [hymnRows, setHymnRows] = React.useState([
+        <tr key={1}><td><input type="number" /></td></tr>
+    ]);
+    const [hymnRowsCount, setHymnRowsCount] = React.useState(2);
     // Blank input box with buttons to begin
     // // Add and retract boxes via buttons
     // // Fill in previous data 
@@ -191,6 +194,19 @@ export function Answer() {
             .finally(() => {
                 console.log("The answer key has been deleted!");
             })    
+    }
+
+    function addHymnRows()
+    {
+        setHymnRowsCount(prevCount => 
+        {
+            const newCount = prevCount;
+            setHymnRows(prevRows => [
+                ...prevRows,
+                <tr key={newCount}><td><input type="number" /></td></tr>
+            ]);
+            return newCount + 1;
+        });
     }
 
     React.useEffect(() => {
@@ -380,7 +396,7 @@ export function Answer() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr key='Hymn 1'>
                             {/* <td>#1</td> */}
                             <td><input type="number"/></td>
                         </tr>
@@ -388,7 +404,7 @@ export function Answer() {
                         
                     </tbody>
                     <caption className="hymns_button_div">
-                        <button type="button" className="hymns_button" onClick={() => hymnRows.push(<tr id='hello'><td><input type="number"/></td></tr>)}> + </button>
+                        <button type="button" className="hymns_button" onClick={() => addHymnRows()}> + </button>
                         <button type="button" className="hymns_button"> - </button>
                     </caption> 
                 </table>
