@@ -47,10 +47,11 @@ export function Answer() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
+    const [hymnRowsVal, setHymnRowsVal] = React.useState(['', 1, 78, 23958000, 2458, 235, 1, 45, 235, 7777777777]);
     const [hymnRows, setHymnRows] = React.useState([
-        <tr key={1}><td><input type="number" /></td></tr>
+        <tr key={0}><td><input value={hymnRowsVal[0]} type="number" /></td></tr>
     ]);
-    const [hymnRowsCount, setHymnRowsCount] = React.useState(2);
+   
     // Blank input box with buttons to begin
     // // Add and retract boxes via buttons
     // // Fill in previous data 
@@ -200,34 +201,30 @@ export function Answer() {
 
     function addHymnRows()
     {
-        setHymnRowsCount(prevCount => 
-        {
-            const newCount = prevCount;
-            setHymnRows(prevRows => [
-                ...prevRows,
-                <tr key={newCount}><td><input type="number" /></td></tr>
-            ]);
-            return newCount + 1;
-        });
+        setHymnRows(prevRows => [
+            ...prevRows,
+            <tr key={hymnRows.length}><td><input value={hymnRowsVal[hymnRows.length]} type="number" /></td></tr>
+        ]);
     }
 
     function delHymnRows()
     {
-        setHymnRowsCount(prevCount => 
-        {
-            const newCount = prevCount;
-            setHymnRows((prevRows) => {
-                const newRows = [...prevRows];
-                console.log(newRows.length);
-                if(newRows.length != 1)
-                {
-                    newRows.pop();
-                }
-                
-                return newRows;
-            });
-            return newCount - 1;
+        setHymnRows((prevRows) => {
+            const newRows = [...prevRows];
+            if(newRows.length != 1)
+            {
+                newRows.pop();
+            }
+            
+            return newRows;
         });
+    }
+
+    // PLACEHOLDER TO READ WHAT IS HAPPENING WITH KEYS AND INPUTS
+
+    function readHymnRows()
+    {
+        console.log(hymnRows);
     }
 
     React.useEffect(() => {
@@ -412,7 +409,6 @@ export function Answer() {
                 <table className="hymns">
                     <thead className="hymnhead">
                         <tr>
-                            {/* <th></th> */}
                             <th>Hymn Number(s)</th>
                         </tr>
                     </thead>
@@ -426,6 +422,8 @@ export function Answer() {
                     <caption className="hymns_button_div">
                         <button type="button" className="hymns_button" onClick={() => addHymnRows()}> + </button>
                         <button type="button" className="hymns_button" onClick={() => delHymnRows()}> - </button>
+                        {/* Read button intended for bugfixing */}
+                        <button type="button" className="hymns_button" onClick={() => readHymnRows()}> Read </button>
                     </caption> 
                 </table>
                 </div>
