@@ -47,13 +47,14 @@ export function Answer() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
-    const [hymnRowsVal, setHymnRowsVal] = React.useState(['', 1, 78, 23958000, 2458, 235, 1, 45, 235, 7777777777]);
+    const [hymnRowsVal, setHymnRowsVal] = React.useState(['', 1, 78, 23958000]);
     const hymnRowsChange = (index, newVal) => {
         const updated = [...hymnRowsVal];
         updated[index] = newVal;
         setHymnRowsVal(updated);
       };
 
+    // Collects from DB
     async function fetchAnswerKey()
     {
         fetch(`api/answer`)
@@ -63,6 +64,7 @@ export function Answer() {
         });
     }
 
+    // Sets values from Answer Key DB
     async function placeCurrent(answer)
     {
         setSatMorningOne(answer.satMor[0]);
@@ -123,6 +125,7 @@ export function Answer() {
         setTempleThree(answer.templeLoc[2]);
     }
 
+    // Compares Answer and User Keys
     async function calculateAndUpdate(guess, answer)
     {
         const userScore = scoreCalc.score(guess, answer);
@@ -138,6 +141,7 @@ export function Answer() {
         });
     }
 
+    // Updates scores when updating Answer
     async function updateAndCompareGuesses(answer)
     {
         setUpdateText("Updating...");
@@ -182,6 +186,7 @@ export function Answer() {
         return [var1, var2, var3];
     }
 
+    // Wipes
     function clearAnswer()
     {
         fetch(`/api/answer`, {
@@ -218,10 +223,8 @@ export function Answer() {
     }
 
     // PLACEHOLDER TO READ WHAT IS HAPPENING WITH KEYS AND INPUTS
-
     function readHymnRows()
     {
-        // console.log(hymnRows);
         console.log(hymnRowsVal);
     }
 
