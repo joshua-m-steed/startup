@@ -170,9 +170,12 @@ export function Answer() {
         answerKey.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
         answerKey.setGuess('tieClr', tri_package(tieProphet, tie1stCoun, tie2ndCoun));
         answerKey.setGuess('dressClr', [dressSat, dressSun]);
-        answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
+        // answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
+        answerKey.setGuess('hymnNum', hymnRowsVal);
         answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
         
+        console.log(JSON.stringify(answerKey));
+
         await fetch(`/api/answer`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
