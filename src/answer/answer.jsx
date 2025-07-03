@@ -48,11 +48,6 @@ export function Answer() {
     const [templeThree, setTempleThree] = React.useState('');
 
     const [hymnRowsVal, setHymnRowsVal] = React.useState(['', 1, 78, 23958000, 2458, 235, 1, 45, 235, 7777777777]);
-    
-    // WAS THIS, NEW METHOD IS MUCH CLEARER AND SIMILAR TO TABLE DISPLAY ON SCORE
-    // const [hymnRows, setHymnRows] = React.useState([
-    //     <tr key={0}><td><input value={hymnRowsVal[0]} type="number" onChange={(e) => hymnRowsVal[0]= e.target.value}/></td></tr>
-    // ]);
     const hymnRowsChange = (index, newVal) => {
         const updated = [...hymnRowsVal];
         updated[index] = newVal;
@@ -427,11 +422,6 @@ export function Answer() {
                                 </td>
                             </tr>
                         ))}
-
-                        {/* <tr key='Hymn 1'>
-                            <td><input type="number"/></td>
-                        </tr> */}
-                        {/* {hymnRows} */}
                         
                     </tbody>
                     <caption className="hymns_button_div">
