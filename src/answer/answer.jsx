@@ -204,9 +204,8 @@ export function Answer() {
 
     function addHymnRows()
     {
-        setHymnRows(prevRows => [
-            ...prevRows,
-            <tr key={hymnRows.length}><td><input value={hymnRowsVal[hymnRows.length]} type="number" /></td></tr>
+        setHymnRowsVal(prevRows => [
+            ...prevRows, ''
         ]);
     }
 
