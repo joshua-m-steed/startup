@@ -48,13 +48,16 @@ export function Answer() {
     const [templeThree, setTempleThree] = React.useState('');
 
     const [hymnRowsVal, setHymnRowsVal] = React.useState(['', 1, 78, 23958000, 2458, 235, 1, 45, 235, 7777777777]);
-    const [hymnRows, setHymnRows] = React.useState([
-        <tr key={0}><td><input value={hymnRowsVal[0]} type="number" /></td></tr>
-    ]);
-   
-    // Blank input box with buttons to begin
-    // // Add and retract boxes via buttons
-    // // Fill in previous data 
+    
+    // WAS THIS, NEW METHOD IS MUCH CLEARER AND SIMILAR TO TABLE DISPLAY ON SCORE
+    // const [hymnRows, setHymnRows] = React.useState([
+    //     <tr key={0}><td><input value={hymnRowsVal[0]} type="number" onChange={(e) => hymnRowsVal[0]= e.target.value}/></td></tr>
+    // ]);
+    const hymnRowsChange = (index, newVal) => {
+        const updated = [...hymnRowsVal];
+        updated[index] = newVal;
+        setHymnRowsVal(updated);
+      };
 
     async function fetchAnswerKey()
     {
@@ -209,7 +212,7 @@ export function Answer() {
 
     function delHymnRows()
     {
-        setHymnRows((prevRows) => {
+        setHymnRowsVal((prevRows) => {
             const newRows = [...prevRows];
             if(newRows.length != 1)
             {
@@ -224,7 +227,8 @@ export function Answer() {
 
     function readHymnRows()
     {
-        console.log(hymnRows);
+        // console.log(hymnRows);
+        console.log(hymnRowsVal);
     }
 
     React.useEffect(() => {
@@ -413,10 +417,22 @@ export function Answer() {
                         </tr>
                     </thead>
                     <tbody>
+                        {hymnRowsVal.map((val, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <input
+                                    type="number"
+                                    value={val}
+                                    onChange={(e) => hymnRowsChange(index, e.target.value)}
+                                />
+                                </td>
+                            </tr>
+                        ))}
+
                         {/* <tr key='Hymn 1'>
                             <td><input type="number"/></td>
                         </tr> */}
-                        {hymnRows}
+                        {/* {hymnRows} */}
                         
                     </tbody>
                     <caption className="hymns_button_div">
