@@ -127,7 +127,6 @@ export function Answer() {
                 fullTempleString = answer.templeLoc[i][0];
             }
 
-            console.log(fullTempleString);
             answer.templeLoc[i] = fullTempleString;
             i++;
         }
@@ -200,8 +199,6 @@ export function Answer() {
 
         answerKey.setGuess('templeLoc', templeRowsVal);
 
-        console.log(JSON.stringify(answerKey));
-
         await fetch(`/api/answer`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
@@ -209,8 +206,6 @@ export function Answer() {
         });
 
         updateAndCompareGuesses(answerKey);
-
-        console.log(answerKey.templeLoc);
     }
 
     function tri_package(var1='', var2='', var3='') {
