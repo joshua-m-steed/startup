@@ -5,6 +5,9 @@ import { NavLink } from "react-router-dom";
 
 import './answer.css';
 
+// BUG NOTES: 
+// When comparing guesses, 'dressClr' shows as missing/not array || Priority - NA, RSN - Guess are missing on guess sheets, will need to be reset
+
 export function Answer() {
     // NOTE :: Attempt to Compress this code, explore ::
     const scoreCalc = new ScoreCalculator();
@@ -39,20 +42,27 @@ export function Answer() {
     const [dressSat, setDressSat] = React.useState('');
     const [dressSun, setDressSun] = React.useState('');
 
-    const [hymnOne, setHymnOne] = React.useState('');
-    const [hymnTwo, setHymnTwo] = React.useState('');
-    const [hymnThree, setHymnThree] = React.useState('');
+    // const [hymnOne, setHymnOne] = React.useState('');
+    // const [hymnTwo, setHymnTwo] = React.useState('');
+    // const [hymnThree, setHymnThree] = React.useState('');
 
     const [templeOne, setTempleOne] = React.useState('');
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
-    const [hymnRowsVal, setHymnRowsVal] = React.useState(['', 1, 78, 23958000]);
+    const [hymnRowsVal, setHymnRowsVal] = React.useState(['']);
     const hymnRowsChange = (index, newVal) => {
-        const updated = [...hymnRowsVal];
-        updated[index] = newVal;
-        setHymnRowsVal(updated);
-      };
+            const updated = [...hymnRowsVal];
+            updated[index] = newVal;
+            setHymnRowsVal(updated);
+            };
+
+    const [templeRowsVal, setTempleRowsVal] = React.useState(['']);
+    const templeRowsChange = (index, newVal) => {
+            const updated = [...templeRowsVal];
+            updated[index] = newVal;
+            setTempleRowsVal(updated); 
+            };
 
     // Collects from DB
     async function fetchAnswerKey()
@@ -94,9 +104,12 @@ export function Answer() {
         setDressSat(answer.dressClr[0]);
         setDressSun(answer.dressClr[1]);
 
-        setHymnOne(answer.hymnNum[0]);
-        setHymnTwo(answer.hymnNum[1]);
-        setHymnThree(answer.hymnNum[2]);
+        console.log(answer.hymnNum);
+        setHymnRowsVal(answer.hymnNum);
+
+        // setHymnOne(answer.hymnNum[0]);
+        // setHymnTwo(answer.hymnNum[1]);
+        // setHymnThree(answer.hymnNum[2]);
         
         let i = 0;
         while(i < answer.templeLoc.length)
@@ -176,13 +189,13 @@ export function Answer() {
         
         console.log(JSON.stringify(answerKey));
 
-        // await fetch(`/api/answer`, {
-        //     method: 'POST',
-        //     headers: { 'content-type': 'application/json' },
-        //     body: JSON.stringify(answerKey),
-        // });
+        await fetch(`/api/answer`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(answerKey),
+        });
 
-        // updateAndCompareGuesses(answerKey);
+        updateAndCompareGuesses(answerKey);
     }
 
     function tri_package(var1='', var2='', var3='') {
@@ -229,10 +242,34 @@ export function Answer() {
         });
     }
 
-    // PLACEHOLDER TO READ WHAT IS HAPPENING WITH KEYS AND INPUTS
-    function readHymnRows()
+    function addTempleRows()
     {
-        console.log(hymnRowsVal);
+        setTempleRowsVal(prevRows => [
+            ...prevRows, ''
+        ]);
+    }
+
+    function delTempleRows()
+    {
+        setTempleRowsVal((prevRows) => {
+            const newRows = [...prevRows];
+            if(newRows.length != 1)
+            {
+                newRows.pop();
+            }
+            else
+            {
+                templeRowsChange(0, '');
+            }
+            
+            return newRows;
+        });
+    }
+
+    // PLACEHOLDER TO READ WHAT IS HAPPENING WITH KEYS AND INPUTS
+    function readRows(rowVal)
+    {
+        console.log(rowVal);
     }
 
     React.useEffect(() => {
@@ -438,7 +475,7 @@ export function Answer() {
                         <button type="button" className="hymns_button" onClick={() => addHymnRows()}> + </button>
                         <button type="button" className="hymns_button" onClick={() => delHymnRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="hymns_button" onClick={() => readHymnRows()}> Read </button>
+                        <button type="button" className="hymns_button" onClick={() => readRows(hymnRowsVal)}> Read </button>
                     </caption> 
                 </table>
                 </div>
@@ -458,20 +495,6 @@ export function Answer() {
                         </tbody>
                     </table>
                 </div> */}
-
-                {/* ORIGINAL LISTS FOR ANSWERS */}
-                {/* <div>
-                    <label htmlFor="hymn_one">#1</label>
-                    <input id="hymn_one" type="number" value={hymnOne} onChange={(e) => setHymnOne(e.target.value)} placeholder="Ex. 284" />
-                </div>
-                <div>
-                    <label htmlFor="hymn_two">#2</label>
-                    <input id="hymn_two" type="number" value={hymnTwo} onChange={(e) => setHymnTwo(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="hymn_three">#3</label>
-                    <input id="hymn_three" type="number" value={hymnThree} onChange={(e) => setHymnThree(e.target.value)} />
-                </div> */}
                 <hr />
 
                 <div>
@@ -483,6 +506,36 @@ export function Answer() {
 
                 <br />
                 <br />
+                
+                <div className="temples-div">
+                <table className="temples">
+                    <thead className="templehead">
+                        <tr>
+                            <th>Temple Prediction(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {templeRowsVal.map((val, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <input
+                                    type="text"
+                                    value={val}
+                                    onChange={(e) => templeRowsChange(index, e.target.value)}
+                                />
+                                </td>
+                            </tr>
+                        ))}
+                        
+                    </tbody>
+                    <caption className="hymns_button_div">
+                        <button type="button" className="hymns_button" onClick={() => addTempleRows()}> + </button>
+                        <button type="button" className="hymns_button" onClick={() => delTempleRows()}> - </button>
+                        {/* Read button intended for bugfixing */}
+                        <button type="button" className="hymns_button" onClick={() => readRows(templeRowsVal)}> Read </button>
+                    </caption> 
+                </table>
+                </div>
 
                 <div>
                     <label htmlFor="temple_one">#1</label>
