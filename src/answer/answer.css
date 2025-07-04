@@ -109,26 +109,26 @@ table.who_speaks th {
 }
 
 
-table.hymns {
+table.adaptive {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
     border: 3px solid #177339;
     box-shadow: 3px 3px 3px black;
 }
-table.hymns td {
+table.adaptive td {
     border: 1px dashed #177339;
     padding: 10px;
 }
-table.hymns th {
+table.adaptive th {
     background-color: #177339;
     padding-left: 5px;
     padding-right: 5px;
 }
-table caption.hymns_button_div {
+table caption.adaptive_button_div {
     display: flex;
 }
-caption button.hymns_button {
+caption button.adaptive_button {
     width: 100%;
     margin: 3%;
     margin-top: 1%;

@@ -104,7 +104,6 @@ export function Answer() {
         setDressSat(answer.dressClr[0]);
         setDressSun(answer.dressClr[1]);
 
-        console.log(answer.hymnNum);
         setHymnRowsVal(answer.hymnNum);
 
         // setHymnOne(answer.hymnNum[0]);
@@ -133,9 +132,11 @@ export function Answer() {
             i++;
         }
         
-        setTempleOne(answer.templeLoc[0]);
-        setTempleTwo(answer.templeLoc[1]);
-        setTempleThree(answer.templeLoc[2]);
+        setTempleRowsVal(answer.templeLoc);
+
+        // setTempleOne(answer.templeLoc[0]);
+        // setTempleTwo(answer.templeLoc[1]);
+        // setTempleThree(answer.templeLoc[2]);
     }
 
     // Compares Answer and User Keys
@@ -185,8 +186,20 @@ export function Answer() {
         answerKey.setGuess('dressClr', [dressSat, dressSun]);
         // answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         answerKey.setGuess('hymnNum', hymnRowsVal);
-        answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
-        
+        // answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
+
+        let i = 0;
+        while(i < templeRowsVal.length)
+        {
+            let temp = templeRowsVal[i].split(', ');
+            console.log(temp);
+            templeRowsVal[i] = temp;
+            console.log(templeRowsVal[i]);
+            i++;
+        }
+
+        answerKey.setGuess('templeLoc', templeRowsVal);
+
         console.log(JSON.stringify(answerKey));
 
         await fetch(`/api/answer`, {
@@ -196,6 +209,8 @@ export function Answer() {
         });
 
         updateAndCompareGuesses(answerKey);
+
+        console.log(answerKey.templeLoc);
     }
 
     function tri_package(var1='', var2='', var3='') {
@@ -451,7 +466,7 @@ export function Answer() {
                 <br />
 
                 <div className="hymns-div">
-                <table className="hymns">
+                <table className="adaptive">
                     <thead className="hymnhead">
                         <tr>
                             <th>Hymn Number(s)</th>
@@ -471,30 +486,15 @@ export function Answer() {
                         ))}
                         
                     </tbody>
-                    <caption className="hymns_button_div">
-                        <button type="button" className="hymns_button" onClick={() => addHymnRows()}> + </button>
-                        <button type="button" className="hymns_button" onClick={() => delHymnRows()}> - </button>
+                    <caption className="adaptive_button_div">
+                        <button type="button" className="adaptive_button" onClick={() => addHymnRows()}> + </button>
+                        <button type="button" className="adaptive_button" onClick={() => delHymnRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="hymns_button" onClick={() => readRows(hymnRowsVal)}> Read </button>
+                        <button type="button" className="adaptive_button" onClick={() => readRows(hymnRowsVal)}> Read </button>
                     </caption> 
                 </table>
                 </div>
 
-                {/* TABLE CLOTH CSS IDEAS */}
-                {/* <div className="hymn_table_cloth">
-                    <table className="hymn_answer_key">
-                        <thead>
-                                <tr>
-                                    <th>Hymns</th>                         
-                                </tr>
-                            </thead>
-                        <tbody>
-                            <tr><td><input id="sunMorOne" type="text" value={sunMorningOne} onChange={(e) => setSunMorningOne(e.target.value)}/></td></tr>
-                            <tr><td><input id="sunMorTwo" type="text" value={sunMorningTwo} onChange={(e) => setSunMorningTwo(e.target.value)}/></td></tr>
-                            <tr><td><input id="sunMorThree" type="text" value={sunMorningThree} onChange={(e) => setSunMorningThree(e.target.value)}/></td></tr>
-                        </tbody>
-                    </table>
-                </div> */}
                 <hr />
 
                 <div>
@@ -508,7 +508,7 @@ export function Answer() {
                 <br />
                 
                 <div className="temples-div">
-                <table className="temples">
+                <table className="adaptive">
                     <thead className="templehead">
                         <tr>
                             <th>Temple Prediction(s)</th>
@@ -528,26 +528,13 @@ export function Answer() {
                         ))}
                         
                     </tbody>
-                    <caption className="hymns_button_div">
-                        <button type="button" className="hymns_button" onClick={() => addTempleRows()}> + </button>
-                        <button type="button" className="hymns_button" onClick={() => delTempleRows()}> - </button>
+                    <caption className="adaptive_button_div">
+                        <button type="button" className="adaptive_button" onClick={() => addTempleRows()}> + </button>
+                        <button type="button" className="adaptive_button" onClick={() => delTempleRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="hymns_button" onClick={() => readRows(templeRowsVal)}> Read </button>
+                        <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button>
                     </caption> 
                 </table>
-                </div>
-
-                <div>
-                    <label htmlFor="temple_one">#1</label>
-                    <input id="temple_one" type="text" value={templeOne} onChange={(e) => setTempleOne(e.target.value)} placeholder="Ex. USA, PA, Susquehanna" />
-                </div>
-                <div>
-                    <label htmlFor="temple_two">#2</label>
-                    <input id="temple_two" type="text" value={templeTwo} onChange={(e) => setTempleTwo(e.target.value)} placeholder="Ex. Cuba, Menis" />
-                </div>
-                <div>
-                    <label htmlFor="temple_three">#3</label>
-                    <input id="temple_three" type="text" value={templeThree} onChange={(e) => setTempleThree(e.target.value)} />
                 </div>
 
                 <hr />
