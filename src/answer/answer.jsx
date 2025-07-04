@@ -176,13 +176,13 @@ export function Answer() {
         
         console.log(JSON.stringify(answerKey));
 
-        await fetch(`/api/answer`, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(answerKey),
-        });
+        // await fetch(`/api/answer`, {
+        //     method: 'POST',
+        //     headers: { 'content-type': 'application/json' },
+        //     body: JSON.stringify(answerKey),
+        // });
 
-        updateAndCompareGuesses(answerKey);
+        // updateAndCompareGuesses(answerKey);
     }
 
     function tri_package(var1='', var2='', var3='') {
@@ -219,6 +219,10 @@ export function Answer() {
             if(newRows.length != 1)
             {
                 newRows.pop();
+            }
+            else
+            {
+                hymnRowsChange(0, '');
             }
             
             return newRows;
@@ -456,7 +460,7 @@ export function Answer() {
                 </div> */}
 
                 {/* ORIGINAL LISTS FOR ANSWERS */}
-                <div>
+                {/* <div>
                     <label htmlFor="hymn_one">#1</label>
                     <input id="hymn_one" type="number" value={hymnOne} onChange={(e) => setHymnOne(e.target.value)} placeholder="Ex. 284" />
                 </div>
@@ -467,7 +471,7 @@ export function Answer() {
                 <div>
                     <label htmlFor="hymn_three">#3</label>
                     <input id="hymn_three" type="number" value={hymnThree} onChange={(e) => setHymnThree(e.target.value)} />
-                </div>
+                </div> */}
                 <hr />
 
                 <div>
