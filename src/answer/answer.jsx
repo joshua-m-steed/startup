@@ -30,6 +30,13 @@ export function Answer() {
     const [satAfternoonOne, setSatAfternoonOne] = React.useState('');
     const [satAfternoonTwo, setSatAfternoonTwo] = React.useState('');
     const [satAfternoonThree, setSatAfternoonThree] = React.useState('');
+
+    const [satAftRowsVal, setSatAftRowsVal] = React.useState(['']);
+    const satAftRowsChange = (index, newVal) => {
+            const updated = [...satAftRowsVal];
+            updated[index] = newVal;
+            setSatAftrRowsVal(updated);
+            };
     
     const [satEveningOne, setSatEveningOne] = React.useState('');
     const [satEveningTwo, setSatEveningTwo] = React.useState('');
@@ -90,9 +97,10 @@ export function Answer() {
         // setSatMorningThree(answer.satMor[2]);
         setSatMorRowsVal(answer.satMor);
 
-        setSatAfternoonOne(answer.satAft[0]);
-        setSatAfternoonTwo(answer.satAft[1]);
-        setSatAfternoonThree(answer.satAft[2]);
+        // setSatAfternoonOne(answer.satAft[0]);
+        // setSatAfternoonTwo(answer.satAft[1]);
+        // setSatAfternoonThree(answer.satAft[2]);
+        setSatAftRowsVal(answer.satAft);
 
         setSatEveningOne(answer.satEvn[0]);
         setSatEveningTwo(answer.satEvn[1]);
@@ -186,7 +194,7 @@ export function Answer() {
     {
         answerKey.name = "ANSWER";
         answerKey.setGuess('satMor', satMorRowsVal);
-        answerKey.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
+        answerKey.setGuess('satAft', satAftRowsVal);
         answerKey.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
         answerKey.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
         answerKey.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
@@ -255,6 +263,30 @@ export function Answer() {
             else
             {
                 satMorRowsChange(0, '');
+            }
+            
+            return newRows;
+        });
+    }
+
+    function addSatAftRows()
+    {
+        setSatAftRowsVal(prevRows => [
+            ...prevRows, ''
+        ]);
+    }
+
+    function delSatAftRows()
+    {
+        setSatAftRowsVal((prevRows) => {
+            const newRows = [...prevRows];
+            if(newRows.length != 1)
+            {
+                newRows.pop();
+            }
+            else
+            {
+                satAftRowsChange(0, '');
             }
             
             return newRows;
@@ -382,7 +414,37 @@ export function Answer() {
                             </tbody>
                         </table> */}
 
-                        <table className="who_speaks">
+                        <div className="whospeaks-sataft-div"> 
+                        <table className="adaptive">
+                            <thead className="whospeaks-sataft-head">
+                                <tr>
+                                    <th>Sat Afternoon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {satAftRowsVal.map((val, index) => (
+                                    <tr key={index}>
+                                        <td>
+                                            <input
+                                            type="text"
+                                            value={val}
+                                            onChange={(e) => satAftRowsChange(index, e.target.value)}
+                                        />
+                                        </td>
+                                    </tr>
+                                ))}
+                                
+                            </tbody>
+                            <caption className="adaptive_button_div">
+                                <button type="button" className="adaptive_button" onClick={() => addSatAftRows()}> + </button>
+                                <button type="button" className="adaptive_button" onClick={() => delSatAftRows()}> - </button>
+                                {/* Read button intended for bugfixing */}
+                                {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
+                            </caption> 
+                        </table>
+                        </div>
+
+                        {/* <table className="who_speaks">
                             <thead>
                                 <tr>
                                     <th>Sat Afternoon</th>
@@ -393,7 +455,7 @@ export function Answer() {
                                 <tr><td><input id="satAftTwo" type="text" value={satAfternoonTwo} onChange={(e) => setSatAfternoonTwo(e.target.value)}/></td></tr>
                                 <tr><td><input id="satAftThree" type="text" value={satAfternoonThree} onChange={(e) => setSatAfternoonThree(e.target.value)}/></td></tr>
                             </tbody>
-                        </table>
+                        </table> */}
                         <table className="who_speaks">
                             <thead>
                                 <tr>
