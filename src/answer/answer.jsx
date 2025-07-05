@@ -49,9 +49,16 @@ export function Answer() {
             setSatEvnRowsVal(updated);
             };
 
-    const [sunMorningOne, setSunMorningOne] = React.useState('');
-    const [sunMorningTwo, setSunMorningTwo] = React.useState('');
-    const [sunMorningThree, setSunMorningThree] = React.useState('');
+    // const [sunMorningOne, setSunMorningOne] = React.useState('');
+    // const [sunMorningTwo, setSunMorningTwo] = React.useState('');
+    // const [sunMorningThree, setSunMorningThree] = React.useState('');
+
+    const [sunMorRowsVal, setSunMorRowsVal] = React.useState(['']);
+    const sunMorRowsChange = (index, newVal) => {
+            const updated = [...sunMorRowsVal];
+            updated[index] = newVal;
+            setSunMorRowsVal(updated);
+            };
 
     const [sunAfternoonOne, setSunAfternoonOne] = React.useState('');
     const [sunAfternoonTwo, setSunAfternoonTwo] = React.useState('');
@@ -114,9 +121,10 @@ export function Answer() {
         // setSatEveningThree(answer.satEvn[2]);
         setSatEvnRowsVal(answer.satEvn);
 
-        setSunMorningOne(answer.sunMor[0]);
-        setSunMorningTwo(answer.sunMor[1]);
-        setSunMorningThree(answer.sunMor[2]);
+        // setSunMorningOne(answer.sunMor[0]);
+        // setSunMorningTwo(answer.sunMor[1]);
+        // setSunMorningThree(answer.sunMor[2]);
+        setSunMorRowsVal(answer.sunMor);
 
         setSunAfternoonOne(answer.sunAft[0]);
         setSunAfternoonTwo(answer.sunAft[1]);
@@ -204,7 +212,7 @@ export function Answer() {
         answerKey.setGuess('satMor', satMorRowsVal);
         answerKey.setGuess('satAft', satAftRowsVal);
         answerKey.setGuess('satEvn', satEvnRowsVal);
-        answerKey.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
+        answerKey.setGuess('sunMor', sunMorRowsVal);
         answerKey.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
         answerKey.setGuess('tieClr', tri_package(tieProphet, tie1stCoun, tie2ndCoun));
         answerKey.setGuess('dressClr', [dressSat, dressSun]);
@@ -319,6 +327,30 @@ export function Answer() {
             else
             {
                 satEvnRowsChange(0, '');
+            }
+            
+            return newRows;
+        });
+    }
+
+    function addSunMorRows()
+    {
+        setSunMorRowsVal(prevRows => [
+            ...prevRows, ''
+        ]);
+    }
+
+    function delSunMorRows()
+    {
+        setSunMorRowsVal((prevRows) => {
+            const newRows = [...prevRows];
+            if(newRows.length != 1)
+            {
+                newRows.pop();
+            }
+            else
+            {
+                sunMorRowsChange(0, '');
             }
             
             return newRows;
@@ -531,7 +563,38 @@ export function Answer() {
                                 <tr><td><input id="satEvnThree" type="text" value={satEveningThree} onChange={(e) => setSatEveningThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table> */}
-                        <table className="who_speaks">
+
+                        <div className="whospeaks-sunmor-div"> 
+                        <table className="adaptive">
+                            <thead className="whospeaks-sunmor-head">
+                                <tr>
+                                    <th>Sun Morning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {sunMorRowsVal.map((val, index) => (
+                                    <tr key={index}>
+                                        <td>
+                                            <input
+                                            type="text"
+                                            value={val}
+                                            onChange={(e) => sunMorRowsChange(index, e.target.value)}
+                                        />
+                                        </td>
+                                    </tr>
+                                ))}
+                                
+                            </tbody>
+                            <caption className="adaptive_button_div">
+                                <button type="button" className="adaptive_button" onClick={() => addSunMorRows()}> + </button>
+                                <button type="button" className="adaptive_button" onClick={() => delSunMorRows()}> - </button>
+                                {/* Read button intended for bugfixing */}
+                                {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
+                            </caption> 
+                        </table>
+                        </div>        
+
+                        {/* <table className="who_speaks">
                             <thead>
                                 <tr>
                                     <th>Sun Morning</th>                           
@@ -542,7 +605,7 @@ export function Answer() {
                                 <tr><td><input id="sunMorTwo" type="text" value={sunMorningTwo} onChange={(e) => setSunMorningTwo(e.target.value)}/></td></tr>
                                 <tr><td><input id="sunMorThree" type="text" value={sunMorningThree} onChange={(e) => setSunMorningThree(e.target.value)}/></td></tr>
                             </tbody>
-                        </table>
+                        </table> */}
                         <table className="who_speaks">
                             <thead>
                                 <tr>
