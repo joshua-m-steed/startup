@@ -19,6 +19,13 @@ export function Answer() {
     const [satMorningTwo, setSatMorningTwo] = React.useState('');
     const [satMorningThree, setSatMorningThree] = React.useState('');
 
+    const [satMorRowsVal, setSatMorRowsVal] = React.useState(['']);
+    const satMorRowsChange = (index, newVal) => {
+            const updated = [...satMorRowsVal];
+            updated[index] = newVal;
+            setSatMorRowsVal(updated);
+            };
+
     const [satAfternoonOne, setSatAfternoonOne] = React.useState('');
     const [satAfternoonTwo, setSatAfternoonTwo] = React.useState('');
     const [satAfternoonThree, setSatAfternoonThree] = React.useState('');
@@ -46,9 +53,9 @@ export function Answer() {
     // const [hymnTwo, setHymnTwo] = React.useState('');
     // const [hymnThree, setHymnThree] = React.useState('');
 
-    const [templeOne, setTempleOne] = React.useState('');
-    const [templeTwo, setTempleTwo] = React.useState('');
-    const [templeThree, setTempleThree] = React.useState('');
+    // const [templeOne, setTempleOne] = React.useState('');
+    // const [templeTwo, setTempleTwo] = React.useState('');
+    // const [templeThree, setTempleThree] = React.useState('');
 
     const [hymnRowsVal, setHymnRowsVal] = React.useState(['']);
     const hymnRowsChange = (index, newVal) => {
@@ -228,6 +235,30 @@ export function Answer() {
 
     // NOTE TO SELF :: Row Count Variable isn't needed. Just use Array.length()
 
+    function addSatMorRows()
+    {
+        setSatMorRowsVal(prevRows => [
+            ...prevRows, ''
+        ]);
+    }
+
+    function delSatMorRows()
+    {
+        setSatMorRowsVal((prevRows) => {
+            const newRows = [...prevRows];
+            if(newRows.length != 1)
+            {
+                newRows.pop();
+            }
+            else
+            {
+                satMorRowsChange(0, '');
+            }
+            
+            return newRows;
+        });
+    }
+
     function addHymnRows()
     {
         setHymnRowsVal(prevRows => [
@@ -306,6 +337,36 @@ export function Answer() {
                     <br />
 
                     <div className="table_cloth">
+                        <div className="whospeaks-satmor-div">
+                        <table className="adaptive">
+                            <thead className="whospeaks-satmor-head">
+                                <tr>
+                                    <th>Sat Morning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {satMorRowsVal.map((val, index) => (
+                                    <tr key={index}>
+                                        <td>
+                                            <input
+                                            type="text"
+                                            value={val}
+                                            onChange={(e) => satMorRowsChange(index, e.target.value)}
+                                        />
+                                        </td>
+                                    </tr>
+                                ))}
+                                
+                            </tbody>
+                            <caption className="adaptive_button_div">
+                                <button type="button" className="adaptive_button" onClick={() => addSatMorRows()}> + </button>
+                                <button type="button" className="adaptive_button" onClick={() => delSatMorRows()}> - </button>
+                                {/* Read button intended for bugfixing */}
+                                {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
+                            </caption> 
+                        </table>
+                        </div>
+                        
                         <table className="who_speaks">
                             <thead>
                                 <tr>
@@ -485,7 +546,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addHymnRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delHymnRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="adaptive_button" onClick={() => readRows(hymnRowsVal)}> Read </button>
+                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(hymnRowsVal)}> Read </button> */}
                     </caption> 
                 </table>
                 </div>
@@ -527,7 +588,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addTempleRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delTempleRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button>
+                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
                     </caption> 
                 </table>
                 </div>
