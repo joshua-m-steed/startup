@@ -7,6 +7,7 @@ import './answer.css';
 
 // BUG NOTES: 
 // When comparing guesses, 'dressClr' shows as missing/not array || Priority - NA, RSN - Guess are missing on guess sheets, will need to be reset
+// PRIORITY :: WHY does my answer key become lower case once I hit update? #clean?
 
 export function Answer() {
     // NOTE :: Attempt to Compress this code, explore ::
@@ -15,9 +16,9 @@ export function Answer() {
     // const [locked, setLocked] = React.useState(false); // For a future Idea
     const [updateText, setUpdateText] = React.useState("Update");
 
-    const [satMorningOne, setSatMorningOne] = React.useState('');
-    const [satMorningTwo, setSatMorningTwo] = React.useState('');
-    const [satMorningThree, setSatMorningThree] = React.useState('');
+    // const [satMorningOne, setSatMorningOne] = React.useState('');
+    // const [satMorningTwo, setSatMorningTwo] = React.useState('');
+    // const [satMorningThree, setSatMorningThree] = React.useState('');
 
     const [satMorRowsVal, setSatMorRowsVal] = React.useState(['']);
     const satMorRowsChange = (index, newVal) => {
@@ -84,9 +85,10 @@ export function Answer() {
     // Sets values from Answer Key DB
     async function placeCurrent(answer)
     {
-        setSatMorningOne(answer.satMor[0]);
-        setSatMorningTwo(answer.satMor[1]);
-        setSatMorningThree(answer.satMor[2]);
+        // setSatMorningOne(answer.satMor[0]);
+        // setSatMorningTwo(answer.satMor[1]);
+        // setSatMorningThree(answer.satMor[2]);
+        setSatMorRowsVal(answer.satMor);
 
         setSatAfternoonOne(answer.satAft[0]);
         setSatAfternoonTwo(answer.satAft[1]);
@@ -183,7 +185,7 @@ export function Answer() {
     async function saveAnswerKey() 
     {
         answerKey.name = "ANSWER";
-        answerKey.setGuess('satMor', tri_package(satMorningOne, satMorningTwo, satMorningThree));
+        answerKey.setGuess('satMor', satMorRowsVal);
         answerKey.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
         answerKey.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
         answerKey.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
@@ -367,7 +369,7 @@ export function Answer() {
                         </table>
                         </div>
                         
-                        <table className="who_speaks">
+                        {/* <table className="who_speaks">
                             <thead>
                                 <tr>
                                     <th>Sat Morning</th>
@@ -378,7 +380,8 @@ export function Answer() {
                                 <tr><td><input id="satMorTwo" type="text" value={satMorningTwo} onChange={(e) => setSatMorningTwo(e.target.value)}/></td></tr>
                                 <tr><td><input id="satMorThree" type="text" value={satMorningThree} onChange={(e) => setSatMorningThree(e.target.value)}/></td></tr>
                             </tbody>
-                        </table>
+                        </table> */}
+
                         <table className="who_speaks">
                             <thead>
                                 <tr>
