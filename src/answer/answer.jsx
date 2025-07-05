@@ -27,20 +27,27 @@ export function Answer() {
             setSatMorRowsVal(updated);
             };
 
-    const [satAfternoonOne, setSatAfternoonOne] = React.useState('');
-    const [satAfternoonTwo, setSatAfternoonTwo] = React.useState('');
-    const [satAfternoonThree, setSatAfternoonThree] = React.useState('');
+    // const [satAfternoonOne, setSatAfternoonOne] = React.useState('');
+    // const [satAfternoonTwo, setSatAfternoonTwo] = React.useState('');
+    // const [satAfternoonThree, setSatAfternoonThree] = React.useState('');
 
     const [satAftRowsVal, setSatAftRowsVal] = React.useState(['']);
     const satAftRowsChange = (index, newVal) => {
             const updated = [...satAftRowsVal];
             updated[index] = newVal;
-            setSatAftrRowsVal(updated);
+            setSatAftRowsVal(updated);
             };
     
-    const [satEveningOne, setSatEveningOne] = React.useState('');
-    const [satEveningTwo, setSatEveningTwo] = React.useState('');
-    const [satEveningThree, setSatEveningThree] = React.useState('');
+    // const [satEveningOne, setSatEveningOne] = React.useState('');
+    // const [satEveningTwo, setSatEveningTwo] = React.useState('');
+    // const [satEveningThree, setSatEveningThree] = React.useState('');
+
+    const [satEvnRowsVal, setSatEvnRowsVal] = React.useState(['']);
+    const satEvnRowsChange = (index, newVal) => {
+            const updated = [...satEvnRowsVal];
+            updated[index] = newVal;
+            setSatEvnRowsVal(updated);
+            };
 
     const [sunMorningOne, setSunMorningOne] = React.useState('');
     const [sunMorningTwo, setSunMorningTwo] = React.useState('');
@@ -102,9 +109,10 @@ export function Answer() {
         // setSatAfternoonThree(answer.satAft[2]);
         setSatAftRowsVal(answer.satAft);
 
-        setSatEveningOne(answer.satEvn[0]);
-        setSatEveningTwo(answer.satEvn[1]);
-        setSatEveningThree(answer.satEvn[2]);
+        // setSatEveningOne(answer.satEvn[0]);
+        // setSatEveningTwo(answer.satEvn[1]);
+        // setSatEveningThree(answer.satEvn[2]);
+        setSatEvnRowsVal(answer.satEvn);
 
         setSunMorningOne(answer.sunMor[0]);
         setSunMorningTwo(answer.sunMor[1]);
@@ -195,7 +203,7 @@ export function Answer() {
         answerKey.name = "ANSWER";
         answerKey.setGuess('satMor', satMorRowsVal);
         answerKey.setGuess('satAft', satAftRowsVal);
-        answerKey.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
+        answerKey.setGuess('satEvn', satEvnRowsVal);
         answerKey.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
         answerKey.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
         answerKey.setGuess('tieClr', tri_package(tieProphet, tie1stCoun, tie2ndCoun));
@@ -287,6 +295,30 @@ export function Answer() {
             else
             {
                 satAftRowsChange(0, '');
+            }
+            
+            return newRows;
+        });
+    }
+
+    function addSatEvnRows()
+    {
+        setSatEvnRowsVal(prevRows => [
+            ...prevRows, ''
+        ]);
+    }
+
+    function delSatEvnRows()
+    {
+        setSatEvnRowsVal((prevRows) => {
+            const newRows = [...prevRows];
+            if(newRows.length != 1)
+            {
+                newRows.pop();
+            }
+            else
+            {
+                satEvnRowsChange(0, '');
             }
             
             return newRows;
@@ -456,7 +488,38 @@ export function Answer() {
                                 <tr><td><input id="satAftThree" type="text" value={satAfternoonThree} onChange={(e) => setSatAfternoonThree(e.target.value)}/></td></tr>
                             </tbody>
                         </table> */}
-                        <table className="who_speaks">
+
+                        <div className="whospeaks-satevn-div"> 
+                        <table className="adaptive">
+                            <thead className="whospeaks-satevn-head">
+                                <tr>
+                                    <th>Sat Evening</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {satEvnRowsVal.map((val, index) => (
+                                    <tr key={index}>
+                                        <td>
+                                            <input
+                                            type="text"
+                                            value={val}
+                                            onChange={(e) => satEvnRowsChange(index, e.target.value)}
+                                        />
+                                        </td>
+                                    </tr>
+                                ))}
+                                
+                            </tbody>
+                            <caption className="adaptive_button_div">
+                                <button type="button" className="adaptive_button" onClick={() => addSatEvnRows()}> + </button>
+                                <button type="button" className="adaptive_button" onClick={() => delSatEvnRows()}> - </button>
+                                {/* Read button intended for bugfixing */}
+                                {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
+                            </caption> 
+                        </table>
+                        </div>
+
+                        {/* <table className="who_speaks">
                             <thead>
                                 <tr>
                                     <th>Sat Evening</th>                            
@@ -467,7 +530,7 @@ export function Answer() {
                                 <tr><td><input id="satEvnTwo" type="text" value={satEveningTwo} onChange={(e) => setSatEveningTwo(e.target.value)}/></td></tr>
                                 <tr><td><input id="satEvnThree" type="text" value={satEveningThree} onChange={(e) => setSatEveningThree(e.target.value)}/></td></tr>
                             </tbody>
-                        </table>
+                        </table> */}
                         <table className="who_speaks">
                             <thead>
                                 <tr>
