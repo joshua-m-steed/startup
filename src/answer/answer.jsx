@@ -8,6 +8,7 @@ import './answer.css';
 // BUG NOTES: 
 // When comparing guesses, 'dressClr' shows as missing/not array || Priority - NA, RSN - Guess are missing on guess sheets, will need to be reset
 // PRIORITY :: WHY does my answer key become lower case once I hit update? #clean?
+// PRIORITY :: WOULD it be POSSIBLE to *full table* all five tables?
 
 export function Answer() {
     // NOTE :: Attempt to Compress this code, explore ::
@@ -16,10 +17,6 @@ export function Answer() {
     // const [locked, setLocked] = React.useState(false); // For a future Idea
     const [updateText, setUpdateText] = React.useState("Update");
 
-    // const [satMorningOne, setSatMorningOne] = React.useState('');
-    // const [satMorningTwo, setSatMorningTwo] = React.useState('');
-    // const [satMorningThree, setSatMorningThree] = React.useState('');
-
     const [satMorRowsVal, setSatMorRowsVal] = React.useState(['']);
     const satMorRowsChange = (index, newVal) => {
             const updated = [...satMorRowsVal];
@@ -27,20 +24,12 @@ export function Answer() {
             setSatMorRowsVal(updated);
             };
 
-    // const [satAfternoonOne, setSatAfternoonOne] = React.useState('');
-    // const [satAfternoonTwo, setSatAfternoonTwo] = React.useState('');
-    // const [satAfternoonThree, setSatAfternoonThree] = React.useState('');
-
     const [satAftRowsVal, setSatAftRowsVal] = React.useState(['']);
     const satAftRowsChange = (index, newVal) => {
             const updated = [...satAftRowsVal];
             updated[index] = newVal;
             setSatAftRowsVal(updated);
             };
-    
-    // const [satEveningOne, setSatEveningOne] = React.useState('');
-    // const [satEveningTwo, setSatEveningTwo] = React.useState('');
-    // const [satEveningThree, setSatEveningThree] = React.useState('');
 
     const [satEvnRowsVal, setSatEvnRowsVal] = React.useState(['']);
     const satEvnRowsChange = (index, newVal) => {
@@ -49,20 +38,12 @@ export function Answer() {
             setSatEvnRowsVal(updated);
             };
 
-    // const [sunMorningOne, setSunMorningOne] = React.useState('');
-    // const [sunMorningTwo, setSunMorningTwo] = React.useState('');
-    // const [sunMorningThree, setSunMorningThree] = React.useState('');
-
     const [sunMorRowsVal, setSunMorRowsVal] = React.useState(['']);
     const sunMorRowsChange = (index, newVal) => {
             const updated = [...sunMorRowsVal];
             updated[index] = newVal;
             setSunMorRowsVal(updated);
             };
-
-    // const [sunAfternoonOne, setSunAfternoonOne] = React.useState('');
-    // const [sunAfternoonTwo, setSunAfternoonTwo] = React.useState('');
-    // const [sunAfternoonThree, setSunAfternoonThree] = React.useState('');
 
     const [sunAftRowsVal, setSunAftRowsVal] = React.useState(['']);
     const sunAftRowsChange = (index, newVal) => {
@@ -77,14 +58,6 @@ export function Answer() {
 
     const [dressSat, setDressSat] = React.useState('');
     const [dressSun, setDressSun] = React.useState('');
-
-    // const [hymnOne, setHymnOne] = React.useState('');
-    // const [hymnTwo, setHymnTwo] = React.useState('');
-    // const [hymnThree, setHymnThree] = React.useState('');
-
-    // const [templeOne, setTempleOne] = React.useState('');
-    // const [templeTwo, setTempleTwo] = React.useState('');
-    // const [templeThree, setTempleThree] = React.useState('');
 
     const [hymnRowsVal, setHymnRowsVal] = React.useState(['']);
     const hymnRowsChange = (index, newVal) => {
@@ -113,29 +86,10 @@ export function Answer() {
     // Sets values from Answer Key DB
     async function placeCurrent(answer)
     {
-        // setSatMorningOne(answer.satMor[0]);
-        // setSatMorningTwo(answer.satMor[1]);
-        // setSatMorningThree(answer.satMor[2]);
         setSatMorRowsVal(answer.satMor);
-
-        // setSatAfternoonOne(answer.satAft[0]);
-        // setSatAfternoonTwo(answer.satAft[1]);
-        // setSatAfternoonThree(answer.satAft[2]);
         setSatAftRowsVal(answer.satAft);
-
-        // setSatEveningOne(answer.satEvn[0]);
-        // setSatEveningTwo(answer.satEvn[1]);
-        // setSatEveningThree(answer.satEvn[2]);
         setSatEvnRowsVal(answer.satEvn);
-
-        // setSunMorningOne(answer.sunMor[0]);
-        // setSunMorningTwo(answer.sunMor[1]);
-        // setSunMorningThree(answer.sunMor[2]);
         setSunMorRowsVal(answer.sunMor);
-
-        // setSunAfternoonOne(answer.sunAft[0]);
-        // setSunAfternoonTwo(answer.sunAft[1]);
-        // setSunAfternoonThree(answer.sunAft[2]);
         setSunAftRowsVal(answer.sunAft);
 
         setTieProphet(answer.tieClr[0]);
@@ -146,10 +100,6 @@ export function Answer() {
         setDressSun(answer.dressClr[1]);
 
         setHymnRowsVal(answer.hymnNum);
-
-        // setHymnOne(answer.hymnNum[0]);
-        // setHymnTwo(answer.hymnNum[1]);
-        // setHymnThree(answer.hymnNum[2]);
         
         let i = 0;
         while(i < answer.templeLoc.length)
@@ -173,10 +123,6 @@ export function Answer() {
         }
         
         setTempleRowsVal(answer.templeLoc);
-
-        // setTempleOne(answer.templeLoc[0]);
-        // setTempleTwo(answer.templeLoc[1]);
-        // setTempleThree(answer.templeLoc[2]);
     }
 
     // Compares Answer and User Keys
@@ -224,9 +170,7 @@ export function Answer() {
         answerKey.setGuess('sunAft', sunAftRowsVal);
         answerKey.setGuess('tieClr', [tieProphet, tie1stCoun, tie2ndCoun]);
         answerKey.setGuess('dressClr', [dressSat, dressSun]);
-        // answerKey.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
         answerKey.setGuess('hymnNum', hymnRowsVal);
-        // answerKey.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
 
         let i = 0;
         while(i < templeRowsVal.length)
@@ -492,19 +436,6 @@ export function Answer() {
                             </caption> 
                         </table>
                         </div>
-                        
-                        {/* <table className="who_speaks">
-                            <thead>
-                                <tr>
-                                    <th>Sat Morning</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><input id="satMorOne" type="text" value={satMorningOne} onChange={(e) => setSatMorningOne(e.target.value)} placeholder="Ex. Nelson" /></td></tr>
-                                <tr><td><input id="satMorTwo" type="text" value={satMorningTwo} onChange={(e) => setSatMorningTwo(e.target.value)}/></td></tr>
-                                <tr><td><input id="satMorThree" type="text" value={satMorningThree} onChange={(e) => setSatMorningThree(e.target.value)}/></td></tr>
-                            </tbody>
-                        </table> */}
 
                         <div className="whospeaks-sataft-div"> 
                         <table className="adaptive">
@@ -536,19 +467,6 @@ export function Answer() {
                         </table>
                         </div>
 
-                        {/* <table className="who_speaks">
-                            <thead>
-                                <tr>
-                                    <th>Sat Afternoon</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><input id="satAftOne" type="text" value={satAfternoonOne} onChange={(e) => setSatAfternoonOne(e.target.value)} placeholder="Ex. Oaks" /></td></tr>
-                                <tr><td><input id="satAftTwo" type="text" value={satAfternoonTwo} onChange={(e) => setSatAfternoonTwo(e.target.value)}/></td></tr>
-                                <tr><td><input id="satAftThree" type="text" value={satAfternoonThree} onChange={(e) => setSatAfternoonThree(e.target.value)}/></td></tr>
-                            </tbody>
-                        </table> */}
-
                         <div className="whospeaks-satevn-div"> 
                         <table className="adaptive">
                             <thead className="whospeaks-satevn-head">
@@ -578,19 +496,6 @@ export function Answer() {
                             </caption> 
                         </table>
                         </div>
-
-                        {/* <table className="who_speaks">
-                            <thead>
-                                <tr>
-                                    <th>Sat Evening</th>                            
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><input id="satEvnOne" type="text" value={satEveningOne} onChange={(e) => setSatEveningOne(e.target.value)} placeholder="Ex. Eyring" /></td></tr>
-                                <tr><td><input id="satEvnTwo" type="text" value={satEveningTwo} onChange={(e) => setSatEveningTwo(e.target.value)}/></td></tr>
-                                <tr><td><input id="satEvnThree" type="text" value={satEveningThree} onChange={(e) => setSatEveningThree(e.target.value)}/></td></tr>
-                            </tbody>
-                        </table> */}
 
                         <div className="whospeaks-sunmor-div"> 
                         <table className="adaptive">
@@ -622,19 +527,6 @@ export function Answer() {
                         </table>
                         </div>        
 
-                        {/* <table className="who_speaks">
-                            <thead>
-                                <tr>
-                                    <th>Sun Morning</th>                           
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><input id="sunMorOne" type="text" value={sunMorningOne} onChange={(e) => setSunMorningOne(e.target.value)}/></td></tr>
-                                <tr><td><input id="sunMorTwo" type="text" value={sunMorningTwo} onChange={(e) => setSunMorningTwo(e.target.value)}/></td></tr>
-                                <tr><td><input id="sunMorThree" type="text" value={sunMorningThree} onChange={(e) => setSunMorningThree(e.target.value)}/></td></tr>
-                            </tbody>
-                        </table> */}
-
                         <div className="whospeaks-sunaft-div"> 
                         <table className="adaptive">
                             <thead className="whospeaks-sunaft-head">
@@ -664,19 +556,7 @@ export function Answer() {
                             </caption> 
                         </table>
                         </div> 
-
-                        {/* <table className="who_speaks">
-                            <thead>
-                                <tr>
-                                    <th>Sun Afternoon</th>                         
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><input id="sunAftOne" type="text" value={sunAfternoonOne} onChange={(e) => setSunAfternoonOne(e.target.value)}/></td></tr>
-                                <tr><td><input id="sunAftTwo" type="text" value={sunAfternoonTwo} onChange={(e) => setSunAfternoonTwo(e.target.value)}/></td></tr>
-                                <tr><td><input id="sunAftThree" type="text" value={sunAfternoonThree} onChange={(e) => setSunAfternoonThree(e.target.value)}/></td></tr>
-                            </tbody>
-                        </table> */}
+                        
                     </div>
                 </div>
                 <hr />
