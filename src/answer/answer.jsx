@@ -734,44 +734,6 @@ export function Answer() {
                 <table className="adaptive">
                     <thead className="templehead">
                         <tr>
-                            <th>World</th>
-                            <th>Temples</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {worldRowVal.map((val, index) => (
-                            <tr key={index}>
-                                <td>
-                                    <input
-                                    type="text"
-                                    value={val[0]}
-                                    onChange={(e) => worldRowChange(index, e.target.value[0])}
-                                />
-                                </td>
-                                <td>
-                                    <input
-                                    type="text"
-                                    value={val[1]}
-                                    onChange={(e) => worldRowChange(index, e.target.value[1])}
-                                />
-                                </td>
-                            </tr>
-                        ))}
-                        
-                    </tbody>
-                    <caption className="adaptive_button_div">
-                        <button type="button" className="adaptive_button" onClick={() => addTempleRows()}> + </button>
-                        <button type="button" className="adaptive_button" onClick={() => delTempleRows()}> - </button>
-                        {/* Read button intended for bugfixing */}
-                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
-                    </caption> 
-                </table>
-
-                <br></br>
-
-                <table className="adaptive">
-                    <thead className="templehead">
-                        <tr>
                             <th>World Temples</th>
                         </tr>
                     </thead>
