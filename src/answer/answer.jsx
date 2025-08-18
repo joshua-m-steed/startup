@@ -73,11 +73,11 @@ export function Answer() {
             setTempleRowsVal(updated); 
             };
 
-    const [worldRowVal, setWorldRowVal] = React.useState([['Las Vegas', 'Nevada'], ['Albany', 'New York']]);
-    const worldRowChange = (index, newVal) => {
-            const updated = [...worldRowVal];
+    const [worldRowsVal, setWorldRowsVal] = React.useState([['Las Vegas', 'Nevada'], ['Albany', 'New York']]);
+    const worldRowsChange = (index, newVal) => {
+            const updated = [...worldRowsVal];
             updated[index] = newVal;
-            setWorldRowVal(updated); 
+            setWorldRowsVal(updated); 
             };
 
     // Collects from DB
@@ -378,6 +378,30 @@ export function Answer() {
             else
             {
                 templeRowsChange(0, '');
+            }
+            
+            return newRows;
+        });
+    }
+
+    function addWorldRows()
+    {
+        setWorldRowsVal(prevRows => [
+            ...prevRows, ''
+        ]);
+    }
+
+    function delWorldRows()
+    {
+        setWorldRowsVal((prevRows) => {
+            const newRows = [...prevRows];
+            if(newRows.length != 1)
+            {
+                newRows.pop();
+            }
+            else
+            {
+                worldRowsChange(0, '');
             }
             
             return newRows;
@@ -738,18 +762,18 @@ export function Answer() {
                         </tr>
                     </thead>
                     <tbody>
-                        {worldRowVal.map((val, index) => (
+                        {worldRowsVal.map((val, index) => (
                             <tr key={index}>
                                 <td>
                                     <input
                                     type="text"
                                     value={val[0]}
-                                    onChange={(e) => worldRowChange(index, e.target.value[0])}
+                                    onChange={(e) => worldRowsChange(index, e.target.value[0])}
                                 />
                                     <input
                                     type="text"
                                     value={val[1]}
-                                    onChange={(e) => worldRowChange(index, e.target.value[1])}
+                                    onChange={(e) => worldRowsChange(index, e.target.value[1])}
                                 />
                                 </td>
                             </tr>
@@ -757,8 +781,8 @@ export function Answer() {
                         
                     </tbody>
                     <caption className="adaptive_button_div">
-                        <button type="button" className="adaptive_button" onClick={() => addTempleRows()}> + </button>
-                        <button type="button" className="adaptive_button" onClick={() => delTempleRows()}> - </button>
+                        <button type="button" className="adaptive_button" onClick={() => addWorldRows()}> + </button>
+                        <button type="button" className="adaptive_button" onClick={() => delWorldRows()}> - </button>
                         {/* Read button intended for bugfixing */}
                         {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
                     </caption> 
