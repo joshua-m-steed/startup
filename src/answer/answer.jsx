@@ -772,11 +772,13 @@ export function Answer() {
                                 <td>
                                     <input
                                     type="text"
+                                    placeholder={index === 0 ? 'City' : ''}
                                     value={val[0]}
                                     onChange={(e) => worldRowsChange(index, e.target.value[0])}
                                 />
                                     <input
                                     type="text"
+                                    placeholder={index === 0 ? 'State' : ''}
                                     value={val[1]}
                                     onChange={(e) => worldRowsChange(index, e.target.value[1])}
                                 />
