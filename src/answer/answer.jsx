@@ -73,10 +73,11 @@ export function Answer() {
             setTempleRowsVal(updated); 
             };
 
-    const [worldRowsVal, setWorldRowsVal] = React.useState([['Las Vegas', 'Nevada'], ['Albany', 'New York']]);
-    const worldRowsChange = (index, newVal) => {
+    const [worldRowsVal, setWorldRowsVal] = React.useState([['','']]);
+    const worldRowsChange = (index, newVal, place) => {
             const updated = [...worldRowsVal];
-            updated[index] = newVal;
+            console.log("Here is the: " + index + " " + newVal + " " + place);
+            updated[index][place] = newVal;
             setWorldRowsVal(updated); 
             };
 
@@ -387,7 +388,7 @@ export function Answer() {
     function addWorldRows()
     {
         setWorldRowsVal(prevRows => [
-            ...prevRows, ''
+            ...prevRows, ['','']
         ]);
     }
 
@@ -401,7 +402,7 @@ export function Answer() {
             }
             else
             {
-                worldRowsChange(0, '');
+                worldRowsChange(0, ['','']);
             }
             
             return newRows;
@@ -774,13 +775,13 @@ export function Answer() {
                                     type="text"
                                     placeholder={index === 0 ? 'City' : ''}
                                     value={val[0]}
-                                    onChange={(e) => worldRowsChange(index, e.target.value[0])}
+                                    onChange={(e) => worldRowsChange(index, e.target.value, 0)}
                                 />
                                     <input
                                     type="text"
                                     placeholder={index === 0 ? 'State' : ''}
                                     value={val[1]}
-                                    onChange={(e) => worldRowsChange(index, e.target.value[1])}
+                                    onChange={(e) => worldRowsChange(index, e.target.value, 1)}
                                 />
                                 </td>
                             </tr>
@@ -791,7 +792,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addWorldRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delWorldRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
+                        <button type="button" className="adaptive_button" onClick={() => readRows(worldRowsVal)}> Read </button>
                     </caption> 
                 </table>
 
