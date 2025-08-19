@@ -758,6 +758,11 @@ export function Answer() {
                 <table className="adaptive">
                     <thead className="templehead">
                         <tr>
+                            <th>Temple Predictions</th>
+                        </tr>
+                    </thead>
+                    <thead className="templehead">
+                        <tr>
                             <th>World Temples</th>
                         </tr>
                     </thead>
