@@ -402,7 +402,8 @@ export function Answer() {
             }
             else
             {
-                worldRowsChange(0, ['','']);
+                worldRowsChange(0, '', 0);
+                worldRowsChange(0, '', 1);
             }
             
             return newRows;
