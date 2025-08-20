@@ -754,13 +754,13 @@ export function Answer() {
                 </div>
 
                 <h3>Temples</h3>
-                Please input the location as follows: Country, State/Region, City
+                Please input the location for State-side and World-wide temples!
 
                 <br />
                 <br />
                 
                 <div className="temples-div">
-                <table className="adaptive">
+                {/* <table className="adaptive">
                     <thead className="templehead">
                         <tr>
                             <th>Temple Prediction(s)</th>
@@ -782,13 +782,13 @@ export function Answer() {
                     </tbody>
                     <caption className="adaptive_button_div">
                         <button type="button" className="adaptive_button" onClick={() => addTempleRows()}> + </button>
-                        <button type="button" className="adaptive_button" onClick={() => delTempleRows()}> - </button>
+                        <button type="button" className="adaptive_button" onClick={() => delTempleRows()}> - </button> */}
                         {/* Read button intended for bugfixing */}
                         {/* <button type="button" className="adaptive_button" onClick={() => readRows(templeRowsVal)}> Read </button> */}
-                    </caption> 
-                </table>
+                    {/* </caption> 
+                </table> */}
 
-                <br></br>
+                {/* <br></br> */}
 
                 <table className="adaptive">
                     <thead className="templehead">
@@ -826,7 +826,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addStateRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delStateRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="adaptive_button" onClick={() => readRows(stateRowsVal)}> Read </button>
+                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(stateRowsVal)}> Read </button> */}
                     </caption> 
                 </table>
 
@@ -840,7 +840,7 @@ export function Answer() {
                     </thead>
                     <thead className="templehead">
                         <tr>
-                            <th>World Temples</th>
+                            <th>World-wide Temples</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -868,7 +868,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addWorldRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delWorldRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="adaptive_button" onClick={() => readRows(worldRowsVal)}> Read </button>
+                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(worldRowsVal)}> Read </button> */}
                     </caption> 
                 </table>
 
