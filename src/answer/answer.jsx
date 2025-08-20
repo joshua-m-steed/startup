@@ -73,6 +73,14 @@ export function Answer() {
             setTempleRowsVal(updated); 
             };
 
+    const [stateRowsVal, setStateRowsVal] = React.useState([['','']]);
+    const stateRowsChange = (index, newVal, place) => {
+            const updated = [...stateRowsVal];
+            console.log("Here is the: " + index + " " + newVal + " " + place);
+            updated[index][place] = newVal;
+            setStateRowsVal(updated); 
+            };
+
     const [worldRowsVal, setWorldRowsVal] = React.useState([['','']]);
     const worldRowsChange = (index, newVal, place) => {
             const updated = [...worldRowsVal];
@@ -379,6 +387,31 @@ export function Answer() {
             else
             {
                 templeRowsChange(0, '');
+            }
+            
+            return newRows;
+        });
+    }
+
+    function addStateRows()
+    {
+        setStateRowsVal(prevRows => [
+            ...prevRows, ['','']
+        ]);
+    }
+
+    function delStateRows()
+    {
+        setStateRowsVal((prevRows) => {
+            const newRows = [...prevRows];
+            if(newRows.length != 1)
+            {
+                newRows.pop();
+            }
+            else
+            {
+                stateRowsChange(0, '', 0);
+                stateRowsChange(0, '', 1);
             }
             
             return newRows;
@@ -765,6 +798,48 @@ export function Answer() {
                     </thead>
                     <thead className="templehead">
                         <tr>
+                            <th>State-side Temples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {stateRowsVal.map((val, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <input
+                                    type="text"
+                                    placeholder={index === 0 ? 'City' : ''}
+                                    value={val[0]}
+                                    onChange={(e) => stateRowsChange(index, e.target.value, 0)}
+                                />
+                                    <input
+                                    type="text"
+                                    placeholder={index === 0 ? 'State' : ''}
+                                    value={val[1]}
+                                    onChange={(e) => stateRowsChange(index, e.target.value, 1)}
+                                />
+                                </td>
+                            </tr>
+                        ))}
+                        
+                    </tbody>
+                    <caption className="adaptive_button_div">
+                        <button type="button" className="adaptive_button" onClick={() => addStateRows()}> + </button>
+                        <button type="button" className="adaptive_button" onClick={() => delStateRows()}> - </button>
+                        {/* Read button intended for bugfixing */}
+                        <button type="button" className="adaptive_button" onClick={() => readRows(stateRowsVal)}> Read </button>
+                    </caption> 
+                </table>
+
+                <br></br>
+
+                <table className="adaptive">
+                    <thead className="templehead">
+                        <tr>
+                            <th>Temple Predictions</th>
+                        </tr>
+                    </thead>
+                    <thead className="templehead">
+                        <tr>
                             <th>World Temples</th>
                         </tr>
                     </thead>
@@ -780,7 +855,7 @@ export function Answer() {
                                 />
                                     <input
                                     type="text"
-                                    placeholder={index === 0 ? 'State' : ''}
+                                    placeholder={index === 0 ? 'Country' : ''}
                                     value={val[1]}
                                     onChange={(e) => worldRowsChange(index, e.target.value, 1)}
                                 />
