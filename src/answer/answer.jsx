@@ -369,29 +369,29 @@ export function Answer() {
         });
     }
 
-    function addTempleRows()
-    {
-        setTempleRowsVal(prevRows => [
-            ...prevRows, ''
-        ]);
-    }
+    // function addTempleRows()
+    // {
+    //     setTempleRowsVal(prevRows => [
+    //         ...prevRows, ''
+    //     ]);
+    // }
 
-    function delTempleRows()
-    {
-        setTempleRowsVal((prevRows) => {
-            const newRows = [...prevRows];
-            if(newRows.length != 1)
-            {
-                newRows.pop();
-            }
-            else
-            {
-                templeRowsChange(0, '');
-            }
+    // function delTempleRows()
+    // {
+    //     setTempleRowsVal((prevRows) => {
+    //         const newRows = [...prevRows];
+    //         if(newRows.length != 1)
+    //         {
+    //             newRows.pop();
+    //         }
+    //         else
+    //         {
+    //             templeRowsChange(0, '');
+    //         }
             
-            return newRows;
-        });
-    }
+    //         return newRows;
+    //     });
+    // }
 
     function addStateRows()
     {
@@ -443,15 +443,48 @@ export function Answer() {
         });
     }
 
-    // PLACEHOLDER TO READ WHAT IS HAPPENING WITH KEYS AND INPUTS
+    React.useEffect(() => {
+        fetchAnswerKey();
+    }, []);
+
+    // DEBUG FUNCTIONS
     function readRows(rowVal)
     {
         console.log(rowVal);
     }
+    
+    function readAnswerKey()
+    {
+        console.log(
+            '\n\n',
+            "Session Speakers"          + `\n`,
+            "Sat Mor: " + satMorRowsVal + '\n',
+            "Sat Aft: " + satAftRowsVal + '\n',
+            "Sat Evn: " + satEvnRowsVal + '\n',
+            "Sun Mor: " + sunMorRowsVal + '\n',
+            "Sun Aft: " + sunAftRowsVal + '\n',
+            `\n`,
+            "Tie Color"                 + `\n`,
+            "Prophet: " + tieProphet    + `\n`,
+            "1st Csn: " + tie1stCoun    + `\n`,
+            "2nd Csn: " + tie2ndCoun    + `\n`,
+            `\n`,
+            "Dress Color"               + `\n`,
+            "Sun Mor: " + dressSat      + `\n`,
+            "Sun Mor: " + dressSun      + `\n`,
+            `\n`,
+            "Hymn Numbers"              + `\n`,
+            "Hymn #s: " + hymnRowsVal   + `\n`,
+            `\n`,
+            "State-Side Temples"        + `\n`,
+            "States : " + stateRowsVal  + `\n`,
+            `\n`,
+            "World-Wide Temples"        + `\n`,
+            "Worlds : " + worldRowsVal  + `\n`
 
-    React.useEffect(() => {
-        fetchAnswerKey();
-    }, []);
+
+        );
+    }
 
     return (
         <main>
@@ -826,7 +859,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addStateRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delStateRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(stateRowsVal)}> Read </button> */}
+                        <button type="button" className="adaptive_button" onClick={() => readRows(stateRowsVal)}> Read </button>
                     </caption> 
                 </table>
 
@@ -868,7 +901,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addWorldRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delWorldRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(worldRowsVal)}> Read </button> */}
+                        <button type="button" className="adaptive_button" onClick={() => readRows(worldRowsVal)}> Read </button>
                     </caption> 
                 </table>
 
@@ -880,6 +913,7 @@ export function Answer() {
                 Fill out the Answer Sheet as you watch General Conference!
                 <div>
                     <button className="submit" type="button" onClick={() => saveAnswerKey()}>{updateText}</button>
+                    <button type="button" onClick={() => readAnswerKey()}>DEBUG</button>
                     <button onClick={() => clearAnswer()}>Clear Answer</button>
                 </div>
 
