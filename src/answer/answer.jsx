@@ -188,25 +188,32 @@ export function Answer() {
         answerKey.setGuess('dressClr', [dressSat, dressSun]);
         answerKey.setGuess('hymnNum', hymnRowsVal);
 
-        let i = 0;
-        while(i < templeRowsVal.length)
-        {
-            let temp = templeRowsVal[i].split(', ');
-            console.log(temp);
-            templeRowsVal[i] = temp;
-            console.log(templeRowsVal[i]);
-            i++;
-        }
+        // let i = 0;
+        // while(i < templeRowsVal.length)
+        // {
+        //     let temp = templeRowsVal[i].split(', ');
+        //     console.log(temp);
+        //     templeRowsVal[i] = temp;
+        //     console.log(templeRowsVal[i]);
+        //     i++;
+        // }
 
-        answerKey.setGuess('templeLoc', templeRowsVal);
+        // answerKey.setGuess('templeLoc', templeRowsVal);
 
-        await fetch(`/api/answer`, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(answerKey),
-        });
+        answerKey.setGuess('stateTemp', stateRowsVal);
+        answerKey.setGuess('worldTemp', worldRowsVal);
 
-        updateAndCompareGuesses(answerKey);
+        console.log(answerKey);
+
+        // HOLD TO NOT HAVE ANSWER MESS WITH COMPARISONS
+
+        // await fetch(`/api/answer`, {
+        //     method: 'POST',
+        //     headers: { 'content-type': 'application/json' },
+        //     body: JSON.stringify(answerKey),
+        // });
+
+        // updateAndCompareGuesses(answerKey);
     }
 
     // Wipes
@@ -481,8 +488,6 @@ export function Answer() {
             `\n`,
             "World-Wide Temples"        + `\n`,
             "Worlds : " + worldRowsVal  + `\n`
-
-
         );
     }
 

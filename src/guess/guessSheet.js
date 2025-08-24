@@ -10,7 +10,8 @@ export class GuessSheet {
         this.tieClr = [];
         this.dressClr = [];
         this.hymnNum = [];
-        this.templeLoc =[];
+        this.stateTemp = [];
+        this.worldTemp = [];
     }
 
     setGuess(category, values)
