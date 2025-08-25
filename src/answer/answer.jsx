@@ -173,7 +173,7 @@ export function Answer() {
             body: JSON.stringify(answerKey),
         });
 
-        updateAndCompareGuesses(answerKey);
+        await updateAndCompareGuesses(answerKey);
     }
 
     // Wipes

@@ -1,23 +1,24 @@
 export class ScoreCalculator {
     #clean(sheet) {
-        for (let category in sheet) {
+        let copy = structuredClone(sheet);
+        for (let category in copy) {
             let i = 0;
             if(category == 'name' || category == '_id')
             {
                 continue;
             }
-            while (i < sheet[category].length) {
-                if (typeof sheet[category][i] === 'string') {
-                    let trimmed = sheet[category][i].trim();
+            while (i < copy[category].length) {
+                if (typeof copy[category][i] === 'string') {
+                    let trimmed = copy[category][i].trim();
                     let cleaned = trimmed.toLowerCase();
-                    sheet[category][i] = cleaned;
-                } else if (Array.isArray(sheet[category][i])) {
+                    copy[category][i] = cleaned;
+                } else if (Array.isArray(copy[category][i])) {
                     let j = 0;
-                    while (j < sheet[category][i].length) {
-                        if (typeof sheet[category][i][j] === 'string') {
-                            let trimmed = sheet[category][i][j].trim(); 
+                    while (j < copy[category][i].length) {
+                        if (typeof copy[category][i][j] === 'string') {
+                            let trimmed = copy[category][i][j].trim(); 
                             let cleaned = trimmed.toLowerCase();
-                            sheet[category][i][j] = cleaned;
+                            copy[category][i][j] = cleaned;
                         }
                         j++;
                     }
@@ -25,7 +26,7 @@ export class ScoreCalculator {
                 i++;
             }
         }
-        return sheet;
+        return copy;
     }
 
     score(guess, answer) {
