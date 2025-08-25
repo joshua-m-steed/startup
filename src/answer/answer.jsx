@@ -66,13 +66,6 @@ export function Answer() {
             setHymnRowsVal(updated);
             };
 
-    const [templeRowsVal, setTempleRowsVal] = React.useState(['']);
-    const templeRowsChange = (index, newVal) => {
-            const updated = [...templeRowsVal];
-            updated[index] = newVal;
-            setTempleRowsVal(updated); 
-            };
-
     const [stateRowsVal, setStateRowsVal] = React.useState([['','']]);
     const stateRowsChange = (index, newVal, place) => {
             const updated = [...stateRowsVal];
@@ -116,29 +109,9 @@ export function Answer() {
         setDressSun(answer.dressClr[1]);
 
         setHymnRowsVal(answer.hymnNum);
-        
-        let i = 0;
-        while(i < answer.templeLoc.length)
-        {
-            let fullTempleString = "";
-            if(answer.templeLoc[i].length == 3)
-            {
-                fullTempleString = answer.templeLoc[i][0] + ", " + answer.templeLoc[i][1] + ", " + answer.templeLoc[i][2];
-            }
-            else if (answer.templeLoc[i].length == 2)
-            {
-                fullTempleString = answer.templeLoc[i][0] + ", " + answer.templeLoc[i][1];
-            }
-            else if (answer.templeLoc[i].length == 1)
-            {
-                fullTempleString = answer.templeLoc[i][0];
-            }
 
-            answer.templeLoc[i] = fullTempleString;
-            i++;
-        }
-        
-        setTempleRowsVal(answer.templeLoc);
+        setStateRowsVal(answer.stateTemp);
+        setWorldRowsVal(answer.worldTemp);
     }
 
     // Compares Answer and User Keys
@@ -187,19 +160,6 @@ export function Answer() {
         answerKey.setGuess('tieClr', [tieProphet, tie1stCoun, tie2ndCoun]);
         answerKey.setGuess('dressClr', [dressSat, dressSun]);
         answerKey.setGuess('hymnNum', hymnRowsVal);
-
-        // let i = 0;
-        // while(i < templeRowsVal.length)
-        // {
-        //     let temp = templeRowsVal[i].split(', ');
-        //     console.log(temp);
-        //     templeRowsVal[i] = temp;
-        //     console.log(templeRowsVal[i]);
-        //     i++;
-        // }
-
-        // answerKey.setGuess('templeLoc', templeRowsVal);
-
         answerKey.setGuess('stateTemp', stateRowsVal);
         answerKey.setGuess('worldTemp', worldRowsVal);
 
@@ -207,13 +167,13 @@ export function Answer() {
 
         // HOLD TO NOT HAVE ANSWER MESS WITH COMPARISONS
 
-        // await fetch(`/api/answer`, {
-        //     method: 'POST',
-        //     headers: { 'content-type': 'application/json' },
-        //     body: JSON.stringify(answerKey),
-        // });
+        await fetch(`/api/answer`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(answerKey),
+        });
 
-        // updateAndCompareGuesses(answerKey);
+        updateAndCompareGuesses(answerKey);
     }
 
     // Wipes
@@ -854,6 +814,7 @@ export function Answer() {
                                     placeholder={index === 0 ? 'State' : ''}
                                     value={val[1]}
                                     onChange={(e) => stateRowsChange(index, e.target.value, 1)}
+                                    // Could become a list of states if needed
                                 />
                                 </td>
                             </tr>
