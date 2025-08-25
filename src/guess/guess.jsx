@@ -46,7 +46,21 @@ export function Guess() {
     const [templeTwo, setTempleTwo] = React.useState('');
     const [templeThree, setTempleThree] = React.useState('');
 
-    const nav = useNavigate();
+    const [stateRowsVal, setStateRowsVal] = React.useState([['','']]);
+    const stateRowsChange = (index, newVal, place) => {
+        const updated = [...stateRowsVal];
+        console.log("Here is the: " + index + " " + newVal + " " + place);
+        updated[index][place] = newVal;
+        setStateRowsVal(updated); 
+        };
+
+    const [worldRowsVal, setWorldRowsVal] = React.useState([['','']]);
+    const worldRowsChange = (index, newVal, place) => {
+        const updated = [...worldRowsVal];
+        console.log("Here is the: " + index + " " + newVal + " " + place);
+        updated[index][place] = newVal;
+        setWorldRowsVal(updated); 
+        };
 
     function tri_package(var1='', var2='', var3='') {
         return [var1, var2, var3];
@@ -57,7 +71,7 @@ export function Guess() {
 
         await new Promise((resolve) => setTimeout(resolve, 500));
 
-        nav('../scores');
+        useNavigate('../scores');
     }
 
     async function fetchUserGuess()
@@ -407,6 +421,79 @@ export function Guess() {
 
                 <hr />
                 <br />
+
+                <div className="temples-div">
+                <table className="adaptive">
+                    <thead className="templehead">
+                        <tr>
+                            <th>Temple Predictions</th>
+                        </tr>
+                    </thead>
+                    <thead className="templehead">
+                        <tr>
+                            <th>State-side Temples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {stateRowsVal.map((val, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <input
+                                    type="text"
+                                    placeholder={index === 0 ? 'City' : ''}
+                                    value={val[0]}
+                                    onChange={(e) => stateRowsChange(index, e.target.value, 0)}
+                                />
+                                    <input
+                                    type="text"
+                                    placeholder={index === 0 ? 'State' : ''}
+                                    value={val[1]}
+                                    onChange={(e) => stateRowsChange(index, e.target.value, 1)}
+                                    // Could become a list of states if needed
+                                />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+
+                <br></br>
+
+                <table className="adaptive">
+                    <thead className="templehead">
+                        <tr>
+                            <th>Temple Predictions</th>
+                        </tr>
+                    </thead>
+                    <thead className="templehead">
+                        <tr>
+                            <th>World-wide Temples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {worldRowsVal.map((val, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <input
+                                    type="text"
+                                    placeholder={index === 0 ? 'City' : ''}
+                                    value={val[0]}
+                                    onChange={(e) => worldRowsChange(index, e.target.value, 0)}
+                                />
+                                    <input
+                                    type="text"
+                                    placeholder={index === 0 ? 'Country' : ''}
+                                    value={val[1]}
+                                    onChange={(e) => worldRowsChange(index, e.target.value, 1)}
+                                />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                </div>
+
+                <br></br>
 
                 Submit your guesses and enjoy the messages of Conference!
                 <div>

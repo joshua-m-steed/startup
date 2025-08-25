@@ -110,6 +110,32 @@ table.who_speaks th {
     background-color: #177339;
 }
 
+table.adaptive {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border: 3px solid #177339;
+    box-shadow: 3px 3px 3px black;
+}
+table.adaptive td {
+    border: 1px dashed #177339;
+    padding: 10px;
+}
+table.adaptive th {
+    background-color: #177339;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+table caption.adaptive_button_div {
+    display: flex;
+}
+caption button.adaptive_button {
+    width: 100%;
+    margin: 3%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: large;
+}
 
 button {
     color: black;
