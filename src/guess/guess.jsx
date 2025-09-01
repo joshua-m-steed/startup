@@ -9,6 +9,7 @@ export function Guess() {
     // NOTE :: Attempt to Compress this code, explore ::
     const userGuess = new GuessSheet();
     const scoreCalc = new ScoreCalculator();
+    const nav = useNavigate();
     // const [locked, setLocked] = React.useState(false); // For a future Idea
 
     const [satMorningOne, setSatMorningOne] = React.useState('');
@@ -67,7 +68,7 @@ export function Guess() {
 
         await new Promise((resolve) => setTimeout(resolve, 500));
 
-        useNavigate('../scores');
+        nav('../scores');
     }
 
     async function fetchUserGuess()
