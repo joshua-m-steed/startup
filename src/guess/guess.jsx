@@ -59,10 +59,6 @@ export function Guess() {
         setWorldRowsVal(updated); 
         };
 
-    function tri_package(var1='', var2='', var3='') {
-        return [var1, var2, var3];
-    }
-
     const saveGuessHelp = async () => {
         await saveGuess();
 
@@ -151,14 +147,14 @@ export function Guess() {
     async function saveGuess() 
     {
         userGuess.name = localStorage.getItem('Username');
-        userGuess.setGuess('satMor', tri_package(satMorningOne, satMorningTwo, satMorningThree));
-        userGuess.setGuess('satAft', tri_package(satAfternoonOne, satAfternoonTwo, satAfternoonThree));
-        userGuess.setGuess('satEvn', tri_package(satEveningOne, satEveningTwo, satEveningThree));
-        userGuess.setGuess('sunMor', tri_package(sunMorningOne, sunMorningTwo, sunMorningThree));
-        userGuess.setGuess('sunAft', tri_package(sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree));
-        userGuess.setGuess('tieClr', tri_package(tieProphet, tie1stCoun, tie2ndCoun));
+        userGuess.setGuess('satMor', [satMorningOne, satMorningTwo, satMorningThree]);
+        userGuess.setGuess('satAft', [satAfternoonOne, satAfternoonTwo, satAfternoonThree]);
+        userGuess.setGuess('satEvn', [satEveningOne, satEveningTwo, satEveningThree]);
+        userGuess.setGuess('sunMor', [sunMorningOne, sunMorningTwo, sunMorningThree]);
+        userGuess.setGuess('sunAft', [sunAfternoonOne, sunAfternoonTwo, sunAfternoonThree]);
+        userGuess.setGuess('tieClr', [tieProphet, tie1stCoun, tie2ndCoun]);
         userGuess.setGuess('dressClr', [dressSat, dressSun]);
-        userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
+        userGuess.setGuess('hymnNum', [hymnOne, hymnTwo, hymnThree]);
         userGuess.setGuess('stateTemp', stateRowsVal);
         userGuess.setGuess('worldTemp', worldRowsVal);
 
