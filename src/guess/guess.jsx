@@ -42,10 +42,6 @@ export function Guess() {
     const [hymnTwo, setHymnTwo] = React.useState('');
     const [hymnThree, setHymnThree] = React.useState('');
 
-    const [templeOne, setTempleOne] = React.useState('');
-    const [templeTwo, setTempleTwo] = React.useState('');
-    const [templeThree, setTempleThree] = React.useState('');
-
     const [stateRowsVal, setStateRowsVal] = React.useState([['','']]);
     const stateRowsChange = (index, newVal, place) => {
         const updated = [...stateRowsVal];
@@ -118,32 +114,9 @@ export function Guess() {
         setHymnOne(guess.hymnNum[0]);
         setHymnTwo(guess.hymnNum[1]);
         setHymnThree(guess.hymnNum[2]);
-        
-        let i = 0;
-        while(i < guess.templeLoc.length)
-        {
-            let fullTempleString = "";
-            if(guess.templeLoc[i].length == 3)
-            {
-                fullTempleString = guess.templeLoc[i][0] + ", " + guess.templeLoc[i][1] + ", " + guess.templeLoc[i][2];
-            }
-            else if (guess.templeLoc[i].length == 2)
-            {
-                fullTempleString = guess.templeLoc[i][0] + ", " + guess.templeLoc[i][1];
-            }
-            else if (guess.templeLoc[i].length == 1)
-            {
-                fullTempleString = guess.templeLoc[i][0];
-            }
 
-            console.log(fullTempleString);
-            guess.templeLoc[i] = fullTempleString;
-            i++;
-        }
-        
-        setTempleOne(guess.templeLoc[0]);
-        setTempleTwo(guess.templeLoc[1]);
-        setTempleThree(guess.templeLoc[2]);
+        setStateRowsVal(guess.stateTemp);
+        setWorldRowsVal(guess.worldTemp);
     }
 
     function clearGuess(username)
@@ -185,7 +158,8 @@ export function Guess() {
         userGuess.setGuess('tieClr', tri_package(tieProphet, tie1stCoun, tie2ndCoun));
         userGuess.setGuess('dressClr', [dressSat, dressSun]);
         userGuess.setGuess('hymnNum', tri_package(hymnOne, hymnTwo, hymnThree));
-        userGuess.setGuess('templeLoc', tri_package(templeOne.split(', '), templeTwo.split(', '), templeThree.split(', ')));
+        userGuess.setGuess('stateTemp', stateRowsVal);
+        userGuess.setGuess('worldTemp', worldRowsVal);
 
         console.log("Going to post Guess...");
         console.log(JSON.stringify(userGuess));
@@ -403,24 +377,7 @@ export function Guess() {
                 <h3>Where a temple will be announced? (1pt for each)</h3>
                 Please input the location as follows: Country, State/Region, City
 
-                <br />
-                <br />
-
-                <div>
-                    <label htmlFor="temple_one">#1</label>
-                    <input id="temple_one" type="text" value={templeOne} onChange={(e) => setTempleOne(e.target.value)} placeholder="Ex. USA, PA, Susquehanna" />
-                </div>
-                <div>
-                    <label htmlFor="temple_two">#2</label>
-                    <input id="temple_two" type="text" value={templeTwo} onChange={(e) => setTempleTwo(e.target.value)} placeholder="Ex. Cuba, Menis" />
-                </div>
-                <div>
-                    <label htmlFor="temple_three">#3</label>
-                    <input id="temple_three" type="text" value={templeThree} onChange={(e) => setTempleThree(e.target.value)} />
-                </div>
-
-                <hr />
-                <br />
+                <hr></hr>
 
                 <div className="temples-div">
                 <table className="adaptive">
