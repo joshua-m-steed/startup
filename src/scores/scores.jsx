@@ -3,7 +3,7 @@ import './scores.css';
 
 export function Scores() {
     const [scores, setScores] = React.useState([]);
-    const [points, setPoints] = React.useState(0);
+    const [userPoints, setUserPoints] = React.useState(0);
     const userName = localStorage.getItem('Username');
     
     // userProfile.refill(userName);
@@ -24,12 +24,12 @@ export function Scores() {
         .then((response) => response.json())
         .then(([scoresArray, selfPoints]) => {
             setScores(scoresArray);
-            setPoints(selfPoints);
+            setUserPoints(selfPoints);
         });
     }
 
     const testPrintPoints = async () => {
-        await console.log(points);
+        await console.log(userPoints);
     }
 
     React.useEffect(() => {
@@ -82,7 +82,7 @@ export function Scores() {
                     <label htmlFor="user-score">Your score: </label>
                 </div>
                 <div>
-                    <input type="number" className="display-user-score" id="user-score" value={points} readOnly />
+                    <input type="number" className="display-user-score" id="user-score" value={userPoints} readOnly />
                 </div>
             </div>
 
