@@ -28,6 +28,9 @@ export function Scores() {
         });
     }
 
+    const testPrintPoints = async () => {
+        await console.log(points);
+    }
 
     React.useEffect(() => {
         handleScoreUpdate();
@@ -95,6 +98,12 @@ export function Scores() {
                     </thead>
                     <tbody className="scorerows" id='score'>{scoreRows}
                     </tbody>
+                    <caption>
+                        <a href="#" onClick={(e) => { 
+                            e.preventDefault(); 
+                            testPrintPoints(); 
+                        }}>Click me</a>
+                    </caption>
                 </table>
             </div>
             <div className="advice-text">
