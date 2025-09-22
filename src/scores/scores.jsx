@@ -5,20 +5,9 @@ export function Scores() {
     const [scores, setScores] = React.useState([]);
     const [userPoints, setUserPoints] = React.useState(0);
     const userName = localStorage.getItem('Username');
-    
-    // userProfile.refill(userName);
+    const [allScores, setAllScores] = React.useState(false);
 
-    // TEMPORARY --> Note to self, create an Admin/Answer page
-    // answerKey.satMor = ["Holland", "Rasband", "Cook", "Eyring"];
-    // answerKey.satAft = ["Andersen", "Renlund", "Uchtdorf"];
-    // answerKey.satEvn = ["Stevenson", "Christofferson", ""];
-    // answerKey.sunMor = ["Gong", "Bednar", "Oaks"];
-    // answerKey.sunAft = ["Kearon", "Soares", "Nelson"];
-    // answerKey.tieClr = ["", "Red", "Red"];
-    // answerKey.hymnNum = ["58", "71", "34", "2", "87", "30", "70", "1031", "364", "1015", "254", "1201", "14", "1206", "66", "83", "72", "1027", "243", "141", "1003", "147", "1030", "67", "76", "6"];
-    // answerKey.templeLoc = [ ["USA", "UT", "Spanish Fork"], ["Mexico", "Reynosa"], ["Peru", "Chorrillos"], ["Uruguay", "Rivera"], ["Brazil", "Campo Grande"], ["Portugal", "Porto"], ["Nigeria", "Uyo"], ["Philippines", "San Jose del Monte"], ["New Caledonia", "Nouméa"], ["Australia", "Liverpool"], ["USA", "ID", "Caldwell"], ["USA", "AZ", "Flagstaff"], ["USA", "SD", "Rapid City"], ["USA", "SC", "Greenville"], ["USA", "VA", "Norfolk"] ]
-
-    const handleScoreUpdate = async () => {
+    const partialScoreDisplay = async () => {
         let fetchCall = `/api/scores/` + userName;
         await fetch(fetchCall)
         .then((response) => response.json())
@@ -28,12 +17,69 @@ export function Scores() {
         });
     }
 
-    const testPrintPoints = async () => {
-        await console.log(userPoints);
+// NEW FEATURE TO DISPLAY ALL TABLE SCORES
+    // const allScoreDisplay = async () => {
+    //     let fetchCall = `/api/scores/scores_all`;
+    //     await fetch(fetchCall)
+    //     .then((response) => response.json())
+    //     .then((scoresArray) => {
+    //         setScores(scoresArray);
+    //     });
+    // }
+
+    // const formatTable = async () => {
+    //     const scoreRows = [];
+    //     if (scores.length) {
+    //         for (const [i] of scores.entries()) {
+    //             let usr = scores[i].name;
+    //             let scr = scores[i].score;
+    //             let trp;
+    
+    //             if(i + 1 == 1)
+    //             {
+    //                 trp = "🥇";
+    //             } else if (i + 1 == 2) 
+    //             {
+    //                 trp = "🥈";
+    //             } else if (i + 1 == 3)
+    //             {
+    //                 trp = "🥉";
+    //             } else {
+    //                 trp = "👏";
+    //             }
+    
+    //             scoreRows.push(
+    //                 <tr key={i}>
+    //                     <td>{i+1}</td>
+    //                     <td>{usr}</td>
+    //                     <td>{scr}</td>
+    //                     <td>{trp}</td>
+    //                 </tr>
+    //             );
+    //         }
+    //     } else {
+    //         scoreRows.push(
+    //             <tr key='0'>
+    //                 <td colSpan='4'>Wait to see the scores!</td>
+    //             </tr>
+    //         )
+    //     }
+    // }
+
+    const handleScoreBoardDisplay = async () => {
+        if(allScores == false)
+        {
+            await partialScoreDisplay();
+        }
+        // else if(allScores == true)
+        // {
+        //     await allScoreDisplay();
+        //     formatTable();
+        // }
     }
 
     React.useEffect(() => {
-        handleScoreUpdate();
+        handleScoreBoardDisplay();
     }, []);
 
     const scoreRows = [];
@@ -98,12 +144,17 @@ export function Scores() {
                     </thead>
                     <tbody className="scorerows" id='score'>{scoreRows}
                     </tbody>
-                    <caption>
+
+{/* FEATURE IN THE FUTURE!!!  :: Reference :: index.js - 110/117 :: database.js - 113/120 :: ~ 20/80 */}
+                    {/* <caption>
                         <a href="#" onClick={(e) => { 
-                            e.preventDefault(); 
-                            testPrintPoints(); 
+                            e.preventDefault();
+                            setAllScores(allScores => !allScores); 
+                            handleScoreBoardDisplay(); 
                         }}>Click me</a>
-                    </caption>
+                    </caption> */}
+
+
                 </table>
             </div>
             <div className="advice-text">

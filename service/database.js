@@ -108,6 +108,16 @@ function getTopScores() {
     return point.toArray();
 }
 
+// Attempting to pull all  the score for the scoreboard to be complete
+// Maybe have some obtions to toggle between the two?
+// function getAllScores() {
+//     const query = { score: {$lt: 100 } };
+//     const options = {
+//         sort: { score: -1 },
+//     };
+//     const point = scoreCollection.find(query, options);
+//     return point.toArray();
+// }
 
 module.exports = {
     getUser,
@@ -125,4 +135,5 @@ module.exports = {
     updateScore,
     getUserScores,
     getTopScores,
+    // getAllScores,
 };

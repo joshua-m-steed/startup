@@ -107,6 +107,14 @@ apiRouter.get(`/scores/:username`, isAuth, async (req, res) => {
     res.send([scores, userScore]);
 });
 
+// Fetches all scores
+// apiRouter.get(`/scores/scores_all`, isAuth, async (req, res) => {
+//     const scores = await DB.getAllScores();
+//     console.log(JSON.stringify(scores));
+    
+//     res.send(scores);
+// });
+
 // Saves guess in DB
 apiRouter.post(`/guess`, isAuth, async (req, res) => {
     const userGuess = await DB.saveGuess(req.body);
