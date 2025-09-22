@@ -77,12 +77,12 @@ export default function App() {
                     <div className='credit_box'>
                         <span className='dev'>Joshua Steed</span>
                         <span className='FGC_link'>
-                            <a href="https://github.com/Joshua-S25/startup">
+                            <a href="https://github.com/joshua-m-steed/startup">
                             FGC Github
                             </a>
                         </span>
                     </div> 
-                    <div className='version'>v.1.0</div>
+                    <div className='version'>v.1.1.0</div>
                         
                     
                 </footer>
