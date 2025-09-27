@@ -80,26 +80,30 @@ export class ScoreCalculator {
                 continue;
             }
 
-            if (category === 'templeLoc') {
+            if (category === 'stateTemp' || category === 'worldTemp') {
                 for (let i = 0; i < cleanAnswer[category].length; i++) {
-                    if (!Array.isArray(cleanAnswer[category][i]) || !Array.isArray(cleanGuess[category][i])) {
-                        continue;
-                    }
-
+                    // console.info(cleanAnswer[category]);
+                    // console.info(cleanGuess[category]);
                     let answerSet = new Set(cleanAnswer[category][i]);
                     let guessSet = new Set(cleanGuess[category][i]);
 
+                    // console.info(answerSet);
+                    // console.info(guessSet);
+
                     for (let value of guessSet) {
+                        // console.log(value);
                         if(value === "")
                         {
                             continue;
                         }
+
                         if (answerSet.has(value)) {
-                            points++;
+                            points += 3;
                         }
                     }
                 }
-            } else if (category == 'tieClr') {
+            }
+            else if (category == 'tieClr') {
                 for (let i = 0; i < 3; i++)
                 {
                     const answerVal = cleanAnswer[category][i];
@@ -157,3 +161,24 @@ export class ScoreCalculator {
         return score_row;
     }
 }
+
+
+// if (category === 'templeLoc') {
+            //     for (let i = 0; i < cleanAnswer[category].length; i++) {
+            //         if (!Array.isArray(cleanAnswer[category][i]) || !Array.isArray(cleanGuess[category][i])) {
+            //             continue;
+            //         }
+
+            //         let answerSet = new Set(cleanAnswer[category][i]);
+            //         let guessSet = new Set(cleanGuess[category][i]);
+
+            //         for (let value of guessSet) {
+            //             if(value === "")
+            //             {
+            //                 continue;
+            //             }
+            //             if (answerSet.has(value)) {
+            //                 points++;
+            //             }
+            //         }
+            //     }

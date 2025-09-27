@@ -372,7 +372,7 @@ export function Guess() {
                 </div>
 
                 <h3>Where a temple will be announced? (1pt for each)</h3>
-                Please input the location as follows: City, State and City, Country
+                Please input the location as follows: City, State (Ex. NV) and City, Country
 
                 <hr></hr>
 
