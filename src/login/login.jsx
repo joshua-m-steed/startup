@@ -160,6 +160,13 @@ export function Login({ savedName, authState, onAuthStateChange }) {
                         <button className="logout" type="button" onClick={() => logoutUser()}>Logout</button>
                     </div>
                 )}
+
+            <div className="dev_note_box">
+                <span className="dev_note">Dev Note:</span>
+                <p className="dev_text">
+                    Thanks for visiting FGC! If you have time, I'd love to hear your <a id="advice" href="https://forms.gle/ucD17eJC8YFJNbQN9">feedback</a> so I can improve the page!
+                </p>
+            </div>
         </main>
     );
 }

@@ -10,6 +10,7 @@ form.user_box {
     border: 5px solid #177339;
     box-shadow: 3px 3px 3px black;
     border-radius: 5%;
+    position: fixed;
 
     margin: 0;
     padding: auto;
@@ -76,4 +77,28 @@ button.logout {
     background-color: #91a995;
     border: 3px solid #177339;
     box-shadow: 3px 3px 3px black;
+}
+
+div.dev_note_box {
+    align-items: center;
+    position: relative;
+    width: 50%;
+    margin-top: 25px;
+    border: #177339;
+    border-style: dashed;
+    border-radius: 50cap;
+    padding: 5px;
+    box-shadow: 3px 3px 3px black;
+}
+
+.dev_note_box p {
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+}
+
+.dev_note_box span {
+    color: darkred;
+    text-align: center;
 }

@@ -456,6 +456,7 @@ export function Answer() {
             <div>
                 <h3 className="guess_title">Welcome to the Answer Key, {localStorage.getItem('Username')}!</h3>
             </div>
+            Fill out the Answer Sheet as you watch General Conference!
 
                 <hr />
 
@@ -825,7 +826,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addStateRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delStateRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="adaptive_button" onClick={() => readRows(stateRowsVal)}> Read </button>
+                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(stateRowsVal)}> Read </button> */}
                     </caption> 
                 </table>
 
@@ -867,7 +868,7 @@ export function Answer() {
                         <button type="button" className="adaptive_button" onClick={() => addWorldRows()}> + </button>
                         <button type="button" className="adaptive_button" onClick={() => delWorldRows()}> - </button>
                         {/* Read button intended for bugfixing */}
-                        <button type="button" className="adaptive_button" onClick={() => readRows(worldRowsVal)}> Read </button>
+                        {/* <button type="button" className="adaptive_button" onClick={() => readRows(worldRowsVal)}> Read </button> */}
                     </caption> 
                 </table>
 
@@ -876,10 +877,9 @@ export function Answer() {
                 <hr />
                 <br />
 
-                Fill out the Answer Sheet as you watch General Conference!
                 <div>
                     <button className="submit" type="button" onClick={() => saveAnswerKey()}>{updateText}</button>
-                    <button type="button" onClick={() => readAnswerKey()}>DEBUG</button>
+                    {/* <button type="button" onClick={() => readAnswerKey()}>DEBUG</button> */}
                     <button onClick={() => clearAnswer()}>Clear Answer</button>
                 </div>
 

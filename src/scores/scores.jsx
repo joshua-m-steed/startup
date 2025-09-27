@@ -158,7 +158,7 @@ export function Scores() {
                 </table>
             </div>
             <div className="advice-text">
-                Any <a id="advice" href="https://forms.gle/ucD17eJC8YFJNbQN9">advice</a>?
+                Have any <a id="advice" href="https://forms.gle/ucD17eJC8YFJNbQN9">advice</a> to make FGC better?
             </div>
         </main>
     );
