@@ -21,7 +21,6 @@ export function Login({ savedName, authState, onAuthStateChange }) {
         }
         else
         {
-            console.log("Account creation failed");
             setDisplayErrorMessage("Login failed: Incorrect name, email, or password");
         }
     }

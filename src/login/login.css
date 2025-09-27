@@ -26,6 +26,11 @@ div.input_container {
     box-shadow: 3px 3px 3px black;
 }
 
+div.input_container input::placeholder {
+    color: darkslategray;
+    opacity: 50%;
+}
+
 button.sign {
     background-color: #91a995;
     border: 3px solid #177339;
