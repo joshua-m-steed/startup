@@ -154,19 +154,24 @@ export function Login({ savedName, authState, onAuthStateChange }) {
                     </div>
             </form>
                 ) : (
-                    <div className="name_buttons_box">
-                        <h1 className="name">{userName}</h1>
-                        <NavLink to='guess'><button className="play" type="button" disabled={authState != true}> Play </button></NavLink>
-                        <button className="logout" type="button" onClick={() => logoutUser()}>Logout</button>
+                    <div className="welcome_wrapper">
+                        <div className="name_buttons_box">
+                            <h1 className="name">{userName}</h1>
+                            <NavLink to='guess'><button className="play" type="button" disabled={authState != true}> Play </button></NavLink>
+                            <button className="logout" type="button" onClick={() => logoutUser()}>Logout</button>
+                        </div>      
+                        <div className="dev_note_box">
+                            <span className="dev_note">Dev Note:</span>
+                            <p className="dev_text">
+                                Thanks for visiting FGC! If you have time, I'd love to hear your <a id="advice" href="https://forms.gle/ucD17eJC8YFJNbQN9">feedback</a> so I can improve the page!
+                            </p>
+                        </div>
+
                     </div>
                 )}
 
-            <div className="dev_note_box">
-                <span className="dev_note">Dev Note:</span>
-                <p className="dev_text">
-                    Thanks for visiting FGC! If you have time, I'd love to hear your <a id="advice" href="https://forms.gle/ucD17eJC8YFJNbQN9">feedback</a> so I can improve the page!
-                </p>
-            </div>
+             
+            
         </main>
     );
 }
