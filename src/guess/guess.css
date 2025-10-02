@@ -89,10 +89,9 @@ select::placeholder {
 
 .table_cloth {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     overflow-x: auto;
     width: 100%;
-    
 }
 table.who_speaks {
     border-collapse: collapse;
@@ -157,7 +156,7 @@ button:hover {
     background-color: rgb(45, 144, 226);
 }
 
-@media (max-height: 600px) {
+@media (max-width: 600px) {
     header {
         height: none;
     }
@@ -182,5 +181,6 @@ button:hover {
         display: flex;
         flex-direction: column;
         overflow: auto;
+        align-items: center;
     }
 }

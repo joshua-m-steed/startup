@@ -205,5 +205,6 @@ button:hover {
         display: flex;
         flex-direction: column;
         overflow: auto;
+        align-items: center;
     }
 }

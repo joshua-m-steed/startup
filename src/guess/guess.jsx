@@ -158,8 +158,8 @@ export function Guess() {
         userGuess.setGuess('stateTemp', stateRowsVal);
         userGuess.setGuess('worldTemp', worldRowsVal);
 
-        console.log("Going to post Guess...");
-        console.log(JSON.stringify(userGuess));
+        // console.log("Going to post Guess...");
+        // console.log(JSON.stringify(userGuess));
         fetch(`/api/guess`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },

@@ -120,9 +120,9 @@ export function Answer() {
         const userScore = scoreCalc.score(guess, answer);
         const userTable = scoreCalc.createTableRow(guess.name, userScore);
 
-        console.log(userTable);
+        // console.log(userTable);
 
-        console.log(JSON.stringify(userTable));
+        // console.log(JSON.stringify(userTable));
         await fetch(`/api/scores`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
