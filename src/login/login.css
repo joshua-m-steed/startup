@@ -54,7 +54,11 @@ div span.input_ico {
 
 /* CSS for the Halfway page after login/creation */
 div.welcome_wrapper {
+    display: flex;
+    flex-direction: column;
     justify-items: center;
+    align-content: center;
+    align-items: center;
 }
 
 div.name_buttons_box {
@@ -112,13 +116,4 @@ div.dev_note_box {
 .dev_note_box span {
     color: darkred;
     text-align: center;
-}
-
-@media (orientation: portrait) {
-    .user_box{
-        display: flex;
-        flex-direction: column;
-        overflow: auto;
-        align-items: center;
-    }
 }
