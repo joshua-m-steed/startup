@@ -113,3 +113,12 @@ div.dev_note_box {
     color: darkred;
     text-align: center;
 }
+
+@media (orientation: portrait) {
+    .user_box{
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        align-items: center;
+    }
+}
