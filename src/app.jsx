@@ -82,7 +82,7 @@ export default function App() {
                             </a>
                         </span>
                     </div> 
-                    <div className='version'>v.1.1.4</div>
+                    <div className='version'>v.1.1.5</div>
                         
                     
                 </footer>

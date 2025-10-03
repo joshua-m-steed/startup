@@ -10,7 +10,12 @@ body {
     height: 100vh;
 
     background-color: #91a995 !important;
-    min-width: 400px;
+
+    min-width: 0; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* The MAIN block of the HTML */
@@ -23,21 +28,18 @@ main {
     text-align: center;
 }
 div h3.guess_title {
-    font-size: x-large;
+    font-size: clamp(18px, 4vw, 28px); /* scales with screen, stays readable */
     padding: 10px 20px;
-    text-align: center;
     margin-top: 16px;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
-.qott {
+.qott, .lvtemple{
     border-radius: 50%;
     overflow: hidden;
     object-fit: cover;
-    padding: 10px 20px;
-}
-.lvtemple {
-    border-radius: 50%;
-    overflow: hidden;
-    object-fit: cover;
+    max-width: 90%;
     padding: 10px 20px;
 }
 
@@ -198,6 +200,22 @@ button:hover {
     }
     footer {
         display: none;
+    }
+    table.who_speaks,
+    table.adaptive {
+        font-size: 0.85rem;
+    }
+    table.adaptive tbody td {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap; 
+    }
+    table.adaptive tbody input {
+        flex: 1 1 300px;
+        max-width: 500px;
+        box-sizing: border-box;
     }
 }
 @media (orientation: portrait) {
