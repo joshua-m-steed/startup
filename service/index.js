@@ -94,6 +94,11 @@ apiRouter.post(`/scores`, isAuth, async (req, res) => {
     res.send(scores);
 })
 
+// apiRouter.get(`/scores`, isAuth, async (req, res) => {
+
+
+// })
+
 // Fetches scores
 apiRouter.get(`/scores/:username`, isAuth, async (req, res) => {
     const scores = await DB.getTopScores();
@@ -198,7 +203,7 @@ function setCookie(response, authToken)
 
 async function updateScores(newScore) {
 
-    const TEST = await DB.getTopScores();
+    const TEST = await DB.getAllScores();
     let inTable = false;
 
     for(let i = 0; i < TEST.length; i++)
