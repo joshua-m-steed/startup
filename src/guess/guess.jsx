@@ -184,6 +184,13 @@ export function Guess() {
                 <h3 className="guess_title">Welcome to your FGC prediction sheet, {localStorage.getItem('Username')}!</h3>
             </div>
 
+            <div className="dev_note_box">
+                <span className="dev_note">Dev Note:</span>
+                <p className="dev_text">
+                    Don't see your guesses? Try logging out, and log back in!
+                </p>
+            </div>
+
                 <hr />
 
             <div>

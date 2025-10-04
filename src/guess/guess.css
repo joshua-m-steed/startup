@@ -157,6 +157,30 @@ button:hover {
     background-color: rgb(45, 144, 226);
 }
 
+div.dev_note_box {
+    align-items: center;
+    position: relative;
+    width: 50%;
+    margin-top: 25px;
+    border: #177339;
+    border-style: dashed;
+    border-radius: 50cap;
+    padding: 5px;
+    box-shadow: 3px 3px 3px black;
+}
+
+.dev_note_box p {
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+}
+
+.dev_note_box span {
+    color: darkred;
+    text-align: center;
+}
+
 @media (max-width: 600px) {
     header {
         height: none;
